@@ -498,6 +498,425 @@ int main() {
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="循环结构理论"><a class="header" href="#循环结构理论">循环结构理论</a></h1>
+<pre><code>* [引言](#引言)
+* [while循环](#while循环)
+* [do-while循环](#do-while循环)
+* [for循环](#for循环)
+* [循环的中途退出](#循环的中途退出)
+* [循环的嵌套](#循环的嵌套)
+* [循环实例](#循环实例)
+* [测验](#测验)
+</code></pre>
+<h3 id="引言"><a class="header" href="#引言">引言</a></h3>
+<h3 id="while循环"><a class="header" href="#while循环">while循环</a></h3>
+<pre><code class="language-cpp">while(条件){
+	语句块；
+}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>循环体如果包含一个以上的语句，应该用花括号括起来，以复合语句形式出现</li>
+<li>在循环体应有使循环趋向于结束的语句，如果无此语句，则循环变量的值始终不改变，循环永不结束</li>
+</ul>
+<p>求班级成绩的最大值、最小值和平均值</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int value,total,max,min,noOfInput;//total总分，noOfInput人数
+   total = 0;
+   max = 0;
+   min = 100;
+   noOfInput = 0;
+
+   cout&lt;&lt;&quot;请输入第1位学生的成绩：&quot;;
+   cin&gt;&gt;value;
+   while(value!=-1){
+       ++noOfInput;
+       total+=value;
+       if(value&gt;max) max = value;
+       if(value&lt;min) min = value;
+       cout&lt;&lt;&quot;\n请输入第&quot;&lt;&lt;noOfInput+1&lt;&lt;&quot;个人的成绩：&quot;;
+       cin&gt;&gt;value;
+   }
+   cout&lt;&lt;&quot;\n最高分：&quot;&lt;&lt;max&lt;&lt;endl;
+   cout&lt;&lt;&quot;\n最低分：&quot;&lt;&lt;min&lt;&lt;endl;
+   cout&lt;&lt;&quot;\n平均分：&quot;&lt;&lt;1.0*total/noOfInput&lt;&lt;endl;
+
+   return 0;
+}
+</code></pre>
+<h3 id="do-while循环"><a class="header" href="#do-while循环">do-while循环</a></h3>
+<pre><code class="language-cpp">do{
+	语句;
+}while(条件);
+</code></pre>
+<p>do-while循环至少执行一次</p>
+<h3 id="for循环"><a class="header" href="#for循环">for循环</a></h3>
+<pre><code class="language-cpp">for(表达式1;表达式2;表达式3){
+	语句;
+}
+</code></pre>
+<ul>
+<li>表达式1用于设置初始条件，只执行一次，可以为零个、一个或多个变量设置初值执行</li>
+<li>表达式2是循环条件表达式，用来判定是否继续循环，在每次执行循环体前先执行此表达式，决定是否继续执行循环</li>
+<li>表达式3作为循环的调整器，例如使循环变量增值，它是在执行完循环体后才执行的</li>
+</ul>
+<p>语句说明：</p>
+<p>（1）表达式1可以省略，此时应在for语句之前给循环变量赋初值。</p>
+<p>（2）如果省略表达式2，即不判断循环条件，循环会一直执行下去，也就是认为表达式2一直为真</p>
+<p>（3）表达式3也可以省略，但是此时应该另外设法保证循环能正常结束，如把i++放到循环体中</p>
+<p>（4）可以省略表达式1和表达式3，只保留表达式2即只给循环条件，此时等同于while语句</p>
+<p>（5）三个表达式都可省略如<code>for(;;)</code>相当于<code>while(1)</code>即不设初值，不判断条件（认为表达式2为真），循环变量不增值，无终止地执行循环体</p>
+<p>（6）表达式1和表达式3都可以是与循环无关地任意表达式，如<code>for(sum=0;i&lt;=100;i++) sum+=i;</code></p>
+<p>（7）表达式2一般是关系表达式或逻辑表达式，但也可以是数值表达式或字符表达式，只要其值非0，就执行循环体</p>
+<p>例1 <code>for(i=0;(c=cin.get())!='\n';i+=c);</code></p>
+<p>表达式2先从终端接收一个字符赋给c，然后判断此赋值表达式的值是否不等于<code>'\n'</code>，就执行循环体。此for语句的循环体是空语句，把本来要在循环体中执行的内容放到表达式3中，作用是一样的。</p>
+<p>例2<code>for(;(c=cin.get())!='\n';) cout&lt;&lt;c;</code>for语句中只有表达式2，其作用是每读入一个字符后立即输出该字符，直到输入一个换行符为止。注意，从终端键盘向计算机输入时，是在按enter键以后才将一批数据一起送到内存缓存区中去的。</p>
+<p>注意：</p>
+<ul>
+<li>在for和while语句之后一般没有分号</li>
+<li>有分号表示循环体就是分号之前的内容——空语句——表示循环体内什么都不做如<code>while(i&lt;100); i++;</code>是死循环，<code>for(i=0;i&lt;100;i++); cout&lt;&lt;i;</code>用于延时</li>
+</ul>
+<h3 id="循环的中途退出"><a class="header" href="#循环的中途退出">循环的中途退出</a></h3>
+<ul>
+<li>break语句：退出一层循环或switch</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,n;
+   for(i=1;i&lt;=5;i++){
+       cout&lt;&lt;&quot;Please enter n:&quot;;
+       cin&gt;&gt;n;
+       if(n&lt;0)
+            break;
+        cout&lt;&lt;&quot;n=&quot;&lt;&lt;n&lt;&lt;endl;
+   }
+   cout&lt;&lt;&quot;Program is over!\n&quot;;
+
+   return 0;
+}
+</code></pre>
+<ul>
+<li>continue语句：中断此次循环，开始下一次循环</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,n;
+   for(i=1;i&lt;=5;i++){
+       cout&lt;&lt;&quot;Please enter n:&quot;;
+       cin&gt;&gt;n;
+       if(n&lt;0)
+            continue;
+        cout&lt;&lt;&quot;n=&quot;&lt;&lt;n&lt;&lt;endl;
+   }
+   cout&lt;&lt;&quot;Program is over!\n&quot;;
+
+   return 0;
+}
+</code></pre>
+<p>韩信点兵：穷举法，对x从1开始试验是否满足条件</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int x;
+   for(x=1;x&lt;=100000;x++){
+       if(x%5==1&amp;&amp;x%6==5&amp;&amp;x%7==4&amp;&amp;x%11==10){
+        cout&lt;&lt;x&lt;&lt;endl;//最小数为2111
+        break;
+       }
+   }
+
+   return 0;
+}
+</code></pre>
+<p>结构化程序设计用标志变量使程序只有一个入口和一个出口</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int x;
+   bool find = false;
+   for(x=1;!find;x++){
+       if(x%5==1&amp;&amp;x%6==5&amp;&amp;x%7==4&amp;&amp;x%11==10){
+        cout&lt;&lt;x&lt;&lt;endl;//最小数为2111
+        find = true;
+       }
+   }
+
+   return 0;
+}
+</code></pre>
+<h3 id="循环的嵌套"><a class="header" href="#循环的嵌套">循环的嵌套</a></h3>
+<p>打印九九乘法表</p>
+<p>下三角</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,j;
+   for(i=1;i&lt;=9;i++){
+    for(j=1;j&lt;=i;j++){
+        cout&lt;&lt;i&lt;&lt;&quot;*&quot;&lt;&lt;j&lt;&lt;&quot;=&quot;&lt;&lt;i*j&lt;&lt;'\t';
+    }
+    cout&lt;&lt;endl;
+   }
+
+   return 0;
+}
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code>1*1=1
+2*1=2   2*2=4
+3*1=3   3*2=6   3*3=9
+4*1=4   4*2=8   4*3=12  4*4=16
+5*1=5   5*2=10  5*3=15  5*4=20  5*5=25
+6*1=6   6*2=12  6*3=18  6*4=24  6*5=30  6*6=36
+7*1=7   7*2=14  7*3=21  7*4=28  7*5=35  7*6=42  7*7=49
+8*1=8   8*2=16  8*3=24  8*4=32  8*5=40  8*6=48  8*7=56  8*8=64
+9*1=9   9*2=18  9*3=27  9*4=36  9*5=45  9*6=54  9*7=63  9*8=72  9*9=81
+</code></pre>
+<p>上三角</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,j;
+   for(i=1;i&lt;=9;i++){
+    for(j=i;j&lt;=9;j++){
+        cout&lt;&lt;i&lt;&lt;&quot;*&quot;&lt;&lt;j&lt;&lt;&quot;=&quot;&lt;&lt;i*j&lt;&lt;'\t';
+    }
+    cout&lt;&lt;endl;
+   }
+
+   return 0;
+}
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code>1*1=1   1*2=2   1*3=3   1*4=4   1*5=5   1*6=6   1*7=7   1*8=8   1*9=9
+2*2=4   2*3=6   2*4=8   2*5=10  2*6=12  2*7=14  2*8=16  2*9=18
+3*3=9   3*4=12  3*5=15  3*6=18  3*7=21  3*8=24  3*9=27
+4*4=16  4*5=20  4*6=24  4*7=28  4*8=32  4*9=36
+5*5=25  5*6=30  5*7=35  5*8=40  5*9=45
+6*6=36  6*7=42  6*8=48  6*9=54
+7*7=49  7*8=56  7*9=63
+8*8=64  8*9=72
+9*9=81
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,j;
+   for(i=1;i&lt;=9;i++){
+    for(j=1;j&lt;i;j++){
+        cout&lt;&lt;'\t';
+    }
+    for(j=i;j&lt;=9;j++){
+        cout&lt;&lt;i&lt;&lt;&quot;*&quot;&lt;&lt;j&lt;&lt;&quot;=&quot;&lt;&lt;i*j&lt;&lt;'\t';
+    }
+    cout&lt;&lt;endl;
+   }
+
+   return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>1*1=1   1*2=2   1*3=3   1*4=4   1*5=5   1*6=6   1*7=7   1*8=8   1*9=9
+        2*2=4   2*3=6   2*4=8   2*5=10  2*6=12  2*7=14  2*8=16  2*9=18
+                3*3=9   3*4=12  3*5=15  3*6=18  3*7=21  3*8=24  3*9=27
+                        4*4=16  4*5=20  4*6=24  4*7=28  4*8=32  4*9=36
+                                5*5=25  5*6=30  5*7=35  5*8=40  5*9=45
+                                        6*6=36  6*7=42  6*8=48  6*9=54
+                                                7*7=49  7*8=56  7*9=63
+                                                        8*8=64  8*9=72
+                                                                9*9=81
+</code></pre>
+<h3 id="循环实例"><a class="header" href="#循环实例">循环实例</a></h3>
+<p>阶乘：计算并输出1!,2!,...,n!</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,n;
+   int p = 1;
+   cout&lt;&lt;&quot;Please input n(n&lt;=10):&quot;;
+   cin&gt;&gt;n;
+   for(i=1;i&lt;=n;i++){
+    p = p * i;
+    cout&lt;&lt;i&lt;&lt;&quot;!=&quot;&lt;&lt;p&lt;&lt;endl;
+   }
+
+   return 0;
+}
+</code></pre>
+<p>阶乘：计算并输出1!+2!+...+n!</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,n;
+   int p = 1;
+   int sum = 0;
+   cout&lt;&lt;&quot;Please input n(n&lt;=10):&quot;;
+   cin&gt;&gt;n;
+   for(i=1;i&lt;=n;i++){
+    p = p * i;
+    sum = sum+p;
+   }
+   cout&lt;&lt;&quot;1!+2!+&quot;&lt;&lt;n&lt;&lt;&quot;!= &quot;&lt;&lt;sum&lt;&lt;endl;
+
+   return 0;
+}
+</code></pre>
+<p>用时2s</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i,j,n;
+   int sum = 0;
+   int p;
+   cout&lt;&lt;&quot;Please input n(n&lt;=10):&quot;;
+   cin&gt;&gt;n;
+   for(i=1;i&lt;=n;i++){
+    p = 1;
+   for(j=1;j&lt;=i;j++)
+   {
+       p = p * j;
+   }
+    sum = sum+p;
+   }
+   cout&lt;&lt;&quot;1!+2!+&quot;&lt;&lt;n&lt;&lt;&quot;!= &quot;&lt;&lt;sum&lt;&lt;endl;
+
+   return 0;
+}
+</code></pre>
+<p>用时3s</p>
+<p>求级数和</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   double ex,x,p;//ex存储ex的值，p保存当前项的值
+   int i;
+   cout&lt;&lt;&quot;请输入x:&quot;;
+   cin&gt;&gt;x;
+   ex = 0;
+   p = 1;
+   i = 0;
+   while(p&gt;1e-6)
+   {
+       ex+=p;
+       ++i;
+       p = p*x/i;
+   }
+   cout&lt;&lt;&quot;e的&quot;&lt;&lt;x&lt;&lt;&quot;次方等于:&quot;&lt;&lt;ex&lt;&lt;endl;
+   return 0;
+}
+</code></pre>
+<p>易出现问题：</p>
+<ul>
+<li>溢出</li>
+<li>累加项是否符合要求</li>
+<li>加哪些项？</li>
+</ul>
+<h3 id="测验"><a class="header" href="#测验">测验</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char c;
+   while((c=cin.get())!='\n')
+   {
+       switch(c-'2')
+       {
+           case 0:
+           case 1:
+            cout&lt;&lt;(char)(c+4);
+           case 2:
+            cout&lt;&lt;(char)(c+4);
+            break;
+            case 3:
+            cout&lt;&lt;(char)(c+3);
+            default:
+            cout&lt;&lt;(char)(c+2);
+            break;
+       }
+   }
+   return 0;
+}
+</code></pre>
+<p>输入2473输出668977</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int a(1),b(2),c(2),t;//括号的含义是对变量赋初值，初值为括号内的值
+   
+   while(a&lt;b&lt;c){
+       t = a;
+       a = b;
+       b = t;
+       c--;
+   }
+   cout&lt;&lt;a&lt;&lt;&quot;,&quot;&lt;&lt;b&lt;&lt;&quot;,&quot;&lt;&lt;c&lt;&lt;endl;//输出1,2,0
+   
+   // a2b1c1-&gt;a1b2c0
+   
+   return 0;
+}
+</code></pre>
+<p>记录特殊赋值方式</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+  int n=10;
+  while(n);
+  {n--;cout&lt;&lt;n&lt;&lt;endl;
+  }
+   return 0;
+}
+</code></pre>
+<p>啥也不输出，循环次数应该为0。</p>
 
                     </main>
 
