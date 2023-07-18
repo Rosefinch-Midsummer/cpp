@@ -167,6 +167,364 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="程序的基本组成"><a class="header" href="#程序的基本组成">程序的基本组成</a></h1>
+<ul>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84">程序基本结构</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89">变量定义</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a>
+<ul>
+<li><a href="#%E6%95%B4%E5%9E%8B">整型</a></li>
+<li><a href="#%E6%B5%AE%E7%82%B9%E5%9E%8B">浮点型</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E5%9E%8B">字符型</a></li>
+<li><a href="#%E5%B8%83%E5%B0%94%E5%9E%8B%E5%8F%8A%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93">布尔型及类型总结</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F">常量</a></li>
+<li><a href="#%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F">算术表达式</a></li>
+<li><a href="#%E8%B5%8B%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F">赋值表达式</a></li>
+<li><a href="#%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6">自增自减运算符</a></li>
+<li><a href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">强制类型转换</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA">数据的输入输出</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%B5%81%E5%AF%B9%E8%B1%A1cin">输入流对象cin</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%B5%81%E5%AF%B9%E8%B1%A1cout">输出流对象cout</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6">设置浮点数精度</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%9F%9F%E5%AE%BD">设置域宽</a></li>
+<li><a href="#%E4%BF%9D%E7%95%99%E4%B8%A4%E4%BD%8D%E5%B0%8F%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E5%86%99%E6%B3%95">保留两位小数的三种写法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E9%A3%8E%E6%A0%BC">程序设计的风格</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85%E9%80%97%E5%8F%B7%E8%A1%A8%E8%BE%BE%E5%BC%8F">补充：逗号表达式</a></li>
+</ul>
+<h2 id="程序基本结构"><a class="header" href="#程序基本结构">程序基本结构</a></h2>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   cout&lt;&lt;&quot;天漢复兴！&quot;&lt;&lt;endl;
+   return 0;
+}
+</code></pre>
+<p>每一个C++程序都需要有一个main函数，而且只能有一个main函数。</p>
+<p>单行注释<code>//</code></p>
+<p>多行注释<code>/**/</code></p>
+<p>C++的编译分为两个阶段：预编译+编译</p>
+<p>预编译处理程序中预编译命令，即那些以#开头的指令。</p>
+<p>编译预处理主要有：</p>
+<ul>
+<li>库包含：用#include实现，表示程序使用了某个库。库包含就是把库的接口文件放入源文件，以便编译器检查程序中对库的调用是否正确。执行<code>#include &quot;filename&quot;</code>可以使用自定义库</li>
+</ul>
+<p>名字空间是把一组程序实体组合在一起构成一个作用域。一个名字空间不能有重名，不同名字空间中可以有定义相同的实体名。当引用某个实体时需要加上名字空间的限定如名字空间名::实体名。C++标准库中的名字都定义在名字空间std中，如<code>std::cout</code></p>
+<h2 id="变量定义"><a class="header" href="#变量定义">变量定义</a></h2>
+<p>标识符identifier是用来对C++程序中的常量、变量以及用户自定义函数的名称进行标识的符号。</p>
+<p>标识符通常由数字、字母、下划线组成，但数字不能放在开头。</p>
+<p>标识符通用命名规则：</p>
+<ul>
+<li>建议标识符命名应直观、易懂如MaxValue</li>
+<li>建议标识符的命名不要太长如TmpValue</li>
+<li>建议常量所有字母都大写如<code>const int MAX = 100;</code></li>
+</ul>
+<p>一个_标识符_是一个由数字，下划线，小写和大写拉丁字母，和大多数 Unicode 字符（见下文的详细说明）组成的任意长度的序列。有效的标识符必须以一个非数字字符（拉丁语字母，下划线或 Unicode 非数字字符）开头。标识符区分大小写（小写和大写字母是不同的），而且每一个字符都是起作用的。</p>
+<p>在声明中可以用标识符来命名对象、引用、函数、枚举项、类型、类成员、命名空间、模板、模板特化、形参包、goto 标号，以及其他实体，但有以下例外：</p>
+<ul>
+<li>关键词标识符不能用于其他目的；</li>
+<li>其中任何位置带有双下划线的标识符都是被保留的；</li>
+<li>以一个下划线跟着一个大写字母开头的标识符是被保留的；</li>
+<li>以一个下划线开头的标识符在全局命名空间中是被保留的。</li>
+</ul>
+<p>这里“被保留”的意思是，标准库的头文件可能 <code>#define</code> 或者声明这样的标识符以便其内部使用，编译器可能会预先定义这种非标准的标识符，而且名字重整算法可能会假定某些这样的标识符是没有被使用的。如果程序员使用了这样的标识符的话，其行为是未定义的。</p>
+<p>此外，对等同于关键词的标识符进行 <code>#define</code> 或 <code>#undef</code>，是未定义行为。一旦包含了至少一个标准库头文件，对等同于由任何标准库头文件中声明的名字的标识符进行 <code>#define</code> 或 <code>#undef</code>，也是未定义行为。</p>
+<p>在表达式中指名某个变量、函数、概念的特化 (C++20 起)或枚举项的标识符可以作为表达式使用。仅由这个标识符组成的表达式的结果，是该标识符所指名的实体。若该标识符指名的是某个函数、变量、模板形参对象 (C++20 起)或数据成员，则表达式的值类别为左值，否则为纯右值（例如枚举项是纯右值表达式，概念的特化是 bool 纯右值 (C++20 起)）。</p>
+<p>名字是以下各项之一，用来代表某个实体或者某个标号：</p>
+<ul>
+<li>标识符；</li>
+<li>函数写法的重载运算符的名字（ <code>operator+ 、 operator new</code> ）；</li>
+<li>用户定义的转换函数的名字（ <code>operator bool </code>）；</li>
+<li>用户定义的字面量运算符的名字（ <code>operator &quot;&quot; _km </code>）；</li>
+<li>模板的名字后随其实参列表（ <code>MyTemplate&lt;int&gt;</code> ）。</li>
+</ul>
+<p>代表实体的名字都是由声明引入到程序中来的。代表标号的名字则既可以通过 goto 语句，也可以通过带标号语句引入到程序中来。在多个翻译单元中使用一个名字，可以代表相同或者不同的实体，这依赖于其连接。</p>
+<p>每当编译器在程序中遇到一个未知的名字时，它就会通过进行名字查找来将之与引入这个名字的声明联系起来，但对模板的声明和定义中的待决名不会这样做（对于这些名字，编译器需要确定它们所指名的是类型、模板还是别的什么实体，这可能需要进行显式消歧义）。</p>
+<p>在C++中，每个变量在使用前必须被定义。</p>
+<p>赋初值有两种格式：</p>
+<ul>
+<li>类型名 变量名= 初值；如<code>int count=0;</code></li>
+<li>类型名 变量名(初值); 如<code>int count(0);</code></li>
+</ul>
+<h2 id="数据类型"><a class="header" href="#数据类型">数据类型</a></h2>
+<p>数据类型包括两个方面：</p>
+<ul>
+<li>数据的取值范围</li>
+<li>可用的操作</li>
+</ul>
+<p>C/C++中数据类型分为两大类：</p>
+<ul>
+<li>基本数据类型：整型、浮点型、字符型和布尔型</li>
+<li>构造数据类型：数组、结构体、联合体和枚举</li>
+</ul>
+<h3 id="整型"><a class="header" href="#整型">整型</a></h3>
+<ul>
+<li>基本型int：现在4字节，最初2字节</li>
+<li>长型long：4字节</li>
+<li>短整型short：2字节</li>
+<li>长整型long long：8字节</li>
+</ul>
+<p>原码、反码、补码</p>
+<p>整数运算时要注意数据的表示范围，如整数用两个字节表示时，正整数32767加一的结果是-32768。这称为整数运算的溢出。</p>
+<p>在某些应用中不可能出现负数，为避免整型数中有一半的数值范围被浪费，C++定义了只有非负数的类型——无符号数。无符号数就是在各种整数类型前加上关键词<code>unsigned</code>。</p>
+<p>整型常量可以用十进制、八进制和十六进制表示：</p>
+<ul>
+<li>十进制</li>
+<li>八进制：以0开头的数字如<code>014</code></li>
+<li>十六进制：以0x开头的数字如<code>0xC3af</code></li>
+</ul>
+<h3 id="浮点型"><a class="header" href="#浮点型">浮点型</a></h3>
+<h3 id="字符型"><a class="header" href="#字符型">字符型</a></h3>
+<pre><code class="language-cpp">/* Online C++ Compiler and Editor */
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   cout&lt;&lt;'\0'-'0'&lt;&lt;endl;//-48
+   return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char c = 32;
+   cout&lt;&lt;c&lt;&lt;endl;//空格
+   return 0;
+}
+</code></pre>
+<h3 id="布尔型及类型总结"><a class="header" href="#布尔型及类型总结">布尔型及类型总结</a></h3>
+<h2 id="常量"><a class="header" href="#常量">常量</a></h2>
+<h2 id="算术表达式"><a class="header" href="#算术表达式">算术表达式</a></h2>
+<h2 id="赋值表达式"><a class="header" href="#赋值表达式">赋值表达式</a></h2>
+<h2 id="自增自减运算符"><a class="header" href="#自增自减运算符">自增自减运算符</a></h2>
+<h2 id="强制类型转换"><a class="header" href="#强制类型转换">强制类型转换</a></h2>
+<h2 id="数据的输入输出"><a class="header" href="#数据的输入输出">数据的输入输出</a></h2>
+<h3 id="输入流对象cin"><a class="header" href="#输入流对象cin">输入流对象cin</a></h3>
+<p>格式：cin&gt;&gt;变量1&gt;&gt;变量2&gt;&gt;...&gt;&gt;变量n</p>
+<ul>
+<li>当程序执行到这个语句时会停下来等待用户的输入</li>
+<li>用户可以输入数据用回车结束</li>
+<li>当有多个输入数据时，一般用用空白字符（空格、制表符和回车）分隔。</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+
+   int a,b,c;/*
+   a,b,c = scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;c);
+   float average = (a+b+c)/3.0;
+   printf(&quot;%d\n&quot;,a);
+   printf(&quot;%d\n&quot;,b);
+   printf(&quot;%d\n&quot;,c);
+   printf(&quot;%.2f\n&quot;,average);
+
+   cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; endl;*/
+   cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+   float average = (a+b+c)/3.0;
+   //cout&lt;&lt;average;
+   printf(&quot;%.2f\n&quot;,average);
+   return 0;
+}
+</code></pre>
+<p>cin.get</p>
+<ul>
+<li>作用：从键盘接受一个字符</li>
+<li>用法：cin.get(ch),或ch=cin.get()都是从键盘输入一个字符并存放到变量ch中</li>
+<li>对应的用户输入：cin.get()可以接受任意字符，包括空白字符，而cin&gt;&gt;ch不能接受空白字符</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char ch;
+   cin&gt;&gt;ch;//输入a
+   cout&lt;&lt;(int)ch&lt;&lt;endl;//输出97
+   return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char ch;
+   ch=cin.get();//输入空格
+   cout&lt;&lt;(int)ch&lt;&lt;endl;//输出32
+   return 0;
+}
+</code></pre>
+<p>按enter键输出10，表示回车\r，</p>
+<p>C标准中空白字符有：空格（‘ ’）、换页（‘\f’）、换行（‘\n’）、回车（‘\r’）、水平制表符（‘\t’）、垂直制表符（‘\v’）六个。</p>
+<div class="table-wrapper"><table><thead><tr><th>功能</th><th>ASCII码</th><th>16进制</th></tr></thead><tbody>
+<tr><td>回车</td><td>13</td><td></td></tr>
+<tr><td>换行</td><td>10</td><td></td></tr>
+<tr><td>空格</td><td>32</td><td></td></tr>
+</tbody></table>
+</div>
+<h3 id="输出流对象cout"><a class="header" href="#输出流对象cout">输出流对象cout</a></h3>
+<p>输出格式可以是<code>cout&gt;&gt;a&lt;&lt;'+'&lt;&lt;b&lt;&lt;'='&lt;&lt;a+b&lt;&lt;endl;</code></p>
+<p>对于浮点数，可以用setprecision来设置精度（即实数型的有效位数）。一旦调用了setprecision，将影响后续所有输出的浮点数的精度，直到下一个设置精度的操作为止。</p>
+<h4 id="设置浮点数精度"><a class="header" href="#设置浮点数精度">设置浮点数精度</a></h4>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main()
+{
+   double x = 123.456789, y = 9876.54321;
+   cout&lt;&lt;setprecision(9)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(8)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(7)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(6)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(5)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(4)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(3)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(2)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(1)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(0)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   
+   return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="language-txt">123.456789      9876.54321
+123.45679       9876.5432
+123.4568        9876.543
+123.457 9876.54
+123.46  9876.5
+123.5   9877
+123     9.88e+003
+1.2e+002        9.9e+003
+1e+002  1e+004
+1e+002  1e+004
+</code></pre>
+<p>结果可能会四舍五入。</p>
+<p>上面的输出结果没有完全对齐，可以通过域宽来解决这个问题。</p>
+<h4 id="设置域宽"><a class="header" href="#设置域宽">设置域宽</a></h4>
+<p>域宽指数据所占的字符个数，设置域宽可以用流操纵符(setw)，设置宽度是适合于下一次输出（仅对一次输出起作用），之后的操作的宽度将被设置为默认值。如果没有设置输出宽度时，C++按实际长度输出，如整型变量a=123,b=456，cout&lt;&lt;a&lt;&lt;b;输出123456。</p>
+<p>一旦设置了域宽，该输出必须占满域宽。如果输出值的宽度比域宽小，则插入填充字符填充。默认的填充字符是空格。如果实际宽度大于指定的域宽，则按实际宽度输出。如<code>cout&lt;&lt;setw(5)&lt;&lt;x&lt;&lt;setw(5)&lt;&lt;y;</code>输出为<code>  123  456</code>每个数值占5个位置，前面用空格填充。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main()
+{
+   double x = 123.456789, y = 9876.54321;
+   cout&lt;&lt;left;//左对齐
+   cout&lt;&lt;setprecision(9)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(8)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(7)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(6)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(5)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(4)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(3)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(2)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(1)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   cout&lt;&lt;setprecision(0)&lt;&lt;setw(15)&lt;&lt;x&lt;&lt;'\t'&lt;&lt;y&lt;&lt;endl;
+   
+   return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>123.456789     	9876.54321
+123.45679      	9876.5432
+123.4568       	9876.543
+123.457        	9876.54
+123.46         	9876.5
+123.5          	9877
+123            	9.88e+03
+1.2e+02        	9.9e+03
+1e+02          	1e+04
+1e+02          	1e+04
+</code></pre>
+<p>流操纵符</p>
+<ul>
+<li>left：输出左对齐，必要时在右边填充字符</li>
+<li>right：输出右对齐，必要时在左边填充字符</li>
+<li>fixed：以定点小数形式输出浮点数</li>
+<li>setfill：设置填充字符。它有一个字符型的参数</li>
+</ul>
+<h4 id="保留两位小数的三种写法"><a class="header" href="#保留两位小数的三种写法">保留两位小数的三种写法</a></h4>
+<p>前面要有<code>#include &lt;iomanip&gt;</code></p>
+<pre><code class="language-cpp">//第一种写法
+cout&lt;&lt;setiosflags(ios::fixed)&lt;&lt;setprecision(2);
+</code></pre>
+<pre><code class="language-cpp">//第二种写法
+cout.setf(ios::fixed);
+cout&lt;&lt;setprecision(2);
+</code></pre>
+<pre><code class="language-cpp">//第三种写法
+cout&lt;&lt;fixed&lt;&lt;setprecision(2);
+</code></pre>
+<h2 id="程序设计的风格"><a class="header" href="#程序设计的风格">程序设计的风格</a></h2>
+<ul>
+<li>使用缩进来区别程序不同的控制级别</li>
+<li>命名习惯</li>
+<li>注释</li>
+<li>易于修改</li>
+</ul>
+<h2 id="补充逗号表达式"><a class="header" href="#补充逗号表达式">补充：逗号表达式</a></h2>
+<p>逗号表达式，是c语言中的逗号运算符，优先级别最低，它将两个及其以上的式子联接起来，从左往右逐个计算表达式，整个表达式的值为最后一个表达式的值。</p>
+<p>如：（3+5,6+8）称为逗号表达式，其求解过程先表达式1，后表达式2，整个表达式值是表达式2的值，如：（3+5，6+8）的值是14；a=(a=3<em>5,a</em>4)的值是60，其中（a=3<em>5,a</em>4）的值是60， a的值在逗号表达式里一直是15，最后被逗号表达式赋值为60，a的值最终为60。</p>
+<p>(表达式1，表达式2，表达式3，...... ，表达式n)</p>
+<p>逗号表达式的要领：</p>
+<p>(1) 逗号表达式的运算过程为：从左往右逐个计算表达式。</p>
+<p>(2) 逗号表达式作为一个整体，它的值为最后一个表达式（也即表达式n）的值。</p>
+<p>(3) 逗号运算符的优先级别在所有运算符中最低。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int a,b;
+   a=3;
+   b=a++;
+   cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;endl;//4 3
+   a=3;
+   cout&lt;&lt;++a&lt;&lt;endl;//4
+   b=(a=1, a+1, a++);
+   cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;endl;//2 1
+   return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int x,y,z,w;
+   x=1;
+   y=1;
+   z=x++,y++,++y;//赋值运算符优先级高于逗号表达式
+   x=1;
+   y=1;
+   w=(x++,y++,++y);
+   printf(&quot;%d,%d,%d,%d\n&quot;,x,y,z,w);//输出2,3,1,3
+   return 0;
+}
+</code></pre>
 
                     </main>
 
