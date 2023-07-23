@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>二维数组理论 - C++程序设计</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="程序的基本组成.html"><strong aria-hidden="true">2.</strong> 程序的基本组成</a></li><li class="chapter-item expanded "><a href="顺序结构程序设计.html"><strong aria-hidden="true">3.</strong> 顺序结构程序设计</a></li><li class="chapter-item expanded "><a href="分支结构理论.html"><strong aria-hidden="true">4.</strong> 分支结构理论</a></li><li class="chapter-item expanded "><a href="分支结构程序设计.html"><strong aria-hidden="true">5.</strong> 分支结构程序设计</a></li><li class="chapter-item expanded "><a href="循环结构理论.html"><strong aria-hidden="true">6.</strong> 循环结构理论</a></li><li class="chapter-item expanded "><a href="循环结构程序设计.html"><strong aria-hidden="true">7.</strong> 循环结构程序设计</a></li><li class="chapter-item expanded "><a href="一维数组理论.html"><strong aria-hidden="true">8.</strong> 一维数组理论</a></li><li class="chapter-item expanded "><a href="一维数组程序设计.html"><strong aria-hidden="true">9.</strong> 一维数组程序设计</a></li><li class="chapter-item expanded "><a href="查找及排序算法理论.html"><strong aria-hidden="true">10.</strong> 查找及排序算法理论</a></li><li class="chapter-item expanded "><a href="二维数组理论.html" class="active"><strong aria-hidden="true">11.</strong> 二维数组理论</a></li><li class="chapter-item expanded "><a href="二维数组程序设计.html"><strong aria-hidden="true">12.</strong> 二维数组程序设计</a></li><li class="chapter-item expanded "><a href="字符串理论.html"><strong aria-hidden="true">13.</strong> 字符串理论</a></li><li class="chapter-item expanded "><a href="字符串程序设计.html"><strong aria-hidden="true">14.</strong> 字符串程序设计</a></li><li class="chapter-item expanded "><a href="函数理论.html"><strong aria-hidden="true">15.</strong> 函数理论</a></li><li class="chapter-item expanded "><a href="函数程序设计.html"><strong aria-hidden="true">16.</strong> 函数程序设计</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">C++程序设计</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="二维数组"><a class="header" href="#二维数组">二维数组</a></h1>
+<ul>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%BC%95%E7%94%A8%E5%92%8C%E8%B5%8B%E5%88%9D%E5%80%BC">二维数组的定义、引用和赋初值</a></li>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B1">二维数组实例1</a></li>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B2-%E6%89%93%E5%8D%B0%E9%AD%94%E9%98%B5">二维数组实例2-打印魔阵</a></li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a></li>
+</ul>
+<h2 id="二维数组的定义引用和赋初值"><a class="header" href="#二维数组的定义引用和赋初值">二维数组的定义、引用和赋初值</a></h2>
+<p>声明具有3行4列元素的整型数组： <code>int a[3][4];</code></p>
+<p>二维数组中的元素在内存中的排列顺序是：按行存放即先顺序存放第一行元素，再存放第二行元素……</p>
+<p>元素<code>a[i][j]</code>在数组a中的位置是<code>i*N+j</code></p>
+<p>元素地址：首地址+偏移量</p>
+<p>二维数组的初始化：</p>
+<ul>
+<li>单一数组元素赋值：<code>int a[3][4]; a[0][0]=0;</code></li>
+<li>聚合方式赋值<code>int a[3][2]={1,2,3,4,5,6};等价于int a[3][2]={{1,2},{3,4},{5,6}};</code></li>
+<li>对部分元素赋值<code>int a[3][4]={1,2,3,4,5};</code></li>
+<li>为每一行部分元素赋初值<code>int a[3][4]={{1,2};{3,4},{5}}</code></li>
+</ul>
+<p><strong>如果对全部元素赋初值，则定义数组时可以不指定第一维的长度，但不能省第二维的长度。</strong> 例如
+<code>int a[3][2]={1,2,3,4,5,6};也等价于int a[][2]={1,2,3,4,5,6};</code></p>
+<p><strong>如果对部分元素赋初值，则定义数组时也可以不指定第一维的长度，但不能省第二维的长度。</strong> 例如
+<code>int a[][4]={{1,2,3},{},{4,5}};</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int a[][3]={{1,2,3},{4,5},{6},{0}};
+    cout&lt;&lt;a[1][1]&lt;&lt;&quot;,&quot;&lt;&lt;a[2][1]&lt;&lt;&quot;,&quot;&lt;&lt;a[3][1];//5,0,0
+
+    return 0;
+}
+</code></pre>
+<h2 id="二维数组实例1"><a class="header" href="#二维数组实例1">二维数组实例1</a></h2>
+<p>输出某年某月天数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    const int MONTHS=12;
+    int days [2][MONTHS]={{31,28,31,30,31,30,31,31,30,31,30,31},{31,29,31,30,31,30,31,31,30,31,30,31}};
+    int year,month;
+    cout&lt;&lt;&quot;Input the year,month:&quot;;
+    cin&gt;&gt;year&gt;&gt;month;
+    if(((year%4==0)&amp;&amp;(year%100!=0))||(year%400==0))
+        cout&lt;&lt;&quot;The number of days is &quot;&lt;&lt;days[1][month-1];
+    else
+        cout&lt;&lt;&quot;The number of days is &quot;&lt;&lt;days[0][month-1];
+
+    return 0;
+}
+</code></pre>
+<p>二维数组行列互换</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main() {
+
+    int a[2][3]={{1,2,3},{4,5,6}};
+    int b[3][2],i,j;
+    cout&lt;&lt;&quot;Array a:\n&quot;;
+    for(i=0;i&lt;=1;i++)//处理行
+    {
+        for(j=0;j&lt;=2;j++)//处理列
+        {
+            cout&lt;&lt;setw(5)&lt;&lt;a[i][j];//输出a中各元素
+            b[j][i]=a[i][j];//赋值
+        }
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    cout&lt;&lt;&quot;Array b:\n&quot;;
+    for(i=0;i&lt;=2;i++)
+    {
+        for(j=0;j&lt;=1;j++)
+        {
+            cout&lt;&lt;setw(5)&lt;&lt;b[i][j];
+        }
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<pre><code>Array a:
+    1    2    3
+    4    5    6
+Array b:
+    1    4
+    2    5
+    3    6
+</code></pre>
+<p>找出二维数组中最大值及其所在位置（”打擂台算法“）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int i,j,row=0,column=0,max;
+    int a[3][4]={{1,2,3,4},{9,8,7,6},{-10,10,-5,2}};
+    max = a[0][0];
+    for(i=0;i&lt;=2;i++)
+        for(j=0;j&lt;=3;j++)
+          if(a[i][j]&gt;max)
+          {
+              max=a[i][j];
+              row=i;
+              column=j;
+          }
+    cout&lt;&lt;max&lt;&lt;&quot;,&quot;&lt;&lt;row&lt;&lt;&quot;,&quot;&lt;&lt;column;//10,2,1
+    return 0;
+}
+</code></pre>
+<h2 id="二维数组实例2-打印魔阵"><a class="header" href="#二维数组实例2-打印魔阵">二维数组实例2-打印魔阵</a></h2>
+<p>魔阵：每行、每列、对角线上上数字之和相等</p>
+<ul>
+<li>第一个元素：第一行中间一列</li>
+<li>下一单元：行-1，列+1</li>
+<li>如行-1，列+1处有内容，则下一单元为”行+1，列不变“</li>
+</ul>
+<p>伪码：</p>
+<pre><code class="language-cpp">row=0;col=N/2;
+magic[row][col]=1;
+for(i=2;i&lt;=N*N;++i)
+{
+if(上一行下一列有空)
+	设置上一行下一列为当前位置;
+else 设置当前列的下一行为当前位置;
+将i放入当前位置
+}
+</code></pre>
+<p>难点：</p>
+<ul>
+<li>如何表示某个位置有空？赋一个特殊值0</li>
+<li>当处于第0行时，上一行是最后一行。当初于最后一行时，下一行是第0行。</li>
+<li>当处于最后一列时，下一列是第0列。</li>
+<li>解决方案：
+<ul>
+<li>找下一列col=(col+1)%scale</li>
+<li>找下一行row=(row+1)%scale</li>
+<li>找上一行row=(row-1+scale)%scale</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+#define MAX 15//定义符号常量
+
+int main() {
+
+    int magic[MAX][MAX]={0};
+    int row,col,count,scale;
+
+    //输入阶数scale
+    cout&lt;&lt;&quot;input scale \n&quot;;
+    cin&gt;&gt;scale;
+
+    //生成魔阵
+    row = 0;
+    col = (scale-1)/2;
+    magic[row][col]=1;
+
+    for(count=2;count&lt;=scale*scale;count++)
+    {
+        if(magic[(row-1+scale)%scale][(col+1)%scale]==0)
+        {
+            row=(row-1+scale)%scale;
+            col=(col+1)%scale;
+        }
+        else
+            row=(row+1)%scale;
+        magic[row][col]=count;
+    }
+    //输出
+    for(row=0;row&lt;scale;row++)
+    {
+        for(col=0;col&lt;scale;col++)
+            cout&lt;&lt;magic[row][col]&lt;&lt;'\t';
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>input scale
+3
+8       1       6
+3       5       7
+4       9       2
+</code></pre>
+<h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int b[3][3]={0,1,2,0,1,2,0,1,2},i,j,t=1;
+    for(i=0;i&lt;3;i++)
+        for(j=i;j&lt;=1;j++)
+            t+=b[i][b[j][i]];//2
+    cout&lt;&lt;t&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="查找及排序算法理论.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="二维数组程序设计.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="查找及排序算法理论.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="二维数组程序设计.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
