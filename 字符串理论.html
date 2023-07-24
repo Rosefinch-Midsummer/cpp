@@ -167,6 +167,440 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="字符串理论"><a class="header" href="#字符串理论">字符串理论</a></h1>
+<ul>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96">字符串的存储和初始化</a>
+<ul>
+<li><a href="#%E4%BE%8B1-%E8%BE%93%E5%87%BA%E4%B8%80%E4%B8%AA%E5%B7%B2%E7%9F%A5%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">例1 输出一个已知的字符串</a></li>
+<li><a href="#%E4%BE%8B2-%E8%BE%93%E5%87%BA%E4%B8%80%E4%B8%AA%E8%8F%B1%E5%BD%A2%E5%9B%BE">例2 输出一个菱形图</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8">字符串的存储</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%9D%E5%A7%8B%E5%8C%96">字符串初始化</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB">字符串与字符数组的区别</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA">字符串的输入输出</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BA%94%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E6%95%B0">字符串应用——统计单词数</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">字符串处理函数</a></li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a></li>
+</ul>
+<h2 id="字符串的存储和初始化"><a class="header" href="#字符串的存储和初始化">字符串的存储和初始化</a></h2>
+<h3 id="例1-输出一个已知的字符串"><a class="header" href="#例1-输出一个已知的字符串">例1 输出一个已知的字符串</a></h3>
+<p>解题思路：</p>
+<ul>
+<li>定义一个字符数组，并用”初始化列表“对其赋以初值</li>
+<li>用循环逐个输出此字符数组中的字符</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
+    int i;
+    for(i=0;i&lt;15;i++)
+        cout&lt;&lt;c[i];//I am a student.
+    cout&lt;&lt;&quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h3 id="例2-输出一个菱形图"><a class="header" href="#例2-输出一个菱形图">例2 输出一个菱形图</a></h3>
+<p>解题思路：</p>
+<ul>
+<li>定义一个字符型的二维数组，用”初始化列表“进行初始化</li>
+<li>用嵌套的for循环输出字符数组中的所有元素</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char diamond[][5]={{' ',' ','*'},{' ','*',' ','*'},{'*',' ',' ',' ','*'},{' ','*',' ','*'},{' ',' ','*'}};//后面直接初始化为'\0'，输出结果看不见
+    int i,j;
+    for(i=0;i&lt;5;i++)
+    {
+        for(j=0;j&lt;5;j++)
+            cout&lt;&lt;diamond[i][j];
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>  *
+ * *
+*   *
+ * *
+  *
+</code></pre>
+<h3 id="字符串的存储"><a class="header" href="#字符串的存储">字符串的存储</a></h3>
+<ul>
+<li>字符串的本质是一系列的有序字符，因此可以用一个字符数组来保存这组字符，用数组名表示这个字符串。</li>
+<li>数组名是数组的起始地址，因此该字符串从该地址开始存储，用<code>'\0'</code>表示字符串的结束。</li>
+</ul>
+<h3 id="字符串初始化"><a class="header" href="#字符串初始化">字符串初始化</a></h3>
+<p>初始化：声明的同时赋初值</p>
+<ul>
+<li><code>char ch[]={'H','e','l','l','o',',','w','o','r','l','d','\0'};</code></li>
+<li><code>char ch[]={&quot;Hellp,world&quot;};</code></li>
+<li><code>char ch[]=&quot;Hello,world&quot;;</code></li>
+<li><code>char ch[]; ch=&quot;Hello,world&quot;</code>这是错误写法，不能给数组赋值</li>
+</ul>
+<h2 id="字符串与字符数组的区别"><a class="header" href="#字符串与字符数组的区别">字符串与字符数组的区别</a></h2>
+<p>在C++中，是将字符串作为字符数组来处理的，关心的是字符串的有效长度（即其中有效字符的长度）而不是字符数组的长度。</p>
+<p>字符串与字符数组的区别在于有没有结束标志<code>'\0'</code></p>
+<ul>
+<li><code>'\0'</code>代表ASCII码为0的字符</li>
+<li>该字符不是一个可以显示的字符，而是一个”空操作符“，即它什么也不做</li>
+<li>用它作为字符串结束标志不会产生附加的操作或增加有效字符，只起一个供辨别的标志</li>
+</ul>
+<p>字符串只输出<code>\0</code>前面的字符</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    char c[10]={&quot;China&quot;};
+    cout&lt;&lt;c;//输出China
+    return 0;
+}
+</code></pre>
+<p>注意：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+using namespace std;
+
+int main() {
+
+    char ch[]={'H','e','l','l','o'};//不是字符串，最后面不是'\0'
+    cout&lt;&lt;typeid(ch).name()&lt;&lt;endl;//A5_c
+
+    char ch2[6]={'H','e','l','l','o'};//是字符串
+    cout&lt;&lt;typeid(ch2).name()&lt;&lt;endl;//A6_c
+    return 0;
+}
+</code></pre>
+<p>空字符串：不包含任何字符的字符串，占一个字节，存储<code>'\0'</code></p>
+<p>输出字符串内容：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char str[]=&quot;1a2b3c&quot;;
+    int i;
+    for(i=0;str[i]!='\0';i++)//和一维数组不同
+        if(str[i]&gt;='0'&amp;&amp;str[i]&lt;='9') cout&lt;&lt;str[i];//输出123
+    return 0;
+}
+</code></pre>
+<h2 id="字符串的输入输出"><a class="header" href="#字符串的输入输出">字符串的输入输出</a></h2>
+<ul>
+<li>逐个字符的输入输出：这种做法和普通的数组操作一样</li>
+<li>将整个字符串一次性地用cin和cout输入或输出</li>
+<li>通过对象的成员函数get或getline</li>
+</ul>
+<p>按字符串整体输入输出</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char str[10];
+    cin&gt;&gt;str;//chungkuo
+    cout&lt;&lt;str;//chungkuo
+    return 0;
+}
+</code></pre>
+<p>注意事项：</p>
+<ul>
+<li>如果数组长度大于字符串实际长度，也只输出到遇<code>'\0'</code>结束。</li>
+<li>如果一个字符数组中包含多个<code>'\0'</code>，则<strong>遇到第一个<code>'\0'</code>时输出就结束</strong></li>
+<li>可以用cin输入一个字符串，但不能输入带空格的字符串，有空格的话可以用<code>cin.getline(str);</code></li>
+<li>cin的输入项str是已定义的字符数组名，<strong>输入的字符串应短于已定义的字符数组的长度</strong></li>
+</ul>
+<p>函数<code>cin.get()</code>和<code>cin.getline()</code></p>
+<p>相同点：从终端接受一个包含任意字符的字符串，格式<code>cin.get(字符数组，长度，结束字符)</code>如<code>cin.get(s,80,'.')</code>、<code>cin.getline(字符数组，长度，结束字符)</code></p>
+<p><strong>区别：再读入一个字符时，cin.get将结束字符留在输入流中，能和接下来读入的字符一起输出；而cin.getline将结束字符从输入流中删除，只能输出再读入的一个字符。</strong></p>
+<p>一般用<code>cin.getline</code>，没有手动输入结束字符时默认结束字符为<code>'\n'</code>（换行或回车）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    const int N=12;
+    char name[N];
+    cout&lt;&lt;&quot;Enter your name(maximum 11 characters):&quot;;
+    cin&gt;&gt;name;
+    cout&lt;&lt;&quot;hello &quot;&lt;&lt;name&lt;&lt;&quot;!&quot;&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>Enter your name(maximum 11 characters):kong
+hello kong!
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    const int N=12;
+    char name[N];
+    cout&lt;&lt;&quot;Enter your name(maximum 11 characters):&quot;;
+    cin.getline(name,12);
+    cout&lt;&lt;&quot;hello &quot;&lt;&lt;name&lt;&lt;&quot;!&quot;&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>Enter your name(maximum 11 characters):kong fu zi
+hello kong fu zi!
+</code></pre>
+<h2 id="字符串应用统计单词数"><a class="header" href="#字符串应用统计单词数">字符串应用——统计单词数</a></h2>
+<p>解题关键：单词的数目可以有单词间的空格决定</p>
+<p>解题思路：</p>
+<ul>
+<li>设置一个计数器num表示单词个数。开始时，num=0</li>
+<li>从头到尾扫描字符串。当发现当前字符为非空格，而当前字符以前的字符是空格，则表示找到了一个新单词，num加1。首字符需要在前面加个空格。</li>
+<li>当整个字符串扫描结束后，num中的值就是单词数。</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    char sentence[81],prev=' ';//prev表示当前字符的前一字符
+    int i,num=0;
+
+    cin.getline(sentence,81);
+    for(i=0;sentence[i]!='\0';i++)
+    {
+        if(prev==' '&amp;&amp;sentence[i]!=' ') num++;
+        prev=sentence[i];
+    }
+    cout&lt;&lt;&quot;单词个数为：&quot;&lt;&lt;num&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>I am a student.
+单词个数为：4
+</code></pre>
+<h2 id="字符串处理函数"><a class="header" href="#字符串处理函数">字符串处理函数</a></h2>
+<ul>
+<li>字符串不能直接用系统内置的运算符进行操作，比如<code>str1=str2</code>是错误的</li>
+<li>C++的函数库中提供了一些用来处理字符串的函数，这些函数在库cstring中
+<ul>
+<li>strlen(字符串)       string length</li>
+<li>strcpy(目的字符串  源字符串)   string copy</li>
+<li>strcat(目的字符串 源字符串)    string combination   目的字符串必须足够大，后面的str加到前面</li>
+<li>strcmp(字符串1  字符串2)     string comparison    ASCII码值比较，等于0，大于正数，小于负数</li>
+<li>strlwr(字符串)   把字符串大写字母转换成小写字母</li>
+<li>strupr(字符串)  把字符串小写字母转换成大写字母</li>
+</ul>
+</li>
+<li>C++还提供了一个String类来处理字符串</li>
+</ul>
+<p>注意事项：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char str[10]={&quot;china&quot;};
+    cout&lt;&lt;strlen(str)&lt;&lt;endl;//5个有效字符
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char str1[10]={&quot;china&quot;};
+    char str2[4]={&quot;hi&quot;};
+
+    cout&lt;&lt;strcat(str1,str2)&lt;&lt;endl;
+
+    char str3[10]={&quot;china&quot;};
+    char str4[40]={&quot;hi&quot;};
+
+    cout&lt;&lt;strcat(str4,str3)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>chinahi
+hichina
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char str1[10]={&quot;compare&quot;};
+    char str2[10]={&quot;computer&quot;};
+
+    cout&lt;&lt;strcmp(str1,str2)&lt;&lt;endl;//-1
+
+    return 0;
+}
+</code></pre>
+<p>对国名进行排序</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+const int MAX_LEN=10;//字符串最大长度
+void SortString(char str[][MAX_LEN], int n);
+
+int main() {
+
+    const int N=150;  //字符串个数
+    int i,n;
+    char name[N][MAX_LEN];
+    cout&lt;&lt;&quot;How many countries?&quot;;
+    cin&gt;&gt;n;
+    cout&lt;&lt;&quot;Input their names:\n&quot;;
+    for(i=0;i&lt;n;i++)
+    {
+        cin&gt;&gt;name[i];
+    }
+    SortString(name,n);
+    cout&lt;&lt;&quot;Sorted results:\n&quot;;
+    for(i=0;i&lt;n;i++)
+        cout&lt;&lt;name[i]&lt;&lt;endl;
+
+    return 0;
+}
+//交换法实现字符串按字典顺序排序
+void SortString(char str[][MAX_LEN], int n)
+{
+    int i,j;
+    char temp[MAX_LEN];
+    for(i=0;i&lt;n-1;i++)
+    {
+        for(j=i+1;j&lt;n;j++)
+        {
+            if(strcmp(str[j],str[i])&lt;0)
+            {
+                strcpy(temp,str[i]);
+                strcpy(str[i],str[j]);
+                strcpy(str[j],temp);
+            }
+        }
+    }
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>How many countries?3
+Input their names:
+China
+England
+Japan
+Sorted results:
+China
+England
+Japan
+</code></pre>
+<h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<p>字符数组必须在声明时赋值（初始化）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char s1[10];s1=&quot;chest&quot;;//error: incompatible types in assignment of 'const char [6]' to 'char [10]'|
+    return 0;
+}
+
+</code></pre>
+<p>赋值问题</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    //char a[3]=&quot;xyz&quot;;//E:\cpp\ClassDesign\main1.cpp|7|error: initializer-string for array of chars is too long [-fpermissive]|
+    //char a[5];a=&quot;uxyz&quot;;//E:\cpp\ClassDesign\main1.cpp|8|error: invalid array assignment|
+    //char a[][2]={{'x','y'},{'z','u'}};
+    char a[4]=&quot;xy&quot;,b[4];
+    b=a;//E:\cpp\ClassDesign\main1.cpp|11|error: invalid array assignment|
+    return 0;
+}
+</code></pre>
+<p><strong>字符串长度和字符数组大小不相同</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+
+    char st[20]=&quot;hello\t\0\\&quot;;
+    cout&lt;&lt;strlen(st)&lt;&lt;&quot; &quot;&lt;&lt;sizeof(st);//6 20
+    return 0;
+}
+</code></pre>
+<p><strong>判断是否是空字符串</strong></p>
+<ul>
+<li>if(s=='\0')错误用法</li>
+<li>if(s[0]==0)</li>
+<li>if(strcmp(s, &quot;&quot;)==0)</li>
+<li>if(strlen(s)==0)</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
+    int i;
+    for(i=0;i&lt;15;i++)
+        cout&lt;&lt;c[i];//I am a student.
+    cout&lt;&lt;&quot;\n&quot;;
+    cout&lt;&lt;c&lt;&lt;endl;
+    cout&lt;&lt; strcmp(c, &quot;&quot;)&lt;&lt;endl;//73
+    cout&lt;&lt; (strcmp(c, &quot;&quot;)==0)&lt;&lt;endl;//输出0不相等
+    cout&lt;&lt;(c[0]==0)&lt;&lt;endl;//输出0不相等
+    char s[]=&quot;&quot;;
+    cout&lt;&lt;(s=='\0')&lt;&lt;endl;//输出0不相等
+
+    cout&lt;&lt;(strlen(s)==0)&lt;&lt;endl;//输出1相等
+    return 0;
+}
+</code></pre>
+<p><strong>若有定义:char str1[10],str2[]=&quot;student&quot;;以下能把str2中的字符串赋给str1的是：</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char str1[10],str2[]=&quot;student&quot;;
+    for(int i=0;i&lt;=strlen(str2);i++)
+        str1[i]=str2[i];
+    cout&lt;&lt;str1&lt;&lt;endl;//student
+    for(int i=0;i&lt;10;i++)
+        cout&lt;&lt;str1[i];//student
+    cout&lt;&lt;&quot;\n&quot;;
+    for(int i=0;i&lt;10;i++)
+        cout&lt;&lt;str2[i];//student
+    cout&lt;&lt;&quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>student
+student 
+student u
+</code></pre>
 
                     </main>
 
