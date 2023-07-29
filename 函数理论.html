@@ -166,7 +166,1787 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="函数理论"><a class="header" href="#函数理论">函数理论</a></h1>
+                        <h1 id="过程封装函数理论"><a class="header" href="#过程封装函数理论">过程封装——函数理论</a></h1>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5">函数的概念</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89">函数的定义</a>
+<ul>
+<li><a href="#%E4%B8%80%E8%88%AC%E6%9C%89%E5%8F%82%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89">一般有参函数定义</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E4%B8%8D%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0">定义不返回值的函数</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0">定义无参函数</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E7%A9%BA%E5%87%BD%E6%95%B0">定义空函数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8">函数的使用</a>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8">函数调用</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">参数传递</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC">函数的返回值</a></li>
+<li><a href="#%E5%B5%8C%E5%A5%97%E8%B0%83%E7%94%A8">嵌套调用</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E">函数原型（函数声明）</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0">课后练习</a>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B">函数返回值类型</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%8F%8A%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98">函数调用及输出问题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F">函数的作用域</a>
+<ul>
+<li><a href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F">局部变量</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">全局变量</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB">变量的存储类别</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8Fauto">自动变量：auto</a></li>
+<li><a href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%8F%98%E9%87%8Fregister">寄存器变量：register</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8Fextern">外部变量：extern</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8Fstatic">静态变量：static</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0">数组作为参数</a>
+<ul>
+<li><a href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84">一维数组</a></li>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84">二维数组</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0-1">课后练习</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E9%80%86%E7%BD%AE%E5%92%8C%E6%B1%82%E5%92%8C">数组逆置和求和</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98">函数输出问题</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">输出二维字符串数组中的字符串</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%BD%A2%E5%8F%82%E5%8F%96%E5%80%BC%E9%97%AE%E9%A2%98">全局变量、局部变量和形参取值问题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%A6%E9%BB%98%E8%AE%A4%E5%BD%A2%E5%8F%82%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0">带默认形参值的函数</a>
+<ul>
+<li><a href="#%E5%B8%B8%E8%A7%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">常见注意事项</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0">内联函数</a></li>
+<li><a href="#%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0">重载函数</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%AE%9E%E4%BE%8B">定义及实例</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">函数重载的实现</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#%E6%B6%88%E9%99%A4%E7%BB%91%E5%AE%9A%E5%8C%B9%E9%85%8D%E4%BA%8C%E4%B9%89%E6%80%A7%E5%8A%9E%E6%B3%95">消除绑定（匹配）二义性办法</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF">函数模板</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%AE%9E%E4%BE%8B-1">定义及实例</a></li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96">模板实例化</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0-2">课后练习</a>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD">函数重载</a></li>
+<li><a href="#%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%80%BC%E7%9A%84%E5%BD%A2%E5%8F%82%E7%9A%84%E5%87%BD%E6%95%B0">带有默认值的形参的函数</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E9%97%AE%E9%A2%98">函数声明问题</a></li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%AF%BC%E9%97%AE%E9%A2%98">模板参数自动推导问题</a></li>
+<li><a href="#%E7%BB%91%E5%AE%9A%E5%8C%B9%E9%85%8D%E4%BA%8C%E4%B9%89%E6%80%A7">绑定（匹配）二义性</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98">函数模板调用问题</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="函数的概念"><a class="header" href="#函数的概念">函数的概念</a></h2>
+<p>函数的作用：</p>
+<ul>
+<li>分而治之</li>
+<li>信息隐藏</li>
+</ul>
+<p>函数的分类：</p>
+<ul>
+<li>库函数：标准库函数、第三方库函数</li>
+<li>自定义函数：自己定义的函数</li>
+</ul>
+<h2 id="函数的定义"><a class="header" href="#函数的定义">函数的定义</a></h2>
+<ul>
+<li>函数要先定义后使用</li>
+<li>指定函数名字、函数返回值类型、函数实现的功能以及参数的个数和类型，将这些信息通知编译系统</li>
+</ul>
+<h3 id="一般有参函数定义"><a class="header" href="#一般有参函数定义">一般有参函数定义</a></h3>
+<pre><code class="language-cpp">类型 函数名（类型 参数1，类型 参数2，……）//括号里面的是形式参数formal parameter也是内部变量
+{
+	声明语句序列；
+	可执行语句序列；
+	return (表达式);//返回运算的结果、可省略小括号、一个函数可以有多个return语句，可以出现在函数体的任何地方
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+int Fact(int n)
+{
+    int i;
+    int result=1;
+    for(i=2;i&lt;=n;i++)
+        result*=i;
+    return result;
+}
+
+int main() {
+
+    int num;
+    cin&gt;&gt;num;
+    cout&lt;&lt;Fact(num);
+    return 0;
+}
+</code></pre>
+<h3 id="定义不返回值的函数"><a class="header" href="#定义不返回值的函数">定义不返回值的函数</a></h3>
+<pre><code class="language-cpp">void 函数名()
+{
+	声明语句序列；
+	可执行语句序列；
+	return;//return语句后无需任何表达式，函数体最后的return语句可以省略
+}
+</code></pre>
+<h3 id="定义无参函数"><a class="header" href="#定义无参函数">定义无参函数</a></h3>
+<pre><code class="language-cpp">类型名 函数名()//形参部分为空或者void
+{
+	函数体
+}
+</code></pre>
+<h3 id="定义空函数"><a class="header" href="#定义空函数">定义空函数</a></h3>
+<ul>
+<li>先用空函数占一个位置，以后逐步扩充</li>
+<li>好处：程序结构清楚，可读性好，以后扩充新功能方便，对程序结构影响不大</li>
+</ul>
+<h2 id="函数的使用"><a class="header" href="#函数的使用">函数的使用</a></h2>
+<h3 id="函数调用"><a class="header" href="#函数调用">函数调用</a></h3>
+<p>调用方式：函数名（表达式1，表达式2，……）；</p>
+<ul>
+<li>实际参数
+<ul>
+<li>函数调用时提供的表达式如<code>max(2+4,a*9);</code></li>
+<li>调用无参函数，可以省略实参表列，但是不能省略括号如<code>print();</code></li>
+</ul>
+</li>
+<li>形参是函数定义中的参数，必须是变量</li>
+<li>实参是函数调用时的参数，必须具有确定的值才能把这些值传给形参。</li>
+</ul>
+<p>1.函数调用有返回值时，返回值=函数名（实参表列）</p>
+<ul>
+<li>放到一个数值表达式中如<code>c=max(a,b);</code></li>
+<li>作为另一个函数调用的参数<code>c=max(max(a,b),c);</code></li>
+</ul>
+<p>2.函数调用无返回值时，函数名（实参表列）</p>
+<ul>
+<li>函数调用表达式如<code>display(a,b);</code> </li>
+</ul>
+<p>有返回值的函数不是必须要赋值给其他变量的，如下所示。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+
+int main() {
+
+    int a,b,c;
+    bool r=cin&gt;&gt;a;
+    cout&lt;&lt;r&lt;&lt;endl;//输出1代表有数被输入，输出0代表没数被输入如ctrl+z
+    int res=scanf(&quot;%d%d&quot;,&amp;b,&amp;c);
+    cout&lt;&lt;&quot;scanf返回：&quot;&lt;&lt;res&lt;&lt;endl;//返回输入值的个数
+    cout&lt;&lt;&quot;b=&quot;&lt;&lt;b&lt;&lt;&quot;,c=&quot;&lt;&lt;c&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>10
+1
+20 30
+scanf返回：2
+b=20,c=30
+</code></pre>
+<p>3.实参和形参在数量上、顺序上、类型上必须严格一一对应。</p>
+<ul>
+<li>数量不一致会出错</li>
+<li>顺序无所谓一致，按照位置顺序一一对应传值</li>
+<li>类型不一致会发生自动转换</li>
+</ul>
+<h3 id="参数传递"><a class="header" href="#参数传递">参数传递</a></h3>
+<ul>
+<li>形参在函数未调用时，它们并不占内存中的存储单元，在发生函数调用时，函数的形参被临时分配内存单元。</li>
+<li>函数调用时，主调函数把实参的值传给被调函数的形参，从而实现主调函数向被调函数的数据传递。</li>
+<li>函数调用中发生的数据传递是单向的，即只能把实参的值传给形参。</li>
+<li>如果在执行一个被调用函数时，形参的值发生改变，不会改变主调函数的实参值。</li>
+<li>调用结束，形参单元被释放，实参单元仍保留并维持原值，没有改变。</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+void swap(int x,int y)
+{
+    int z;
+    z=x;x=y;y=z;
+    cout&lt;&lt;&quot;x=&quot;&lt;&lt;x&lt;&lt;&quot;,y=&quot;&lt;&lt;y&lt;&lt;endl;
+}
+
+int main() {
+
+    int a=2,b=3;
+    swap(a,b);
+    cout&lt;&lt;&quot;a=&quot;&lt;&lt;a&lt;&lt;&quot;,b=&quot;&lt;&lt;b&lt;&lt;endl;
+    //如果在执行一个被调用函数时，形参的值发生改变，不会改变主调函数的实参值。
+    //调用结束，形参单元被释放，实参单元仍保留并维持原值，没有改变。
+    return 0;
+}
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code>x=3,y=2
+a=2,b=3
+</code></pre>
+<h3 id="函数的返回值"><a class="header" href="#函数的返回值">函数的返回值</a></h3>
+<p>一个函数最多只有一个返回值。</p>
+<pre><code class="language-cpp">int max(int x,int y)
+{
+	if(x&gt;y) return(x);
+	else return y;
+}
+</code></pre>
+<ul>
+<li>可以省略return语句后的小括号。</li>
+<li>一个函数中可以有多个return语句，执行到哪一个return语句，哪一个就起作用</li>
+<li>如果函数不返回值（函数类型为void），则return后不跟表达式</li>
+</ul>
+<pre><code class="language-cpp">void print(int x)
+{
+	cout&lt;&lt;x;
+	return;//如果返回值类型为void且return;是函数最后一个语句，则可以省略
+}
+</code></pre>
+<p>函数值的类型</p>
+<ul>
+<li>应当在定义函数时指定函数值的类型（简称函数类型）如<code>int max(int x,int y)</code></li>
+<li>如果未指定函数值类型，则默认为int，<code>max(int x,int y)</code>和上面的定义等价</li>
+</ul>
+<p><strong>在定义函数时指定的函数类型一般应该和return语句中的表达式类型一致，如果函数值的类型和return语句中表达式的值类型不一致，则以函数类型为准，并将发生自动类型转换。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int max(float x,float y)
+{
+    float z;
+    z=x&gt;y?x:y;
+    return(z);
+}
+int main() {
+
+    float a,b;
+    int c;
+    cin&gt;&gt;a&gt;&gt;b;//输入1.5 2.6
+    c=max(a,b);
+    cout&lt;&lt;&quot;max is &quot;&lt;&lt;c&lt;&lt;endl;//输出2
+    return 0;
+}
+
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+func(double n)
+{
+    return n*n;
+}
+int main() {
+
+    double ret;
+    ret=func(2.5);
+    cout&lt;&lt;ret&lt;&lt;endl;//输出6.0
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+
+using namespace std;
+
+int fun1(double a)
+{
+    return a*a;
+}
+
+double fun2(double x,double y)
+{
+    double a=0,b=0;
+    a=fun1(x);
+    b=fun1(y);
+    return a+b;
+}
+
+
+int main() {
+
+    double w;
+    w=fun2(1.1,2.0);
+    cout&lt;&lt;w&lt;&lt;endl;//5
+    cout&lt;&lt;typeid(w).name()&lt;&lt;endl;//d
+    double t=1.0;
+    cout&lt;&lt;t&lt;&lt;endl;//1
+    cout&lt;&lt;typeid(t).name()&lt;&lt;endl;//d
+    return 0;
+}
+</code></pre>
+<h3 id="嵌套调用"><a class="header" href="#嵌套调用">嵌套调用</a></h3>
+<p>在调用一个函数的过程中，又调用另一个函数。</p>
+<p>C++语言规定函数不能嵌套定义，但可以嵌套调用。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int p(int n);
+int max(int a,int b);
+
+int main() {
+
+    int x,y;
+    cin&gt;&gt;x&gt;&gt;y;
+    cout&lt;&lt;max(x,y);
+    return 0;
+}
+
+int p(int n)
+{
+    int s=1,i;
+    if(n&lt;0) return(0);
+    for(i=1;i&lt;=n;i++)
+        s*=i;
+    return(s);
+}
+int max(int a,int b)
+{
+    int n1;
+    int n2;
+    n1=p(a);
+    n2=p(b);
+    return (n1&gt;n2?n1:n2);
+}
+//p被调用两次
+</code></pre>
+<h3 id="函数原型函数声明"><a class="header" href="#函数原型函数声明">函数原型（函数声明）</a></h3>
+<ul>
+<li>如果使用自己定义的函数，而该函数的位置在主调函数后，应该在前面声明函数原型</li>
+<li>在调用函数前先声明其返回值类型、函数名和参数</li>
+</ul>
+<p>函数定义：</p>
+<ul>
+<li>指函数功能的确立</li>
+<li>指定函数名、函数类型、形参及类型、函数体等</li>
+<li>是完整独立的单位</li>
+</ul>
+<p>函数原型（函数声明）</p>
+<ul>
+<li>是对函数名、返回值类型、形参类型的说明</li>
+<li>不包括函数体</li>
+<li>是一条语句，以分号结束，只起一个声明作用</li>
+</ul>
+<h2 id="课后练习"><a class="header" href="#课后练习">课后练习</a></h2>
+<h3 id="函数返回值类型"><a class="header" href="#函数返回值类型">函数返回值类型</a></h3>
+<p><strong>决定C++语言中函数的返回值类型的是在定义该函数时所指定的数据类型</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+double  f(int a)
+{
+    return a*a;
+}
+
+
+int main() {
+
+    double r=3.5;
+    cout&lt;&lt;f(r)/2;//输出4.5
+    return 0;
+}
+</code></pre>
+<h3 id="函数调用及输出问题"><a class="header" href="#函数调用及输出问题">函数调用及输出问题</a></h3>
+<p>cout输出5.0自动变为5的问题（其实还是double类型，只是cout输出时省略了）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+
+using namespace std;
+
+int fun1(double a)
+{
+    return a*a;
+}
+
+double fun2(double x,double y)
+{
+    double a=0,b=0;
+    a=fun1(x);
+    b=fun1(y);
+    return a+b;
+}
+
+
+int main() {
+
+    double w;
+    w=fun2(1.1,2.0);
+    cout&lt;&lt;w&lt;&lt;endl;//5
+    cout&lt;&lt;typeid(w).name()&lt;&lt;endl;//d
+    double t=1.0;
+    cout&lt;&lt;t&lt;&lt;endl;//1
+    cout&lt;&lt;typeid(t).name()&lt;&lt;endl;//d
+    return 0;
+}
+</code></pre>
+<h2 id="函数的作用域"><a class="header" href="#函数的作用域">函数的作用域</a></h2>
+<p>作用域：指在源程序中定义变量的位置及其能被读写访问的范围</p>
+<h3 id="局部变量"><a class="header" href="#局部变量">局部变量</a></h3>
+<ul>
+<li>在一个函数内部定义的变量（形参和{}内的定义）只在本函数范围内有效</li>
+<li>在复合语句{}内定义的变量只在本复合语句范围内有效</li>
+<li>在函数内部或复合语句内部定义的变量成为局部变量</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>生存期是该语句块，进入语句块时获得内存，仅能由语句块内语句访问，退出语句块时释放内存，不再有效</li>
+<li><strong>定义时不会自动初始化，除非程序员指定初值</strong></li>
+<li>并列语句块各自定义的同名变量互不干扰
+<ul>
+<li>形参和实参可以相同</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int p(int n)
+{
+    cout&lt;&lt;n&lt;&lt;endl;
+    return n;
+}
+
+int main() {
+
+    int n;
+    cin&gt;&gt;n;
+    cout&lt;&lt;n&lt;&lt;endl;;
+    cout&lt;&lt;p(n)+1&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>5
+5
+5
+6
+</code></pre>
+<h3 id="全局变量"><a class="header" href="#全局变量">全局变量</a></h3>
+<ul>
+<li>在一个函数外部定义的变量是外部变量</li>
+<li>外部变量是全局变量（也称全程变量）</li>
+<li>全局变量可以为本文件中其他函数所共有</li>
+<li>有效范围为从定义变量的位置开始到文件的末尾</li>
+</ul>
+<p><strong>若局部变量和外部变量同名，则在局部变量作用范围内全局变量会被屏蔽。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int a=3,b=5;
+
+int main() {
+
+    int max(int a,int b);
+    int a=8;
+    cout&lt;&lt;&quot;max=&quot;&lt;&lt;max(a,b)&lt;&lt;endl;//输出max=8
+    //用作用范围小的，离得近的
+    return 0;
+}
+
+int max(int a, int b)
+{
+    int c;
+    c=a&gt;b?a:b;
+    return c;
+}
+</code></pre>
+<p>全局变量的使用说明</p>
+<ul>
+<li>全局变量破坏了模块化，建议尽量少使用</li>
+<li><strong>定义时会自动初始化</strong></li>
+<li>全局变量定义的数组可以很大，但局部变量定义的数组大小有限</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int a[1000000];
+    a[0]=1;
+    cout&lt;&lt;a[0];
+    return 0;
+}
+</code></pre>
+<p>输出`Process returned -1073741571 (0xC00000FD)   execution time : 2.076 s</p>
+<p><code>int b[1000][1000]</code>也会如此。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int a[10];
+    a[0]=1;
+    cout&lt;&lt;a[0];//1
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int a[1000000];
+
+int main() {
+
+    a[0]=1;
+    cout&lt;&lt;a[0];//1
+    return 0;
+}
+</code></pre>
+<h2 id="变量的存储类别"><a class="header" href="#变量的存储类别">变量的存储类别</a></h2>
+<p>每个变量有两个属性：</p>
+<ul>
+<li>数据类型：变量所存储的数据类型</li>
+<li>存储类型：变量所存储的区域</li>
+</ul>
+<p>标准的变量定义：存储类型 数据类型 变量名；</p>
+<p>存储类型：</p>
+<ul>
+<li>自动变量：auto</li>
+<li>寄存器变量：register</li>
+<li>外部变量：extern</li>
+<li>静态变量：static</li>
+</ul>
+<h3 id="自动变量auto"><a class="header" href="#自动变量auto">自动变量：auto</a></h3>
+<p>在函数内或块内定义的变量缺省存储类型是atuo如<code>auto int i;</code>等价于<code>int i;</code></p>
+<ul>
+<li>当进入块（函数体或复合语句）时，系统为自动变量分配空间。当退出块时，系统释放分配给自动变量的值。因此，自动变量的值就消失了。</li>
+<li>当再次进入该块时，系统重新分配空间。</li>
+</ul>
+<p>局部变量是自动变量的一部分。</p>
+<h3 id="寄存器变量register"><a class="header" href="#寄存器变量register">寄存器变量：register</a></h3>
+<p>存储在寄存器中，代替自动变量或形参，可以提高变量的访问速度。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    register int i;
+    for(i=0;i&lt;100000000;i++)
+    {
+        
+    }
+    return 0;
+}
+</code></pre>
+<p>如无合适的寄存器可用，则编译器把它设置为自动变量。</p>
+<h3 id="外部变量extern"><a class="header" href="#外部变量extern">外部变量：extern</a></h3>
+<p>声明一个不在本模块作用范围内的全局变量。如<code>extern int num;</code>num为一个全局变量</p>
+<p>用途：</p>
+<p>1.在某函数中引用了一个声明在本函数<strong>后</strong>的全局变量时，需要在函数内用extern声明此全局变量</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void f();
+
+int main() {
+
+    extern int x;
+    f();
+    cout&lt;&lt;&quot;in main():x=&quot;&lt;&lt;x&lt;&lt;endl;
+    return 0;
+}
+
+int x;
+void f()
+{
+    cout&lt;&lt;&quot;in f():x=&quot;&lt;&lt;x&lt;&lt;endl;
+}
+</code></pre>
+<pre><code>in f():x=0
+in main():x=0
+</code></pre>
+<p>2.当一个程序有多个源文件组成时，用extern可引用另一文件中的全局变量</p>
+<pre><code class="language-cpp">//main.cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+extern void f();//这里可以省略extern
+extern int x;//外部变量的声明
+
+
+int main() {
+
+    f();
+    cout&lt;&lt;&quot;in main():x=&quot;&lt;&lt;x&lt;&lt;endl;
+    x=2;
+    f();
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">//file2.cpp
+#include &lt;iostream&gt;
+using namespace std;
+
+int x;//定义全局变量
+
+void f()
+{
+    cout&lt;&lt;&quot;in f():x=&quot;&lt;&lt;x&lt;&lt;endl;
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>in f():x=0
+in main():x=0
+in f():x=2
+</code></pre>
+<h3 id="静态变量static"><a class="header" href="#静态变量static">静态变量：static</a></h3>
+<ul>
+<li>静态的外部变量：其他源文件不能用extern引用static说明的全局变量</li>
+<li>静态的局部变量：不建议使用</li>
+</ul>
+<p><code>undefined reference to </code>x'`</p>
+<pre><code class="language-cpp">//main.cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+extern void f();//这里可以省略extern
+extern int x;//外部变量的声明
+
+
+int main() {
+
+    f();
+    cout&lt;&lt;&quot;in main():x=&quot;&lt;&lt;x&lt;&lt;endl;
+    x=2;
+    f();
+    return 0;
+    //编译报错
+}
+</code></pre>
+<pre><code class="language-cpp">//file2.cpp
+#include &lt;iostream&gt;
+using namespace std;
+
+static int x;//定义静态全局变量
+
+void f()
+{
+    cout&lt;&lt;&quot;in f():x=&quot;&lt;&lt;x&lt;&lt;endl;
+}
+</code></pre>
+<h2 id="数组作为参数"><a class="header" href="#数组作为参数">数组作为参数</a></h2>
+<h3 id="一维数组"><a class="header" href="#一维数组">一维数组</a></h3>
+<p>1.数组元素作为函数实参，传递一个数组元素和传递一个普通变量没有区别</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void printElement(int e)
+{
+    cout&lt;&lt;e&lt;&lt;&quot; &quot;;
+    ++e;
+}
+
+int main() {
+
+    int i,a[10]={1,2,3,4,5},n=5;
+    for(i=0;i&lt;n;i++)
+    {
+        printElement(a[i]);
+    }
+    return 0;
+}
+</code></pre>
+<p>2.数组名作为函数参数</p>
+<p>传递整个数组给另一个函数，是将数组的首地址作为参数传过去</p>
+<ul>
+<li>用数组名作为函数参数</li>
+<li>只复制一个地址自然比复制全部数据效率高</li>
+<li>由于首地址相同，故实参数组与形参数组占用同一段内存</li>
+<li>在该函数内不仅可以读这个数组的元素，还可以修改它们</li>
+</ul>
+<p>简单变量和数组作为函数参数的区别：前者修改变量值无法改变实参，后者可以改变实参</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int average(int array[10])
+{
+    int sum=0;
+    for(int i=0;i&lt;10;i++)
+        sum+=array[i];
+    return sum/10;
+}
+
+int main() {
+
+    int score[10];
+    cout&lt;&lt;&quot;请输入10个成绩：&quot;&lt;&lt;endl;
+    for(int i=0;i&lt;10;i++) cin&gt;&gt;score[i];
+    cout&lt;&lt;&quot;平均成绩是：&quot;&lt;&lt;average(score)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>修改数组元素</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int average(int array[10])
+{
+    int sum=0;
+    for(int i=0;i&lt;10;i++)
+        sum+=array[i];
+    array[3]=90;
+    return sum/10;
+}
+
+int main() {
+
+    int score[10];
+    cout&lt;&lt;&quot;请输入10个成绩：&quot;&lt;&lt;endl;
+    for(int i=0;i&lt;10;i++) cin&gt;&gt;score[i];
+    cout&lt;&lt;&quot;平均成绩是：&quot;&lt;&lt;average(score)&lt;&lt;endl;
+    cout&lt;&lt;score[3]&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>请输入10个成绩：
+10 20 30 40 50 60 70 80 90 100
+平均成绩是：55
+90
+</code></pre>
+<p>数组参数的传递机制</p>
+<ul>
+<li>C++语言规定，数组名是数组的起始地址</li>
+<li>参数传递时，实际参数是数组名，形式参数也是数组名</li>
+<li>按照值传递，当用实际参数score调用average时，是用score初始化形式参数数组array</li>
+<li>形式参数和实际参数是同一数组</li>
+<li>在函数中并没有定义新的数组</li>
+</ul>
+<p>数组作为函数的参数</p>
+<ul>
+<li>对形式参数数组指定规模是没有意义的</li>
+<li>形式参数数组不需要指定大小，所以方括号中可以为空</li>
+<li>函数如何知道数组的规模？用另一个整型参数表示如<code>int average(int array[10]</code>可以改成<code>int average(int array[], int n)</code></li>
+<li>总结：数组传递需要两个参数，数组名和数组大小</li>
+</ul>
+<p>分别求两个班级的平均成绩（可复用）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    float average(float array[],int n);
+    float score1[5]={98.5,97,91.5,60,55};
+    float score2[10]={67.5,89.5,99,69.5,77,89.5,76.5,54,60,99.5};
+
+    cout&lt;&lt;average(score1,5)&lt;&lt;endl;
+    cout&lt;&lt;average(score2,10)&lt;&lt;endl;
+    //80.4
+    //78.2
+    return 0;
+}
+
+
+int average(float array[], int n)
+{
+    float sum=0;
+    for(int i=0;i&lt;n;i++)
+        sum+=array[i];
+
+    return sum/n;
+}
+</code></pre>
+<h3 id="二维数组"><a class="header" href="#二维数组">二维数组</a></h3>
+<p>向函数传递二维数组，实际传送的是数组第一个元素的地址。</p>
+<ul>
+<li>声明时不能省略第二维的长度，能省略第一维的长度</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>学生</th><th>成绩1</th><th>成绩2</th><th>成绩3</th></tr></thead><tbody>
+<tr><td>学生1</td><td></td><td></td><td></td></tr>
+<tr><td>学生2</td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<p>计算每门课程的总分和平均分</p>
+<pre><code class="language-cpp">void AverforCourse(int score[][3], int sum[], double aver[],int n)
+{
+    int i,j;
+    for(j=0;j&lt;3;j++)
+    {
+        sum[j]=0;
+        for(i=0;i&lt;n;i++)
+        {
+            sum[j]=sum[j]+score[i][j];
+        }
+        aver[j]=(double)sum[j]/n;
+    }
+}
+</code></pre>
+<p>计算每个学生的总分和平均分</p>
+<pre><code class="language-cpp">void AverforStud(int score[][3], int sum[], double aver[],int n)
+{
+    int i,j;
+    for(i=0;i&lt;n;i++)
+    {
+        sum[i]=0;
+        for(j=0;j&lt;3;i++)
+        {
+            sum[i]=sum[i]+score[i][j];
+        }
+        aver[i]=(double)sum[i]/n;
+    }
+}
+</code></pre>
+<p>综合统计程序</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+#define STUD_N 40   //最多学生人数
+
+void AverforCourse(int score[][3], int sum[], double aver[], int n);
+void AverforStud(int score[][3],int sum[],double aver[],int n);
+int ReadScore(int score[][3]);
+
+int main() {
+
+    int score[STUD_N][3],sumS[STUD_N],sumC[3],n;
+    double averS[STUD_N],averC[3];
+    n=ReadScore(score);
+    AverforStud(score,sumS,averS,n);
+    AverforCourse(score,sumC,averC,n);
+    return 0;
+}
+
+void AverforCourse(int score[][3], int sum[], double aver[],int n)
+{
+    int i,j;
+    for(j=0;j&lt;3;j++)
+    {
+        sum[j]=0;
+        for(i=0;i&lt;n;i++)
+        {
+            sum[j]=sum[j]+score[i][j];
+        }
+        aver[j]=(double)sum[j]/n;
+        cout&lt;&lt;aver[j]&lt;&lt;endl;
+    }
+}
+
+void AverforStud(int score[][3], int sum[], double aver[],int n)
+{
+    int i,j;
+    for(i=0;i&lt;n;i++)
+    {
+        sum[i]=0;
+        for(j=0;j&lt;3;j++)
+        {
+            sum[i]=sum[i]+score[i][j];
+        }
+        aver[i]=(double)sum[i]/3;
+        cout&lt;&lt;aver[i]&lt;&lt;endl;
+    }
+}
+
+
+int ReadScore(int score[][3])
+{
+    int s1,s2,s3;
+    int i=0;
+    while(cin&gt;&gt;s1&gt;&gt;s2&gt;&gt;s3)//ctrl+z结束输入
+    {
+        score[i][0]=s1;
+        score[i][1]=s2;
+        score[i][2]=s3;
+        ++i;
+    }
+    return i;
+}
+
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code>10 20 30
+40 50 60
+70 80 80^Z
+20
+50
+76.6667
+40
+50
+56.6667
+</code></pre>
+<h2 id="课后练习-1"><a class="header" href="#课后练习-1">课后练习</a></h2>
+<h3 id="数组逆置和求和"><a class="header" href="#数组逆置和求和">数组逆置和求和</a></h3>
+<p>将a所指数组中的内容进行逆置，并对逆置后的数组进行部分求和</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void reverse(int a[],int n)
+{
+    int i,t;
+    for(i=0;i&lt;n/2;i=i+1)
+    {
+        t=a[i];
+        a[i]=a[n-1-i];
+        a[n-1-i]=t;
+    }
+}
+
+int main() {
+
+    int b[10]={1,2,3,4,5,6,7,8,9,10};
+    int i,s=0;
+    reverse(b,8);
+    for(i=6;i&lt;10;i++)
+        s+=b[i];
+    cout&lt;&lt;s;//22
+    return 0;
+}
+</code></pre>
+<h3 id="函数输出问题"><a class="header" href="#函数输出问题">函数输出问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void fun2(char a,char b)
+{
+    cout&lt;&lt;a&lt;&lt;b;
+}
+
+char a='A',b='B';
+void fun1()
+{
+    a='C';
+    b='D';
+}
+
+int main() {
+
+    fun1();
+    cout&lt;&lt;a&lt;&lt;b;
+    fun2('E','F');
+	//输出结果为CDEF
+    return 0;
+}
+</code></pre>
+<h3 id="输出二维字符串数组中的字符串"><a class="header" href="#输出二维字符串数组中的字符串">输出二维字符串数组中的字符串</a></h3>
+<p>对二维字符串数组中的字符串按首字母ASCII从大到小排序输出</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+void sortArray(char a[][8],int n)
+{
+    int i,j;
+    char tmp[8];
+    bool flag;
+    for(i=1;i&lt;n;i++)
+    {
+        flag=false;
+        for(j=0;j&lt;n-i;j++)
+        if(a[j+1][0]&gt;a[j][0])
+        {
+            strcpy(tmp,a[j]);
+            strcpy(a[j],a[j+1]);
+            strcpy(a[j+1],tmp);
+            flag=true;
+        }
+        if(!flag) break;
+    }
+}
+
+int main() {
+
+    char s[][8]={&quot;Twinkle&quot;,&quot;twinkle&quot;,&quot;little&quot;,&quot;star&quot;};
+    sortArray(s,4);
+    for(int i=0;i&lt;4;i++)
+        cout&lt;&lt;s[i]&lt;&lt;' ';
+
+    return 0;
+}
+</code></pre>
+<pre><code>twinkle star little Twinkle
+</code></pre>
+<h3 id="全局变量局部变量和形参取值问题"><a class="header" href="#全局变量局部变量和形参取值问题">全局变量、局部变量和形参取值问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int a=5;
+
+void fun(int b)
+{
+    int a=10;
+    a+=b;
+    cout&lt;&lt;a;
+}
+
+int main() {
+
+    int c=20;
+    fun(c);
+    a+=c;
+    cout&lt;&lt;a;
+    //输出结果为3025
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int a=2;
+
+int f(int n)
+{
+    int a=4;
+    int t=0;
+    if(n%2)
+    {
+        int a=6;//局部变量，出了if大括号就被释放了
+        t+=a;
+    }
+    else t+=a++;
+    return t+a;
+    //如果n为1，则a=6,t=6,a=4,t+a=10
+    //如果n=0，则t=4,a=5,t+a=9
+}
+
+int main() {
+
+    int s=a,i;
+    for(i=0;i&lt;2;i++){
+        s+=f(i);
+        cout&lt;&lt;f(i)&lt;&lt;endl;
+    }
+    cout&lt;&lt;s;//21
+    return 0;
+}
+</code></pre>
+<pre><code>9
+10
+21
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int a1=300,a2=400;
+
+int fun(double  x[],int n)
+{
+
+    double max = x[0];
+    for(int i=1;i&lt;n;i++)
+        max=x[i]&gt;max?x[i]:max;
+    return max;
+
+}
+
+int main() {
+
+    double a[]={1.2,2.3,3.6,2.7,5.3,1.7};
+    cout&lt;&lt;fun(a,6);
+    //输出5
+    return 0;
+}
+</code></pre>
+<p>调用交换值的函数并不影响原数组中的元素，如下程序所示：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+void fun(int a,int b)
+{
+
+    int t;
+    t=a;a=b;b=t;
+
+}
+
+int main() {
+
+    int c[10]={1,2,3,4,5,6,7,8,9,0},i;
+    for(i=0;i&lt;10;i+=2) fun(c[i],c[i+1]);
+    for(i=0;i&lt;10;i++) cout&lt;&lt;c[i];
+    //输出1234567890，可见交换语句并没有影响数组中的值
+    return 0;
+}
+</code></pre>
+<pre><code>1 2
+3 4
+5 6
+7 8
+9 0
+1234567890
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+void fun(int a[],int n)
+{
+
+    int i,t;
+    for(i=0;i&lt;n/2;i++)
+    {
+        t=a[i];
+        a[i]=a[n-1-i];
+        a[n-1-i]=t;
+    }
+
+}
+
+int main() {
+
+    int a=5;
+    {
+        int a=1;
+        a+=2;
+        cout&lt;&lt;a;//输出3
+    }
+    //a=5;
+    a++;
+    cout&lt;&lt;a;//输出6
+    return 0;
+}
+</code></pre>
+<h2 id="带默认形参值的函数"><a class="header" href="#带默认形参值的函数">带默认形参值的函数</a></h2>
+<p>C++中允许在<code>函数原型或函数定义</code>中为形参预赋一个默认的值，这样的函数就叫做带有默认形参值得函数。在调用带有默认参数值得函数时，若为相应形参制定了实参，则形参将使用实参的值；否则，形参将使用其默认值，这大大方便了函数的使用。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int sub(int a=9,int b=4)
+{
+    return a-b;
+}
+
+int main() {
+
+    cout&lt;&lt;sub(20,16);//传递给形参x,y的值分别为20和16
+    cout&lt;&lt;sub(20);//传递给形参x,y的值分别为20和4
+    cout&lt;&lt;sub();//传递给形参x,y的值分别为9和4
+    return 0;
+}
+</code></pre>
+<p><strong>函数若先声明再使用则默认形参放在声明部分。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int max(int x=6,int y=13);
+
+
+int main() {
+
+    cout&lt;&lt;max();
+    return 0;
+}
+
+int max(int x,int y)
+{
+    return x&gt;y?x:y;
+}
+
+</code></pre>
+<p>缺一个或两个参数都会报错<code>error: no matching function for call to 'max(int)'</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int max(int x,int y);
+
+
+int main() {
+
+    cout&lt;&lt;max(20);
+    return 0;
+}
+
+int max(int x=6,int y=13)
+{
+    return x&gt;y?x:y;
+}
+</code></pre>
+<p>参数足够的话不会报错</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int max(int x,int y);
+
+
+int main() {
+
+    cout&lt;&lt;max(20,16);
+    return 0;
+}
+
+int max(int x=6,int y=13)
+{
+    return x&gt;y?x:y;
+}
+
+</code></pre>
+<h3 id="常见注意事项"><a class="header" href="#常见注意事项">常见注意事项</a></h3>
+<p>（1）若函数具有多个形参，则缺省形参值必须<code>从右向左</code>连续地定义，并且在一个缺省形参值的右边不能有未指定缺省值的参数。这是C++语言在函数调用时参数是自右向左入栈这一约定所决定的。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">int f(int a, float b=5.0, char c='.',int d=10)//正确
+int f(int a=1, float b=5.0, char c='.',int d)//错误，d未给值
+int f(int a=1, float b, char c='.',int d=10)//错误，b未给值
+</code></pre>
+<p>（2）在调用一个函数时，如果<code>省去</code>了某个实参，则<code>直到最右端的实参都要省去</code>（当然，与它们对应的形参都要有缺省值）。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">//假如有如下声明
+int f(int a, float b=5.0, char c='.',int d=10);
+//采用下面的调用形式是错误的
+f(8,,,4)//语法错误
+</code></pre>
+<p>（3）缺省参数值的说明必须出现在函数调用<code>之前</code>，这就是说，如果存在函数原型，则形参的缺省值应在函数原型中指定；否则应该在函数定义中指定。另外，若函数原型中已给出了形参的缺省值，则在函数定义中<code>不得重复指定</code>，即使所指定的缺省值完全相同也不行。</p>
+<p>（4）在同一个作用域，一旦定义了缺省形参值，就不能再定义它了，即使相同也不行。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">int f(int a, float b=5.0, char c='.',int d=10);
+...
+int f(int a, float b=5.0, char c='.',int d=10);
+</code></pre>
+<p>（5）如果几个函数原型出现在不同的作用域内，则允许为它们提供不同的缺省形参值。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">int f(int a=6, float b=5.0, char c='.',int d=10);
+void main(void)
+{
+	int f(int a=3, float b=2.0, char c='n',int d=20);
+	cout&lt;&lt;f()&lt;&lt;endl;//f函数使用局部缺省参数值
+}
+</code></pre>
+<p>（6）对形参缺省值的指定可以是<code>初始化表达式</code>，甚至可以包含函数调用。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">//d参数的缺省值是函数调用
+int f(int a, float b =5.0, char c='.', int d=sub(20,15));
+</code></pre>
+<p>（7）在函数原型给出了形参的缺省值时，<code>形参名可以省略</code>。</p>
+<pre><code class="language-cpp">//d参数的缺省值是函数调用
+int f(int , float =5.0, char ='.', int =sub(20,15));
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int f(int , float =5.0, char ='.', int =max(20,15));
+int max(int x=6,int y=13);
+
+
+int main() {
+
+    cout&lt;&lt;max();//13
+    return 0;
+}
+
+int max(int x,int y)
+{
+    return x&gt;y?x:y;
+}
+</code></pre>
+<h2 id="内联函数"><a class="header" href="#内联函数">内联函数</a></h2>
+<p>通过在编译时将函数体代码插入到函数调用处，将调用函数的方式改为顺序执行方式来节省程序执行的时间开销，这一过程叫做<code>内联函数的扩展</code>。因此，内联函数实际上是一种用<code>空间换时间</code>的方案。</p>
+<p>内联函数的定义形式如下：</p>
+<pre><code class="language-cpp">inline 函数类型 函数名（形参表）
+{
+	函数体；
+}
+</code></pre>
+<p>内联函数在扩展时也进行了实参和形参结合的过程：先将实参名（而不是实参值）与函数体中的形参处处替换，然后搬到调用处。但从用户的角度看，调用内联函数的执行和一般函数没有任何区别。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+inline double CirArea(double radius)
+{
+    return 3.14*radius*radius;
+}
+
+
+int main() {
+
+    double r1(1.0),r2(2);
+    cout&lt;&lt;CirArea(r1)&lt;&lt;endl;
+    cout&lt;&lt;CirArea(r1+r2+4)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>内联函数调用，编译时分别被替换为：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+inline double CirArea(double radius)
+{
+    return 3.14*radius*radius;
+}
+
+
+int main() {
+
+    double r1(1.0),r2(2);
+    cout&lt;&lt;3.14*r1*r1&lt;&lt;endl;
+    cout&lt;&lt;3.14*(r1+r2+4)*(r1+r2+4)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>与处理register变量类似，是否对一个内联函数进行扩展完全由编译器自行决定。因此，说明一个内联函数只是请求而不是命令编译器对它进行扩展。事实上，如果将一个较复杂的函数定义为内联函数，大多数编译器会自动地将其作为普通函数处理。</p>
+<p>注意：</p>
+<ul>
+<li>如果仅仅在声明函数原型时加上关键字inline，并不能达到内联效果</li>
+<li>内联函数的<code>定义必须出现在对该函数地调用之前</code>，因为编译器在对函数调用语句进行替换时，必须事先知道替换该语句的代码是什么。这也是仅在声明函数原型时加上关键字inline，并不一定能到达到内联效果的原因。</li>
+<li>不符合以上要求时，编译程序不会出错，只是编译系统会将该函数当作普通函数。</li>
+<li>如果函数体内的代码比较长或函数体内出现循环，不宜用内联。</li>
+</ul>
+<p>在C++中，内联函数是一种特殊类型的函数，它通常在函数定义处被标记为<code>inline</code>关键字。内联函数的主要目的是通过在编译时将函数调用替换为函数本身的代码来提高程序的性能。</p>
+<p>与普通函数不同，内联函数的代码会被直接插入到调用它的地方，而不是跳转到函数的入口点执行。这样可以避免函数调用的开销，因为函数调用通常需要保存现场、跳转到函数入口点、返回时恢复现场等操作，而这些操作都需要消耗时间和空间。相比之下，内联函数的代码直接插入到调用它的地方，可以避免这些开销，从而提高程序的性能。</p>
+<p>需要注意的是，内联函数并不是在所有情况下都比普通函数更快。由于内联函数的代码会被复制到每个调用它的地方，所以如果内联函数太大，会导致代码膨胀，降低程序的性能。因此，内联函数通常适用于简单、短小的函数，而不适用于复杂、大型的函数。此外，内联函数的定义通常放在头文件中，因为它需要在每个使用它的文件中都被复制一遍。</p>
+<p>下面是一个内联函数的例子：</p>
+<pre><code class="language-cpp">inline int square(int x) {
+    return x * x;
+}
+</code></pre>
+<p>这个函数计算一个整数的平方，并被标记为内联函数。当在程序中调用该函数时，编译器会将函数调用替换为函数本身的代码，从而提高程序的性能。</p>
+<h2 id="重载函数"><a class="header" href="#重载函数">重载函数</a></h2>
+<h3 id="定义及实例"><a class="header" href="#定义及实例">定义及实例</a></h3>
+<p>C语言中不能有同名函数。当要求写一组功能相似、参数类型或参数个数不同的函数时，必须给它们取不同的函数名。</p>
+<p>C++可以有同名函数，同名函数形参列表不同即为重载函数。</p>
+<ul>
+<li>重载可以使参数个数不同、参数类型不同或两者兼而有之的两个以上的函数取相同的函数名，以下示例是参数个数不同：</li>
+</ul>
+<pre><code class="language-cpp">int max(int a1,int a2);
+int max(int a1,int a2,int a4);
+</code></pre>
+<ul>
+<li>如果只是返回值不同，不算重载函数，如下面代码会产生编译错误：</li>
+</ul>
+<pre><code class="language-cpp">int getValue();
+double getValue();
+</code></pre>
+<p>C++中的函数重载是指在同一个作用域内，可以定义多个同名函数，但这些函数的参数列表必须不同（参数的类型、个数或顺序）。函数重载可以让我们使用相同的函数名实现不同的功能，从而提高代码的复用性和可读性。</p>
+<p>重载函数之间的不同主要体现在函数的参数列表上。具体来说，重载函数的参数列表必须满足以下至少一条条件：</p>
+<ol>
+<li>参数的个数不同；</li>
+<li>参数的类型不同；</li>
+<li>参数的顺序不同。</li>
+</ol>
+<p>例如，下面是两个函数的重载：</p>
+<pre><code class="language-cpp">int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+</code></pre>
+<p>这两个函数都名为<code>add</code>，但它们的参数类型不同，一个接受两个整数参数，另一个接受两个浮点数参数。这样，我们就可以通过函数名来区分使用哪一个函数。</p>
+<p>需要注意的是，函数重载仅限于函数名相同，参数列表不同的情况。如果只是返回值类型不同，则不能称之为函数重载。例如，下面的代码是错误的：</p>
+<pre><code class="language-cpp">int add(int a, int b) {
+    return a + b;
+}
+
+double add(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>因为这两个函数的参数列表相同，只有返回值类型不同，编译器无法区分它们，会导致编译错误。</p>
+<h3 id="函数重载的实现"><a class="header" href="#函数重载的实现">函数重载的实现</a></h3>
+<p>由编译器确定某一次函数调用到底是调用了哪一个具体的函数。这个过程被称为绑定（binding），也成为联编或捆绑。</p>
+<p>编译器首先会为这一组重载函数中每个函数取一个不同的内部名字。当发生函数调用时，编译器会根据实际参数和形式参数的匹配情况确定具体调用的是哪一个函数，然后用这个函数的内部函数名取代重载的函数名。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int add(int x,int y)
+{
+    cout&lt;&lt;&quot;(int, int)\t&quot;;
+    return x+y;
+}
+double add(double x,double y)
+{
+    cout&lt;&lt;&quot;(double, double)\t&quot;;
+    return x+y;
+}
+int add(int x,double y)
+{
+    cout&lt;&lt;&quot;(int,double)\t&quot;;
+    return x+y;
+}
+double add(double x,int y)
+{
+    cout&lt;&lt;&quot;(double, int)\t&quot;;
+    return x+y;
+}
+
+int main() {
+
+    cout&lt;&lt;add(9,8)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>(int, int)      17
+(double, double)        17//cout输出17.0会抹除后面的.0
+(int,double)    17
+(double, int)   17
+</code></pre>
+<h3 id="注意事项"><a class="header" href="#注意事项">注意事项</a></h3>
+<p>（1）各个重载函数的返回类型可以相同，也可以不同。但如果函数名相同、形参表也相同，仅仅是返回值类型不同，则是非法的。在编译时会被认为是语法错误。</p>
+<p>C++无法区分<code>int divide(int i1,int i2);</code>和<code>double divide(int f1,int f2)</code>，因为在没有确定函数调用是对哪一个重载函数之前，无法知道返回类型。</p>
+<p>（2）确定对重载函数的哪个函数进行调用的过程称为绑定，绑定的优先次序为精确匹配、对实参的类型向高类型转换后的匹配、实参类型向低类型及相容类型转换后的匹配。</p>
+<pre><code class="language-cpp">//将char型转换成int型，然后与add(int,int)绑定
+add('A','A'+'0');
+//函数实参向(double,double)转换，然后与add(double,double)绑定
+add(float(8),float(9));
+//实参类型为(long double,int),向低类型转换
+add(long double(8),9); //由于存在add(int,int)和add(double,int)两个重载函数，因此出现了绑定（匹配）二义性
+</code></pre>
+<p>下面的程序会报错<code>error: call of overloaded 'add(long double, int)' is ambiguous</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int add(int x,int y)
+{
+    cout&lt;&lt;&quot;(int, int)\t&quot;;
+    return x+y;
+}
+double add(double x,double y)
+{
+    cout&lt;&lt;&quot;(double, double)\t&quot;;
+    return x+y;
+}
+int add(int x,double y)
+{
+    cout&lt;&lt;&quot;(int,double)\t&quot;;
+    return x+y;
+}
+double add(double x,int y)
+{
+    cout&lt;&lt;&quot;(double, int)\t&quot;;
+    return x+y;
+}
+
+int main() {
+
+    cout&lt;&lt;add(9,8)&lt;&lt;endl;
+    cout&lt;&lt;add((long double)(8),9)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="消除绑定匹配二义性办法"><a class="header" href="#消除绑定匹配二义性办法">消除绑定（匹配）二义性办法</a></h3>
+<p>两个重载函数，编译器不知道进行哪种类型的转换，与哪个函数绑定，这种现象就叫绑定二义性。</p>
+<p>消除办法有：</p>
+<p>（1）添加重载函数定义，使调用获得精确匹配。如增加定义<code>add(long double ,int);</code></p>
+<p>（2）将函数的实参进行强制类型的转换，使调用获得精确匹配。</p>
+<p>注意：重载函数和带默认形参值的函数一起使用时，有可能引起二义性。</p>
+<p>例如<code>void add(int x,int y,int z=0);</code>和<code>void add(int x,int y)</code>同时存在，当调用add(8,9)时，不知道是和<code>add(int,int)</code>绑定还是和<code>add(int,int,int=0)</code>绑定？消除这种二义性的办法是增加或减少实参个数。</p>
+<h2 id="函数模板"><a class="header" href="#函数模板">函数模板</a></h2>
+<h3 id="定义及实例-1"><a class="header" href="#定义及实例-1">定义及实例</a></h3>
+<p>在C++中，函数模板是一种通用函数，可以用于多种类型的数据。通过使用函数模板，可以编写一次代码，然后用于多种不同类型的数据，从而提高代码的复用性和灵活性。在函数模板中，使用模板参数来表示类型参数，以便在编译时根据实际类型生成具体的函数代码。</p>
+<ul>
+<li>如果一组重载函数仅仅是参数的类型不一样，程序的逻辑完全一样，那么这一组重载函数可以写成一个函数模板。</li>
+<li>所谓的函数模板就是实现类型的参数化（泛型化），即把函数中某些形式参数的类型定义成参数，称为模板参数</li>
+<li>在函数调用时，编译器根据实际参数的类型确定模板参数的值，生成不同的模板参数。</li>
+</ul>
+<p>函数模板的调用是在编译时进行的，它可以根据函数参数的类型自动推断出模板参数的类型，并生成相应的函数代码。在函数调用时，需要指定函数模板的名称和模板参数，以便编译器能够实例化出具体的函数代码。</p>
+<p>函数模板可以用来创建一个通过功能的函数，以支持多种不同形参，进一步简化重载函数的函数体设计。</p>
+<p>定义形式为</p>
+<pre><code class="language-cpp">template &lt;class 类型名1，class 类型名2，...&gt;
+
+返回类型 函数名（形参表）
+{
+	函数体；
+}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>template关键字声明的是模板</li>
+<li>&lt;&gt;中是模板的参数表，可以有一项或多项，其中的类型名称为参数化类型，是一种抽象类型或可变类型</li>
+<li>class是类型关键字，也可以用typename作为关键字</li>
+<li>函数返回值类型可以是普通类型，也可以是模板参数表中指定的类型</li>
+<li>模板参数表中的参数类型可以是普通类型</li>
+</ul>
+<pre><code class="language-cpp">template&lt;class T&gt;
+T add(T a, T b) {
+    return a + b;
+}
+</code></pre>
+<p>下面是一个函数模板的例子：</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+T max(T a, T b) {
+    return a &gt; b ? a : b;
+}
+</code></pre>
+<p>这个函数模板可以返回两个值中的较大值，其中模板参数<code>T</code>表示函数参数的类型。</p>
+<p>在函数调用时，需要指定函数模板的名称和模板参数。例如：</p>
+<pre><code class="language-cpp">int x = 10, y = 20;
+int result = max&lt;int&gt;(x, y);
+</code></pre>
+<p>在这个例子中，使用<code>max&lt;int&gt;</code>来调用函数模板，表示实例化出一个返回整数类型的函数。函数参数<code>x</code>和<code>y</code>的类型为<code>int</code>，因此编译器会自动推断出模板参数为<code>int</code>，并生成相应的函数代码。最终，函数返回两个值中的较大值20。</p>
+<p>需要注意的是，在模板参数推断的过程中，编译器会根据函数参数的类型来确定模板参数的类型。如果函数参数的类型不同，则需要显式指定模板参数的类型，以便编译器能够正确地实例化出函数代码。例如：</p>
+<pre><code class="language-cpp">double x = 3.14, y = 2.718;
+double result = max&lt;double&gt;(x, y);
+</code></pre>
+<p>在这个例子中，函数参数的类型为<code>double</code>，因此需要使用<code>max&lt;double&gt;</code>来调用函数模板，以便实例化出一个返回<code>double</code>类型的函数。</p>
+<h3 id="模板实例化"><a class="header" href="#模板实例化">模板实例化</a></h3>
+<p>函数模板定义后就可以用它生成各种具体的函数（称为模板函数）。在函数调用时，用函数模板生成模板函数实际上就是将模板参数表中的参数化类型根据实参实例化（具体化）称具体类型。这个过程称为模板的实例化。</p>
+<p><strong>显式实例化</strong></p>
+<p>函数名&lt;具体类型名1，具体类型名2，...，常量表达式&gt;（实参表）</p>
+<p>说明：</p>
+<pre><code class="language-cpp">template&lt;class T&gt;
+T add(T a, T b) {
+    return a + b;
+}
+</code></pre>
+<p>根据&lt;&gt;中给出的具体类型，用类似于函数调用实参与形参结合的方式，将模板参数表中的参数化类型一一实例化成具体的类型，函数中的参数化类型也一一实例化。例如函数调用的语句使用<code>add&lt;double&gt;(8,9)</code>可将前述的<code>T add(T x, T y)</code>实例化成：</p>
+<pre><code class="language-cpp">double add(double x,double y)
+{
+    return x+y;
+}
+</code></pre>
+<p>如果模板参数表中有普通类型的形参，还需要用常量表达式来初始化。例如有模板：</p>
+<pre><code class="language-cpp">template &lt;class T,int size&gt;
+T sum()
+{
+	int arr[size];
+	...
+}
+</code></pre>
+<p>函数调用时使用<code>sum&lt;int,100&gt;()</code>可将T sum()实例化成：</p>
+<pre><code class="language-cpp">int sum()
+{
+	int arr[100];
+	...
+}
+</code></pre>
+<p><strong>隐式实例化</strong></p>
+<p>隐式实例化格式为函数调用式，实例化过程是在实参与形参结合时，用实参的类型实例化形参对应的参数化类型。</p>
+<p>例如使用<code>add('A','B')</code>将<code>T add(T x, T y)</code>实例化成：<code>char add(char char)</code></p>
+<p>注意：</p>
+<p><strong>使用隐式实例化无法初始化模板参数表中的普通类型的形参，如果模板参数表中使用普通类型参数，必须使用显式初始化。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+template&lt;class T1,class T2&gt;
+T1 add(T1 x, T2 y)
+{
+    cout&lt;&lt;&quot;(&quot;&lt;&lt;sizeof(T1)&lt;&lt;&quot;,&quot;&lt;&lt;sizeof(T2)&lt;&lt;&quot;)\t&quot;;
+    return x+y;
+}
+
+int main() {
+
+    cout&lt;&lt;add(9,8)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9,8.0)&lt;&lt;endl;
+    cout&lt;&lt;add(9.0,8)&lt;&lt;endl;
+    cout&lt;&lt;add('A','A'-'0')&lt;&lt;endl;
+    cout&lt;&lt;add((long double)(8),9)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>(4,4)   17
+(8,8)   17
+(4,8)   17
+(8,4)   17
+(1,4)   R
+(16,4)  17
+</code></pre>
+<h2 id="课后练习-2"><a class="header" href="#课后练习-2">课后练习</a></h2>
+<h3 id="函数重载"><a class="header" href="#函数重载">函数重载</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int sum(int x,int y=6)
+{
+    return x+y;
+}
+
+double  sum(double  x,double y)
+{
+    return x+y;
+}
+
+
+int main() {
+
+    cout&lt;&lt;sum(5.3,6.3)&lt;&lt;' '&lt;&lt;sum(5.3);//11.6 11
+    return 0;
+}
+</code></pre>
+<h3 id="带有默认值的形参的函数"><a class="header" href="#带有默认值的形参的函数">带有默认值的形参的函数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int sub(int a=9,int b=4)
+{
+    return a-b;
+}
+
+int main() {
+
+    cout&lt;&lt;sub(20,16)+sub(20)+sub();//25
+    return 0;
+}
+</code></pre>
+<h3 id="函数声明问题"><a class="header" href="#函数声明问题">函数声明问题</a></h3>
+<p>下面4个函数声明中只有int sum(double)是可以与int sum(int a=1,int b=1,int c=3)同时声明的</p>
+<pre><code>double sum(int);
+char sum(int,int);
+int sum(double);
+int sum(int,int,int);
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int sum(int a=1,int b=1,int c=3);
+//抛去返回值类型不谈
+//sum()相当于全用默认值
+//sum(a)相当于sum(int)
+//sum(a,b)相当于sum(int,int)
+//sum(a,b,c)相当于sum(int,int,int)
+//只有int sum(double)是可以与int sum(int a=1,int b=1,int c=3)同时声明的
+
+int main() {
+
+    cout&lt;&lt;sum(2,2,4)&lt;&lt;endl;//8
+    return 0;
+}
+
+int sum(int x,int y,int z)
+{
+    return x+y+z;
+}
+
+</code></pre>
+<p>在C++语言中，如果两个同名函数可以同时声明，它们有两种可能的区别：</p>
+<ol>
+<li>函数重载（Function Overloading）：如果两个同名函数的参数数量或参数类型不同，那么它们可以被重载（Overload）。C++中支持函数重载，编译器会根据不同的参数列表自动选择正确的函数。例如，下面的两个函数就是通过参数类型和数量的不同来实现重载：</li>
+</ol>
+<pre><code class="language-c++">int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+</code></pre>
+<p>在这个例子中，当我们调用<code>add(2, 3)</code>时，编译器会自动选择第一个函数，返回5；当我们调用<code>add(2.5, 3.5)</code>时，编译器会自动选择第二个函数，返回6.0。</p>
+<ol start="2">
+<li>函数重复声明（Function Redefinition）：如果两个同名函数的参数数量和参数类型都相同，那么它们不能被重载，而是会造成函数重复声明的错误。例如，下面的代码就会造成函数重复声明的错误：</li>
+</ol>
+<pre><code class="language-c++">int add(int a, int b); // 声明一个函数 add
+
+double add(int a, int b); // 重复声明一个函数 add，参数类型和数量相同，会造成编译错误
+</code></pre>
+<p>在这个例子中，我们在第一行声明了一个函数<code>add</code>，而在第二行又重复声明了一个函数<code>add</code>，并且参数类型和数量都相同，这会导致编译器无法确定要使用哪个函数，因此会报错。</p>
+<p>总之，在C++中，同名函数可以通过函数重载实现不同的功能，但是如果它们的参数数量和类型都相同，就会造成函数重复声明的错误。</p>
+<h3 id="模板参数自动推导问题"><a class="header" href="#模板参数自动推导问题">模板参数自动推导问题</a></h3>
+<p><code>error: no matching function for call to 'sum(double&amp;, double&amp;)'</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+template&lt;class T1,class T2,class T3&gt;
+T1 sum(T2 a, T3 b)
+{
+    return a+b;
+}
+
+int main() {
+
+    double d1=1.2,d2=2.3;
+    //cout&lt;&lt;sum&lt;double,double,double&gt;(d1,d2)&lt;&lt;endl;
+    //cout&lt;&lt;sum&lt;double,double&gt;(d1,d2)&lt;&lt;endl;
+    //cout&lt;&lt;sum&lt;double&gt;(d1,d2)&lt;&lt;endl;
+    cout&lt;&lt;sum(d1,d2)&lt;&lt;endl;//报错`error: no matching function for call to 'sum(double&amp;, double&amp;)
+    return 0;
+}
+
+</code></pre>
+<h3 id="绑定匹配二义性"><a class="header" href="#绑定匹配二义性">绑定（匹配）二义性</a></h3>
+<p>若同时定义了如下函数，fun(8,3.1)调用的是下列哪个函数？</p>
+<p>存在A就选择A（精确类型匹配），否则选择D（向高类型转换）</p>
+<pre><code class="language-cpp">A:
+
+template&lt;class T1,class T2&gt;
+void fun(T1,T2)
+
+B:
+
+void fun(double ,int)
+
+C:
+
+void fun(char ,float)
+
+D:
+
+void fun(double,double)
+
+E:
+
+void fun(float ,int)
+
+</code></pre>
+<h3 id="函数模板调用问题"><a class="header" href="#函数模板调用问题">函数模板调用问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+template&lt;class T1,class T2,int s&gt;
+T1 calc(T1 x,T2 y)
+{
+    return x+y;
+}
+int main()
+{
+    //cout&lt;&lt;calc&lt;int,char&gt;(5,'a',10);
+    //报错error: no matching function for call to 'calc(int, char, int)'
+    cout&lt;&lt;calc&lt;int,char,10&gt;(5,'a');
+    //输出102
+    return 0;
+}
+</code></pre>
 
                     </main>
 
