@@ -167,6 +167,249 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="循环结构编程题"><a class="header" href="#循环结构编程题">循环结构编程题</a></h1>
+<ul>
+<li><a href="#31%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-%E7%AE%80%E5%8D%95">3.1循环结构-&gt;简单</a>
+<ul>
+<li><a href="#%E5%B9%B8%E8%BF%90%E6%95%B0%E5%AD%97%E7%9A%84%E5%9B%A0%E5%AD%90%E4%B8%AA%E6%95%B0">幸运数字的因子个数</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E6%95%B4%E6%95%B0">统计整数</a></li>
+<li><a href="#%E5%B9%B3%E6%96%B9%E5%92%8C%E4%B8%8E%E7%AB%8B%E6%96%B9%E5%92%8C">平方和与立方和</a></li>
+<li><a href="#%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C">数字之和</a></li>
+<li><a href="#%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC">求最大值</a></li>
+<li><a href="#%E6%8A%98%E7%BA%B8%E9%97%AE%E9%A2%98">折纸问题</a></li>
+</ul>
+</li>
+<li><a href="#32%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-%E4%B8%AD%E7%AD%89">3.2循环结构-&gt;中等</a></li>
+</ul>
+<h2 id="31循环结构-简单"><a class="header" href="#31循环结构-简单">3.1循环结构-&gt;简单</a></h2>
+<h3 id="幸运数字的因子个数"><a class="header" href="#幸运数字的因子个数">幸运数字的因子个数</a></h3>
+<p>问题描述 :</p>
+<p>小李非常喜欢数字4和7，看到一个数字他就想快速计算出因子里面含有几个4和7，但是智商捉急的他总是要算很久，喜欢编程的你能够帮助他吗？</p>
+<p>比如数字112，因为112=4<em>4</em>7，所以知道它的因子中包含2个4和1个7。</p>
+<p>再比如数字56，因为56=2<em>4</em>7，所以知道它的因子中包含1个4和1个7。</p>
+<p>而数字30不能被4或7整除，所以它的因子中包含0个4和0个7。</p>
+<p>输入说明 :</p>
+<p>每组数据包含一行，每行包含一个整数n（3&lt;=n&lt;=2^30），表示给定的数字。</p>
+<p>输出说明 :</p>
+<p>对于每组输入，输出用空格隔开的两个数字，分别表示给定数字的因子中4和7的个数。</p>
+<p>每组输出的首尾无多余空格，每组输出的前后也无多余空行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    const int MAX = 100;
+    int num[MAX];
+    int i = 0;
+
+    while(cin&gt;&gt;num[i])
+    {
+        i++;
+    }
+
+    for(int j = 0; j &lt; i; j++)
+    {
+        int num4=0;
+        int num7=0;
+        while(num[j]%4==0)
+        {
+            num4++;
+            num[j]/=4;
+        }
+        while(num[j]%7==0)
+        {
+            num7++;
+            num[j]/=7;
+        }
+        cout&lt;&lt;num4&lt;&lt;&quot; &quot;&lt;&lt;num7&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="统计整数"><a class="header" href="#统计整数">统计整数</a></h3>
+<p>问题描述 :</p>
+<p>从键盘输入任意20个整数，统计其中的负数个数，并求所有整数的平均值。</p>
+<p>输入说明 :</p>
+<p>20个整数</p>
+<p>输出说明 :</p>
+<p>负数个数和整数平均值（保留1位小数）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main() {
+
+    int sum=0;
+    int num=0;
+    int n=20;
+    int x;
+    while(n--)
+    {
+        cin&gt;&gt;x;
+        sum+=x;
+        if(x&lt;0) num++;
+    }
+
+    cout&lt;&lt;num&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;fixed&lt;&lt;setprecision(1)&lt;&lt;1.0*sum/20&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<h3 id="平方和与立方和"><a class="header" href="#平方和与立方和">平方和与立方和</a></h3>
+<p>问题描述 :</p>
+<p>给定一段连续的整数，求出他们中所有偶数的平方和以及所有奇数的立方和。</p>
+<p>输入说明 :</p>
+<p>首先输入一个数T，表示以下有T行，每行为一组测试实例，每组测试实例由两个整数m和n组成。</p>
+<p>输出说明 :</p>
+<p>对于每组输入数据，输出一行，应包括两个整数x和y（以一个空格分隔），分别表示该段连续的整数（从m到n或者从n到m之间的所有整数）中所有偶数的平方和以及所有奇数的立方和。</p>
+<p>你可以认为一个int型整数足以保存结果。</p>
+<p>输入范例 :</p>
+<pre><code>3
+1 5
+2 5
+6 2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>20 153
+20 152
+56 152
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int T;
+    cin&gt;&gt;T; // 定义最大数组长度
+    int a[T];
+    int b[T];
+
+    for(int i=0;i&lt;T;i++)
+    {
+        cin&gt;&gt;a[i]&gt;&gt;b[i];
+    }
+
+    for(int i = 0; i &lt; T; i+=1)
+    {
+        int odd_sum=0;
+        int even_sum=0;
+        if(a[i]&lt;b[i])
+        {
+            for(int j=a[i];j&lt;=b[i];j++)
+        {
+            if(j%2==0) even_sum+=j*j;
+            else odd_sum+=j*j*j;
+        }
+        cout&lt;&lt;even_sum&lt;&lt;&quot; &quot;&lt;&lt;odd_sum&lt;&lt;endl;
+        }else
+        {
+            for(int j=b[i];j&lt;=a[i];j++)
+        {
+            if(j%2==0) even_sum+=j*j;
+            else odd_sum+=j*j*j;
+        }
+        cout&lt;&lt;even_sum&lt;&lt;&quot; &quot;&lt;&lt;odd_sum&lt;&lt;endl;
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="数字之和"><a class="header" href="#数字之和">数字之和</a></h3>
+<p>问题描述 :</p>
+<p>输入一个正整数，求这个正整数的各位数字之和。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组测试数据为正整数，每行一个N，N小于20000。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出文件（通常为启动该程序的文本终端）依次输出一组对应的答案：输出为它的各位数字之和，所有数据前后没有多余的空行，两组数据之间也没有多余的空行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    const int MAX=100;
+    int num[MAX];
+    int i = 0;
+
+    while(cin&gt;&gt;num[i])
+    {
+        i++;
+    }
+
+    for(int j = 0; j &lt; i; j++)
+    {
+        cout&lt;&lt;num[j]/10000+(num[j]%10000)/1000+(num[j]%1000/100)+num[j]%100/10+num[j]%10&lt;&lt;endl;
+    }
+
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="求最大值"><a class="header" href="#求最大值">求最大值</a></h3>
+<p>问题描述 :</p>
+<p>输入一个正整数n，再输入n个整数，输出n个数中的最大数。</p>
+<p>输入说明 :</p>
+<p>第一行n</p>
+<p>第二行n个数</p>
+<p>输出说明 :</p>
+<p>最大的数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int T;
+    cin&gt;&gt;T; // 定义最大数组长度
+    int num[T];
+    int i = 0;
+    int max_value=0;
+
+    while(T--)
+    {
+        cin&gt;&gt;num[i];
+        i++;
+    }
+
+    for(int j = 0; j &lt; i; j++)
+    {
+       if(num[j]&gt;max_value) max_value=num[j];
+    }
+    cout&lt;&lt;max_value&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="折纸问题"><a class="header" href="#折纸问题">折纸问题</a></h3>
+<p>问题描述 :</p>
+<p>已知有一张纸，其厚度为1厘米。现在给你一座山的高度N（单位：米）。问将纸对折多少次后，其厚度将超过这座山的高度？</p>
+<p>输入说明 :</p>
+<p>输入一个正整数N，N小于等于珠穆朗玛峰的高度8848。</p>
+<p>输出说明 :</p>
+<p>输出对折的次数，在行首和行尾没有多余的空格。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int num=0;
+    int N;
+    cin&gt;&gt;N;
+    double n = 0.01;
+
+    while(n&lt;N)
+    {
+        n*=2;
+        num++;
+    }
+    cout&lt;&lt;num&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<h2 id="32循环结构-中等"><a class="header" href="#32循环结构-中等">3.2循环结构-&gt;中等</a></h2>
 
                     </main>
 
