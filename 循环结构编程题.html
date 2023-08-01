@@ -178,7 +178,19 @@
 <li><a href="#%E6%8A%98%E7%BA%B8%E9%97%AE%E9%A2%98">折纸问题</a></li>
 </ul>
 </li>
-<li><a href="#32%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-%E4%B8%AD%E7%AD%89">3.2循环结构-&gt;中等</a></li>
+<li><a href="#32%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-%E4%B8%AD%E7%AD%89">3.2循环结构-&gt;中等</a>
+<ul>
+<li><a href="#%E9%98%BF%E5%B0%94%E6%B3%95%E4%B9%98%E7%A7%AF">阿尔法乘积</a></li>
+<li><a href="#%E6%80%AA%E6%95%B0%E5%AE%8C%E7%BE%8E%E6%95%B0">怪数（完美数）</a></li>
+<li><a href="#%E6%B1%82%E9%98%B6%E4%B9%98%E7%BB%93%E6%9E%9C0%E7%9A%84%E4%B8%AA%E6%95%B0">求阶乘结果0的个数</a></li>
+<li><a href="#%E6%B1%82%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E4%BD%8D%E6%95%B0">求二进制表示位数</a></li>
+<li><a href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%88%86%E6%95%B0%E5%BA%8F%E5%88%97%E5%92%8C">斐波那契分数序列和</a></li>
+<li><a href="#%E7%B9%81%E5%BF%99%E7%9A%84%E9%80%9A%E8%AE%AF%E5%85%B5">繁忙的通讯兵</a></li>
+<li><a href="#%E7%B4%A0%E6%95%B0%E5%92%8C%E6%B1%82%E5%8A%A9gpt">素数和（求助GPT）</a></li>
+<li><a href="#%E6%B1%82%E7%AC%AC%E5%87%A0%E5%A4%A9">求第几天</a></li>
+<li><a href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E6%B1%82%E5%8A%A9gpt">三角形（求助GPT)</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="31循环结构-简单"><a class="header" href="#31循环结构-简单">3.1循环结构-&gt;简单</a></h2>
 <h3 id="幸运数字的因子个数"><a class="header" href="#幸运数字的因子个数">幸运数字的因子个数</a></h3>
@@ -410,6 +422,513 @@ int main() {
 }
 </code></pre>
 <h2 id="32循环结构-中等"><a class="header" href="#32循环结构-中等">3.2循环结构-&gt;中等</a></h2>
+<h3 id="阿尔法乘积"><a class="header" href="#阿尔法乘积">阿尔法乘积</a></h3>
+<p>问题描述 :</p>
+<p>计算一个整数的阿尔法乘积。对于一个整数x来说，它的阿尔法乘积是这样来计算的：如果x是一个个位数，那么它的阿尔法乘积就是它本身；否则的话，x的阿尔法乘积就等于它的各位非0的数字相乘所得到的那个整数的阿尔法乘积。例如：4018224312的阿尔法乘积等于8，它是按照以下的步骤来计算的：  4018224312 → <code>4*1*8*2*2*4*3*1*2</code> → 3072 → <code>3*7*2</code> → 42 → <code>4*2</code> → 8</p>
+<p>编写一个程序，输入一个正整数（该整数不会超过6,000,000,000），输出它的阿尔法乘积。</p>
+<p>输入说明 :</p>
+<p>输入只有一行，即一个正整数。</p>
+<p>输出说明 :</p>
+<p>输出相应的阿尔法乘积。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    long long int n;
+
+    cin&gt;&gt;n;
+
+    while(n&gt;=10)
+    {
+        int sum=1;
+        do{
+            if(n%10!=0)
+        {
+            sum*=n%10;
+        }
+            n/=10;
+        }while(n&gt;0);
+        n=sum;
+    }
+    cout&lt;&lt;n&lt;&lt;endl;
+
+    return 0;
+
+}
+</code></pre>
+<h3 id="怪数完美数"><a class="header" href="#怪数完美数">怪数（完美数）</a></h3>
+<p>问题描述 :</p>
+<p>寻找怪数：有一种奇怪的自然数，它的比其本身小的所有因子之和等于它本身，例如：6＝1＋2＋3，其中1、2、3都是6的因子，编程找出整数N之内的所有怪数。</p>
+<p>输入说明 :</p>
+<p>输入一个整数N(10&lt;=N≤10000)，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>输出N之内(&lt;=N)的所有怪数，每一行输出一个整数。（注：若N中有3个怪数，你则需要输出三行，每行一个怪数。）所有数据前后没有多余的空格，中间也没有多余的空行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+const int MAX=20;
+
+int main()
+{
+    int num[MAX]={0};
+    int n=0;
+    int number;
+    cin&gt;&gt;number;
+    for(int i=4;i&lt;=number;i+=2)
+    {
+        int sum=0;
+        for(int j=1,t=0;j&lt;i&amp;&amp;t&lt;200;j++)
+        {
+            if(i%j==0)
+            {
+            t++;
+            sum+=j;
+            }
+        }
+        if(sum==i)
+        {
+            num[n]=i;
+            n++;
+        }
+    }
+
+    for(int t=0;t&lt;n;t++)
+    {
+        if(num[t]!=0)
+        {
+            cout&lt;&lt;num[t]&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="求阶乘结果0的个数"><a class="header" href="#求阶乘结果0的个数">求阶乘结果0的个数</a></h3>
+<p>问题描述 :</p>
+<p>编写一个程序，求出N！的末尾含有多少个0。 提示：在乘积中，末尾有多少个0，主要看各乘数的素数因子中有多少个2和5，每一个2和5的结合将给末尾贡献一个0。而乘数中因子2的个数远多于因子5的个数，因此，就计算各乘数中因子5的个数即可。</p>
+<p>输入说明 :</p>
+<p>输入一个正整数N，1&lt;=N&lt;=100000，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>输出一个整数，在行首和行尾不要输出多余的空格。</p>
+<p>输入范例 :<code>99999</code></p>
+<p>输出范例 :<code>24994</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+    int N;
+    cin&gt;&gt;N;
+    int num=0;
+    while(N)
+    {
+        int n=N;
+        while(n%5==0)
+        {
+            num++;
+            n/=5;
+        }
+        N-=1;
+    }
+    cout&lt;&lt;num&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="求二进制表示位数"><a class="header" href="#求二进制表示位数">求二进制表示位数</a></h3>
+<p>问题描述 :</p>
+<p>给定一个十进制整数，返回其对应的二进制数的位数。例如，输入十进制数9，其对应的二进制数是1001，因此位数是4。</p>
+<p>输入说明 :</p>
+<p>输入一个整数，大小在int表示范围内。</p>
+<p>输出说明 :</p>
+<p>一个整数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int main()
+{
+    int N;
+    cin&gt;&gt;N;
+    int num=0;
+    while(N)
+    {
+        num++;
+        N/=2;
+    }
+    cout&lt;&lt;num&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="斐波那契分数序列和"><a class="header" href="#斐波那契分数序列和">斐波那契分数序列和</a></h3>
+<p>问题描述 :</p>
+<p>有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前n（n&lt;36）项之和，n由键盘输入。</p>
+<p>输入说明 :</p>
+<p>可输入多组数据，每组占一行，每行包括一个数字n</p>
+<p>输出说明 :</p>
+<p>对于每一组输入的n，计算数列的前n项之和，输出该结果，保留6位小数。</p>
+<p>每组输出占一行，行首与行尾无多余空格。</p>
+<p>输入范例 :</p>
+<pre><code>20
+3
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>32.660261
+5.166667
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int N;
+
+    while(cin&gt;&gt;N)
+    {
+        double sum=0;
+        double num;
+        double array[N+2];
+
+        if(N==1)
+        {
+            sum=2.0;
+            cout&lt;&lt;fixed&lt;&lt;sum&lt;&lt;endl;
+            break;
+        }
+        if(N==2)
+        {
+            sum=3.5;
+            cout&lt;&lt;fixed&lt;&lt;sum&lt;&lt;endl;
+            break;
+        }
+        if(N&gt;2)
+        {
+            array[0]=1;
+            array[1]=2;
+            array[2]=3;
+            sum=2/1*1.0;
+            for(int i=3;i&lt;=N;i++)
+        {
+            array[i]=array[i-1]+array[i-2];
+        }
+        for(int i=2;i&lt;=N;i++){
+            sum+=(1.0*array[i])/array[i-1];
+        }
+
+        }
+        cout&lt;&lt;fixed&lt;&lt;sum&lt;&lt;endl;
+
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="繁忙的通讯兵"><a class="header" href="#繁忙的通讯兵">繁忙的通讯兵</a></h3>
+<p>问题描述 :</p>
+<p>A、B两地相距200公里。在一次军事行动中，A、B两支军队同时出发，面对面直线运动。A军每小时行军8公里，B军每小时行军5公里。有一个通讯兵要为这两军传递信息，他与A军同时、同方向出发，行驶速度为每小时45公里。当他碰到B军时，算是完成了一次通讯；此时他立即调头驶向A军；碰到A军后，也算完成了一次通讯；此时他又立即调头驶向B军。如此来来回回，每当完成了一次通讯时，他会看一下A、B两军之间的距离，如果该距离小于距离N，他就停止行动。问该通讯兵从出发，到停止行动，共完成了几次通讯？</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，输入为最后A，B两地的最小距离数N，单位为公里，N为实数，0＜N＜=200，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的文本终端）依次输出从标准输入设备中读入的每一组测试数据对应的结果，所有数据前后没有多余的空行，两组数据之间也没有多余的空行。每组输出数据由一行组成，每行由一个数组成，在行首和行尾没有多余的空格。</p>
+<p>输入范例 :</p>
+<pre><code>0.1
+199
+</code></pre>
+<p>输出范例：</p>
+<pre><code>27
+1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    double N,distance;
+    int num=0;
+    double va=8,vb=5,vc=45;
+    while(cin&gt;&gt;N)
+    {
+        bool flag=false;//朝向B
+        distance=200;
+        while(distance&gt;=N)
+        {
+            flag=!flag;
+            if(flag==false)
+            {
+                num++;
+                double time=distance/(vb+vc);
+                distance-=(va+vb)*time;
+                if(distance&lt;N) break;
+            }
+            else
+            {
+                num++;
+                double time=distance/(va+vc);
+                distance-=(va+vb)*time;
+                if(distance&lt;N) break;
+            }
+        }
+        cout&lt;&lt;num&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="素数和求助gpt"><a class="header" href="#素数和求助gpt">素数和（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>求1~n之间所有素数的和</p>
+<p>输入说明 :</p>
+<p>第一行，输入N</p>
+<p>以下N行，每行一个数字n(N&lt;100,n&lt;1000)</p>
+<p>输出说明 :</p>
+<p>N行，每行为1~n(包括n)之间素数的和</p>
+<p>输入范例 :</p>
+<pre><code>3
+3
+10
+11
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>5
+17
+28
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool isPrime(int num) {
+    if (num &lt;= 1)
+        return false;
+    if (num == 2)
+        return true;
+    if (num % 2 == 0)
+        return false;
+
+    int sqrtNum = sqrt(num);
+    for (int i = 3; i &lt;= sqrtNum; i += 2) {
+        if (num % i == 0)
+            return false;
+    }
+
+    return true;
+}
+
+int main() {
+    int N;
+    cin &gt;&gt; N;
+
+    for (int i = 0; i &lt; N; i++) {
+        int n;
+        cin &gt;&gt; n;
+
+        int sum = 0;
+        for (int j = 2; j &lt;= n; j++) {
+            if (isPrime(j))
+                sum += j;
+        }
+
+        cout &lt;&lt; sum &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="求第几天"><a class="header" href="#求第几天">求第几天</a></h3>
+<p>问题描述 :</p>
+<p>按年、月、日的顺序读入一个日期，输出该日期是这一年中的第几天。</p>
+<p>输入说明 :</p>
+<p>输入数据为三个正整数y 、m、d，分别表示年、月、日，整数之间以空格分隔，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>输出一个整数，表示输入的日期是这一年中的第几天，在行首和行尾没有多余的空格。</p>
+<p>输入范例 :<code>2000 12 31</code></p>
+<p>输出范例 :<code>366</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int year,month,day;
+    cin&gt;&gt;year&gt;&gt;month&gt;&gt;day;
+    int days[2][12]={{31,29,31,30,31,30,31,31,30,31,30,31},{31,28,31,30,31,30,31,31,30,31,30,31}};
+
+    if((year%400==0)||(year%4==0&amp;&amp;year%100!=0))
+    {
+        if(month==1) cout&lt;&lt;day&lt;&lt;endl;
+        else
+        {
+            int sum=0;
+            for(int i=0;i&lt;month-1;i++)
+                sum+=days[0][i];
+            cout&lt;&lt;sum+day&lt;&lt;endl;
+
+        }
+    }
+    else
+    {
+        if(month==1) cout&lt;&lt;day&lt;&lt;endl;
+        else
+        {
+            int sum=0;
+            for(int i=0;i&lt;month-1;i++)
+                sum+=days[1][i];
+            cout&lt;&lt;sum+day&lt;&lt;endl;
+
+        }
+    }
+}
+</code></pre>
+<h3 id="三角形求助gpt"><a class="header" href="#三角形求助gpt">三角形（求助GPT)</a></h3>
+<p>问题描述 :</p>
+<p>“明明，你会用1到9这九个数字组成一个三角形吗？”明明的爸爸问明明。明明被问的很莫名其妙，不明白他爸爸在说什么，于是就问道：“用1到9组成三角形？？？”“是的，我的要求很简单，给你2个数，一个数作为这个三角形的开始，另一个数决定这个三角形的大小。例如我给你5和6这两个数，你就要组成如下的一个三角形：</p>
+<p>5<br />
+6 7<br />
+8 9 1<br />
+2 3 4 5<br />
+6 7 8 9 1<br />
+2 3 4 5 6 7</p>
+<p>明白了吗？”<br />
+明明观察了许久，终于看出了门道来，说道：“就是说给我2个数，例如5和6，那我就要从5这个数开始构建一个三角形。第一行为一个数字，第二行为2个数字，以此类推，直到第六行的六个数字，且三角形中的数字都是1到9在循环重复，是这样吗？”“明明真聪明，就是这样。”明明爸爸高兴的说道。于是明明的爸爸给了明明很多组这样的数字，明明也构建出了很多个不同的三角形。</p>
+<p>你能像明明那样，写一个程序来构建上面的三角形吗？</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据仅有一行，每行有两个整数s和n（1≤s≤9，1≤n≤80），其中s表示位于三角形的最顶端的数字，n表示三角形由几行数字组成。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将每组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为构建出来的三角形，三角形中的同一行的数字两两之间用一个空格隔开。每组运算结果与其后一组运算结果之间有一个空行，最后一组运算结果后面没有空行。</p>
+<p>注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>1 5
+5 6
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1
+2 3
+4 5 6
+7 8 9 1
+2 3 4 5 6
+
+5
+6 7
+8 9 1
+2 3 4 5
+6 7 8 9 1
+2 3 4 5 6 7
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int s,n;
+    while(cin&gt;&gt;s&gt;&gt;n)
+    {
+    int array[6400];
+    for(int i=0;i&lt;6400;i++)
+    {
+        switch((i+1)%9)
+        {
+        case 1:
+            array[i]=1;
+            break;
+        case 2:
+            array[i]=2;
+            break;
+        case 3:
+            array[i]=3;
+            break;
+        case 4:
+            array[i]=4;
+            break;
+        case 5:
+            array[i]=5;
+            break;
+        case 6:
+            array[i]=6;
+            break;
+        case 7:
+            array[i]=7;
+            break;
+        case 8:
+            array[i]=8;
+            break;
+        default:
+            array[i]=9;
+            break;
+        }
+    }
+    cout&lt;&lt;array[s-1]&lt;&lt;endl;
+    for(int j=2;j&lt;=n;j++)
+    {
+        for(int i=1;i&lt;=j;i++)
+        {
+            if(i==1)
+            {
+            s+=1;
+            cout&lt;&lt;array[s-1];
+            }
+            else
+            {
+                s+=1;
+                cout&lt;&lt;&quot; &quot;&lt;&lt;array[s-1];
+            }
+        }
+        cout&lt;&lt;&quot;\n&quot;;
+    }
+    }
+}
+</code></pre>
+<p>根据题目要求，可以编写一个C++程序来构建三角形。下面是满足要求的程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void buildTriangle(int s, int n) {
+    int current = s;
+    cout&lt;&lt;s&lt;&lt;endl;
+
+    for (int i = 2; i &lt;= n; i++) {
+        for (int j = 1; j &lt;= i; j++) {
+                if(j==1)
+                {
+                    current = (current % 9) + 1;
+                    cout &lt;&lt; current;
+                }
+                else
+                {
+                    current = (current % 9) + 1;
+                    cout &lt;&lt;&quot; &quot;&lt;&lt; current;
+                }
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int s, n;
+    while (cin &gt;&gt; s &gt;&gt; n) {
+        buildTriangle(s, n);
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>该程序定义了一个<code>buildTriangle</code>函数，用于构建三角形。该函数接收两个参数，<code>s</code>表示三角形的顶部数字，<code>n</code>表示三角形的行数。在函数内部，使用两个嵌套循环来构建三角形。外层循环控制行数，内层循环控制每行的数字个数。在内层循环中，输出当前数字并更新为下一个数字（循环重复1到9的数字）。最后，每行结束后输出换行符。</p>
+<p>在<code>main</code>函数中，程序使用一个<code>while</code>循环来不断读取输入的测试数据。每次读取一组数据后，调用<code>buildTriangle</code>函数来构建三角形，并在每组结果之间输出一个空行。</p>
+<p>根据输入范例数据，程序将输出：</p>
+<pre><code>1
+2 3
+4 5 6
+7 8 9 1
+2 3 4 5 6
+
+5
+6 7
+8 9 1
+2 3 4 5
+6 7 8 9 1
+2 3 4 5 6 7
+</code></pre>
+<p>这些输出是根据题目给定的输入数据构建的三角形。</p>
 
                     </main>
 
