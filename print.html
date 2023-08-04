@@ -8382,6 +8382,497 @@ int main()
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="函数编程题"><a class="header" href="#函数编程题">函数编程题</a></h1>
+<ul>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#61%E5%87%BD%E6%95%B0-%E7%AE%80%E5%8D%95">6.1函数-&gt;简单</a>
+<ul>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%8F%8A%E6%A0%BC%E4%BA%BA%E6%95%B0">统计不及格人数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E8%B0%83%E6%8D%A2%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F">调换数组最大最小</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%8E%92%E5%88%97%E6%95%B0">排列数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#ascii%E7%A0%81%E6%8E%92%E5%BA%8F">ASCII码排序</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E7%BB%9F%E8%AE%A1%E9%AB%98%E4%BA%8E%E5%B9%B3%E5%9D%87%E5%88%86%E4%BA%BA%E6%95%B0%E8%B0%83%E6%95%99gpt">统计高于平均分人数（调教GPT）</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0">判断质数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">求最大公约数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%8D%95%E8%AF%8D%E7%BB%9F%E8%AE%A1">单词统计</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="61函数-简单"><a class="header" href="#61函数-简单">6.1函数-&gt;简单</a></h2>
+<h3 id="统计不及格人数"><a class="header" href="#统计不及格人数">统计不及格人数</a></h3>
+<p>问题描述 :</p>
+<p>输入某班学生某门课的成绩（最多不超过40人），用函数编程统计不及格人数并输出。</p>
+<p>输入说明 :</p>
+<p>分两行输入，第一行为一个非负整数n，表示该班学生人数。第二行为n个成绩（可为实数），分数之间以一个空格分隔。如果n等于0，则无第二行。</p>
+<p>输出说明 :</p>
+<p>输出一个整数，表示该班不及格人数。行首与行尾无多余空格。</p>
+<p>输入范例 :</p>
+<pre><code>2
+59 60
+</code></pre>
+<p>输出范例 :<code>1</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int tongji(float mark[],int n)
+{
+    int count=0;
+    for(int i=0;i&lt;n;i++)
+        if(mark[i]&lt;60) count++;
+    return count;
+}
+
+int main()
+{
+    float mark[40];
+    int m,n,count;
+    cin&gt;&gt;n;
+    for(m=0;m&lt;n;m++)
+    {
+        cin&gt;&gt;mark[m];
+    }
+    count=tongji(mark,n);
+    cout&lt;&lt;count&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="调换数组最大最小"><a class="header" href="#调换数组最大最小">调换数组最大最小</a></h3>
+<p>问题描述 :</p>
+<p>输入若干整数，用函数编程将其中最大数与最小数的位置交换，然后输出交换位置后的数组内容。</p>
+<p>输入说明 :</p>
+<p>分两行输入，第一行为一个非负整数n，表示将要输入的整数个数。第二行为n个整数，整数之间以一个空格分隔。2&lt;=n&lt;=40。</p>
+<p>输出说明 :</p>
+<p>输出n个整数，表示交换位置后的数组内容，整数之间以一个空格分隔。行首与行尾无多余空格。</p>
+<p>输入范例 :</p>
+<pre><code>3
+40 45 50
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>50 45 40
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int FindMax(int score[],int n)
+{
+    int max=0;
+    int idx=0;
+    for(int i=0;i&lt;n;i++)
+        if(score[i]&gt;max)
+        {
+            max=score[i];
+            idx=i;
+        }
+
+    return idx;
+
+}
+int FindMin(int score[],int n)
+{
+    int min=1000;
+    int idx=0;
+    for(int i=0;i&lt;n;i++)
+        if(score[i]&lt;min)
+        {
+            min=score[i];
+            idx=i;
+        }
+
+    return idx;
+
+}
+void ReadScore(int score[],int n)
+{
+    for(int i=0;i&lt;n;i++)
+        cin&gt;&gt;score[i];
+
+}
+int main()
+{
+int i,j,a,b,n;
+
+int score[50];
+
+cin&gt;&gt;n;
+
+ReadScore(score, n);
+
+a=FindMax(score,n);
+
+b=FindMin(score,n);
+
+i=score[a];
+
+score[a]=score[b];
+
+score[b]=i;
+
+cout&lt;&lt;score[0];
+
+for (j=1;j&lt;n;j++)
+    cout&lt;&lt;&quot; &quot;&lt;&lt;score[j];
+
+return 0;
+
+}
+
+</code></pre>
+<h3 id="排列数"><a class="header" href="#排列数">排列数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int fact(int n)
+{
+    if(n==1) return 1;
+    else return n*fact(n-1);
+}
+int main()
+{
+    int m,n;
+    cin&gt;&gt;m&gt;&gt;n;
+    cout&lt;&lt;fact(m)/fact(m-n)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="ascii码排序"><a class="header" href="#ascii码排序">ASCII码排序</a></h3>
+<p>问题描述 :</p>
+<p>输入三个字符后，按各字符的ASCII码从小到大的顺序输出这三个字符。</p>
+<p>输入说明 :</p>
+<p>输入数据有T组，每组占一行，有三个字符组成，之间无空格。</p>
+<p>输出说明 :</p>
+<p>对于每组输入数据，输出一行，字符中间用一个空格分开。</p>
+<p>输入范例 :</p>
+<pre><code>5
+onv
+bni
+thb
+xsz
+etv
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>n o v
+b i n
+b h t
+s x z
+e t v
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+void cpm(char a,char b,char c)
+{
+    char max=a&gt;(b&gt;c?b:c)?a:(b&gt;c?b:c);
+    char min=a&lt;(b&lt;c?b:c)?a:(b&lt;c?b:c);
+    char medium=a+b+c-min-max;
+    cout&lt;&lt;min&lt;&lt;&quot; &quot;&lt;&lt;medium&lt;&lt;&quot; &quot;&lt;&lt;max&lt;&lt;endl;
+}
+int main()
+{
+    int n;
+    char a,b,c;
+    cin&gt;&gt;n;
+    while(n--)
+    {
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+        cpm(a,b,c);
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="统计高于平均分人数调教gpt"><a class="header" href="#统计高于平均分人数调教gpt">统计高于平均分人数（调教GPT）</a></h3>
+<p>问题描述 :</p>
+<p>输入某班学生某门课的成绩（最多不超过40人），当输入为负值时，表示结束输入，用函数编程统计成绩高于平均分的学生人数并输出。</p>
+<p>输入说明 :</p>
+<p>输入若干非负实数，表示学生成绩，成绩之间以一个空格分隔。分数的最后输入一个负数，表示输入结束（该负数不是分数）。分数最多40个。</p>
+<p>输出说明 :</p>
+<p>输出一个整数，表示高于平均分的人数。行首与行尾无多余空格。</p>
+<p>输入范例 :</p>
+<pre><code>60 70.5 71.5 -1
+</code></pre>
+<p>输出范例 :<code>2</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int ReadScore(float score[])
+{
+    int i=0;
+    while(1)
+    {
+
+        cin&gt;&gt;score[i];
+        if(score[i]&lt;0) break;
+        i++;
+    }
+    return i;
+
+}
+float Average(float score[],int n)
+{
+    double sum=0;
+    for(int i=0;i&lt;n;i++)
+        sum+=score[i];
+    return sum/n;
+}
+int AboveAverage(float score[],int n,double aver)
+{
+    int num=0;
+    for(int i=0;i&lt;n;i++)
+        if(score[i]&gt;aver) num++;
+    return num;
+}
+
+int main ()
+
+{
+
+float score[40];
+
+int n,i,count;
+
+float aver;
+
+n=ReadScore(score);
+
+aver=Average(score,n);
+
+count = AboveAverage(score, n, aver);
+
+cout&lt;&lt;count;
+
+return 0;
+
+}
+</code></pre>
+<p>根据题目描述，我们需要编写一个函数来统计高于平均分的学生人数。下面是一个符合题目要求的C++程序示例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int countAboveAverage(const vector&lt;double&gt;&amp; scores) {
+    double sum = 0;
+    int count = 0;
+
+    // 计算成绩总和
+    for (double score : scores) {
+        if (score &lt; 0) {
+            break; // 输入结束
+        }
+        sum += score;
+        count++;
+    }
+
+    // 计算平均分
+    double average = sum / count;
+
+    // 统计高于平均分的人数
+    int aboveAverageCount = 0;
+    for (double score : scores) {
+        if (score &lt; 0) {
+            break; // 输入结束
+        }
+        if (score &gt; average) {
+            aboveAverageCount++;
+        }
+    }
+
+    return aboveAverageCount;
+}
+
+int main() {
+    vector&lt;double&gt; scores;
+    double score;
+
+    // 读取学生成绩
+    while (cin &gt;&gt; score) {
+        scores.push_back(score);
+        if (score &lt; 0) {
+            break; // 输入结束
+        }
+    }
+
+    int aboveAverageCount = countAboveAverage(scores);
+
+    cout &lt;&lt; aboveAverageCount &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>这个程序首先定义了一个名为<code>countAboveAverage</code>的函数，用于统计高于平均分的学生人数。该函数接受一个<code>vector&lt;double&gt;</code>类型的参数<code>scores</code>，表示学生成绩。</p>
+<p>在<code>countAboveAverage</code>函数中，我们首先遍历<code>scores</code>，计算成绩总和和学生人数，然后计算平均分。</p>
+<p>接下来，我们再次遍历<code>scores</code>，统计高于平均分的人数，并将结果保存在<code>aboveAverageCount</code>变量中。</p>
+<p>在<code>main</code>函数中，我们定义了一个<code>vector&lt;double&gt;</code>类型的变量<code>scores</code>用于存储学生成绩。然后使用一个循环读取输入的成绩，将其添加到<code>scores</code>中，直到输入负数为止。</p>
+<p>最后，我们调用<code>countAboveAverage</code>函数，并将结果输出到标准输出流中。</p>
+<p>注意：上述程序假设输入的成绩最多为40个，如有超过40个成绩的需求，可以对程序进行相应修改。</p>
+<p><code>for (double score : scores)</code>这段代码使用了C++11引入的范围基于范围的for循环语法，也称为foreach循环。它的作用是遍历一个容器（例如<code>vector</code>）中的元素。</p>
+<p>在这个循环中，<code>scores</code>是一个容器（在这里是<code>vector&lt;double&gt;</code>类型），而<code>score</code>是一个迭代变量。循环的每次迭代，<code>score</code>会被赋值为<code>scores</code>中的一个元素，并执行循环体内的代码。</p>
+<p>换句话说，<code>for (double score : scores)</code>的意思是：对于<code>scores</code>中的每个元素，将其赋值给<code>score</code>，然后执行循环体内的代码。</p>
+<p>在上述程序中，这个循环用于遍历学生成绩（<code>scores</code>容器）的每个元素，依次将每个成绩赋值给<code>score</code>变量，然后进行相应的处理。</p>
+<h3 id="判断质数"><a class="header" href="#判断质数">判断质数</a></h3>
+<p>问题描述 :</p>
+<p>编写一个程序，判断给出的正整数是否是质数。</p>
+<p>请定义函数进行判断。</p>
+<p>输入说明 :</p>
+<p>你的数据需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，每行由一个正整数N组成，N小于等于10000。在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出文件（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出一组对应的答案。所有数据前后不要输出多余的空行，两组数据之间也不要输出多余的空行。每组输出数据由一行组成，如果这一行输出1，则说明输入数据是质数，如果这一行输出0，则说明输入数据不是质数。在行首和行尾不要输出多余的空格。</p>
+<p>输入范例 :<code>2 11</code></p>
+<p>输出范例 :<code>1 1</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int IsPrime(int n)
+{
+    if(n&lt;=1) return 0;
+    if(n==2) return 1;
+    if(n%2==0) return 0;
+    for(int i=3;i&lt;=sqrt(n);i+=2)
+        {
+            if(n%i==0)
+                return 0;
+        }
+
+        return 1;
+
+}
+
+int main ()
+
+{
+    int n;
+    while(cin&gt;&gt;n)
+        cout&lt;&lt;IsPrime(n)&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<h3 id="求最大公约数"><a class="header" href="#求最大公约数">求最大公约数</a></h3>
+<p>问题描述 :</p>
+<p>编写一个程序，求两个正整数M，N的最大公约数。</p>
+<p>输入说明 :</p>
+<p>你的数据需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，每行输入两个正整数M和N，并且在M和N之间用一个空格间隔， M和N都不大于10,000。在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出文件（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出一组对应的答案。所有数据前后不要输出多余的空行，两组数据之间也不要输出多余的空行。每组输出数据由一行组成，每行由一个数组成，在行首和行尾不要输出多余的空格。</p>
+<p>输入范例 :</p>
+<pre><code>6 3
+4 2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>3
+2
+</code></pre>
+<p>辗转相除法实现</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int gcd(int a,int b)
+{
+    if(b==0) return a;
+    return gcd(b,a%b);
+}
+
+int main ()
+
+{
+    int m,n;
+    while(cin&gt;&gt;m&gt;&gt;n)
+        cout&lt;&lt;gcd(m,n)&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<p>更相减损术实现</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int gcd(int a,int b)
+{
+    while(true)
+    {
+        if(a&gt;b) a-=b;
+        else if(a&lt;b) b-=a;
+        else return a;
+    }
+}
+
+int main ()
+
+{
+    int m,n;
+    while(cin&gt;&gt;m&gt;&gt;n)
+        cout&lt;&lt;gcd(m,n)&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<h3 id="单词统计"><a class="header" href="#单词统计">单词统计</a></h3>
+<p>问题描述 :</p>
+<p>输入一行字符，用函数编程统计其中有多少单词。</p>
+<p>说明：以空格分隔开的任何字符串都认为是单词。比如“I'm”认为是一个单词</p>
+<p>统计单词个数的函数原型为：<code>int CountWords(char str[]);</code></p>
+<p>输入说明 :</p>
+<p>输入一行字符，最多能从键盘输入20个字符，单词之间以空格分开。</p>
+<p>输出说明 :</p>
+<p>输出一个单词个数（一个整数）。</p>
+<p>输入范例 :</p>
+<pre><code>How are you
+</code></pre>
+<p>输出范例 :<code>3</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int CountWords(char str[])
+{
+    char prev=' ';
+    int num=0;
+    for(int i=0;str[i]!='\0';i++)
+    {
+        if(prev==' '&amp;&amp;str[i]!=' ') num++;
+        prev=str[i];
+    }
+    return num;
+}
+int main ()
+
+{
+    char str[30];
+    cin.getline(str,25);
+    cout&lt;&lt;CountWords(str)&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int CountWords(char s[])
+{
+    char prev=' ';
+    int num=0;
+    while(*s!='\0')
+    {
+        if(prev==' '&amp;&amp;*s!=' ')
+            ++num;
+        prev=*s++;
+    }
+    return num;
+}
+int main ()
+
+{
+    char str[30];
+    cin.getline(str,25);
+    cout&lt;&lt;CountWords(str)&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
 
                     </main>
 
