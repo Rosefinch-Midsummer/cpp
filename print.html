@@ -2233,6 +2233,157 @@ int main()
 <li>结果太单调</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="分支结构程序设计"><a class="header" href="#分支结构程序设计">分支结构程序设计</a></h1>
+<ul>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95">程序测试</a>
+<ul>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E5%85%B3%E7%B3%BB%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B5%8B%E8%AF%95">关系表达式测试</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E9%80%BB%E8%BE%91%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B5%8B%E8%AF%95">逻辑表达式测试</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#switch%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%B5%8B%E8%AF%95">switch语句的测试</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B">测试实例</a></li>
+</ul>
+</li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F">调试程序</a>
+<ul>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86">基本知识</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E8%B7%9F%E8%B8%AA%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B">跟踪程序执行流程</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF">使用调试定位错误</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E8%B0%83%E8%AF%95%E5%AE%9E%E8%B7%B5">调试实践</a></li>
+<li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.html#%E4%B8%8D%E8%83%BD%E8%B0%83%E8%AF%95%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95">不能调试的解决办法</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="程序测试"><a class="header" href="#程序测试">程序测试</a></h2>
+<h3 id="介绍"><a class="header" href="#介绍">介绍</a></h3>
+<ul>
+<li>一个好的测试用例在于它能发现至今未发现的错误</li>
+<li>一个成功的测试是发现了至今未发现的错误的测试</li>
+</ul>
+<h3 id="关系表达式测试"><a class="header" href="#关系表达式测试">关系表达式测试</a></h3>
+<p><code>==和!=</code>至少需要两个测试数据</p>
+<p><code>&lt;,&gt;,&lt;=,&gt;=</code>至少需要三个测试数据（其中有一个是边界值）</p>
+<h3 id="逻辑表达式测试"><a class="header" href="#逻辑表达式测试">逻辑表达式测试</a></h3>
+<p>边界值要单独测试</p>
+<h3 id="switch语句的测试"><a class="header" href="#switch语句的测试">switch语句的测试</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    cin&gt;&gt;n;
+    switch(n)
+    {
+    case 1:
+        break;
+    case 2:
+        cout&lt;&lt;n&lt;&lt;endl;
+    default:
+        cout&lt;&lt;n+2&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>要加break不然default语句也会输出。比如输入2输出2和4</p>
+<h3 id="测试实例"><a class="header" href="#测试实例">测试实例</a></h3>
+<h2 id="调试程序"><a class="header" href="#调试程序">调试程序</a></h2>
+<h3 id="基本知识"><a class="header" href="#基本知识">基本知识</a></h3>
+<p>单步调试是发现运行错误和逻辑错误的利器，可用于：</p>
+<p>（1）跟踪程序的执行流程，发现错误的线索——本该走A路径却走了B路径</p>
+<p>（2）跟踪过程中，还可以观察变量的变化，从而发现其中存在的问题——变量的值本该是1，执行中却分明是2，代码哪儿出了问题？</p>
+<p>单步执行除了可以帮助我们发现错误，还可以帮助初学者理解编程语言的机制。</p>
+<p>所以说， 本节介绍的单步跟踪程序，使读者必须掌握的最基本的能力。以后读者学习别的编程语言，这个能力的要求是不变的，因此希望读者能跟着本教程，训练好这个能力。</p>
+<p>需要调试的程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int x=1,y=0,a=0,b=0;
+    switch(x)
+    {
+    case 1:
+        switch(y)
+        {
+        case 0:
+            a++;break;
+        case 1:
+            b++;break;
+        }
+    case 2:
+            a++;b++;break;
+    case 3:
+            a++;b++;
+    }
+    cout&lt;&lt;&quot;a=&quot;&lt;&lt;a&lt;&lt;&quot;,b=&quot;&lt;&lt;b&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="跟踪程序执行流程"><a class="header" href="#跟踪程序执行流程">跟踪程序执行流程</a></h3>
+<h3 id="使用调试定位错误"><a class="header" href="#使用调试定位错误">使用调试定位错误</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+int main()
+{
+    int num1,num2,sum;
+    time_t t;
+    srand((unsigned)time(&amp;t));
+    num1=rand()%100;
+    num2=rand()%100;
+    cout&lt;&lt;&quot;Please input your anwser:\n&quot;;
+    cout&lt;&lt;num1&lt;&lt;&quot;+&quot;&lt;&lt;num2&lt;&lt;&quot;=&quot;;
+    cin&gt;&gt;sum;
+    if(sum=num1+num2)
+        cout&lt;&lt;&quot;Great!\n&quot;&lt;&lt;endl;
+    else
+        cout&lt;&lt;&quot;Error!\n&quot;&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>Please input your anwser:
+4+35=39
+Great!
+</code></pre>
+<pre><code>Please input your anwser:
+73+75=150
+Great!
+</code></pre>
+<p>原因在于<code>sum==num1+num2</code>写成<code>sum=num1+num2</code></p>
+<h3 id="调试实践"><a class="header" href="#调试实践">调试实践</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main()
+{
+    int a;
+    double s;
+    cin&gt;&gt;a;
+    s=a*(a+1)*(a+2)*(a+3);
+    cout&lt;&lt;s&lt;&lt;endl;
+    s=sqrt(s);
+    if(1e6&lt;=s&amp;&amp;s&lt;=1e7)
+        cout&lt;&lt;&quot;You are lucky!&quot;&lt;&lt;endl;
+    else
+        cout&lt;&lt;&quot;Try again!&quot;&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>1000
+9.88659e+008
+Try again!
+</code></pre>
+<p>原因是<code>a*(a+1)*(a+2)*(a+3)</code>结果是int型数据，溢出。把a的类型改为long long或double即可。</p>
+<h3 id="不能调试的解决办法"><a class="header" href="#不能调试的解决办法">不能调试的解决办法</a></h3>
+<p>（1）未配置好调试器路径</p>
+<p><code>ERROR: You need to specify a debugger program in the debuggers's settings</code>说明我们的IDE没有配置好调试器。</p>
+<p>（2）未创建项目</p>
+<p>（3）文件路径包含中文字符</p>
+<p>（4）文件路径包含空格</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="分支结构编程题"><a class="header" href="#分支结构编程题">分支结构编程题</a></h1>
 <ul>
 <li><a href="%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#21%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84-%E7%AE%80%E5%8D%95">2.1分支结构-&gt;简单</a>
