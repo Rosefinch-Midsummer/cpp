@@ -9270,6 +9270,8 @@ int main ()
 <ul>
 <li><a href="%E6%8C%87%E9%92%88%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E5%AD%97%E5%85%B8%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%BA%8F">字符串按字典顺序排序</a></li>
 <li><a href="%E6%8C%87%E9%92%88%E7%90%86%E8%AE%BA.html#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88">函数指针</a></li>
+<li><a href="%E6%8C%87%E9%92%88%E7%90%86%E8%AE%BA.html#%E6%8C%87%E9%92%88%E5%92%8C%E5%80%BC%E4%BA%92%E6%8D%A2">指针和值互换</a></li>
+<li><a href="%E6%8C%87%E9%92%88%E7%90%86%E8%AE%BA.html#%E5%BC%95%E7%94%A8%E4%BA%A4%E6%8D%A2">引用交换</a></li>
 </ul>
 </li>
 </ul>
@@ -11010,6 +11012,162 @@ int main()
     return 0;
 }
 </code></pre>
+<h3 id="指针和值互换"><a class="header" href="#指针和值互换">指针和值互换</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int *s1,*s2;
+    int m;
+    s1=new int;
+    *s1=15;
+    s2=s1;
+    *s2=25;
+    m=*s1+*s2;50
+    cout&lt;&lt;m;//
+
+    return 0;
+}
+</code></pre>
+<p>这段程序的执行流程如下：</p>
+<ol>
+<li>首先，程序包含了iostream头文件，以便使用输入输出流。</li>
+<li>使用<code>using namespace std;</code>语句引入std命名空间，这样可以直接使用标准库中的函数和对象，而不需要使用全名。</li>
+<li>定义了一个main函数，作为程序的入口点，它返回一个整数值。</li>
+<li>在main函数中，声明了两个指针变量<code>s1</code>和<code>s2</code>，这里的类型是<code>int*</code>，表示指向整数型数据的指针。</li>
+<li>声明了一个整数变量<code>m</code>，用于存储计算结果。</li>
+<li>使用<code>new int</code>动态分配了一个整数型的内存空间，并将其地址赋给<code>s1</code>指针。此时，<code>s1</code>指向这个动态分配的整数变量。</li>
+<li>通过解引用操作符<code>*s1</code>将数值15存储到<code>s1</code>指向的内存空间中。</li>
+<li>将<code>s1</code>的值赋给<code>s2</code>，即让<code>s2</code>指向与<code>s1</code>相同的内存空间。</li>
+<li>通过解引用操作符<code>*s2</code>将数值25存储到<code>s2</code>指向的内存空间中。由于<code>s2</code>指向的内存空间与<code>s1</code>相同，所以此操作同时修改了<code>s1</code>指向的内存空间中的值。</li>
+<li>计算<code>s1</code>指向的值和<code>s2</code>指向的值的和，并将结果存储到变量<code>m</code>中，即<code>m = *s1 + *s2</code>，结果为50。</li>
+<li>执行<code>cout&lt;&lt;m;</code>语句，将变量<code>m</code>的值输出到标准输出流，结果为&quot;50&quot;。</li>
+<li><code>return 0;</code>语句表示程序正常结束，并返回0作为退出代码。</li>
+</ol>
+<p>因此，程序最终的输出结果是&quot;50&quot;。</p>
+<pre><code>0x73fe10
+0x73fe08
+50
+</code></pre>
+<h3 id="引用交换"><a class="header" href="#引用交换">引用交换</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void swap(int p1,int &amp;p2)
+{
+    int p;
+    p=p1;
+    p1=p2;
+    p2=p;
+}
+int main()
+{
+    int a=5,b=8;
+    swap(a,b);
+    cout&lt;&lt;a&lt;&lt;b;//55
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void swap(int p1,int &amp;p2)
+{
+    int p;
+    p=p1;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+    p1=p2;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+    p2=p;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+}
+
+
+int main()
+{
+    int a=5,b=8;
+    swap(a,b);
+    cout&lt;&lt;a&lt;&lt;b;//55
+
+
+    return 0;
+}
+
+</code></pre>
+<pre><code>5
+5
+8
+5
+8
+8
+5
+8
+5
+55
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void swap(int &amp;p1,int &amp;p2)
+{
+    int p;
+    p=p1;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+    p1=p2;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+    p2=p;
+    cout&lt;&lt;p&lt;&lt;endl;
+    cout&lt;&lt;p1&lt;&lt;endl;
+    cout&lt;&lt;p2&lt;&lt;endl;
+}
+
+
+int main()
+{
+    int a=5,b=8;
+    swap(a,b);
+    cout&lt;&lt;a&lt;&lt;b;//55
+
+
+    return 0;
+}
+</code></pre>
+<pre><code>5
+5
+8
+5
+8
+8
+5
+8
+5
+85
+</code></pre>
+<pre><code class="language-cpp">void swap1(int &amp;m, int &amp;n)
+{
+    int temp;
+    temp=m;
+    m=n;
+    n=temp;
+}
+</code></pre>
+<p>这个函数的作用是交换两个整数变量的值。</p>
+<p>函数<code>swap1</code>接受两个整数的引用作为参数<code>m</code>和<code>n</code>，这意味着传递给函数的是变量的引用而不是值，函数内部对这些引用进行操作会直接影响到原始变量。</p>
+<p>在函数内部，创建了一个临时变量<code>temp</code>，用于存储变量<code>m</code>的值。
+然后，将变量<code>m</code>的值赋给变量<code>n</code>，将变量<code>n</code>的值赋给变量<code>m</code>，以完成两个变量值的交换。
+最后，函数执行完毕，交换操作对原始变量产生了影响。</p>
+<p>通过调用这个函数并传递两个整数变量的引用作为参数，可以实现对这两个变量值进行交换的操作，而无需借助额外的中间变量。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="指针编程题"><a class="header" href="#指针编程题">指针编程题</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="结构体理论"><a class="header" href="#结构体理论">结构体理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="类与对象理论"><a class="header" href="#类与对象理论">类与对象理论</a></h1>
