@@ -12618,6 +12618,581 @@ int main()
 <div style="break-before: page; page-break-before: always;"></div><h1 id="类与对象理论"><a class="header" href="#类与对象理论">类与对象理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="运算符重载理论"><a class="header" href="#运算符重载理论">运算符重载理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="递归回溯与分治理论"><a class="header" href="#递归回溯与分治理论">递归、回溯与分治理论</a></h1>
+<ul>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E5%85%A8%E6%8E%92%E5%88%97">递归算法——全排列</a>
+<ul>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%85%A8%E6%8E%92%E5%88%97%E4%BB%8B%E7%BB%8D">全排列介绍</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E7%AE%97%E6%B3%951">算法（1）</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E7%AE%97%E6%B3%952">算法（2）</a></li>
+</ul>
+</li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%9B%9E%E6%BA%AF%E6%B3%95">回溯法</a>
+<ul>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D">概念介绍</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%88%86%E4%B9%A6%E9%97%AE%E9%A2%98">分书问题</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%85%AB%E7%8E%8B%E5%90%8E%E9%97%AE%E9%A2%98%E8%A7%A3%E6%9E%90">八王后问题解析</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%85%AB%E7%8E%8B%E5%90%8E%E9%97%AE%E9%A2%98%E7%AE%97%E6%B3%95">八王后问题算法</a></li>
+</ul>
+</li>
+<li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E5%88%86%E6%B2%BB%E6%B3%95">分治法</a></li>
+</ul>
+<h2 id="递归算法全排列"><a class="header" href="#递归算法全排列">递归算法——全排列</a></h2>
+<h3 id="全排列介绍"><a class="header" href="#全排列介绍">全排列介绍</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char ch1,ch2,ch3;
+
+    for(ch1='A';ch1&lt;='C';ch1++)
+        for(ch2='A';ch2&lt;='C';ch2++)
+            for(ch3='A';ch3&lt;='C';ch3++)
+            {
+                if(ch1!=ch2 &amp;&amp; ch2!=ch3 &amp;&amp; ch3!=ch1)
+                    cout&lt;&lt;ch1&lt;&lt;ch2&lt;&lt;ch3&lt;&lt;endl;
+            }
+    return 0;
+}
+</code></pre>
+<pre><code>ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+</code></pre>
+<h3 id="算法1"><a class="header" href="#算法1">算法（1）</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+char str[10];
+
+void PermuteWithFixedPrefix(int k)
+{
+    int i;
+    if(k==strlen(str))
+        cout&lt;&lt;str&lt;&lt;endl;
+    else
+        for(i=k;i&lt;strlen(str);i++)
+        {
+            swap(str[k],str[i]);
+            PermuteWithFixedPrefix(k+1);
+            swap(str[k],str[i]);
+        }
+}
+
+int main() {
+
+    cin&gt;&gt;str;
+    cout&lt;&lt;&quot;output:&quot;&lt;&lt;endl;
+    PermuteWithFixedPrefix(0);
+    return 0;
+
+}
+</code></pre>
+<pre><code>abc
+output:
+abc
+acb
+bac
+bca
+cba
+cab
+</code></pre>
+<h3 id="算法2"><a class="header" href="#算法2">算法（2）</a></h3>
+<p>假设我们输入的字符串是按升序排列的（否则先排序），则可用以下算法实现全排列：</p>
+<p>上面的输出结果如<code>cba  cab</code>不是按照字符串的字典顺序输出的。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+char str[10];
+
+void PermuteWithFixedPrefix(char r[],int k)
+{
+    if(k==strlen(str))
+        cout&lt;&lt;r&lt;&lt;endl;
+    else
+        for(int i=0;i&lt;strlen(str);i++)
+        {
+            bool ok=true;
+            for(int j=0;j&lt;k;j++)
+                if(r[j]==str[i])
+                    ok=false;
+            if(ok)
+            {
+                r[k]=str[i];
+                PermuteWithFixedPrefix(r,k+1);
+            }
+        }
+}
+
+int main() {
+
+    char result[10]={0};
+    cin&gt;&gt;str;
+    cout&lt;&lt;&quot;output:&quot;&lt;&lt;endl;
+    PermuteWithFixedPrefix(result ,0);
+    return 0;
+
+}
+</code></pre>
+<pre><code>abc
+output:
+abc
+acb
+bac
+bca
+cab
+cba
+</code></pre>
+<h2 id="回溯法"><a class="header" href="#回溯法">回溯法</a></h2>
+<h3 id="概念介绍"><a class="header" href="#概念介绍">概念介绍</a></h3>
+<p>将问题的候选解按照某种顺序逐一枚举和检验。当发现当前候选解不可能是解时，就选择下一候选解。如果当前候选解除了不满足规模要求外，满足其他所有要求时，继续扩大当前候选解的规模，并继续试探。如果当前已达到问题要求的规模并满足其他条件，该候选解就是问题的一个解。</p>
+<p>寻找下一候选解的过程被称为回溯。</p>
+<p>扩大当前候选解的规模，并继续试探的过程被称为向前试探。</p>
+<p>分数问题和八王后都是典型的回溯法问题。</p>
+<h3 id="分书问题"><a class="header" href="#分书问题">分书问题</a></h3>
+<p>有编号为0，1，2，3，4的五本书，准备分给ABCDE五个人，每个人的阅读兴趣用一个二维数组描述：</p>
+<pre><code class="language-cpp">Like[i][j]=true;//i喜欢书j
+Like[i][j]=false;//i不喜欢书j
+
+0 0 1 1 0
+1 1 0 0 1
+0 1 1 0 1
+0 0 0 1 0
+0 1 0 0 1
+</code></pre>
+<p>写一个程序，输出所有皆大欢喜的分书方案。</p>
+<p>存储设计：</p>
+<ul>
+<li>用一个二维数组like存储用户的兴趣</li>
+<li><code>take[j]=i</code>表示把第j本书分给了第i个人。如果第j本书尚未被分配，则给<code>take[j]</code>一个特殊值如-1</li>
+</ul>
+<p>解题思路：</p>
+<p>设计一个函数trynext(i)给第i个人分书</p>
+<p>从第0本书开始，一次尝试把书j分给人i。如果第i个人不喜欢第j本书，则尝试下一本书，如果喜欢并且第j本书尚未分配，则把书j分配给i。</p>
+<p>如果i是最后一个人，则方案数加一，输出该方案。否则调用trynext(i+1)为第i+1个人分书。</p>
+<p>回溯。让第i个人退回书j，尝试下一个j，即寻找下一个可行的方案</p>
+<p>由于在每次try中都要用到like，take以及目前找到的方案数n，因此可将它们作为全局变量，以免每次函数调用时都要带一大串参数。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int like[5][5];
+int take[5];
+int n=0;
+
+void trynext(int i)
+{
+    int j,k;
+    for(j=0;j&lt;5;j++)
+    {
+        if(like[i][j]&amp;&amp;take[j]==-1)
+        {
+            take[j]=i;
+            if(i==4)
+            {
+                n++;
+                cout&lt;&lt;&quot;\n第&quot;&lt;&lt;n&lt;&lt;&quot;种方案：&quot;&lt;&lt;endl;
+                cout&lt;&lt;&quot;书\t人&quot;&lt;&lt;endl;
+                for(k=0;k&lt;5;k++)
+                    cout&lt;&lt;k&lt;&lt;'\t'&lt;&lt;char(take[k]+'A')&lt;&lt;endl;
+            }
+            else trynext(i+1);
+            take[j]=-1;//尝试找下一方案
+        }
+    }
+}
+
+
+int main() {
+
+    for(int i=0;i&lt;5;i++)
+        for(int j=0;j&lt;5;j++)
+        cin&gt;&gt;like[i][j];
+    for(int j=0;j&lt;5;j++)
+        take[j]=-1;
+    trynext(0);
+
+}
+</code></pre>
+<pre><code>0 0 1 1 0
+1 1 0 0 1
+0 1 1 0 1
+0 0 0 1 0
+0 1 0 0 1
+
+第1种方案：
+书      人
+0       B
+1       C
+2       A
+3       D
+4       E
+
+第2种方案：
+书      人
+0       B
+1       E
+2       A
+3       D
+4       C
+</code></pre>
+<h3 id="八王后问题解析"><a class="header" href="#八王后问题解析">八王后问题解析</a></h3>
+<p>问题：在一个8x8的棋盘上放8个欧美象棋中的王后，使8个王后没有两个以上的王后会在同一行同一列或同一对角线上。</p>
+<p>求解过程：从空配置开始，在第一列到第m列为合理配置的基础上再配置m+1列，直到第n列的配置也合理时，就找到了一个解。另外在一列上也有n种配置。开始时配置在第一行，以后改变时顺序选择第二行、第三行……第n行。当配置第n行时还找不到一个合理的配置时就要回溯去改变前一列的配置。</p>
+<h3 id="八王后问题算法"><a class="header" href="#八王后问题算法">八王后问题算法</a></h3>
+<p>伪码描述：</p>
+<pre><code class="language-cpp">queen_all(k)
+{
+	for(i=1;i&lt;=8;i++)
+		if(往后放在第i行是可行的)
+		{
+			在第i行放入王后;
+			if(k==8) 输出解;
+			else queen_all(k+1)
+			恢复该位置为空;
+		}
+}
+</code></pre>
+<p>棋盘的数据结构的设计</p>
+<ul>
+<li>比较直观的方法是采用一个二维数组，但这会给调整候选解及检查合理性带来困难。</li>
+<li>对于本题来说，我们关心的并不是王后的具体位置，而是“一个王后是否已经在某行和某条斜线合理地安置好了”。</li>
+<li>因为在每列上恰好放一个王后，所以引用一个一维数组（设为col(9)），值<code>col[j]</code>表示在棋盘第j列上的王后位置。如<code>col[3]</code>的值是4就表示第三列的王后在第四行。</li>
+</ul>
+<p>候选解的合理性检查：</p>
+<p>引入以下三个工作数组</p>
+<ul>
+<li>数组<code>a[9]</code>, <code>a[A]=true</code>表示第A行上还没有王后</li>
+<li>数组<code>b[16]</code>, <code>b[A]=true</code>表示第A条右高左低斜线上没有王后，从左上角依次编到右下角（1-15）</li>
+<li>数组<code>c[15]</code>, <code>c[A]=true</code>表示第A条左高右低斜线上没有王后，从左下角依次编到右上角（1-15）</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int col[9];
+bool a[9],b[17],c[17];
+
+void queen_all(int k)//在8x8棋盘上的第k列上找合理的配置
+{
+    int i,j;
+    char awn;
+    for(i=1;i&lt;9;i++)//依次在1到8行上配置k列的王后
+        if(a[i]&amp;&amp;b[k+i-1]&amp;&amp;c[k-i+8])//可行位置
+        {
+           col[k]=i;
+           a[i]=b[k+i-1]=c[k-i+8]=false;//对应位置放置王后
+           if(k==8)
+            {
+                cout&lt;&lt;&quot;列&quot;&lt;&lt;'\t'&lt;&lt;&quot;行&quot;&lt;&lt;endl;
+                for(j=1;j&lt;=8;j++)
+                    cout&lt;&lt;j&lt;&lt;'\t'&lt;&lt;col[j]&lt;&lt;endl;
+                cout&lt;&lt;endl;
+                cin&gt;&gt;awn;
+                if(awn=='Q'||awn=='q') exit(0);
+            }
+            else queen_all(k+1);
+            a[i]=b[k+i-1]=c[k-i+8]=true;//恢复对应位置无王后状态
+        }
+}
+
+int main()
+{
+    int j;
+    for(j=0;j&lt;=8;j++)
+        a[j]=true;
+    for(j=0;j&lt;=16;j++)
+        b[j]=c[j]=true;
+
+    queen_all(1);
+
+    return 0;
+}
+</code></pre>
+<pre><code>列      行
+1       1
+2       5
+3       8
+4       6
+5       3
+6       7
+7       2
+8       4
+
+
+Q
+</code></pre>
+<pre><code>列      行
+1       1
+2       5
+3       8
+4       6
+5       3
+6       7
+7       2
+8       4
+
+w
+列      行
+1       1
+2       6
+3       8
+4       3
+5       7
+6       4
+7       2
+8       5
+
+e
+列      行
+1       1
+2       7
+3       4
+4       6
+5       8
+6       2
+7       5
+8       3
+
+r
+列      行
+1       1
+2       7
+3       5
+4       8
+5       2
+6       4
+7       6
+8       3
+
+y
+列      行
+1       2
+2       4
+3       6
+4       8
+5       3
+6       1
+7       7
+8       5
+
+u
+列      行
+1       2
+2       5
+3       7
+4       1
+5       3
+6       8
+7       6
+8       4
+
+i
+列      行
+1       2
+2       5
+3       7
+4       4
+5       1
+6       8
+7       6
+8       3
+
+o
+列      行
+1       2
+2       6
+3       1
+4       7
+5       4
+6       8
+7       3
+8       5
+
+p
+列      行
+1       2
+2       6
+3       8
+4       3
+5       1
+6       4
+7       7
+8       5
+
+j
+列      行
+1       2
+2       7
+3       3
+4       6
+5       8
+6       5
+7       1
+8       4
+
+h
+列      行
+1       2
+2       7
+3       5
+4       8
+5       1
+6       4
+7       6
+8       3
+
+g
+列      行
+1       2
+2       8
+3       6
+4       1
+5       3
+6       5
+7       7
+8       4
+
+f
+列      行
+1       3
+2       1
+3       7
+4       5
+5       8
+6       2
+7       4
+8       6
+
+t
+列      行
+1       3
+2       5
+3       2
+4       8
+5       1
+6       7
+7       4
+8       6
+
+r
+列      行
+1       3
+2       5
+3       2
+4       8
+5       6
+6       4
+7       7
+8       1
+
+q
+</code></pre>
+<h2 id="分治法"><a class="header" href="#分治法">分治法</a></h2>
+<p>分而治之法：</p>
+<ul>
+<li>分：分成较小的可以递归解决的问题</li>
+<li>治：从子问题的解形成原始问题的解</li>
+</ul>
+<p>分而治之法通常都是高效的递归算法。</p>
+<p>最大连续子序列问题</p>
+<p>给定（可能是负的）整数序列A1,A2,...,An，寻找并标识子序列的和的值为最大的序列。如果所有的整数都是负的，那么最大连续子序列的和是0。</p>
+<p>算法总结：</p>
+<ul>
+<li>递归地计算整个位于前半部的最大连续子序列</li>
+<li>递归地计算整个位于后半部的最大连续子序列</li>
+<li>通过两个连续循环，计算从前半部开始但在后半部结束的最大连续子序列的和</li>
+<li>选择三个和中的最大值</li>
+</ul>
+<p>算法核心代码：</p>
+<pre><code class="language-cpp">int maxSum(int a[],int left,int right)
+{
+    int maxLeft,maxRight,center;
+    int leftSum=0,rightSum=0;
+    int maxLeftTmp=NEGMAX;//最大负数
+    int maxRightTmp=NEGMAX;
+    
+    if(left==right) return a[left]&gt;0?a[left]:0;
+    center=(left+right)/2;
+    maxLeft=maxSum(a,left,center);
+    maxRight=maxSum(a,center+1,right);
+    
+    for(int i=center;i&gt;=left;i--)
+    {
+        leftSum+=a[i];
+        if(leftSum&gt;maxLeftTmp)
+            maxLeftTmp=leftSum;
+    }
+    for(int i=center+1;i&lt;=right;i++)
+        {
+            rightSum+=a[i];
+            if(rightSum&gt;maxRightTmp)
+                maxRightTmp=rightSum;
+        }
+        return max3(maxLeft,maxRight,maxLeftTmp+maxRightTmp);
+    
+}
+</code></pre>
+<p>完整代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+#define NEGMAX -1000
+
+int max3(int a,int b,int c)
+{
+    return a&gt;(b&gt;c?b:c)?a:(b&gt;c?b:c);
+}
+
+
+int maxSum(int a[],int left,int right)
+{
+    int maxLeft,maxRight,center;
+    int leftSum=0,rightSum=0;
+    int maxLeftTmp=NEGMAX;//最大负数
+    int maxRightTmp=NEGMAX;
+
+    if(left==right) return a[left]&gt;0?a[left]:0;
+    center=(left+right)/2;
+    maxLeft=maxSum(a,left,center);
+    maxRight=maxSum(a,center+1,right);
+
+    for(int i=center;i&gt;=left;i--)
+    {
+        leftSum+=a[i];
+        if(leftSum&gt;maxLeftTmp)
+            maxLeftTmp=leftSum;
+    }
+    for(int i=center+1;i&lt;=right;i++)
+        {
+            rightSum+=a[i];
+            if(rightSum&gt;maxRightTmp)
+                maxRightTmp=rightSum;
+        }
+        return max3(maxLeft,maxRight,maxLeftTmp+maxRightTmp);
+
+}
+
+int main()
+{
+    int j;
+    int num[8];
+    for(j=0;j&lt;8;j++)
+        cin&gt;&gt;num[j];
+
+    cout&lt;&lt;maxSum(num,0,7)&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<pre><code>4 -3 5 -2 -1 2 6 -2
+11
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="组合与继承理论"><a class="header" href="#组合与继承理论">组合与继承理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="模板和io理论"><a class="header" href="#模板和io理论">模板和IO理论</a></h1>
 
