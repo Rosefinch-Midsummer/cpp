@@ -167,6 +167,657 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="字符串编程题"><a class="header" href="#字符串编程题">字符串编程题</a></h1>
+<ul>
+<li><a href="#71%E5%AD%97%E7%AC%A6%E4%B8%B2-%E7%AE%80%E5%8D%95">7.1字符串-&gt;简单</a>
+<ul>
+<li><a href="#%E5%8A%A0%E5%AF%86">加密</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E8%B0%83%E6%95%99gpt">字符串排序（调教GPT）</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E7%9F%AD%E5%8F%B7">手机短号</a></li>
+<li><a href="#%E6%B1%82%E7%BB%9D%E5%AF%B9%E5%80%BC%E6%B1%82%E5%8A%A9gpt">求绝对值（求助GPT）</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%9F%E8%AE%A1">字符串统计</a></li>
+<li><a href="#%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95">模拟登录</a></li>
+<li><a href="#%E6%97%A5%E6%9C%9F%E8%B0%83%E6%95%99gpt">日期（调教GPT）</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E8%B0%83%E6%95%99gpt">删除字符（调教GPT）</a></li>
+<li><a href="#%E5%80%92%E5%BA%8F%E8%B0%83%E6%95%99gpt">倒序（调教GPT）</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="71字符串-简单"><a class="header" href="#71字符串-简单">7.1字符串-&gt;简单</a></h2>
+<h3 id="加密"><a class="header" href="#加密">加密</a></h3>
+<p>问题描述 :</p>
+<p>编写一个加密程序，用来加密一个字符串。加密规则如下：</p>
+<ol>
+<li>
+<p>把字符串中的所有数字0、1 … 9分别换成小写英文字母a、b … j。</p>
+</li>
+<li>
+<p>把字符串中的所有小写英文字母a、b … j分别换成数字0、1 … 9。</p>
+</li>
+<li>
+<p>其它字符保持不变。</p>
+</li>
+</ol>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，其中只包含一个字符串，即需要被加密的字符串。该字符串包含不超过100个字符，只包含可见的ASCII字符，并且不包含空格、制表符或换行符。在行首和行尾没有多余的空格；所有数据前后没有多余的空行；两组数据之间没有多余的空行。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出一组对应的答案。每组答案占一行，其中只包含一个字符串，即问题描述中的加密结果。在行首和行尾不要输出多余的空格；在所有数据前后不要输出多余的空行；在两组数据之间不要输出多余的空行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    while(cin&gt;&gt;s)
+    {
+        for(int i=0;i&lt;s.length();i++)
+            {
+                if((s[i]&lt;='9')&amp;&amp;(s[i]&gt;='0'))
+                {
+                    cout&lt;&lt;(char)(s[i]+49);
+                }
+                else if((s[i]&gt;='a')&amp;&amp;(s[i]&lt;='j'))
+                {
+                    cout&lt;&lt;(char)(s[i]-49);
+                }
+                else
+                    cout&lt;&lt;s[i];
+            }
+            cout&lt;&lt;endl;
+    }
+}
+</code></pre>
+<h3 id="字符串排序调教gpt"><a class="header" href="#字符串排序调教gpt">字符串排序（调教GPT）</a></h3>
+<p>输入范例 :</p>
+<pre><code>asdf
+shflsahfslfdjsldfsjd
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>adfs
+adddffffhhjjlllsssss
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    while(cin&gt;&gt;s)
+    {
+        sort(s.begin(),s.end());
+        cout&lt;&lt;s&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>以下是根据您提供的要求完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    string input;
+    while (getline(cin, input)) {
+        sort(input.begin(), input.end());
+        cout &lt;&lt; input &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>这个程序通过使用<code>getline()</code>函数来读取输入的多组测试数据，每次读取一行字符串并存储在<code>input</code>变量中。然后，使用<code>sort()</code>函数对字符串进行排序，最后将排序后的字符串输出到标准输出流中。</p>
+<p>请注意，该程序假设每行输入的字符串都在合理的范围内，并且每组测试数据都以换行符结束。</p>
+<p>如果您不想使用<code>sort()</code>函数进行字符串排序，可以使用其他方法来实现。以下是一个不使用<code>sort()</code>函数的示例程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+string sortString(string input) {
+    for (int i = 0; i &lt; input.length() - 1; i++) {
+        for (int j = i + 1; j &lt; input.length(); j++) {
+            if (input[i] &gt; input[j]) {
+                char temp = input[i];
+                input[i] = input[j];
+                input[j] = temp;
+            }
+        }
+    }
+    return input;
+}
+
+int main() {
+    string input;
+    while (getline(cin, input)) {
+        string sortedString = sortString(input);
+        cout &lt;&lt; sortedString &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们定义了一个名为<code>sortString</code>的函数，该函数接受一个字符串作为参数，并使用冒泡排序算法对字符串进行排序。然后，在<code>main()</code>函数中，我们循环读取输入的多组测试数据，并将每行字符串传递给<code>sortString</code>函数进行排序，最后将排序后的字符串输出到标准输出流中。</p>
+<p>请注意，这种方法并不高效，因为冒泡排序的时间复杂度为O(n^2)，而<code>sort()</code>函数使用的是更高效的排序算法。然而，如果您有特定要求不允许使用<code>sort()</code>函数，这个示例程序可以实现字符串排序的功能。</p>
+<h3 id="手机短号"><a class="header" href="#手机短号">手机短号</a></h3>
+<p>问题描述 :</p>
+<p>大家都知道，手机号是一个11位长的数字串，同时，作为学生，还可以申请加入校园网，如果加入成功，你将另外拥有一个短号。假设所有的短号都是“6”+手机号的后5位，比如号码为13512345678的手机，对应的短号就是645678。</p>
+<p>现在，如果给你一个11位长的手机号码，你能找出对应的短号吗？</p>
+<p>输入说明 :</p>
+<p>输入数据的第一行是一个N(N &lt;= 1000)，表示有N个数据，接下来的N行每一行为一个11位的手机号码。</p>
+<p>输出说明 :</p>
+<p>输出应包括N行，每行包括一个对应的短号，输出应与输入的顺序一致。</p>
+<p>输入范例 :</p>
+<pre><code>2
+70711457490
+47810534444
+</code></pre>
+<p>输出范例：</p>
+<pre><code>657490
+634444
+</code></pre>
+<p>二维字符数组实现</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int N;
+    cin&gt;&gt;N;
+    char number[N][12];
+    for(int i=0;i&lt;N;i++)
+        {
+            for(int j=0;j&lt;11;j++)
+                {
+                    cin&gt;&gt;number[i][j];
+                }
+        }
+
+    for(int i=0;i&lt;N;i++)
+    {
+        cout&lt;&lt;6;
+        for(int j=6;j&lt;11;j++)
+            cout&lt;&lt;number[i][j];
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>一维字符串实现</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    int N;
+    cin&gt;&gt;N;
+    string s[N];
+    for(int i=0;i&lt;N;i++)
+        cin&gt;&gt;s[i];
+
+    for(int i=0;i&lt;N;i++)
+    {
+        cout&lt;&lt;6;
+        for(int j=6;j&lt;11;j++)
+            cout&lt;&lt;s[i][j];
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="求绝对值求助gpt"><a class="header" href="#求绝对值求助gpt">求绝对值（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>给你一个大整数（绝对值不超过1,000位数），请求出这个数字的绝对值。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据占一行，其中仅有一个整数N；N的绝对值不会超过1,000位数；输入的数据没有前导零；如果N是负数，则在负号和最左边一位数字之间不会有空格。每行的行首和行尾都没有多余的空格。在所有数据的前后，以及两组数据之间都没有多余的空行。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一组对应的答案。每组答案占一行，其中仅有一个整数，即N的绝对值。在行首和行尾不要输出多余的空格。在所有数据的前后，以及两组数据之间不要输出多余的空行。</p>
+<p>自己写的这个有溢出问题，只在部分数据上是AC。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    while(cin&gt;&gt;s)
+    {
+        stringstream geek(s);
+        int x=0;
+        geek&gt;&gt;x;
+
+        cout&lt;&lt;abs(x)&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    while(cin&gt;&gt;s)
+    {
+        cout&lt;&lt;abs(stoi(s))&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>根据题目的要求，我们可以用C++的<code>std::string</code>类来处理大数字。读取输入时，我们将数字当作字符串读取；然后，通过检查第一个字符是否为负号（'-'）来决定是否需要去掉它，从而得到绝对值。以下是一个可能的实现：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string num;
+    while (std::cin &gt;&gt; num) {
+        // 如果数字是负数，去掉负号
+        if (num[0] == '-')
+            num = num.substr(1);
+        std::cout &lt;&lt; num &lt;&lt; std::endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>这个程序会继续读取输入，直到没有更多的数据可以读取（例如，如果你在终端里运行它，你可以通过按Ctrl+D来表示输入结束）。</p>
+<p>注意，这个程序并没有处理可能的输入错误，例如如果输入的字符串中包含非数字字符。根据题目的描述，我们假定所有的输入都是有效的。</p>
+<h3 id="字符串统计"><a class="header" href="#字符串统计">字符串统计</a></h3>
+<p>问题描述 :</p>
+<p>对于给定的一个字符串，统计其中小写字母出现的次数。</p>
+<p>输入说明 :</p>
+<p>输入数据有多行，第一行是一个整数n，表示测试实例的个数，后面跟着n行，每行包括一个由字母和数字组成的字符串。</p>
+<p>输出说明 :</p>
+<p>对于每个测试实例，输出该串中数值的个数，每个输出占一行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    int N;
+    cin&gt;&gt;N;
+    while(N--)
+    {
+        cin&gt;&gt;s;
+        int num=0;
+        for(int i=0;i&lt;s.length();i++)
+        {
+            if(s[i]&lt;='z'&amp;&amp;s[i]&gt;='a')
+                num++;
+        }
+        cout&lt;&lt;num&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="模拟登录"><a class="header" href="#模拟登录">模拟登录</a></h3>
+<p>问题描述 :</p>
+<p>编写程序模拟简单的密码登录（正确的密码是123456），首先从键盘输入用户名（用户名随意，不超过10个字符）</p>
+<p>然后输入密码，若密码正确（即为123456）则给出问候语。</p>
+<p>若密码不正确，则给出错误提示，并允许再次输入，</p>
+<p>直到输入正确的密码或输入0结束。</p>
+<p>输入说明 :</p>
+<p>用户名，和若干次密码。</p>
+<p>输出说明 :</p>
+<p>若密码正确则输出:</p>
+<p>Hello 用户名换行</p>
+<p>并退出</p>
+<p>若错误则输出:</p>
+<p>Wrong Password!换行</p>
+<p>并再次输入判断</p>
+<p>若密码为0则在输出Wrong Password!后退出。</p>
+<p>输入范例 :</p>
+<pre><code>tom
+123
+123456
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>Wrong Password!
+Hello tom
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+
+int main()
+{
+    string admin;
+    cin&gt;&gt;admin;
+
+    int password;
+
+    while(cin&gt;&gt;password)
+    {
+        if(password!=123456&amp;&amp;password!=0)
+            {
+                cout&lt;&lt;&quot;Wrong Password!&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(password!=123456&amp;&amp;password==0)
+            {
+                cout&lt;&lt;&quot;Wrong Password!&quot;&lt;&lt;endl;
+                break;
+            }
+        else
+            {
+                cout&lt;&lt;&quot;Hello&quot;&lt;&lt;&quot; &quot;&lt;&lt;admin&lt;&lt;endl;
+                break;
+            }
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="日期调教gpt"><a class="header" href="#日期调教gpt">日期（调教GPT）</a></h3>
+<p>问题描述 :</p>
+<p>输入星期日到星期六的英文缩写（Sun,Mon,Tue,Wed,Thu,Fri,Sat），输出其对应的完整单词。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每行输入相关单词，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出从标准输入设备中读入的每一组测试数据对应的结果。所有数据前后没有多余的空行，两组数据之间也没有多余的空行。每组输出数据由一行组成，该行为该英文单词的全称。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+
+int main()
+{
+    string s,s1,s2,s3,s4,s5,s6,s7;
+    s1=&quot;Mon&quot;;
+    s2=&quot;Tue&quot;;
+    s3=&quot;Wed&quot;;
+    s4=&quot;Thu&quot;;
+    s5=&quot;Fri&quot;;
+    s6=&quot;Sat&quot;;
+    s7=&quot;Sun&quot;;
+
+    while(cin&gt;&gt;s)
+    {
+        if(s.compare(s1)==0)
+            {
+                cout&lt;&lt;&quot;Monday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(s.compare(s2)==0)
+            {
+                cout&lt;&lt;&quot;Tuesday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(s.compare(s3)==0)
+            {
+                cout&lt;&lt;&quot;Wednesday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(s.compare(s4)==0)
+            {
+                cout&lt;&lt;&quot;Thursday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(s.compare(s5)==0)
+            {
+                cout&lt;&lt;&quot;Friday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else if(s.compare(s6)==0)
+            {
+                cout&lt;&lt;&quot;Saturday&quot;&lt;&lt;endl;
+                continue;
+            }
+        else
+            {
+                cout&lt;&lt;&quot;Sunday&quot;&lt;&lt;endl;
+                continue;
+            }
+
+    }
+
+    return 0;
+}
+</code></pre>
+<p>以下是根据您提供的问题描述完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+std::string getFullDay(const std::string&amp; abbreviation) {
+    if (abbreviation == &quot;Sun&quot;) {
+        return &quot;Sunday&quot;;
+    } else if (abbreviation == &quot;Mon&quot;) {
+        return &quot;Monday&quot;;
+    } else if (abbreviation == &quot;Tue&quot;) {
+        return &quot;Tuesday&quot;;
+    } else if (abbreviation == &quot;Wed&quot;) {
+        return &quot;Wednesday&quot;;
+    } else if (abbreviation == &quot;Thu&quot;) {
+        return &quot;Thursday&quot;;
+    } else if (abbreviation == &quot;Fri&quot;) {
+        return &quot;Friday&quot;;
+    } else if (abbreviation == &quot;Sat&quot;) {
+        return &quot;Saturday&quot;;
+    } else {
+        return &quot;Invalid abbreviation&quot;;
+    }
+}
+
+int main() {
+    std::string abbreviation;
+
+    while (std::getline(std::cin, abbreviation)) {
+        std::string fullDay = getFullDay(abbreviation);
+        std::cout &lt;&lt; fullDay &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们首先定义了一个<code>getFullDay</code>函数，用于根据输入的英文缩写返回完整的星期几的单词。在<code>getFullDay</code>函数中，我们使用<code>if-else</code>语句判断输入的缩写是哪一天，并返回对应的完整单词。</p>
+<p>在<code>main</code>函数中，我们使用<code>std::getline</code>函数循环读取输入的每一行数据，将输入的缩写作为参数调用<code>getFullDay</code>函数得到完整单词，然后将其输出到标准输出设备。</p>
+<p>请注意，根据您的问题描述，程序假设每组测试数据都在一行中，并且每组数据之间没有多余的空行。如果输入的缩写不在星期日到星期六的范围内，程序将输出&quot;Invalid abbreviation&quot;。</p>
+<p>您可以根据需要自行扩展或修改<code>getFullDay</code>函数，以适应其他缩写或完整单词的映射关系。</p>
+<h3 id="删除字符调教gpt"><a class="header" href="#删除字符调教gpt">删除字符（调教GPT）</a></h3>
+<p>问题描述 :</p>
+<p>从键盘输入一个字符串和一个字符，将输入字符从字符串中删除，输出新的字符串。如果字符串中没有此字符，则原样输出字符串。</p>
+<p>输入说明 :</p>
+<p>输入两行，第一行输入一个字符串，第二行输入一个字符。</p>
+<p>字符串最多允许输入20个任意字符。</p>
+<p>输出说明 :</p>
+<p>输出删除字符后的字符串。</p>
+<p>输入范例 :</p>
+<pre><code>ab  ccdc
+c
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>ab  d
+</code></pre>
+<p>自己写的程序存在PE错误</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+
+int main()
+{
+    string s;
+    getline(cin,s);
+    char ch;
+    cin&gt;&gt;ch;
+
+    s.erase(remove(s.begin(),s.end(),ch),s.end());
+    cout&lt;&lt;s&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<p>以下是根据您提供的问题描述完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string str;
+    char ch;
+
+    // 输入字符串
+    std::getline(std::cin, str);
+
+    // 输入字符
+    std::cin &gt;&gt; ch;
+
+    // 删除字符
+    std::string result;
+    for (char c : str) {
+        if (c != ch) {
+            result += c;
+        }
+    }
+
+    // 输出结果
+    std::cout &lt;&lt; result &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们使用了<code>std::string</code>来存储输入的字符串和输出的结果。首先，我们使用<code>std::getline</code>函数来读取一行输入字符串，然后使用<code>std::cin</code>来读取一个字符。接下来，我们使用一个循环遍历输入的字符串，如果当前字符不等于要删除的字符，就将它添加到结果字符串中。最后，我们输出结果字符串。</p>
+<p>请注意，根据您的问题描述，删除字符是区分大小写的。如果您希望删除字符时不区分大小写，可以使用<code>std::tolower</code>函数或<code>std::toupper</code>函数将字符转换为统一的大小写后进行比较。</p>
+<p>抱歉，我之前提供的程序确实没有正确处理空格、换行和制表符等特殊字符。为了解决这个问题，我们可以使用<code>std::getline</code>函数读取输入字符串，并使用<code>std::getline</code>函数的第三个参数指定定界符为空格字符。</p>
+<p>以下是更新后的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string str;
+    char ch;
+
+    // 输入字符串
+    std::getline(std::cin, str);
+
+    // 输入字符
+    std::cin &gt;&gt; ch;
+    std::cin.ignore(); // 忽略换行符
+
+    // 删除字符
+    std::string result;
+    for (char c : str) {
+        if (c != ch) {
+            result += c;
+        }
+    }
+
+    // 输出结果
+    std::cout &lt;&lt; result &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>在更新后的程序中，我们使用了<code>std::getline</code>函数来读取输入的字符串，同时将空格字符作为定界符，这样可以正确读取包含空格的字符串。然后，我们使用<code>std::cin.ignore()</code>来忽略输入中的换行符，以确保后续的字符输入不受影响。</p>
+<p>现在，程序应该能够正确处理空格、换行和制表符等特殊字符。请再次尝试并检查结果是否正确。</p>
+<p>非常抱歉出现了这个问题。我注意到在之前的程序中，我们使用了<code>std::cin</code>来读取输入的字符。然而，<code>std::cin</code>在读取字符时会忽略空格、换行和制表符等空白字符。为了解决这个问题，我们可以改用<code>std::getline</code>函数来读取输入的字符，将空格字符作为定界符。</p>
+<p>以下是更新后的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string str;
+    std::string ch;
+
+    // 输入字符串
+    std::getline(std::cin, str);
+
+    // 输入字符
+    std::getline(std::cin, ch);
+
+    // 删除字符
+    std::string result;
+    for (char c : str) {
+        if (ch.find(c) == std::string::npos) {
+            result += c;
+        }
+    }
+
+    // 输出结果
+    std::cout &lt;&lt; result &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+<p>在这个更新后的程序中，我们使用<code>std::getline</code>函数来读取输入的字符串和字符。我们将输入的字符存储在<code>std::string</code>类型的变量<code>ch</code>中。然后，我们使用<code>std::string</code>的<code>find</code>函数来判断字符串中是否包含要删除的字符。如果字符不在字符串中，我们将其添加到结果字符串中。</p>
+<p>请再次尝试并检查程序是否能够正确处理空格、换行和制表符等特殊字符。如果问题仍然存在，请提供更多的详细信息，我将尽力帮助您解决问题。</p>
+<h3 id="倒序调教gpt"><a class="header" href="#倒序调教gpt">倒序（调教GPT）</a></h3>
+<p>问题描述 :</p>
+<p>编写程序，把一串字符以倒序的方式输出。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。第一行输入字符串的个数n。之后就有n组输入数据，每组输入为一行字符串，该串由ASCII字符的任意组合构成，它们之间可能有一个或多个空格，在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的文本终端，例如你在Windows中启动该程序所用的命令行终端）依次输出从标准输入设备中读入的每一组测试数据对应的结果，使其成为输入串的倒序。所有数据前后没有多余的空格，两组数据之间也没有多余的空行。</p>
+<p>输入范例：</p>
+<pre><code>2
+abcd-ef
+I love ACM!
+</code></pre>
+<p>输出范例：</p>
+<pre><code>fe-dcba
+!MCA evol I
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main()
+{
+    int N;
+    cin&gt;&gt;N;
+    cin.get();
+    string s;
+    while(N--)
+    {
+        getline(cin,s);
+        string result;
+        for(int i=s.length();i&gt;=0;i--)
+        {
+            result += s[i];
+        }
+        if (result[0] == '\0')
+            result = result.substr(1);
+        cout&lt;&lt;result&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>以下是根据您提供的问题描述完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    int n;
+    std::cin &gt;&gt; n;
+    std::cin.ignore(); // 忽略换行符
+
+    for (int i = 0; i &lt; n; i++) {
+        std::string str;
+        std::getline(std::cin, str);
+
+        // 倒序输出字符串
+        for (int j = str.length() - 1; j &gt;= 0; j--) {
+            std::cout &lt;&lt; str[j];
+        }
+        std::cout &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>在这个程序中，我们首先读取一个整数<code>n</code>，表示要输入的字符串个数。然后使用<code>std::cin.ignore()</code>来忽略输入中的换行符。</p>
+<p>接下来，我们使用一个循环来读取每组测试数据。对于每组数据，我们使用<code>std::getline</code>函数来读取输入的字符串。然后，我们使用一个循环从字符串的最后一个字符开始，倒序输出每个字符。</p>
+<p>最后，我们在每组数据输出完成后输出一个换行符。</p>
+<p>请注意，根据您的问题描述，程序假设输入的每组数据都在一行中，并且每组数据之间没有多余的空行。</p>
 
                     </main>
 
