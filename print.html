@@ -13265,7 +13265,731 @@ int main()
 最后，函数执行完毕，交换操作对原始变量产生了影响。</p>
 <p>通过调用这个函数并传递两个整数变量的引用作为参数，可以实现对这两个变量值进行交换的操作，而无需借助额外的中间变量。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="指针编程题"><a class="header" href="#指针编程题">指针编程题</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="结构体理论"><a class="header" href="#结构体理论">结构体理论</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="数据封装结构体"><a class="header" href="#数据封装结构体">数据封装——结构体</a></h1>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E6%A6%82%E8%BF%B0">结构体的概述</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89">结构体类型定义及变量定义</a>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A3%B0%E6%98%8E">结构体类型的声明</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89">结构体变量的定义</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%94%A8typedef%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">用typedef定义数据类型</a></li>
+</ul>
+</li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8">结构体变量的使用</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84">结构体数组</a>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96">结构体数组的定义和初始化</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%88%A9%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E8%AE%A1%E7%AE%97%E5%AD%A6%E7%94%9F%E5%B9%B3%E5%9D%87%E5%88%86">利用结构体数组计算学生平均分</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%9F%E8%AE%A1%E9%80%89%E7%A5%A8">统计选票</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E6%8C%89%E7%85%A7%E6%88%90%E7%BB%A9%E7%BB%99%E5%AD%A6%E7%94%9F%E6%8E%92%E5%BA%8F">按照成绩给学生排序</a></li>
+</ul>
+</li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88">结构体指针</a>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E6%89%80%E6%8C%87%E5%90%91%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E6%88%90%E5%91%98%E5%91%A2">如何访问结构体指针变量所指向的结构体成员呢？</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%BD%93%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97%E6%97%B6%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E6%89%80%E6%8C%87%E5%90%91%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E6%88%90%E5%91%98">当结构体嵌套时，如何访问结构体指针变量所指向的结构体成员？</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E6%8C%87%E5%90%91%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88">如何定义指向结构体数组的指针？</a></li>
+</ul>
+</li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%87%BD%E6%95%B0">结构体与函数</a>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">结构体作为参数传递</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E6%8C%87%E5%90%91%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E6%8C%87%E9%92%88%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0">指向结构体的指针作为参数</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0">返回结构体类型的函数</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%84%E4%BD%93%E5%BC%95%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0">返回结构体引用的函数</a></li>
+</ul>
+</li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%BC%95%E7%94%A8%E7%BB%93%E6%9E%84%E4%BD%93%E6%88%90%E5%91%98">引用结构体成员</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E6%95%B0%E7%BB%84">定义结构体数组</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E4%BC%A0%E5%8F%82%E9%97%AE%E9%A2%98">结构体传参问题</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%E7%BB%BC%E5%90%88">结构体、指针、数组、函数综合</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97%E5%AE%9A%E4%B9%89">结构体嵌套定义</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E7%BB%93%E6%9E%84%E4%BD%93%E5%B5%8C%E5%A5%97%E6%97%B6%E7%BB%99%E5%90%AB%E6%8C%87%E9%92%88%E7%9A%84%E7%BB%93%E6%9E%84%E4%BD%93%E8%B5%8B%E5%88%9D%E5%80%BC%E6%B1%82%E5%8A%A9gpt">结构体嵌套时给含指针的结构体赋初值（求助GPT）</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%90%86%E8%AE%BA.html#%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E7%BB%84%E5%B5%8C%E5%A5%97">指针和数组嵌套</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="结构体的概述"><a class="header" href="#结构体的概述">结构体的概述</a></h2>
+<p>例子：学生信息管理</p>
+<p>二维数组、并联数组都不方便</p>
+<p>结构体类型作用：</p>
+<ul>
+<li>结构体类型允许程序员把一些分量聚合成一个整体，用一个变量表示。</li>
+<li>一个结构体的各个分量都有名字，把这些分量称为成员（member）。</li>
+<li>由于结构体的成员可以是各种类型的，程序员能创建适合于问题的数据聚合。</li>
+</ul>
+<h2 id="结构体类型定义及变量定义"><a class="header" href="#结构体类型定义及变量定义">结构体类型定义及变量定义</a></h2>
+<p>使用结构体有三大步骤：定义一个新的结构体类型、定义新类型的变量、访问结构体变量</p>
+<h3 id="结构体类型的声明"><a class="header" href="#结构体类型的声明">结构体类型的声明</a></h3>
+<pre><code class="language-cpp">struct student
+{
+    long studentID;
+    char studentName[10];
+    char studentSex;
+    int yearOfBirth;
+    int scoreMath;
+    int scoreEnglish;
+    int scoreComputer;
+    int scoreProgramming;
+};
+</code></pre>
+<p>上面定义了一个结构体模板（Structure Template），结构体里面是结构体成员。</p>
+<p>形成一个类型声明的样板，用于生成结构体变量，但并未声明结构体变量，因而编译器不为其分配内存。</p>
+<h3 id="结构体变量的定义"><a class="header" href="#结构体变量的定义">结构体变量的定义</a></h3>
+<ul>
+<li>结构体变量的定义和普通的变量定义一样，如定义了结构体类型student，就可以定义结构体变量：<code>student student1,sArray[10],*sptr;</code></li>
+<li>申请动态变量：<code>sptr=new student; sptr=new student[10];</code></li>
+<li>在分配内存时会分配一块连续的空间，依次存放它的每一个分量。这块空间总的名字就是结构体变量的名字。内部还有各自的名字。</li>
+</ul>
+<pre><code class="language-cpp">student student1={103,&quot;wang&quot;,'M',1991,72,83,90,80};
+</code></pre>
+<pre><code class="language-cpp">    student student1;
+    student1.studentID=103;
+    strcpy(student1.studentName,&quot;wang&quot;);
+    student1.studentSex='M';
+    student1.yearOfBirth=1991;
+    student1.scoreMath=83;
+</code></pre>
+<h3 id="用typedef定义数据类型"><a class="header" href="#用typedef定义数据类型">用typedef定义数据类型</a></h3>
+<p>关键字typedef为一种<strong>已存在的类型</strong>定义一个<strong>别名</strong>，并未定义新类型</p>
+<p>C语言中常用<code>typedef struct student STUDENT;</code>，但C++一般不需要别名。</p>
+<pre><code class="language-cpp">typedef struct student
+{
+    long studentID;
+    char studentName[10];
+    char studentSex;
+    int yearOfBirth;
+    int score[4];
+}STUDENT;
+</code></pre>
+<p>下面三种形式等价。</p>
+<pre><code class="language-cpp">student stu1;
+STUDENT stu2;
+struct student stu3;
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>字段名可与程序中的变量名相同</li>
+<li>在不同的结构体中可以有相同的字段名</li>
+<li>结构体成员的类型可以是任意类型，当然也可以是结构体类型</li>
+</ul>
+<pre><code class="language-cpp">struct dataT
+{
+    int month;
+    int day;
+};
+
+struct student
+{
+    dateT birthday;
+    int day;
+};
+</code></pre>
+<h2 id="结构体变量的使用"><a class="header" href="#结构体变量的使用">结构体变量的使用</a></h2>
+<p>访问结构体变量的成员必须使用成员选择运算符（也成为圆点运算符），即结构体变量名.成员名</p>
+<p>当出现结构体嵌套时，必须以级联方式访问结构体成员如<code>stu1.birthday.year=111;</code></p>
+<p>结构体变量的赋值</p>
+<ul>
+<li>结构体是一个统称。每个结构体类型在使用前都要先定义自己有哪些分量。系统实现无法知道如何处理它。</li>
+<li>因此，结构体变量的赋值通常是对它的每一个成员变量赋值，如<code>cin&gt;&gt;student1.no;</code></li>
+<li>同类型的结构变量之间可以相互赋值，如<code>student1=student2;</code>将student2的成员对应赋给student1的成员</li>
+</ul>
+<p><strong>声明结构体的同时定义一个变量（注意没有typedef）</strong></p>
+<pre><code class="language-cpp">struct student
+{
+    long studentID;
+    char studentName[10];
+    char studentSex;
+    int yearOfBirth;
+    int score[4];
+}stu;
+</code></pre>
+<p><strong>结构体所占内存的字节数</strong></p>
+<p>struct类型用内存字符数不一定等于所有成员变量的内存总和。</p>
+<p>通常用sizeof(变量或表达式)、sizeof(类型)来获得结构体大小。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct student
+{
+    int studentID;
+    char studentName[10];
+    char studentSex;
+    int yearOfBirth;
+    int score[4];
+};
+
+int main() {
+
+    cout&lt;&lt;sizeof(student);//36
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct student
+{
+    int studentID;
+    char studentSex;
+    int yearOfBirth;
+    int score[4];
+    char studentName[10];
+};
+
+int main() {
+
+    cout&lt;&lt;sizeof(student);//40
+    return 0;
+}
+</code></pre>
+<p><strong>以4字节为单位从上往下分配内存空间</strong></p>
+<h2 id="结构体数组"><a class="header" href="#结构体数组">结构体数组</a></h2>
+<h3 id="结构体数组的定义和初始化"><a class="header" href="#结构体数组的定义和初始化">结构体数组的定义和初始化</a></h3>
+<pre><code class="language-cpp">typedef struct student
+{
+    long studentID;
+    char studentName[10];
+    char studentSex;
+    DATE birthday;
+    int score[4];
+}STUDENT;
+
+typedef struct date
+{
+	int year;
+	int month;
+	int day;
+}DATE;
+</code></pre>
+<p>用typedef关键字定义某一类型的别名如<code>typedef int integer;</code></p>
+<p>原本写的代码中存在一些问题，这些问题导致了编译器报错braces around scaler initializer for type int。让我们来一一解析。</p>
+<p>首先，你的 <code>student</code> 结构体中的 <code>yearOfBirth</code> 是一个 <code>int</code> 类型，但你试图用包含多个元素的数组（<code>{1991,5,19}</code>）来初始化它，这不是合法的。根据你的代码，你可能希望 <code>yearOfBirth</code> 是一个 <code>struct yearOfBirth</code> 类型，而不是 <code>int</code>。</p>
+<p>其次，你在全局范围内定义了两个 <code>yearOfBirth</code>，一个是 <code>struct student</code> 中的一个成员，一个是一个独立的 <code>struct</code>。这两个定义冲突了，因为它们在同一作用域内有相同的名称。</p>
+<p>修复这些问题的一个可能的解决方案是将 <code>struct yearOfBirth</code> 嵌入到 <code>struct student</code> 中，并为 <code>struct yearOfBirth</code> 更改名称以避免命名冲突。这样，你的代码可能会像这样：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct BirthDate  // 修改为BirthDate，避免命名冲突
+{
+    int year;
+    int month;
+    int day;
+};
+
+struct student
+{
+    long studentID;
+    char studentName[20];
+    char studentSex;
+    BirthDate yearOfBirth;  // 修改为BirthDate类型
+    int score[4];
+};
+
+int main() {
+
+    student stu[30]={{100310121,&quot;王刚&quot;,'M',{1991,5,19},{73,83,80,90}},
+                    {100310122,&quot;王大锤&quot;,'M',{1993,6,19},{67,82,84,92}},
+                    {100310123,&quot;陈莉莉&quot;,'F',{1992,8,29},{72,84,85,97}}};
+
+    return 0;
+
+}
+</code></pre>
+<p>这样，你的 <code>student</code> 结构体中的 <code>yearOfBirth</code> 就是 <code>BirthDate</code> 类型，可以接收三个 <code>int</code> 的数组来初始化。</p>
+<h3 id="利用结构体数组计算学生平均分"><a class="header" href="#利用结构体数组计算学生平均分">利用结构体数组计算学生平均分</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+struct date
+{
+    int year;
+    int month;
+    int day;
+};
+
+struct student
+{
+    long studentID;
+    char studentName[20];
+    char studentSex;
+    date birthday;
+    int score[4];
+};
+
+int main() {
+
+    int i,j,sum[30];
+    student stu[30]={{100310121,&quot;WangGang&quot;,'M',{1991,5,19},{73,83,80,90}},
+                    {100310122,&quot;WangDachui&quot;,'M',{1993,6,19},{67,82,84,92}},
+                    {100310123,&quot;ChenLili&quot;,'F',{1992,8,29},{72,84,85,97}}};
+
+    for(i=0;i&lt;3;i++)
+    {
+        sum[i]=0;
+        for(j=0;j&lt;4;j++)
+            {
+                sum[i]=sum[i]+stu[i].score[j];
+
+            }
+
+
+        printf(&quot;%10ld%8s%3c%6d/%02d/%02d%4d%4d%4d%4d%6.2f\n&quot;,
+               stu[i].studentID,
+               stu[i].studentName,
+               stu[i].studentSex,
+               stu[i].birthday.year,
+               stu[i].birthday.month,
+               stu[i].birthday.day,
+               stu[i].score[0],
+               stu[i].score[1],
+               stu[i].score[2],
+               stu[i].score[3],
+               sum[i]/4.0);
+    }
+
+
+    return 0;
+
+}
+</code></pre>
+<pre><code> 100310121WangGang  M  1991/05/19  73  83  80  90 81.50
+ 100310122WangDachui  M  1993/06/19  67  82  84  92 81.25
+ 100310123ChenLili  F  1992/08/29  72  84  85  97 84.50
+</code></pre>
+<h3 id="统计选票"><a class="header" href="#统计选票">统计选票</a></h3>
+<p>有3个候选人，每个选民只能投票选一人，要求编一个统计选票的程序，先后输入被选人的名字，最后输出各人得票结果。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+struct Person
+{
+    char name[20];
+    int count;
+}leader[3]={&quot;Li&quot;,0,&quot;Zhang&quot;,0,&quot;Sun&quot;,0};
+
+int main() {
+
+    int i,j;
+    char leader_name[20];
+
+    for(i=1;i&lt;=10;i++)
+    {
+        cin&gt;&gt;leader_name;
+        for(j=0;j&lt;3;j++)
+            if(strcmp(leader_name,leader[j].name)==0)
+                leader[j].count++;
+    }
+    for(i=0;i&lt;3;i++)
+        cout&lt;&lt;leader[i].name&lt;&lt;&quot;:&quot;&lt;&lt;leader[i].count&lt;&lt;endl;
+
+    return 0;
+
+}
+</code></pre>
+<pre><code>Li Sun Li Zhang Zhang Zhang Sun Li Zhang Li
+Li:4
+Zhang:4
+Sun:2
+</code></pre>
+<h3 id="按照成绩给学生排序"><a class="header" href="#按照成绩给学生排序">按照成绩给学生排序</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct Student
+{
+    int num;
+    char name[20];
+    float score;
+};
+
+int main() {
+
+    struct Student stu[5]={{10101,&quot;Zhang&quot;,78},{10103,&quot;Wang&quot;,98.5},{10106,&quot;Li&quot;,86},{10108,&quot;Ling&quot;,73.5},{10110,&quot;Feng&quot;,100}};
+    struct Student temp;//C语言中要带struct，C++不需要
+    const int n=5;
+    int i,j,k;
+
+    cout&lt;&lt;&quot;The order is:\n&quot;;
+    for(i=0;i&lt;n-1;i++)
+    {
+        k=i;
+        for(j=i+1;j&lt;n;j++)
+            if(stu[j].score&gt;stu[k].score) k=j;
+        temp=stu[k];
+        stu[k]=stu[i];
+        stu[i]=temp;
+    }
+    for(i=0;i&lt;n;i++)
+        cout&lt;&lt;stu[i].num&lt;&lt;&quot; &quot;&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
+
+    return 0;
+
+}
+</code></pre>
+<pre><code>The order is:
+10110 Feng 100
+10103 Wang 98.5
+10106 Li 86
+10101 Zhang 78
+10108 Ling 73.5
+</code></pre>
+<h2 id="结构体指针"><a class="header" href="#结构体指针">结构体指针</a></h2>
+<h3 id="如何访问结构体指针变量所指向的结构体成员呢"><a class="header" href="#如何访问结构体指针变量所指向的结构体成员呢">如何访问结构体指针变量所指向的结构体成员呢？</a></h3>
+<pre><code class="language-cpp">//定义
+STUDENT stu1;
+STUDENT *pt=&amp;stu1;
+</code></pre>
+<p>（1）通过stu1和成员选择运算符访问结构体成员如<code>stu1.studentID=1;</code></p>
+<p>（2）通过pt和指向运算符访问结构体成员如<code>(*pt).studentID=1;</code>（括号不能省略，否则无法确定优先级）、<code>pt-&gt;studentID=1;</code></p>
+<h3 id="当结构体嵌套时如何访问结构体指针变量所指向的结构体成员"><a class="header" href="#当结构体嵌套时如何访问结构体指针变量所指向的结构体成员">当结构体嵌套时，如何访问结构体指针变量所指向的结构体成员？</a></h3>
+<p>（1）通过stu1和成员选择运算符访问结构体成员如<code>stu1.birthday.year=1000;</code></p>
+<p>（2）通过pt和指向运算符访问结构体成员如<code>pt-&gt;birthday.year;</code></p>
+<h3 id="如何定义指向结构体数组的指针"><a class="header" href="#如何定义指向结构体数组的指针">如何定义指向结构体数组的指针？</a></h3>
+<pre><code class="language-cpp">//定义
+STUDENT stu[30];
+STUDENT *pt;
+pt=stu;
+//STUDENT *pt=&amp;stu[0];
+//STUDENT *pt=stu;
+</code></pre>
+<p>用结构体指针输出学生信息</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+struct Student
+{
+    int num;
+    char name[20];
+    char sex;
+    int age;
+};
+
+int main() {
+
+    struct Student stu[3]={{10101,&quot;Zhang Fun&quot;,'M',18},{10103,&quot;Wang Min&quot;,'M',19},{10106,&quot;Li Lin&quot;,'F',20}};
+    struct Student *p;//C语言中要带struct，C++不需要
+    cout&lt;&lt;&quot;No. Name    sex age\n&quot;;
+    for(p=stu;p&lt;stu+3;p++)
+            cout&lt;&lt;setw(5)&lt;&lt;p-&gt;num&lt;&lt;setw(20)&lt;&lt;std::left&lt;&lt;p-&gt;name&lt;&lt;setw(2)&lt;&lt;p-&gt;sex&lt;&lt;setw(4)&lt;&lt;p-&gt;age;
+        
+    return 0;
+
+}
+</code></pre>
+<pre><code>No. Name    sex age
+10101Zhang Fun           M 18  10103Wang Min            M 19  10106Li Lin              F 20
+</code></pre>
+<h2 id="结构体与函数"><a class="header" href="#结构体与函数">结构体与函数</a></h2>
+<h3 id="结构体作为参数传递"><a class="header" href="#结构体作为参数传递">结构体作为参数传递</a></h3>
+<p>结构体和数组一样都有许多分量组成，但结构体的传递和普通内置变量类型是一样的。它是将实际参数中的每个分量复制到形式参数的每个分量中。</p>
+<h3 id="指向结构体的指针作为参数"><a class="header" href="#指向结构体的指针作为参数">指向结构体的指针作为参数</a></h3>
+<ul>
+<li>指针传递形式比较繁琐，所以C++通常用引用传递</li>
+<li>引用传递的问题是函数中可以修改实际参数，要控制函数中不能修改实际参数可以加const限定</li>
+</ul>
+<pre><code class="language-cpp">//void PrintPerson(PersonT *p);
+//void PrintPerson(PersonT &amp;p);
+void PrintPerson(const PersonT &amp;p);
+</code></pre>
+<p>设计一个函数打印学生信息</p>
+<p>（1）值传递（缺点：浪费时间空间）</p>
+<pre><code class="language-cpp">void PrintPerson(PersonT p);
+cout&lt;&lt;p.no&lt;&lt;'\t'&lt;&lt;p.name&lt;&lt;'\t'&lt;&lt;p.chinese&lt;&lt;'\t'&lt;&lt;p.math&lt;&lt;'\t'&lt;&lt;p.english&lt;&lt;endl;
+</code></pre>
+<p>（2）指针传递（缺点：不安全）</p>
+<pre><code class="language-cpp">void PrintPerson(PersonT *p);
+cout&lt;&lt;p-&gt;no&lt;&lt;'\t'&lt;&lt;p-&gt;name&lt;&lt;'\t'&lt;&lt;p-&gt;chinese&lt;&lt;'\t'&lt;&lt;p-&gt;math&lt;&lt;'\t'&lt;&lt;p-&gt;english&lt;&lt;endl;
+</code></pre>
+<p>（3）普通引用传递（缺点：不安全）</p>
+<pre><code class="language-cpp">void PrintPerson(PersonT &amp;p);
+cout&lt;&lt;p.no&lt;&lt;'\t'&lt;&lt;p.name&lt;&lt;'\t'&lt;&lt;p.chinese&lt;&lt;'\t'&lt;&lt;p.math&lt;&lt;'\t'&lt;&lt;p.english&lt;&lt;endl;
+</code></pre>
+<p>（4）常规做法——常引用传递（优点：节约内存，提高函数调用速度，可靠）</p>
+<pre><code class="language-cpp">void PrintPerson(const PersonT &amp;p);
+cout&lt;&lt;p.no&lt;&lt;'\t'&lt;&lt;p.name&lt;&lt;'\t'&lt;&lt;p.chinese&lt;&lt;'\t'&lt;&lt;p.math&lt;&lt;'\t'&lt;&lt;p.english&lt;&lt;endl;
+</code></pre>
+<h3 id="返回结构体类型的函数"><a class="header" href="#返回结构体类型的函数">返回结构体类型的函数</a></h3>
+<p>一个函数返回一个结构体如</p>
+<pre><code class="language-cpp">PersonT GetPersonData()
+{
+	personT person;//局部变量，会被释放
+	...
+	return(person);
+}
+</code></pre>
+<p>返回的是一个结构体的复制，在主调函数中必须有这样的程序段：</p>
+<pre><code class="language-cpp">int main()
+{
+	personT p1,p2;
+	p1=GetPersonData();
+}
+</code></pre>
+<h3 id="返回结构体引用的函数"><a class="header" href="#返回结构体引用的函数">返回结构体引用的函数</a></h3>
+<p>函数中返回的结构体引用不能引用一个局部变量</p>
+<p>一个函数返回一个结构体的引用如</p>
+<pre><code class="language-cpp">PersonT &amp;GetPersonData(void)
+{
+	personT *person=new personT;
+	...
+	return(*person);
+}
+</code></pre>
+<p>返回的是一个结构体的地址，在主调函数中必须有这样的程序段：</p>
+<pre><code class="language-cpp">int main()
+{
+	personT &amp;p1=GetPersonData();
+}
+</code></pre>
+<h2 id="测验-4"><a class="header" href="#测验-4">测验</a></h2>
+<h3 id="引用结构体成员"><a class="header" href="#引用结构体成员">引用结构体成员</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct student
+{
+    int num;
+    int age;
+};
+
+int main() {
+
+    student stu[]={{1001,20},{1002,19},{1003,21}},*p=stu;
+
+    cout&lt;&lt;(p++)-&gt;num&lt;&lt;endl;//1001
+    cout&lt;&lt;(*p++).num&lt;&lt;endl;//1002
+    cout&lt;&lt;(*p).num&lt;&lt;endl;//1003
+    //cout&lt;&lt;&amp;stu[0]-&gt;age&lt;&lt;endl;//error: base operand of '-&gt;' has non-pointer type 'student'
+    return 0;
+
+}
+</code></pre>
+<h3 id="定义结构体数组"><a class="header" href="#定义结构体数组">定义结构体数组</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct KeyWord
+{
+    char Key[20];
+    int ID;
+}kw[]={&quot;void&quot;,1,&quot;char&quot;,2,&quot;int&quot;,3,&quot;float&quot;,4,&quot;double&quot;,5};
+
+
+
+int main() {
+
+    cout&lt;&lt;kw[3].Key[0]&lt;&lt;&quot;,&quot;&lt;&lt;kw[3].ID;//f,4
+    return 0;
+
+}
+</code></pre>
+<h3 id="结构体传参问题"><a class="header" href="#结构体传参问题">结构体传参问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+struct student
+{
+    char name[20];
+    int age;
+};
+
+void g(char *name,int age)
+{
+    student s[]={&quot;Wangshan&quot;,20,&quot;XiaoDing&quot;,21};
+    strcpy(name,s[1].name);
+    age=s[1].age;
+}
+
+
+int main() {
+
+    student stu[]={&quot;ZhangSan&quot;,16,&quot;LiSi&quot;,19},*p=stu+1;
+    g(p-&gt;name,p-&gt;age);
+    cout&lt;&lt;stu[1].name&lt;&lt;' '&lt;&lt;stu[1].age;//XiaoDing 19
+    return 0;
+
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+struct student
+{
+    char name[20];
+    int age;
+};
+
+void g(student stu)
+{
+    student s[]={&quot;Wangshan&quot;,20,&quot;XiaoDing&quot;,21};
+    strcpy(stu.name,s[1].name);
+    stu.age=s[1].age;
+}
+
+
+int main() {
+
+    student stu[]={&quot;ZhangSan&quot;,16,&quot;LiSi&quot;,19};
+    g(stu[1]);
+    cout&lt;&lt;stu[1].name&lt;&lt;' '&lt;&lt;stu[1].age;//LiSi 19
+    return 0;
+
+}
+</code></pre>
+<h3 id="结构体指针数组函数综合"><a class="header" href="#结构体指针数组函数综合">结构体、指针、数组、函数综合</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+typedef struct
+{
+    int b,d;
+}A;
+
+void f(A *c)
+{
+    c-&gt;b+=1;
+    c-&gt;d+=2;
+}
+
+
+int main() {
+
+    A a[3]={2,3,6,10,8,9},*p=a;
+    f(p+1);
+    cout&lt;&lt;a[1].b&lt;&lt;' '&lt;&lt;a[1].d;//7 12
+    return 0;
+
+}
+</code></pre>
+<h3 id="结构体嵌套定义"><a class="header" href="#结构体嵌套定义">结构体嵌套定义</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct A
+{
+    int x;
+    struct
+    {
+        char c1;
+        char c2;
+    }b;
+};
+
+
+int main() {
+
+    A a[2]={1,'2','3',4,'5','6'};
+    cout&lt;&lt;a[1].b.c2;//6
+    return 0;
+
+}
+</code></pre>
+<h3 id="结构体嵌套时给含指针的结构体赋初值求助gpt"><a class="header" href="#结构体嵌套时给含指针的结构体赋初值求助gpt">结构体嵌套时给含指针的结构体赋初值（求助GPT）</a></h3>
+<p>我的程序报错<code>error: no match for 'operator=' (operand types are 'test' and '&lt;brace-enclosed initializer list&gt;')</code>，帮我看看这程序该怎么改？我想给t赋个初值</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct u
+{
+    int x;
+    int y;
+};
+
+struct test
+{
+    int ml;
+    char m2;
+    float m3;
+    u *m4;
+}t;
+
+int main() {
+
+
+    t={1,'a',3.0,1,2};
+    cout&lt;&lt;t.m4-&gt;y&gt;&gt;endl;
+    return 0;
+
+}
+</code></pre>
+<p>在你的代码中，你想为结构体变量<code>t</code>赋初值。然而，你的赋值方式有一些问题。</p>
+<p>首先，对于结构体变量<code>t</code>，你定义了一个指向<code>u</code>结构体的指针<code>m4</code>。在赋初值时，你将<code>1</code>和<code>2</code>直接赋给了<code>m4</code>，这是不正确的，因为<code>m4</code>应该是一个指针类型，它需要指向一个有效的<code>u</code>结构体对象。</p>
+<p>其次，你的赋值语句<code>t={1,'a',3.0,1,2};</code>有一个多余的逗号，导致编译器无法正确解析这个赋值语句。</p>
+<p>为了修复这些问题，你可以按照以下方式修改代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct u
+{
+    int x;
+    int y;
+};
+
+struct test
+{
+    int ml;
+    char m2;
+    float m3;
+    u *m4;
+} t = {1, 'a', 3.0, nullptr};
+
+int main() {
+    u u_obj = {1, 2};
+    t.m4 = &amp;u_obj;
+
+    cout &lt;&lt; t.m4-&gt;y &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>在修改后的代码中，我做了以下更改：</p>
+<ol>
+<li>
+<p>在结构体定义中，为变量<code>t</code>赋予了初始值<code>{1, 'a', 3.0, nullptr}</code>，其中指针<code>m4</code>被初始化为<code>nullptr</code>，表示它当前不指向任何有效的<code>u</code>结构体对象。</p>
+</li>
+<li>
+<p>在<code>main</code>函数中，我创建了一个名为<code>u_obj</code>的<code>u</code>结构体对象，并将其初始化为<code>{1, 2}</code>。</p>
+</li>
+<li>
+<p>将<code>u_obj</code>的地址赋给<code>t.m4</code>，使得<code>t.m4</code>指向了<code>u_obj</code>。</p>
+</li>
+<li>
+<p>最后，通过<code>t.m4-&gt;y</code>打印了<code>t.m4</code>指向的<code>u</code>结构体对象的<code>y</code>成员。</p>
+</li>
+</ol>
+<p>这样修改后的代码应该能够实现你的预期效果，并且不再报错。</p>
+<h3 id="指针和数组嵌套"><a class="header" href="#指针和数组嵌套">指针和数组嵌套</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+struct st
+{
+    int x;
+    int *y;
+}*p;
+
+
+
+int main() {
+
+   int dt[4]={11,22,33,44};
+
+   st aa[4]={10,&amp;dt[0],20,&amp;dt[1],30,&amp;dt[2],40,&amp;dt[3]};
+
+   p=aa;
+
+   cout&lt;&lt;*(++p)-&gt;y;//22
+
+    return 0;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="类与对象理论"><a class="header" href="#类与对象理论">类与对象理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="运算符重载理论"><a class="header" href="#运算符重载理论">运算符重载理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="递归回溯与分治理论"><a class="header" href="#递归回溯与分治理论">递归、回溯与分治理论</a></h1>
