@@ -10826,6 +10826,17 @@ int main()
 <li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%8D%95%E8%AF%8D%E7%BB%9F%E8%AE%A1">单词统计</a></li>
 </ul>
 </li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#62%E5%87%BD%E6%95%B0-%E4%B8%AD%E7%AD%89">6.2函数-&gt;中等</a>
+<ul>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%AD%8C%E5%BE%B7%E5%B7%B4%E8%B5%AB%E7%8C%9C%E6%83%B3">歌德巴赫猜想</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E4%B8%AA%E6%95%B0">三角形的个数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#n%E7%9A%84%E5%80%8D%E6%95%B0">N的倍数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%95%B4%E9%99%A4%E7%9A%84%E5%B0%BE%E6%95%B0">整除的尾数</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%83%A8%E5%88%86%E5%92%8C">斐波那契部分和</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E8%8F%B1%E5%BD%A2%E8%BE%93%E5%87%BA">菱形输出</a></li>
+<li><a href="%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%88%86%E6%8B%86%E7%B4%A0%E6%95%B0%E5%92%8C">分拆素数和</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="61函数-简单"><a class="header" href="#61函数-简单">6.1函数-&gt;简单</a></h2>
 <h3 id="统计不及格人数"><a class="header" href="#统计不及格人数">统计不及格人数</a></h3>
@@ -11302,6 +11313,597 @@ int main ()
     cout&lt;&lt;CountWords(str)&lt;&lt;endl;
     return 0;
 
+}
+</code></pre>
+<h2 id="62函数-中等"><a class="header" href="#62函数-中等">6.2函数-&gt;中等</a></h2>
+<h3 id="歌德巴赫猜想"><a class="header" href="#歌德巴赫猜想">歌德巴赫猜想</a></h3>
+<p>问题描述 :</p>
+<p>歌德巴赫猜想指出：任何一个大于2的偶数，都可以表示成两个素数的和。例如：8 = 3+5， 44 = 13+31等。试编程在6至100范围内验证歌德巴赫猜想。</p>
+<p>输入说明 :</p>
+<p>先输入一个正整数n，表示有n组测试数据。所有数据前后没有多余的空行，两组数据之间也没有多余的空行。每组输入数据由一行组成，在接下来的n行中，每行有1个偶数a（6≤a≤100），在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对于每组输入，输出满足歌德巴赫猜想两个素数，小的素数的在前，在行首和行尾没有多余的空格。如果有多组结果，输出的第一个素数要求最小。所有数据前后没有多余的空行，两组数据之间也没有多余的空行。</p>
+<p>输入范例 :</p>
+<pre><code>2
+8
+44
+</code></pre>
+<pre><code>3 5
+3 41
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool IsPrime(int n)
+{
+    if(n&lt;=1) return false;
+    if(n==2) return true;
+    if(n%2==0) return false;
+    for(int i=3;i&lt;=sqrt(n);i++)
+        if(n%i==0) return false;
+    return true;
+}
+
+int main() {
+
+    int n;
+    cin&gt;&gt;n;
+    int even;
+    while(n--)
+    {
+        cin&gt;&gt;even;
+        for(int i=2;i&lt;=100;i++)
+        {
+            if(IsPrime(i)&amp;&amp;IsPrime(even-i))
+            {
+                cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;even-i&lt;&lt;endl;
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="三角形的个数"><a class="header" href="#三角形的个数">三角形的个数</a></h3>
+<p>问题描述 :</p>
+<p>明明的问题可以归结为：根据一个正整数n（3 ≤ n ≤ 100），要求统计出同时满足下列条件的三角形的个数：</p>
+<ol>
+<li>
+<p>边长都是整数。</p>
+</li>
+<li>
+<p>周长为n。</p>
+</li>
+<li>
+<p>边长两两不相等。</p>
+</li>
+</ol>
+<p>之所以有上述第一个条件，那是因为明明只知道正整数，没有学过分数和实数，因此他构造出的三角形的边长均为正整数。 请你写一个程序来帮助明明计算出他认为他爸爸喜欢的三角形的个数。</p>
+<p>输入说明 :</p>
+<p>你写的程序需要从标准输入设备（通常为键盘）中读入多组测试数据，每组测试数据仅占一行，每行仅包括一个正整数n（3 ≤ n ≤ 100），代表需要被统计的三角形的周长，n的前后都没有任何空格。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将每组运算结果依次写入到标准输出设备（通常为启动该程序的文本终端，例如Windows中的命令行终端）中。每组运算结果为一个大于等于0的整数构成，即满足条件的三角形的个数。例如：测试数据n为15时，运算结果应为3。输出时，每组运算结果占一行，其行首和行尾都没有任何空格或其他字符，每组运算结果与其后一组运算结果之间没有任何空行或其他字符，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行或其他字符。</p>
+<p>输入范例 :</p>
+<pre><code>15
+30
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>3
+12
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+
+    int n;
+    while(cin&gt;&gt;n)
+    {
+        int num=0;
+        for(int i=1;i&lt;n/3;i++)
+        {
+            for(int j=i+1;j&lt;n/2;j++)
+            {
+                if(i+j&gt;n-i-j&amp;&amp;n-j&gt;j&amp;&amp;n-i&gt;i&amp;&amp;i&lt;j&amp;&amp;i&lt;n-i-j&amp;&amp;j&lt;n-i-j)
+                       {
+                            //cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;j&lt;&lt;&quot; &quot;&lt;&lt;n-i-j&lt;&lt;endl;
+	                        num++;
+                       }
+            }
+        }
+        cout&lt;&lt;num&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<pre><code>9
+2 3 4
+1
+15
+2 6 7
+3 5 7
+4 5 6
+3
+30
+3 13 14
+4 12 14
+5 11 14
+5 12 13
+6 10 14
+6 11 13
+7 9 14
+7 10 13
+7 11 12
+8 9 13
+8 10 12
+9 10 11
+12
+
+^Z
+</code></pre>
+<h3 id="n的倍数"><a class="header" href="#n的倍数">N的倍数</a></h3>
+<p>问题描述 :</p>
+<p>任意给定一个自然数N，寻找一个M，要求M是N的倍数，且它的所有各位数字都是由0或1组成，并要求M尽可能小。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据仅占一行，每行仅包括一个正整数N（1≤N≤100），代表要求倍数的那个整数。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为一个整数，即N的倍数M。每组运算结果单独形成一行数据，其行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>1
+2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1
+10
+</code></pre>
+<p>自己写的程序不能解决9的问题，ChatGPT给出的代码可以解决9的问题，但解决不了99的输出问题。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+int main() {
+
+    int n;
+    while(cin&gt;&gt;n)
+    {
+        for(int i=1;i&lt;10000;i++)
+        {
+            if(i%n==0&amp;&amp;(i%10==0||i%10==1)&amp;&amp;((i/10)%10==0||(i/10)%10==1)&amp;&amp;((i/100)%10==0||(i/100)%10==1)&amp;&amp;((i/1000)%10==0||(i/1000)%10==1))
+            {
+                cout&lt;&lt;i&lt;&lt;endl;
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<p>下面是一个完成该程序的示例代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int findMultiple(int N) {
+    queue&lt;int&gt; q;
+    q.push(1);  // 初始值为1
+
+    while (!q.empty()) {
+        int num = q.front();
+        q.pop();
+
+        if (num % N == 0) {
+            return num;
+        }
+
+        q.push(num * 10);   // 在num的基础上添0
+        q.push(num * 10 + 1);   // 在num的基础上添1
+    }
+
+    return -1;  // 没找到满足条件的数
+}
+
+int main() {
+    int N;
+    while (cin &gt;&gt; N) {
+        int result = findMultiple(N);
+        cout &lt;&lt; result &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>该程序使用了广度优先搜索的思想，通过队列来进行搜索。初始时将1入队，然后每次从队列中取出一个数num，检查是否是N的倍数，如果是则返回该数，否则将num的十倍和十倍加一的数入队。这样不断扩展队列，直到找到满足条件的数为止。</p>
+<p>注意：该程序假设输入的N是合法的，即在范围1≤N≤100内。如果输入的N不在该范围内，程序可能会出现错误。</p>
+<p>当输入的N为99时，程序的队列中的数会快速增长，并且可能会导致溢出。为了解决这个问题，可以做如下改进：</p>
+<ol>
+<li>
+<p>将队列中的元素改为字符串类型，而不是整数类型。这样可以避免整数溢出的问题。</p>
+</li>
+<li>
+<p>使用字符串的拼接操作来生成新的倍数。在每次扩展队列时，将当前的倍数字符串乘以10，并分别在后面添加'0'和'1'，得到新的倍数字符串。</p>
+</li>
+</ol>
+<p>下面是改进后的示例代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+string findMultiple(int N) {
+    queue&lt;string&gt; q;
+    q.push(&quot;1&quot;);  // 初始值为1
+
+    while (!q.empty()) {
+        string num = q.front();
+        q.pop();
+
+        if (stoi(num) % N == 0) {
+            return num;
+        }
+
+        q.push(num + &quot;0&quot;);   // 在num的基础上添0
+        q.push(num + &quot;1&quot;);   // 在num的基础上添1
+    }
+
+    return &quot;-1&quot;;  // 没找到满足条件的数
+}
+
+int main() {
+    int N;
+    while (cin &gt;&gt; N) {
+        string result = findMultiple(N);
+        cout &lt;&lt; result &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>通过改用字符串操作，可以避免整数溢出问题，并继续找到满足条件的最小倍数。</p>
+<h3 id="整除的尾数"><a class="header" href="#整除的尾数">整除的尾数</a></h3>
+<p>问题描述 :</p>
+<p>一个整数，只知道前几位为a，不知道末二位，被另一个整数b除尽了(即没有余数)，那么该数的末二位该是什么呢？</p>
+<p>程序已完成主体框架,请完成以下函数getResult的函数体。</p>
+<p>getResult的功能为：根据传入的参数a和b，求出所有符合条件的末二位（尾数）放入数组weishu中，数组weishu按升序排列。函数返回符合条件的尾数个数。</p>
+<p>输入说明 :</p>
+<p>输入两个整数a，b（0&lt;a&lt;10000, 10&lt;b&lt;100）</p>
+<p>输出说明 :</p>
+<p>将满足条件的所有尾数在一行内输出，格式见范例。两个尾数之间空一格，行首与行尾没有空格。</p>
+<p>输入范例 :</p>
+<pre><code>1 12
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>08 20 32 44 56 68 80 92
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+
+
+int getResult(int a, int b, int weishu[])
+
+{
+    int count=0;
+    for(int i=0;i&lt;=9;i++)
+    {
+        for(int j=0;j&lt;=9;j++)
+        {
+            if((a*100+i*10+j)%b==0)
+                {
+                    weishu[count++]=i*10+j;
+                }
+        }
+    }
+    return count;
+
+}
+
+int main()
+
+{
+
+    int a, b, weishu[100],count,i;
+
+    scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+
+    count=getResult(a,b,weishu);
+
+    for(i=0; i&lt;count; i++)
+
+    {
+
+        if (i&gt;0)
+
+            printf(&quot; &quot;);
+
+        printf(&quot;%02d&quot;, weishu[i]);
+
+    }
+
+    printf(&quot;\n&quot;);
+
+    return 0;
+
+}
+</code></pre>
+<h3 id="斐波那契部分和"><a class="header" href="#斐波那契部分和">斐波那契部分和</a></h3>
+<p>问题描述 :</p>
+<p>计算闭区间<code>[m,n](即大于等于m且小于等于n)</code>内的所有斐波那契数的和。</p>
+<p>要求定义并调用函数fib(k)，它的功能是返回第k项Fibonacci数。</p>
+<p>例如，fib(7)返回13</p>
+<p>Fibonacci={1,1,2,3,5,8,13,................}</p>
+<p>其中:an=an-1+an-2</p>
+<p>如果区间为<code>[2,5]</code>，则可知，数列中2,3,5处于该区间，因此，和为10。</p>
+<p>输入说明 :</p>
+<p>两个数m和n</p>
+<p>输出说明 :</p>
+<p>所有属于闭区间<code>[m,n]</code>即大于等于m,小于等于n的斐波那契数的和。</p>
+<p>输入范例 :</p>
+<pre><code>2 5
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>10
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int fib(int k)
+{
+    if(k==1) return 1;
+    if(k==2) return 1;
+    if(k&gt;2)
+        return fib(k-1)+fib(k-2);
+}
+
+int main()
+
+{
+    int m,n;
+    int sum=0;
+    cin&gt;&gt;m&gt;&gt;n;
+    for(int i=1;i&lt;=20;i++)
+    {
+        if(fib(i)&lt;=n&amp;&amp;fib(i)&gt;=m)
+            sum+=fib(i);
+    }
+    cout&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<h3 id="菱形输出"><a class="header" href="#菱形输出">菱形输出</a></h3>
+<p>问题描述 :</p>
+<p>明明这次又碰到问题了：</p>
+<p>给定一个正整数N，明明的爸爸让他输出一个以Z开始的菱形，以后依次为Y，X…，</p>
+<p>比如当N等于1的时候输出图形：</p>
+<p>Z</p>
+<p>当N等于2的时候，输出图形：（Y前没有空格，Z、X和W前一个空格）</p>
+<p>  Z</p>
+<p>Y X</p>
+<p> W</p>
+<p>当N等于3的时候，输出图形（Z前两个空格，Y、X前一个空格，W前没有空格......）：</p>
+<p>   Z</p>
+<p> Y X</p>
+<p>W   V</p>
+<p> U T</p>
+<p>   S</p>
+<p>明明发现当N很大的时候就不是很容易了，所以找到了你，希望你编写一个程序帮助他</p>
+<p>明明的问题可以归结为：输入一个正整数N，输出一个以Z开始的菱形，以后依次为Y，X…。</p>
+<p>请尝试定义函数，该函数的功能是输出以上图形的一行。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据仅占一行，每行仅包括一个正整数n（1≤n≤7）。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组输出一个以Z开始的菱形，具体格式参照样例输出。每组运算结果与其后一组运算结果之间有一个空行，最后一组运算结果之后没有空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>1
+3
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>Z
+
+  Z
+ Y X
+W   V
+ U T
+  S
+</code></pre>
+<p>经我多次测试，ChatGPT无法完成这个程序，果真”人工智障“啦！</p>
+<p>核心思想：输出共有2n-1行</p>
+<p>前n行：第i行左边有n-i个空格，第i行内部有2(i-1)-1个空格（i从2开始算）</p>
+<p>后n-1行：第i行左边有i-n个空格，第i行内部有2(2n-1-i)-1个空格</p>
+<p>每行输出顺序：空格、字母、空格、字母</p>
+<p>其中第一行和最后一行要特殊处理</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+
+int main() {
+
+    int n=0;
+    int i=1,j=0;
+    int count=0;
+    int testCount=0;
+    char characters[]=&quot;ZYXWVUTSRQPONMLKJIHGFEDCBA&quot;;
+
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
+    {
+        count=0;
+        testCount++;
+        if(testCount&gt;=2)
+            printf(&quot;\n&quot;);
+
+        for(i=1;i&lt;=n-1;i++)
+            printf(&quot; &quot;);
+        printf(&quot;%c\n&quot;,characters[count++]);
+
+        for(i=2;i&lt;=2*n-2;i++)
+            if(i&lt;=n)
+        {
+            for(j=1;j&lt;=n-i;j++)
+                printf(&quot; &quot;);
+            printf(&quot;%c&quot;,characters[count++]);
+            for(j=1;j&lt;=(2*(i-1))-1;j++)
+                printf(&quot; &quot;);
+            printf(&quot;%c\n&quot;,characters[count++]);
+        }
+        else
+        {
+            for(j=1;j&lt;=i-n;j++)
+                printf(&quot; &quot;);
+            printf(&quot;%c&quot;,characters[count++]);
+            for(j=1;j&lt;=(2*(2*n-i-1))-1;j++)
+                printf(&quot; &quot;);
+            printf(&quot;%c\n&quot;,characters[count++]);
+        }
+        if(n!=1)
+        {
+            for(i=1;i&lt;=n-1;i++)
+                printf(&quot; &quot;);
+            printf(&quot;%c\n&quot;,characters[count++]);
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<p>非常抱歉之前的答案仍然有误，我理解错了您的要求。根据您重新给出的问题描述，以下是修正后的程序，根据题目要求输出菱形图案：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void printDiamond(int N) {
+    string alphabets(&quot;ZYXWVUTSRQPONMLKJIHGFEDCBA&quot;);
+
+    // 输出上半部分
+    for (int i = 1; i &lt;= N; i++) {
+        // 输出左边空格
+        cout &lt;&lt; string(N - i, ' ');
+
+        // 输出字母
+        for (int j = i - 1; j &gt;= 0; j--) {
+            cout &lt;&lt; alphabets[j];
+            if (j &gt; 0) {
+                cout &lt;&lt; ' ';
+            }
+        }
+
+        // 输出内部空格
+        if (i &gt; 1) {
+            cout &lt;&lt; string(2 * (i - 1) - 1, ' ');
+        }
+
+        // 输出字母
+        for (int j = 0; j &lt; i; j++) {
+            cout &lt;&lt; ' ' &lt;&lt; alphabets[j];
+        }
+
+        cout &lt;&lt; endl;
+    }
+
+    // 输出下半部分
+    for (int i = N - 1; i &gt;= 1; i--) {
+        // 输出左边空格
+        cout &lt;&lt; string(N - i, ' ');
+
+        // 输出字母
+        for (int j = i - 1; j &gt;= 0; j--) {
+            cout &lt;&lt; alphabets[j];
+            if (j &gt; 0) {
+                cout &lt;&lt; ' ';
+            }
+        }
+
+        // 输出内部空格
+        if (i &gt; 1) {
+            cout &lt;&lt; string(2 * (i - 1) - 1, ' ');
+        }
+
+        // 输出字母
+        for (int j = 0; j &lt; i; j++) {
+            cout &lt;&lt; ' ' &lt;&lt; alphabets[j];
+        }
+
+        cout &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int N;
+    cin &gt;&gt; N;
+
+    printDiamond(N);
+
+    return 0;
+}
+</code></pre>
+<p>在修正后的程序中，根据题目要求，我们根据核心思想输出菱形图案。首先，我们定义了字母序列 <code>alphabets</code>，其中包含了大写字母 Z 到 A。</p>
+<p>然后，我们使用两层循环来输出菱形的每一行。对于上半部分，我们根据行数 i 输出左边的空格，然后输出字母序列中前 i-1 个字母，再输出内部的空格，最后再输出字母序列中前 i 个字母。对于下半部分，我们按照相同的逻辑输出，但行数从 N-1 到 1 递减。</p>
+<p>在 <code>main</code> 函数中，我们读入输入的 <code>N</code>，然后调用 <code>printDiamond</code> 函数输出符合题目要求的菱形图案。</p>
+<p>再次对之前的错误表示歉意，并希望这次的程序能够正确地输出菱形图案。如果还有任何问题，请随时让我知道。</p>
+<h3 id="分拆素数和"><a class="header" href="#分拆素数和">分拆素数和</a></h3>
+<p>问题描述 :</p>
+<p>把一个偶数拆成两个不同素数的和，有几种拆法呢？</p>
+<p>说明：</p>
+<p>比如10，可以拆成3+7和5+5以及7+3，</p>
+<p>但是3+7与7+3相同，只算一种，5+5由于两个素数相同，不计算在内。</p>
+<p>因此，10的拆法只有一种。</p>
+<p>输入说明 :</p>
+<p>首先输入一个T（不超过500），然后输入T个正的偶数，其值不会超过10000。</p>
+<p>输出说明 :</p>
+<p>对应每个偶数，输出其拆成不同素数的个数，每个结果占一行。</p>
+<p>输入范例 :</p>
+<pre><code>4
+4
+6
+8
+10
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>0
+0
+1
+1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool IsPrime(int n)
+{
+    if(n&lt;=1) return false;
+    if(n==2) return true;
+    if(n%2==0) return false;
+    for(int i=3;i&lt;=sqrt(n);i++)
+        if(n%i==0) return false;
+    return true;
+}
+
+int main() {
+
+    int n;
+    cin&gt;&gt;n;
+    int even;
+    while(n--)
+    {
+        cin&gt;&gt;even;
+        int num=0;
+        for(int i=2;i&lt;=10000;i++)
+        {
+            if(IsPrime(i)&amp;&amp;IsPrime(even-i)&amp;&amp;i&lt;even-i)
+            {
+                num++;
+            }
+        }
+        cout&lt;&lt;num&lt;&lt;endl;
+    }
+
+    return 0;
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="间接访问指针"><a class="header" href="#间接访问指针">间接访问——指针</a></h1>
