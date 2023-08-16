@@ -5537,6 +5537,19 @@ int main() {
 <li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%B9%B3%E5%9D%87%E5%80%BC%E9%97%AE%E9%A2%98%E6%B1%82%E5%8A%A9gpt">平均值问题（求助GPT）</a></li>
 </ul>
 </li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#42%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84-%E4%B8%AD%E7%AD%89">4.2一维数组-&gt;中等</a>
+<ul>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E4%B8%89%E8%89%98%E8%88%B9">三艘船</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%82%E6%95%B0%E5%88%97%E9%A1%B9">求数列项</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%95%B0%E5%88%971%E6%B1%82%E5%8A%A9gpt">数列1（求助GPT）</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%E6%B1%82%E5%8A%A9gpt">删除数组重复元素（求助GPT）</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E8%B0%81%E6%98%AF%E8%80%81%E4%BA%8C%E6%B1%82%E5%8A%A9gpt">谁是老二？（求助GPT）</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E7%89%B9%E6%AE%8A%E5%9B%9B%E4%BD%8D%E6%95%B0">特殊四位数</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#huffuman%E6%A0%91%E6%B1%82%E5%8A%A9gpt">Huffuman树（求助GPT）</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%8F%91%E5%B7%A5%E8%B5%84%E5%92%AF">发工资咯</a></li>
+<li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%9C%80%E5%A4%A7%E5%80%BC%E6%B1%82%E5%8A%A9gpt">最大值（求助GPT）</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="41一维数组-简单"><a class="header" href="#41一维数组-简单">4.1一维数组-&gt;简单</a></h2>
 <h3 id="奇妙的数字"><a class="header" href="#奇妙的数字">奇妙的数字</a></h3>
@@ -6088,6 +6101,1043 @@ int main()
     return 0;
 }
 </code></pre>
+<h2 id="42一维数组-中等"><a class="header" href="#42一维数组-中等">4.2一维数组-&gt;中等</a></h2>
+<h3 id="三艘船"><a class="header" href="#三艘船">三艘船</a></h3>
+<p>问题描述 :</p>
+<p>明明由于工作的关系，经常需要坐船到某地出差办事。久而久之，明明就对这两地之间船的班次情况相当了解，他会根据办事的具体情况选择不同班次的船出行。这两地的船一共分为三个班次：特快船、快船、慢船，三个班次的船在同一天的0点从港口出发，并沿着同一路线匀速航行，只是它们到达目的地的时刻不同。 你作为明明的好朋友，有一次和明明在闲聊，问到他出差时船的航行距离有多少时，明明没有正面回答你这个问题，而只是把三艘船（特快、快、慢）的速度，以及它们到达目的地的时间是几点钟（并不知道分别是哪一天，只知道三艘船都在100天以内到达了终点）告诉了你，要你推算出两地间的距离长度。你作为一位程序设计专家，自然不会被明明的这个问题所难倒，于是你决定写一个程序，来求解这个看似困难其实简单的问题。 明明的问题可以归结为：给出三艘船的速度，以及它们到达目的地时是几点钟（并不知道分别是哪一天，只知道三艘船都在100天以内到达了终点），求两地间的距离到底有多少。若有多组解，只输出最小的那组解。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据占二行，第一行有3个正整数a、b、c，代表3艘船的到达港口那天的时间是几点钟（0≤a、b、c≤23）。第二行有3个正整数d、e、f代表3艘船的速度（0&lt;d、e、f&lt;30000），速度的单位是单位距离每小时。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果由一个整数构成，代表路程的长度，若有多组解，只输出最小的那组解。每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。</p>
+<p>输入范例 :</p>
+<pre><code>4 2 20
+5 10 13
+18 12 21
+6 9 12
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>260
+540
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int a,b,c,d,e,f;
+    while(cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&amp;&amp;cin&gt;&gt;d&gt;&gt;e&gt;&gt;f)
+    {
+
+        for(int i=1;i&lt;20000;i++)
+        {
+            if(i%(24*d)==d*a&amp;&amp;i%(24*e)==b*e&amp;&amp;i%(24*f)==c*f)
+            {
+                cout&lt;&lt;i&lt;&lt;endl;
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="求数列项"><a class="header" href="#求数列项">求数列项</a></h3>
+<p>问题描述 :</p>
+<p>数列是数学世界中一种非常有趣的数字排列规则，它使一串数字相互之间产生了某种联系，变幻无穷。很多数学家对数列产生了浓厚的兴趣，花了很多时间对其进行研究，明明就是其中的一位。一天，他又专注于一种新的数列排列规则，该排列规则满足以下条件：</p>
+<ol>
+<li>
+<p>该数列的第一个数为1。</p>
+</li>
+<li>
+<p>该数列的第二个数为5。</p>
+</li>
+<li>
+<p>该数列的第i （其中i &gt; 2）个数为第i - 1个数的数值加上(i - 3) × 3 + 7。</p>
+</li>
+</ol>
+<p>明明很快就推算出了这个数列的前三项数字：</p>
+<ol>
+<li>
+<p>第一项为1。</p>
+</li>
+<li>
+<p>第二项为5。</p>
+</li>
+<li>
+<p>第三项为12。（第三项的数字为第二项的数字加上(3 - 3) × 3 + 7，即第三项的数为：5 + (3 - 3) × 3 + 7 = 12）</p>
+</li>
+</ol>
+<p>但是当明明还想继续把数列往下推算的时候，他发现计算量越来越大，计算难度越来越高，计算速度也越来越慢。于是，明明就求助于你这位程序设计专家，帮他写一个程序，计算出数列的前50项，然后当明明需要知道数列中的哪一项的数字时，你就把那一项的数字告诉明明。 明明的问题可以归结为：根据一个正整数n，要求你输出题目中所描述的数列的第n项数值。</p>
+<p>输入说明 :</p>
+<p>你写的程序需要从标准输入设备（通常为键盘）中读入多组测试数据，每组测试数据仅占一行，每行仅包括一个正整数n（1 ≤ n ≤ 50）。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序需要计算出一组相应的运算结果，并将每组运算结果依次写入到标准输出设备（通常为启动该程序的文本终端，例如Windows中的命令行终端）中。每组运算结果为一个整数，即题目中所描述的数列的第n项数值。每组运算结果单独形成一行数据，其行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。</p>
+<p>输入范例 :</p>
+<pre><code>1
+2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1
+5
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int Seq(int n)
+{
+    if(n==1) return 1;
+    if(n==2) return 5;
+    return Seq(n-1)+(n-3)*3+7;
+}
+
+
+int main()
+{
+    int n;
+    while(cin&gt;&gt;n)
+    {
+        cout&lt;&lt;Seq(n)&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="数列1求助gpt"><a class="header" href="#数列1求助gpt">数列1（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>思维的严密性是相当重要的，尤其是在程序设计中，一个小小的错误，就可能导致无法想象的后果。明明的爸爸是一名富有经验的程序设计专家，深知思维严密的重要性。于是在明明很小的时候，就通过游戏的方式训练明明的思维严密性。今天，明明的爸爸和明明做了一个数列的游戏。</p>
+<p>这个游戏很简单，就是有一数列，现在需要在数列中选出一个或者连续若干个数，要求这些数的和能被11整除。明明的爸爸想锻炼明明思维的严密性，因此要求明明尽可能多的找出符合条件的数列来，最好一个也不要漏掉。 例如有一数列为“11 22 33”，其中11可以被11整除，22可以被11整除，33可以被11整除，11+22=33能被11整除，22+33=55能被11整除，11+22+33=66能被11整除。所以以上一数列能被11整除的情况一共有六种。（注：虽然11+33也能被11整除，但是11和33在数列中没有连续出现，因此不算一种合理的情况。） 明明对这个游戏很感兴趣，高兴地玩了起来。由于粗心，明明总是无法一次就把所有的情况都找出来，这使得他爸爸不是很满意。于是明明爸爸决定先降低游戏的难度，事先告诉明明某一数列总共有多少种符合条件的选择数的方法，然后再让明明去选。明明的爸爸请你帮一个忙，他不想自己找出所有的情况，因此请你写一个程序，用程序来找出一共有多少种符合选数的情况，并把结果告诉他。 明明爸爸的问题可以归结为：给你一个数列，从中选出1个或连续若干个数，要求这些数的和能被11整除，问这样的选数方法一共有多少种。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据有两行，每组测试数据的第一行有一个整数n(0&lt;n≤50)，表示数字串中有多少个整数，每组测试数据的第二行有n个整数，整数大于等于0且小于等于100，整数之间用一个空格隔开。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将每组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为一个整数，即表示一共有多少种选数方法。每组运算结果单独形成一行数据，其行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>10
+1 1 1 1 1 1 1 1 1 1
+2
+11 22
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>0
+3
+</code></pre>
+<p>这是一个需要使用动态规划解决的问题。这个问题的关键是如何设计一个有效的状态转移方程。</p>
+<p>整个问题可以被分解为以下两个步骤：</p>
+<ol>
+<li>遍历所有可能的子序列。</li>
+<li>检查子序列的和是否能被11整除。</li>
+</ol>
+<p>我们可以使用一个二维数组<code>dp[i][j]</code>表示前<code>i</code>个数中，和模上11为<code>j</code>的数量。</p>
+<p>状态转移方程可以描述为：</p>
+<ul>
+<li>如果不选择第i个数，那么<code>dp[i][j] = dp[i-1][j]</code></li>
+<li>如果选择第i个数，那么<code>dp[i][j] = dp[i-1][(j-arr[i])%11]</code></li>
+</ul>
+<p>最后，我们要找的答案就是<code>dp[n][0] - 1</code>，减去1是因为不取任何数也能得到和为0。</p>
+<p>下面是完整的C++代码：</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    int n;
+    while (cin &gt;&gt; n) {
+        vector&lt;int&gt; arr(n);
+        for (int i = 0; i &lt; n; ++i) {
+            cin &gt;&gt; arr[i];
+            arr[i] %= 11;  // 取余数，方便后续计算
+        }
+
+        vector&lt;vector&lt;int&gt;&gt; dp(n+1, vector&lt;int&gt;(11, 0));
+        dp[0][0] = 1;  // 初始状态，没有数，和为0
+
+        for (int i = 1; i &lt;= n; ++i) {
+            for (int j = 0; j &lt; 11; ++j) {
+                // 状态转移方程
+                dp[i][j] = dp[i-1][(j+11-arr[i-1])%11] + dp[i-1][j];
+            }
+        }
+        cout &lt;&lt; dp[n][0] - 1 &lt;&lt; endl;  // 输出结果，减去1是因为不取任何数也能得到和为0
+    }
+    return 0;
+}
+</code></pre>
+<p>注意：这个程序只能处理输入数据在正确格式下的情况，如果输入数据格式错误，这个程序可能会出现未定义的行为。</p>
+<p>GPT4写的这个程序遇见下面的结果时报错</p>
+<pre><code>50
+3 8 3 8 3 8 3 8 3 8 3 8 3 8 3 8 3 8 3 8 3 8 3 8 1 1 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7 4 7
+//输出结果1083005198
+//正确结果288
+</code></pre>
+<p>让ChatGPT改了好多次也没改成功，哎！正确代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main() {
+
+    int n,i,sum,count,j,k,out;
+    int a[51];
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
+    {
+        for(i=0;i&lt;n;i++)
+            cin&gt;&gt;a[i];
+        count=0;
+        for(i=1;i&lt;=n;i++)
+        {
+            for(j=0;j&lt;n;j++)
+            {
+                sum=0;
+                for(k=j;k&lt;=j+i-1;k++)
+                {
+                    out=0;
+                    if(k&gt;=n)
+                    {
+                        out=1;
+                        break;
+                    }
+                    sum+=a[k];
+                }
+                if(sum&gt;0&amp;&amp;sum%11==0&amp;&amp;out!=1)
+                    count++;
+            }
+        }
+        cout&lt;&lt;count&lt;&lt;endl;
+
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="删除数组重复元素求助gpt"><a class="header" href="#删除数组重复元素求助gpt">删除数组重复元素（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>已有一维数组，存储不超过100个整型数据，其中有些元素的值存在重复，从数组中删除所有重复的元素（每个元素只保留一个），并输出结果数组。</p>
+<p>输入说明 :</p>
+<p>已有一维数组，存储不超过100个整型数据，其中有些元素的值存在重复，从数组中删除所有重复的元素（每个元素只保留一个），并输出结果数组。</p>
+<p>输出说明 :</p>
+<p>对于每组输入，输出最后的结果，整数之间以空格分隔。每行的开头与结尾无多余空格。</p>
+<p>每组输出占一行。</p>
+<p>输入范例 :</p>
+<pre><code>10
+1 5 4 3 2 9 7 8 6 10
+10
+1 5 5 3 2 9 7 8 6 10
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1 5 4 3 2 9 7 8 6 10
+1 5 3 2 9 7 8 6 10
+</code></pre>
+<p>自己学着用unordered_set处理这个问题，但被暴击了，尴尬！</p>
+<p>我用c++中的unordered_set对vector元素进行去重操作，但输出结果的顺序存在很大的问题，帮我找出原因，改正程序，前面是代码，后面是测试数据和结果</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_set&gt;
+using namespace std;
+
+int main()
+{
+   int n;
+   while(cin&gt;&gt;n)
+   {
+       vector&lt;int&gt; vec(n);
+       for(int i=0;i&lt;vec.size();i++)
+           {
+               cin&gt;&gt;vec[i];
+           }
+       unordered_set&lt;int&gt;s(vec.begin(),vec.end());
+       //for(auto it:s)
+           //cout&lt;&lt;it&lt;&lt;&quot; &quot;;
+       vec.assign(s.begin(),s.end());
+       //vec.insert(vec.end(),s.begin(),s.end());
+       for(int i=1;i&lt;vec.size();i++)
+           cout&lt;&lt;vec[i]&lt;&lt;&quot; &quot;;
+       cout&lt;&lt;vec[0]&lt;&lt;endl;
+   }
+}
+</code></pre>
+<pre><code>5
+1 2 3 5 4
+1 2 3 5 4
+10
+1 5 5 3 2 9 7 8 6 10
+6 8 7 9 2 3 5 1 10
+</code></pre>
+<p>在使用<code>unordered_set</code>进行去重操作后，输出结果的顺序可能会发生变化，因为<code>unordered_set</code>是基于哈希表实现的，它不保证元素的顺序。因此，你需要使用<code>set</code>来保持元素的有序性。</p>
+<p>修改你的程序如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        vector&lt;int&gt; vec(n);
+        for(int i = 0; i &lt; vec.size(); i++)
+        {
+            cin &gt;&gt; vec[i];
+        }
+        set&lt;int&gt; s(vec.begin(), vec.end());
+        vec.assign(s.begin(), s.end());
+        for(int i = 0; i &lt; vec.size() - 1; i++)
+            cout &lt;&lt; vec[i] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; vec[vec.size() - 1] &lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>使用以上修改后的代码，输入测试数据和结果如下：</p>
+<pre><code>5
+1 2 3 5 4
+1 2 3 4 5
+10
+1 5 5 3 2 9 7 8 6 10
+1 2 3 5 6 7 8 9 10
+</code></pre>
+<p>现在，输出结果按升序排列，并且保持了原始顺序中的相对顺序。使用<code>set</code>容器可以确保元素的有序性。</p>
+<p>如果你不希望对元素进行排序，但仍然想对元素进行去重操作，你可以使用<code>std::unordered_set</code>来实现。<code>std::unordered_set</code>是一个基于哈希表的容器，它可以在常数时间内插入和查找元素。</p>
+<p>以下是修改后的代码示例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_set&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        vector&lt;int&gt; vec(n);
+        for(int i = 0; i &lt; vec.size(); i++)
+        {
+            cin &gt;&gt; vec[i];
+        }
+        unordered_set&lt;int&gt; s;
+        vector&lt;int&gt; result;
+        for(const auto&amp; num : vec)
+        {
+            if(s.find(num) == s.end()) // 如果集合中不存在该元素
+            {
+                s.insert(num);
+                result.push_back(num);
+            }
+        }
+        for(int i = 0; i &lt; result.size() - 1; i++)
+            cout &lt;&lt; result[i] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; result[result.size() - 1] &lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>使用以上修改后的代码，输入测试数据和结果如下：</p>
+<pre><code>5
+1 2 3 5 4
+1 2 3 5 4
+10
+1 5 5 3 2 9 7 8 6 10
+1 5 3 2 9 7 8 6 10
+</code></pre>
+<p>现在，输出结果中的顺序与输入保持一致，且元素已经被去重。这是通过使用<code>std::unordered_set</code>和辅助的<code>std::vector</code>容器来实现的。</p>
+<p>除了使用<code>std::unordered_set</code>之外，还可以使用以下两种方法在不排序的情况下对元素进行去重：</p>
+<ol>
+<li>使用<code>std::set</code>容器：<code>std::set</code>是一个有序容器，它会自动对元素进行排序，并且保证元素的唯一性。你可以将元素插入到<code>std::set</code>中，然后将<code>std::set</code>中的元素复制回原始的<code>std::vector</code>，这样就可以实现去重。</li>
+</ol>
+<p>下面是示例代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        vector&lt;int&gt; vec(n);
+        for(int i = 0; i &lt; vec.size(); i++)
+        {
+            cin &gt;&gt; vec[i];
+        }
+        set&lt;int&gt; s(vec.begin(), vec.end());
+        vec.assign(s.begin(), s.end());
+        for(int i = 0; i &lt; vec.size(); i++)
+             cout &lt;&lt; vec[i] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>使用以上代码，输入测试数据和结果如下：</p>
+<pre><code>5
+1 2 3 5 4
+1 2 3 4 5
+10
+1 5 5 3 2 9 7 8 6 10
+1 2 3 5 6 7 8 9 10
+</code></pre>
+<p>这种方法会对元素进行排序，但你可以得到去重后的有序结果。</p>
+<ol start="2">
+<li>使用自定义去重函数和<code>std::remove_if</code>算法：你可以自定义一个去重的谓词函数，并使用<code>std::remove_if</code>算法将重复元素移到容器的末尾，然后使用<code>std::vector</code>的<code>erase</code>函数将重复元素从容器中移除。</li>
+</ol>
+<p>下面是示例代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+bool isDuplicate(int num)
+{
+    // 自定义的去重谓词函数
+    // 返回 true 表示元素是重复的，需要移除
+    // 返回 false 表示元素是唯一的，保留
+    // 这里假设元素值小于等于 1000
+    return (num &lt;= 1000);
+}
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        vector&lt;int&gt; vec(n);
+        for(int i = 0; i &lt; vec.size(); i++)
+        {
+            cin &gt;&gt; vec[i];
+        }
+        vec.erase(remove_if(vec.begin(), vec.end(), isDuplicate), vec.end());
+        for(int i = 0; i &lt; vec.size(); i++)
+             cout &lt;&lt; vec[i] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    }
+}
+</code></pre>
+<p>使用以上代码，输入测试数据和结果如下：</p>
+<pre><code>5
+1 2 3 5 4
+1 2 3 5 4
+10
+1 5 5 3 2 9 7 8 6 10
+6 8 7 9 2 3 5 1 10
+</code></pre>
+<p>这种方法不会对元素进行排序，但是你无法保证元素的顺序，只能保证去重后的元素在容器中的相对顺序不变。</p>
+<p>下面是根据题目信息完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_set&gt;
+using namespace std;
+
+int main() {
+    int n;
+    while (cin &gt;&gt; n) {
+        vector&lt;int&gt; arr(n);
+        for (int i = 0; i &lt; n; i++) {
+            cin &gt;&gt; arr[i];
+        }
+
+        unordered_set&lt;int&gt; uniqueSet;
+        vector&lt;int&gt; result;
+        for (int i = 0; i &lt; n; i++) {
+            if (uniqueSet.find(arr[i]) == uniqueSet.end()) {
+                uniqueSet.insert(arr[i]);
+                result.push_back(arr[i]);
+            }
+        }
+
+        for (int i = 0; i &lt; result.size(); i++) {
+            cout &lt;&lt; result[i];
+            if (i != result.size() - 1) {
+                cout &lt;&lt; &quot; &quot;;
+            }
+        }
+        cout &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>这段代码使用了<code>unordered_set</code>来辅助去重操作。每次读入整数数组后，遍历数组元素，如果元素不存在于<code>unordered_set</code>中，则将其插入<code>unordered_set</code>并将其添加到结果数组中。最后，输出结果数组的元素。</p>
+<p>使用以上代码，输入测试数据和输出结果如下：</p>
+<p>输入：</p>
+<pre><code>10
+1 5 4 3 2 9 7 8 6 10
+10
+1 5 5 3 2 9 7 8 6 10
+</code></pre>
+<p>输出：</p>
+<pre><code>1 5 4 3 2 9 7 8 6 10
+1 5 3 2 9 7 8 6 10
+</code></pre>
+<h3 id="谁是老二求助gpt"><a class="header" href="#谁是老二求助gpt">谁是老二？（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>一维数组中存储不超过100个整型数据，请找出其中第二大的元素，输出这些元素的值以及它们的下标。</p>
+<p>注意，由于元素值可能相同，因此具有最大值的元素个数可能不只一个，第二大的元素是比它们小的那些元素。</p>
+<p>输入说明 :</p>
+<p>用户可输入多组数据，每组数据由两行组成：</p>
+<p>第一行：数组元素的个数n</p>
+<p>第二行：n个数组元素，由空格分隔</p>
+<p>输出说明 :</p>
+<p>对于每组输入，输出一行，包含第二大的元素的值以及它们的下标（都是整数），整数之间以空格分隔。如果有多个下标，则下标按从小到大的顺序输出。每行的开头与结尾无多余空格。</p>
+<p>每组输出占一行。</p>
+<p>如果不存在第二大的元素，则输出&quot;none&quot;（不包含引号）</p>
+<p>输入范例 :</p>
+<pre><code>3
+2 5 4
+10
+1 3 5 2 4 3 7 5 7 7
+5
+2 2 2 2 2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>4 2
+5 2 7
+none
+</code></pre>
+<p>自已想出来的复杂实现1：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int FindMax(vector&lt;int&gt; &amp;a,int n)
+{
+    int MaxValue=a[0];
+    for(int i=0;i&lt;n;i++)
+    {
+        if(a[i]&gt;MaxValue)
+            MaxValue=a[i];
+    }
+    return MaxValue;
+}
+
+int FindMin(vector&lt;int&gt; &amp;a,int n)
+{
+    int MinValue=a[0];
+    for(int i=0;i&lt;n;i++)
+    {
+        if(a[i]&lt;MinValue)
+            MinValue=a[i];
+    }
+    return MinValue;
+}
+//上面的函数可以直接用排序算法或使用max_element()确定最大值进而确定第二大值
+int main()
+{
+    int n;
+    while(cin&gt;&gt;n)
+    {
+        vector&lt;int&gt; nums(n);
+        for(int i=0;i&lt;n;i++)
+            cin&gt;&gt;nums[i];
+
+        int MaxValue,SecondMaxValue,MinValue;
+        MaxValue=FindMax(nums,n);
+        MinValue=FindMin(nums,n);
+        vector&lt;int&gt; vec;
+        for(int i=0;i&lt;n;i++)
+        {
+            if(nums[i]!=MaxValue)
+                vec.push_back(nums[i]);
+        }
+        if(MaxValue==MinValue)
+            cout&lt;&lt;&quot;none&quot;&lt;&lt;endl;
+        else
+        {
+            SecondMaxValue=FindMax(vec,vec.size());
+            cout&lt;&lt;SecondMaxValue&lt;&lt;&quot; &quot;;
+            vector&lt;int&gt; SMV;
+            for(int j=0;j&lt;nums.size();j++)
+            {
+                if(nums[j]==SecondMaxValue)
+                   SMV.push_back(j);
+            }
+            for (int i = 0; i &lt; SMV.size(); i++) {
+            cout &lt;&lt; SMV[i];
+            if (i != SMV.size() - 1) {
+                cout &lt;&lt; &quot; &quot;;
+                }
+            }
+            cout &lt;&lt; endl;
+
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>下面是ChatGPT根据题目信息完成的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int n;
+    while (cin &gt;&gt; n) {
+        vector&lt;int&gt; arr(n);
+        for (int i = 0; i &lt; n; i++) {
+            cin &gt;&gt; arr[i];
+        }
+
+        int maxVal = arr[0];
+        int secondMaxVal = INT_MIN;
+        vector&lt;int&gt; indices;
+
+        for (int i = 1; i &lt; n; i++) {
+            if (arr[i] &gt; maxVal) {
+                secondMaxVal = maxVal;
+                maxVal = arr[i];
+                indices.clear();
+            } else if (arr[i] &lt; maxVal &amp;&amp; arr[i] &gt; secondMaxVal) {
+                secondMaxVal = arr[i];
+            }
+        }
+
+        if (secondMaxVal == INT_MIN) {
+            cout &lt;&lt; &quot;none&quot; &lt;&lt; endl;
+        } else {
+            for (int i = 0; i &lt; n; i++) {
+                if (arr[i] == secondMaxVal) {
+                    indices.push_back(i);
+                }
+            }
+
+            cout &lt;&lt; secondMaxVal &lt;&lt; &quot; &quot;;
+            for (int i = 0; i &lt; indices.size(); i++) {
+                cout &lt;&lt; indices[i];
+                if (i != indices.size() - 1) {
+                    cout &lt;&lt; &quot; &quot;;
+                }
+            }
+            cout &lt;&lt; endl;
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<p>这段代码使用了两个变量<code>maxVal</code>和<code>secondMaxVal</code>来记录最大值和第二大值。遍历数组时，根据当前元素的大小更新这两个变量的值。同时，使用<code>vector</code>来记录第二大值的下标。</p>
+<p>最后，根据第二大值是否存在输出相应的结果。</p>
+<p>使用以上代码，输入测试数据和输出结果如下：</p>
+<p>输入：</p>
+<pre><code>3
+2 5 4
+10
+1 3 5 2 4 3 7 5 7 7
+5
+2 2 2 2 2
+</code></pre>
+<p>输出：</p>
+<pre><code>4 2
+5 2 7
+none
+</code></pre>
+<p><strong>对不起，我之前的回答有误。确实没有使用 <code>&lt;algorithm&gt;</code> 头文件中的任何函数。感谢你的指正。</strong></p>
+<p>以下是修正后的代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+int main() {
+    int n;
+    while (cin &gt;&gt; n) {
+        vector&lt;int&gt; arr(n);
+        for (int i = 0; i &lt; n; i++) {
+            cin &gt;&gt; arr[i];
+        }
+
+        int maxVal = numeric_limits&lt;int&gt;::min();
+        int secondMaxVal = numeric_limits&lt;int&gt;::min();
+        vector&lt;int&gt; indices;
+
+        for (int i = 0; i &lt; n; i++) {
+            if (arr[i] &gt; maxVal) {
+                secondMaxVal = maxVal;
+                maxVal = arr[i];
+            } else if (arr[i] &gt; secondMaxVal &amp;&amp; arr[i] &lt; maxVal) {
+                secondMaxVal = arr[i];
+            }
+        }
+
+        if (secondMaxVal == numeric_limits&lt;int&gt;::min()) {
+            cout &lt;&lt; &quot;none&quot; &lt;&lt; endl;
+        } else {
+            for (int i = 0; i &lt; n; i++) {
+                if (arr[i] == secondMaxVal) {
+                    indices.push_back(i);
+                }
+            }
+
+            cout &lt;&lt; secondMaxVal &lt;&lt; &quot; &quot;;
+            for (int i = 0; i &lt; indices.size(); i++) {
+                cout &lt;&lt; indices[i];
+                if (i != indices.size() - 1) {
+                    cout &lt;&lt; &quot; &quot;;
+                }
+            }
+            cout &lt;&lt; endl;
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<p>我已经更新了代码，确保没有使用 <code>&lt;algorithm&gt;</code> 头文件中的函数。再次抱歉给你带来的困惑。</p>
+<h3 id="特殊四位数"><a class="header" href="#特殊四位数">特殊四位数</a></h3>
+<p>问题描述 :</p>
+<p>数学一直是明明很喜欢的一门学科，不但上课认真听讲，而且还自己钻研。有一次，老师在课上讲了一种特殊的四位整数，这种整数有两个特性：</p>
+<p>第一，它是某一个自然数的平方；</p>
+<p>第二，它的千位数字与十位数字之和等于百位数字与个位数字之积。</p>
+<p>然后老师就举了一个例子：1156，1156是34的平方，且1156的千位数字1加上十位数字5等于百位数字1乘以个数数字6，即1+5=1*6。</p>
+<p>然后老师告诉同学，这是最小的一个符合以上两个特性的四位整数，接着老师就留下了作业，要让同学们回家后尽量多的找出符合这两个特性的特殊四位数。明明回家后，就开始找了起来，1157、1158、1159、……、3136，直到到了3136（3136=56*56，3+3=1*6），明明才找到了第二个这样的特殊四位数。明明觉得这样找下去不是办法，后面还有好几千个数字要一个一个试下来，这样一定无法在睡觉前完成。于是明明就求助于你，帮他写一个程序，从小到大求出所有的这样的特殊四位数，然后当明明想要第几个这样的特殊四位数时，你就能够很快的告诉他。 如果把上述所有的特殊四位数按从小到大的顺序排列后记为S1，S2，…，Sn，…，即排在第1个位置上的特殊四位数记为S1，排在第2个位置上的特殊四位数记为S2，…，排在第n个位置上的特殊四位数记为Sn，那么明明的问题可以归结为：假如一个特殊四位数排在第n个位置上，那么这个特殊四位数Sn等于多少呢？</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据仅占一行，每行仅有一个正整数n（n不大于特殊四位数的个数），表示要求第n个特殊四位数Sn。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为一个正整数，表示与输入数据n相对应的那个特殊四位数Sn，每组运算结果单独形成一行数据，其行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>1
+2
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1156
+3136
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool IsRequried(int n)
+{
+    int w=sqrt(n);
+    if((n/1000+n%100/10)==(n/100%10)*(n%10)&amp;&amp;w*w==n)
+        return true;
+    return false;
+}
+
+int main()
+{
+    vector&lt;int&gt; nums;
+    int n;
+    for(int i=1001;i&lt;10000;i++)
+    {
+        if(IsRequried(i))
+            nums.push_back(i);
+    }
+    while(cin&gt;&gt;n)
+    {
+        cout&lt;&lt;nums[n-1]&lt;&lt;endl;
+    }
+}
+</code></pre>
+<h3 id="huffuman树求助gpt"><a class="header" href="#huffuman树求助gpt">Huffuman树（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>Huffman树在编码中有着广泛的应用。在这里，我们只关心Huffman树的构造过程。</p>
+<p>给出一列数{<em>pi</em>}={_p_0, _p_1, …, <em>pn</em>-1}，用这列数构造Huffman树的过程如下：</p>
+<ol>
+<li>
+<p>找到{<em>pi</em>}中最小的两个数，设为_pa_和_pb_，将_pa_和_pb_从{<em>pi</em>}中删除掉，然后将它们的和加入到{<em>pi</em>}中。这个过程的费用记为 <em>pa</em> + <em>pb</em>。</p>
+</li>
+<li>
+<p>重复步骤1，直到{<em>pi</em>}中只剩下一个数。</p>
+</li>
+</ol>
+<p>在上面的操作过程中，把所有的费用相加，就得到了构造Huffman树的总费用。<br />
+　　
+本题任务：对于给定的一个数列，现在请你求出用该数列构造Huffman树的总费用。</p>
+<p>例如，对于数列{<em>pi</em>}={5, 3, 8, 2, 9}，Huffman树的构造过程如下：</p>
+<ol>
+<li>
+<p>找到{5, 3, 8, 2, 9}中最小的两个数，分别是2和3，从{<em>pi</em>}中删除它们并将和5加入，得到{5, 8, 9, 5}，费用为5。</p>
+</li>
+<li>
+<p>找到{5, 8, 9, 5}中最小的两个数，分别是5和5，从{<em>pi</em>}中删除它们并将和10加入，得到{8, 9, 10}，费用为10。</p>
+</li>
+<li>
+<p>找到{8, 9, 10}中最小的两个数，分别是8和9，从{<em>pi</em>}中删除它们并将和17加入，得到{10, 17}，费用为17。</p>
+</li>
+<li>
+<p>找到{10, 17}中最小的两个数，分别是10和17，从{<em>pi</em>}中删除它们并将和27加入，得到{27}，费用为27。</p>
+</li>
+<li>
+<p>现在，数列中只剩下一个数27，构造过程结束，总费用为5+10+17+27=59。</p>
+</li>
+</ol>
+<p>输入说明 :</p>
+<p>输入的第一行包含一个正整数_n_（<em>n</em>&lt;=100）。</p>
+<p>接下来是_n_个正整数，表示_p_0, _p_1, …, <em>pn</em>-1，每个数不超过1000。</p>
+<p>输出说明 :</p>
+<p>输出用这些数构造Huffman树的总费用。</p>
+<p>输入范例 :</p>
+<pre><code>5
+5 3 8 2 9
+</code></pre>
+<p>输出范例 :<code>59</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+
+int main()
+{
+    int n;
+
+    cin&gt;&gt;n;
+
+    vector&lt;int&gt; nums(n);
+    for(int i=0;i&lt;n;i++)
+        cin&gt;&gt;nums[i];
+
+    int cost=0;
+    for(int j=nums.size()-1;nums.size()&gt;1;j--)
+    {
+        int sum=0;
+        int minValue=*min_element(nums.begin(),nums.end());
+        sum+=minValue;
+            //int  minPosition=min_element(nums.begin(),nums.end())-nums.begin();
+        nums.erase(remove(nums.begin(),nums.end(),minValue));
+        minValue=*min_element(nums.begin(),nums.end());
+        sum+=minValue;
+            //int  minPosition=min_element(nums.begin(),nums.end())-nums.begin();
+        nums.erase(remove(nums.begin(),nums.end(),minValue));
+        nums.push_back(sum);
+        cost+=sum;
+
+    }
+    cout&lt;&lt;cost&lt;&lt;endl;
+
+    return 0;
+
+}
+</code></pre>
+<p>OJ结果：</p>
+<pre><code>5
+335 501 170 725 479 
+0
+</code></pre>
+<p>本地测试结果：</p>
+<pre><code>5
+335 501 170 725 479
+4925
+</code></pre>
+<p>这不是OJ系统的错！！是因为读入值的代码没有赋初值，哎！</p>
+<p>以下是根据题目信息编写的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq;  // 使用最小堆存储数列中的数
+
+    for (int i = 0; i &lt; n; i++) {
+        int num;
+        cin &gt;&gt; num;
+        pq.push(num);
+    }
+
+    int cost = 0;
+
+    while (pq.size() &gt; 1) {
+        int a = pq.top();  // 取出最小的两个数
+        pq.pop();
+        int b = pq.top();
+        pq.pop();
+
+        int sum = a + b;  // 计算和
+        cost += sum;     // 累加费用
+        pq.push(sum);    // 将和加入最小堆中
+    }
+
+    cout &lt;&lt; cost &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>以上代码使用最小堆（<code>priority_queue</code>）来存储数列中的数，将数列中的数依次加入堆中。然后，循环从堆中取出最小的两个数，计算它们的和，并将和加入堆中。在每次取出最小的两个数时，累加费用。当堆中只剩下一个数时，循环结束，输出总费用。</p>
+<p>使用以上代码，输入示例数据并得到输出结果为：</p>
+<p>输入：</p>
+<pre><code>5
+5 3 8 2 9
+</code></pre>
+<p>输出：</p>
+<pre><code>59
+</code></pre>
+<p>下面是另一种方式完成上述程序的C++代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    vector&lt;int&gt; nums(n);
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; nums[i];
+    }
+
+    sort(nums.begin(), nums.end());  // 对数列进行排序
+
+    int cost = 0;
+
+    while (nums.size() &gt; 1) {
+        int a = nums[0];  // 取出最小的两个数
+        int b = nums[1];
+
+        int sum = a + b;  // 计算和
+        cost += sum;     // 累加费用
+
+        nums.erase(nums.begin(), nums.begin() + 2);  // 删除最小的两个数
+        nums.insert(lower_bound(nums.begin(), nums.end(), sum), sum);  // 将和插入到合适位置
+    }
+
+    cout &lt;&lt; cost &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>以上代码使用了<code>vector</code>来存储数列中的数，并使用<code>sort</code>函数对数列进行排序。然后，循环从数列中取出最小的两个数，计算它们的和，并将和插入到合适的位置。在每次取出最小的两个数时，累加费用。当数列中只剩下一个数时，循环结束，输出总费用。</p>
+<p>使用以上代码，输入示例数据并得到输出结果为：</p>
+<p>输入：</p>
+<pre><code>5
+5 3 8 2 9
+</code></pre>
+<p>输出：</p>
+<pre><code>59
+</code></pre>
+<h3 id="发工资咯"><a class="header" href="#发工资咯">发工资咯</a></h3>
+<p>问题描述 :</p>
+<p>作为需要养家糊口的人，最盼望的日子就是每月发工资的日子，呵呵</p>
+<p>但是对于财务处的工作人员来说，这一天则是很忙碌的一天，财务处的小胡最近就在考虑一个问题：如果每个员工的工资额都知道，最少需要准备多少张人民币，才能在给每位员工发工资的时候都不用员工找零呢？</p>
+<p>这里假设员工的工资都是正整数，单位元，人民币一共有100元、50元、20元、10元、5元、2元和1元七种。</p>
+<p>输入说明 :</p>
+<p>首先输入一个T，表示包含T组测试数据，</p>
+<p>每组测试数据的第一行是一个整数n（n&lt;100），表示员工的人数，</p>
+<p>第二行是n个员工的工资。</p>
+<p>输出说明 :</p>
+<p>对于每组测试数据输出一个整数x，表示至少需要准备的人民币张数。</p>
+<p>每个输出占一行，行首与行尾无多余空格，前后也无多余空行。</p>
+<p>输入范例 :</p>
+<pre><code>3
+1
+299
+2
+299 197
+5
+123 4567 89 10 12345
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>8
+14
+186
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    int T;
+    cin &gt;&gt; T;
+
+    while(T--)
+    {
+        int n;
+        cin&gt;&gt;n;
+        vector&lt;int&gt; nums(n);
+        int count=0;
+        for(int i=0;i&lt;n;i++)
+        {
+            cin&gt;&gt;nums[i];
+            int sum=nums[i];
+            count+=sum/100;
+            sum%=100;
+            count+=sum/50;
+            sum%=50;
+            count+=sum/20;
+            sum%=20;
+            count+=sum/10;
+            sum%=10;
+            count+=sum/5;
+            sum%=5;
+            count+=sum/2;
+            sum%=2;
+            count+=sum;
+        }
+        cout&lt;&lt;count&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="最大值求助gpt"><a class="header" href="#最大值求助gpt">最大值（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>为了培养明明对数学的热爱，明明的爸爸经常想出一些简单有趣且富有数学思想的游戏给明明玩。有一次，明明的爸爸在纸上写了N个数字，有正整数、负整数和0。明明的爸爸给明明一个范围，他可以选大于等于L1个且小于等于L2个的数字（L1≤L2），且这些数字必须是连续的。但是要求明明选出的数的和最大，这样说明明可能不太明白，于是明明爸爸就举了一个简单的例子。 例如有5个数字为“1”、“2”、“3”、“4”、“5”，明明可以选择大于等于1个且小于等于2个的数字，也就是说明明可以选择1个数字，或者连续的2个数字。通过观察数字串，最后我们会选2个数字，4和5，他们的和最大，为9。 明明明白爸爸的意思后，就开始玩起游戏来。但是他发现，这个游戏看似简单，其实还是有相当的难度，因为数字越多，选择数字个数范围越大，则题目越难，到后面明明有些不想玩了。于是明明就求助于你，请你帮他写一个程序，来求出和的最大值。 明明的问题可以归结为：有N个数字，从中选择出连续的M(L1≤M≤L2)个数，求出它们之和的最大值。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据有两行，每组测试数据的第一行有三个整数N(0&lt;N≤20)、L1、L2(0&lt;L1≤L2≤N)，N表示数字串中有多少个整数，L1、L2表示可选数字个数的范围，每组测试数据的第二行有N个整数，整数大小的绝对值都小于等于100，整数之间用一个空格隔开。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将每组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为一个整数，即所求的最大值。每组运算结果单独形成一行数据，其行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>4 1 2
+-1 0 1 2
+5 1 2
+-1 -2 -3 -4 -5
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>3
+-1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    int N, L1, L2;
+    while (cin &gt;&gt; N &gt;&gt; L1 &gt;&gt; L2) {
+        vector&lt;int&gt; nums(N);
+        for (int i = 0; i &lt; N; ++i) {
+            cin &gt;&gt; nums[i];
+        }
+
+        int maxSum = INT_MIN;
+        for (int i = 0; i &lt;= N - L1; ++i) {
+            for (int j = L1; j &lt;= L2 &amp;&amp; i + j &lt;= N; ++j) {
+                int sum = 0;
+                for (int k = i; k &lt; i + j; ++k) {
+                    sum += nums[k];
+                }
+                maxSum = max(maxSum, sum);
+            }
+        }
+
+        cout &lt;&lt; maxSum &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>该程序使用了嵌套的循环来遍历所有可能的连续数的组合，计算它们的和并找到最大值。外层循环控制起始位置，内层循环控制连续的数字个数。在每一次迭代中，计算当前组合的数字之和，并更新最大和。最后，输出最大和。</p>
+<p>这个程序的目标是在给定的数字串中选择连续的 M 个数，并计算它们的和的最大值。它的实现思路如下：</p>
+<ol>
+<li>
+<p>首先，读取输入数据，包括数字串的长度 N，选择数字个数范围的下限 L1 和上限 L2，以及数字串本身。</p>
+</li>
+<li>
+<p>接下来，使用一个嵌套的循环结构来遍历所有可能的连续数的组合。外层循环控制起始位置，内层循环控制连续的数字个数。</p>
+</li>
+<li>
+<p>在每一次迭代中，使用一个变量 <code>sum</code> 来记录当前组合的数字之和。通过内层循环中的起始位置和连续的数字个数，计算出当前组合的结束位置。然后，使用一个额外的循环来遍历从起始位置到结束位置的数字，并将它们累加到 <code>sum</code> 变量中。</p>
+</li>
+<li>
+<p>在每一次迭代中，使用 <code>maxSum</code> 变量来记录当前的最大和。如果当前的 <code>sum</code> 大于 <code>maxSum</code>，则更新 <code>maxSum</code>。</p>
+</li>
+<li>
+<p>最后，完成所有的迭代后，输出 <code>maxSum</code>，即为所求的最大和。</p>
+</li>
+</ol>
+<p>这样的实现方式能够穷举所有可能的连续数的组合，并计算它们的和，找到其中的最大值。通过嵌套的循环来遍历所有起始位置和连续数字个数的组合，确保了算法的完备性。这样的实现方式相对简单，并且能够满足题目的要求。</p>
+<p>当然，这个程序还有优化的空间。例如，可以使用动态规划的思想来避免重复计算，从而提高算法的效率。但是，根据题目的要求和输入数据的规模，这个简单的实现已经足够满足需求，并且易于理解和实现。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="查找及排序算法理论"><a class="header" href="#查找及排序算法理论">查找及排序算法理论</a></h1>
 <ul>
 <li><a href="%E6%9F%A5%E6%89%BE%E5%8F%8A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA.html#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE">顺序查找</a></li>
