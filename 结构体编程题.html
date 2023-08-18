@@ -1,0 +1,1050 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>结构体编程题 - C++程序设计</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="程序的基本组成.html"><strong aria-hidden="true">2.</strong> 程序的基本组成</a></li><li class="chapter-item expanded "><a href="顺序结构程序设计.html"><strong aria-hidden="true">3.</strong> 顺序结构程序设计</a></li><li class="chapter-item expanded "><a href="顺序结构编程题.html"><strong aria-hidden="true">4.</strong> 顺序结构编程题</a></li><li class="chapter-item expanded "><a href="分支结构理论.html"><strong aria-hidden="true">5.</strong> 分支结构理论</a></li><li class="chapter-item expanded "><a href="分支结构程序设计.html"><strong aria-hidden="true">6.</strong> 分支结构程序设计</a></li><li class="chapter-item expanded "><a href="分支结构编程题.html"><strong aria-hidden="true">7.</strong> 分支结构编程题</a></li><li class="chapter-item expanded "><a href="循环结构理论.html"><strong aria-hidden="true">8.</strong> 循环结构理论</a></li><li class="chapter-item expanded "><a href="循环结构程序设计.html"><strong aria-hidden="true">9.</strong> 循环结构程序设计</a></li><li class="chapter-item expanded "><a href="循环结构编程题.html"><strong aria-hidden="true">10.</strong> 循环结构编程题</a></li><li class="chapter-item expanded "><a href="一维数组理论.html"><strong aria-hidden="true">11.</strong> 一维数组理论</a></li><li class="chapter-item expanded "><a href="一维数组程序设计.html"><strong aria-hidden="true">12.</strong> 一维数组程序设计</a></li><li class="chapter-item expanded "><a href="一维数组编程题.html"><strong aria-hidden="true">13.</strong> 一维数组编程题</a></li><li class="chapter-item expanded "><a href="查找及排序算法理论.html"><strong aria-hidden="true">14.</strong> 查找及排序算法理论</a></li><li class="chapter-item expanded "><a href="二维数组理论.html"><strong aria-hidden="true">15.</strong> 二维数组理论</a></li><li class="chapter-item expanded "><a href="二维数组编程题.html"><strong aria-hidden="true">16.</strong> 二维数组编程题</a></li><li class="chapter-item expanded "><a href="字符串理论.html"><strong aria-hidden="true">17.</strong> 字符串理论</a></li><li class="chapter-item expanded "><a href="vector和string程序设计.html"><strong aria-hidden="true">18.</strong> vector和string程序设计</a></li><li class="chapter-item expanded "><a href="字符串编程题.html"><strong aria-hidden="true">19.</strong> 字符串编程题</a></li><li class="chapter-item expanded "><a href="函数理论.html"><strong aria-hidden="true">20.</strong> 函数理论</a></li><li class="chapter-item expanded "><a href="函数编程题.html"><strong aria-hidden="true">21.</strong> 函数编程题</a></li><li class="chapter-item expanded "><a href="指针理论.html"><strong aria-hidden="true">22.</strong> 指针理论</a></li><li class="chapter-item expanded "><a href="指针编程题.html"><strong aria-hidden="true">23.</strong> 指针编程题</a></li><li class="chapter-item expanded "><a href="结构体理论.html"><strong aria-hidden="true">24.</strong> 结构体理论</a></li><li class="chapter-item expanded "><a href="结构体编程题.html" class="active"><strong aria-hidden="true">25.</strong> 结构体编程题</a></li><li class="chapter-item expanded "><a href="类与对象理论.html"><strong aria-hidden="true">26.</strong> 类与对象理论</a></li><li class="chapter-item expanded "><a href="类与对象编程题.html"><strong aria-hidden="true">27.</strong> 类与对象编程题</a></li><li class="chapter-item expanded "><a href="运算符重载理论.html"><strong aria-hidden="true">28.</strong> 运算符重载理论</a></li><li class="chapter-item expanded "><a href="递归、回溯与分治理论.html"><strong aria-hidden="true">29.</strong> 递归、回溯与分治理论</a></li><li class="chapter-item expanded "><a href="递归算法编程题.html"><strong aria-hidden="true">30.</strong> 递归算法编程题</a></li><li class="chapter-item expanded "><a href="枚举和贪心算法编程题.html"><strong aria-hidden="true">31.</strong> 枚举和贪心算法编程题</a></li><li class="chapter-item expanded "><a href="搜索算法编程题.html"><strong aria-hidden="true">32.</strong> 搜索算法编程题</a></li><li class="chapter-item expanded "><a href="动态规划算法编程题.html"><strong aria-hidden="true">33.</strong> 动态规划算法编程题</a></li><li class="chapter-item expanded "><a href="组合和继承理论.html"><strong aria-hidden="true">34.</strong> 组合与继承理论</a></li><li class="chapter-item expanded "><a href="模板和IO理论.html"><strong aria-hidden="true">35.</strong> 模板和IO理论</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">C++程序设计</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="结构体编程题"><a class="header" href="#结构体编程题">结构体编程题</a></h1>
+<ul>
+<li><a href="#81%E7%BB%93%E6%9E%84%E4%BD%93-%E7%AE%80%E5%8D%95">8.1结构体-&gt;简单</a>
+<ul>
+<li><a href="#%E9%80%89%E7%A5%A8%E7%BB%9F%E8%AE%A1%E6%B1%82%E5%8A%A9gpt">选票统计（求助GPT）</a></li>
+<li><a href="#%E5%B9%B3%E5%9D%87%E5%88%86%E6%B1%82%E5%8A%A9gpt">平均分（求助GPT）</a></li>
+<li><a href="#%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF">学生信息</a></li>
+<li><a href="#%E6%B1%82%E9%AB%98%E4%BA%8E%E7%AD%89%E4%BA%8E%E5%B9%B3%E5%9D%87%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E6%B1%82%E5%8A%A9gpt">求高于（等于）平均(编写函数)（求助GPT）</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E5%80%99%E9%80%89%E4%BA%BA%E7%9A%84%E7%A5%A8%E6%95%B0">统计候选人的票数</a></li>
+<li><a href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E6%B1%82%E5%8A%A9gpt">密码分析（求助GPT）</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="81结构体-简单"><a class="header" href="#81结构体-简单">8.1结构体-&gt;简单</a></h2>
+<h3 id="选票统计求助gpt"><a class="header" href="#选票统计求助gpt">选票统计（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>学生会主席投票选举工作正在举行。本次投票将采用电脑统计选票的方式，当投票选举正式开始后，同学们将排队一 一走到电脑前，投上自己神圣的一票：在电脑前输入一个姓名，然后输入回车表示确认。 </p>
+<p>投票结束后显示得票最高的同学姓名，该同学将当选为新一届学生会主席。 </p>
+<p>请编程统计投票。</p>
+<p>输入说明 :</p>
+<p>输入包含多行，每行是一个由英文字母组成的字符串，表示一个姓名，首尾以及中间都不包含空格。 </p>
+<p>参加投票学生的人数不超过100人，每个学生姓名字符串的长度小于20。</p>
+<p>由于学生投票时输入的姓名有大写有小写，你在统计时不区分大小写，即&quot;Liming&quot;和&quot;liming&quot;是同一个人。</p>
+<p>输出说明 :</p>
+<p>输出为一个字符串——当选为学生会主席的学生姓名以及他的票数，中间用一个空格分隔。</p>
+<p>输入保证没有两个人并列票数最高。</p>
+<p>输出的英文字母全部用小写。</p>
+<p>输入范例 :</p>
+<pre><code>limin
+LIMING
+liming
+wangshan
+huyou
+LiMing
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>liming 3
+</code></pre>
+<p>下面是使用C++结构体完成上述程序的示例代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+// 定义学生结构体
+struct Student {
+    string name;
+    int votes;
+};
+
+// 忽略字符串大小写的比较函数
+bool caseInsensitiveCompare(const string&amp; str1, const string&amp; str2) {
+    string lowerStr1 = str1;
+    string lowerStr2 = str2;
+    transform(lowerStr1.begin(), lowerStr1.end(), lowerStr1.begin(), ::tolower);
+    transform(lowerStr2.begin(), lowerStr2.end(), lowerStr2.begin(), ::tolower);
+    return lowerStr1 &lt; lowerStr2;
+}
+
+int main() {
+    map&lt;string, int, decltype(caseInsensitiveCompare)*&gt; voteCount(caseInsensitiveCompare);
+
+    string name;
+    while (getline(cin, name)) {
+        voteCount[name]++;
+    }
+
+    string winner;
+    int maxVotes = 0;
+
+    for (const auto&amp; pair : voteCount) {
+        if (pair.second &gt; maxVotes) {
+            winner = pair.first;
+            maxVotes = pair.second;
+        }
+    }
+
+    // 将获胜者的姓名转换为小写字母格式
+    transform(winner.begin(), winner.end(), winner.begin(), ::tolower);
+
+    cout &lt;&lt; winner &lt;&lt; &quot; &quot; &lt;&lt; maxVotes &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>这段代码使用了<code>map</code>容器来统计每个学生的得票数，其中自定义了一个比较函数<code>caseInsensitiveCompare</code>，用于忽略字符串的大小写进行比较。通过循环读取输入的学生姓名，并使用<code>map</code>容器进行计数。最后，遍历<code>map</code>容器找到得票最高的学生，输出其姓名和得票数。</p>
+<p>在最后输出获胜者的姓名之前，我们使用<code>transform</code>函数将姓名转换为小写字母格式。这样就满足了输出要求。</p>
+<p>请注意，该代码假设输入是通过标准输入流逐行输入的，并以空行结束输入。</p>
+<h3 id="平均分求助gpt"><a class="header" href="#平均分求助gpt">平均分（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>从键盘依次输入每个学生的学号、姓名、出生年月、3门课的成绩，计算并打印出每个学生的平均成绩。</p>
+<p>要求使用结构体数组。</p>
+<p>输入说明 :</p>
+<p>第一行，整数n，表示一共有n个学生。</p>
+<p>从第二行开始共n行，每行包含学号，姓名，出生年，出生月，数学，英语，C语言的成绩，用空格分隔，姓名不含空格。</p>
+<p>输出说明 :</p>
+<p>共n行，每行包含学号，姓名，出生年/月，数学，英语，C语言，平均成绩。</p>
+<p>输出浮点数使用“%.0f”，出生年月用“/”分开，数据之间以一个空格分隔。</p>
+<p>输入范例：</p>
+<pre><code>2
+901 hulei 1990 8 67 78 89
+902 fangang 1991 7 85 69 76
+</code></pre>
+<p>输出范例：</p>
+<pre><code>901 hulei 1990/8 67 78 89 78
+902 fangang 1991/7 85 69 76 77
+</code></pre>
+<p>自己写的程序错得有点离谱，哎！</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// 定义学生结构体
+struct Student {
+
+    int studentID;
+    string name;
+    int year;
+    int month;
+    int score[3];
+};
+
+
+int main() {
+
+   int n;
+   cin&gt;&gt;n;
+   Student stu[n];
+   while(n--)
+   {
+       cin&gt;&gt;stu[n-1].studentID;
+       cin&gt;&gt;stu[n-1].name;
+       cin&gt;&gt;stu[n-1].year;
+       cin&gt;&gt;stu[n-1].month;
+       for(int i=0;i&lt;3;i++)
+       {
+           cin&gt;&gt;stu[n-1].score[i];
+       }
+   }
+   for(int j=n;j&gt;0;j--)
+   {
+       cout&lt;&lt;stu[j-1].studentID;
+       cout&lt;&lt;stu[j-1].name;
+       cout&lt;&lt;stu[j-1].year;
+       cout&lt;&lt;&quot;/&quot;;
+       cout&lt;&lt;stu[j-1].month;
+       for(int i=0;i&lt;3;i++)
+       {
+           cout&lt;&lt;stu[j-1].score[i];
+       }
+       cout&lt;&lt;endl;
+   }
+
+    return 0;
+}
+
+</code></pre>
+<p>在你的程序中，出现了两个问题导致输出结果不正确：</p>
+<ol>
+<li>循环读取学生信息时，你使用了<code>n--</code>作为循环条件，这会导致数组下标越界。因为数组的下标是从0开始的，所以你需要使用<code>n-1</code>来访问正确的数组元素。</li>
+<li>在输出学生信息时，你使用了<code>j=n</code>作为循环条件，这会导致循环没有执行。在读取学生信息的循环中，<code>n</code>已经被减小到0，所以在输出循环中，<code>j</code>的初始值应为<code>n+1</code>。</li>
+</ol>
+<p>下面是修改后的程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+// 定义学生结构体
+struct Student {
+    int studentID;
+    string name;
+    int year;
+    int month;
+    int score[3];
+    double averageScore;
+};
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;Student&gt; students(n);
+
+    // 读取学生信息
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; students[i].studentID;
+        cin &gt;&gt; students[i].name;
+        cin &gt;&gt; students[i].year;
+        cin &gt;&gt; students[i].month;
+        for (int j = 0; j &lt; 3; j++) {
+            cin &gt;&gt; students[i].score[j];
+        }
+    }
+
+    // 计算平均成绩
+    for (int i = 0; i &lt; n; i++) {
+        int sum = 0;
+        for (int j = 0; j &lt; 3; j++) {
+            sum += students[i].score[j];
+        }
+        students[i].averageScore = static_cast&lt;double&gt;(sum) / 3.0;
+    }
+
+    // 按照输入顺序输出学生信息和平均成绩
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; students[i].studentID &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; students[i].name &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; students[i].year &lt;&lt; &quot;/&quot;;
+        cout &lt;&lt; students[i].month &lt;&lt; &quot; &quot;;
+        for (int j = 0; j &lt; 3; j++) {
+            cout &lt;&lt; students[i].score[j] &lt;&lt; &quot; &quot;;
+        }
+        printf(&quot;%.0f\n&quot;,students[i].averageScore);
+    }
+
+    return 0;
+}
+</code></pre>
+<p>在循环读取学生信息时，我修改了<code>n--</code>为<code>i</code>，并使用<code>i</code>作为数组下标。在输出学生信息时，我修改了<code>j=n</code>为<code>j=0</code>，使循环正确执行。</p>
+<p>在这个修改后的代码中，我添加了一个<code>averageScore</code>成员变量来存储每个学生的平均成绩。在读取学生信息后，通过对成绩求和并除以3计算平均成绩，并将结果存储在对应的<code>averageScore</code>成员变量中。最后，按照输入顺序输出学生信息和平均成绩，保持了顺序一致性。</p>
+<p>这样，你应该能够正确输出学生信息了。请记得在输入学生信息时按照指定的格式输入数据。</p>
+<h3 id="学生信息"><a class="header" href="#学生信息">学生信息</a></h3>
+<p>问题描述 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中输入N（1≤N≤10）个学生的信息，每项信息包含该学生的编号、姓名、性别、年龄、成绩共五项，按成绩进行排序，然后按成绩从低到高输出，输入保证没有相同的成绩。</p>
+<p>输入说明 :</p>
+<p>首先输入一个N（1≤N≤10），代表有几条学生记录，接下来N行每行包含一条学生记录，按照编号、姓名、性别、年龄、成绩的顺序给出，数据项之间以空格分隔，除了这五项之间的4个空格外，无其他空格。所有数据前后没有多余的空行，两个学生的记录之间也没有多余的空行。</p>
+<p>输出说明 :</p>
+<p>你的程序需要对学生的成绩按升序排序后输出所有学生的信息，每行一个学生的信息，同一个学生的信息之间以一个空格分隔。所有数据前后没有多余的空行，在行首和行尾没有多余的空格。</p>
+<p>输入范例 :</p>
+<pre><code>2
+1 aa male 13 1
+2 bb female 14 0
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>2 bb female 14 0
+1 aa male 13 1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Student
+{
+    int id;
+    string name;
+    string sex;
+    int age;
+    int score;
+};
+
+int main() {
+
+    int N;
+    cin&gt;&gt;N;
+    struct Student stu[N];
+
+    for(int i=0;i&lt;N;i++)
+        cin&gt;&gt;stu[i].id&gt;&gt;stu[i].name&gt;&gt;stu[i].sex&gt;&gt;stu[i].age&gt;&gt;stu[i].score;
+
+    struct Student temp;
+    const int n=N;
+    int i,j,k;
+    for(i=0;i&lt;n-1;i++)
+    {
+        k=i;
+        for(j=i+1;j&lt;n;j++)
+            if(stu[j].score&lt;stu[k].score) k=j;
+        temp=stu[k];
+        stu[k]=stu[i];
+        stu[i]=temp;
+    }
+    for(i=0;i&lt;n;i++)
+        cout&lt;&lt;stu[i].id&lt;&lt;&quot; &quot;&lt;&lt;stu[i].name&lt;&lt;&quot; &quot;&lt;&lt;stu[i].sex&lt;&lt;&quot; &quot;&lt;&lt;stu[i].age&lt;&lt;&quot; &quot;&lt;&lt;stu[i].score&lt;&lt;endl;
+
+    return 0;
+
+}
+</code></pre>
+<h3 id="求高于等于平均编写函数求助gpt"><a class="header" href="#求高于等于平均编写函数求助gpt">求高于（等于）平均(编写函数)（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>学生的记录由学号和成绩组成，N名学生的数据在主函数中读入并存到结构体数组s中，请编写函数fun，它的功能是：把高于等于平均分的学生数据放在形参b所指的数组中（按照在形参a数组中的顺序放入b数组中），高于等于平均分的学生人数通过形参传回，平均分通过函数值返回。</p>
+<p>输入说明 :</p>
+<p>输入信息为N个学生的学号和成绩，学号和成绩之间以空格分隔。</p>
+<p>输出说明 :</p>
+<p>首先输出一行，为高于等于平均分的人数n以及平均分的值，然后是n行，每一行为一个学生的学号及分数。</p>
+<p>输入范例 :</p>
+<pre><code>GA05  85    GA03  76    GA02  70    GA04  85    GA01  91    GA07  72 
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>3  79.833
+GA05 85.0
+GA04 85.0
+GA01 91.0
+</code></pre>
+<p>下面是自己写的错误程序，输出有乱码，而且忘了题中等于的条件。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#define N 6
+
+typedef struct
+
+{   char num[10];
+
+    double s;
+
+} STREC;
+
+double fun(STREC *a,STREC *b,int *n)
+
+{
+    double sum=0;
+    double ave=0;
+    *n=0;
+    for(int i=0;i&lt;N;i++)
+    {
+        sum+=(*(a+i)).s;
+    }
+    ave=sum/N;
+    for(int i=0;i&lt;N;i++)
+    {
+        if((*(a+i)).s&gt;ave)
+        {
+            (*n)++;
+            b[i]=a[i];
+
+        }
+    }
+    return ave;
+
+}
+
+
+int main()
+
+{
+
+    STREC s[N];
+
+    STREC h[N];
+
+    int i,n;double ave;
+
+    for(i=0; i&lt;N; i++)
+        scanf(&quot;%s%lf&quot;, &amp;s[i].num, &amp;s[i].s);
+
+    ave=fun(s,h,&amp;n);
+
+    printf(&quot;%d %7.3f\n&quot;,n,ave);
+
+    for(i=0;i&lt;n;i++)
+        printf(&quot;%s %4.1f\n&quot;,h[i].num,h[i].s);
+
+    return 0;
+
+}
+</code></pre>
+<pre><code>GA05  85    GA03  76    GA02  70    GA04  85    GA01  91    GA07  72
+3  79.833
+GA05 85.0
+  0.0
+@  0.0
+</code></pre>
+<p>非常抱歉，我之前的回答有误导。乱码问题不是由于结构体数组初始化导致的，而是在输入字符串时使用了错误的格式化符号 <code>%s</code>。在 C 语言中，<code>%s</code> 用于读取字符串，但在 C++ 中，<code>%s</code> 是无效的格式化符号。</p>
+<p>为了解决这个问题，你可以使用 <code>std::string</code> 类型来代替字符数组，并使用 <code>std::cin</code> 来读取字符串。这样可以更方便地处理字符串输入，并避免乱码问题。</p>
+<p>下面是修正后的代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#define N 6
+
+struct STREC
+{
+    std::string num;
+    double s;
+};
+
+double fun(STREC *a, STREC *b, int *n)
+{
+    double sum = 0;
+    double ave = 0;
+    *n = 0;
+    for (int i = 0; i &lt; N; i++)
+    {
+        sum += a[i].s;
+    }
+    ave = sum / N;
+    for (int i = 0; i &lt; N; i++)
+    {
+        if (a[i].s &gt; ave)
+        {
+            (*n)++;
+            b[*n - 1] = a[i];
+        }
+    }
+    return ave;
+}
+
+int main()
+{
+    STREC s[N];
+    STREC h[N];
+
+    int n;
+    double ave;
+
+    for (int i = 0; i &lt; N; i++)
+    {
+        std::cin &gt;&gt; s[i].num &gt;&gt; s[i].s;
+    }
+
+    ave = fun(s, h, &amp;n);
+
+    std::cout &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; ave &lt;&lt; std::endl;
+
+    for (int i = 0; i &lt; n; i++)
+    {
+        std::cout &lt;&lt; h[i].num &lt;&lt; &quot; &quot; &lt;&lt; h[i].s &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>请尝试运行修正后的代码，它应该能够正确输出结果而不会出现乱码。对于字符串输入，我们使用了 <code>std::string</code> 类型，并使用 <code>std::cin</code> 进行输入。这样可以保证输入的字符串能够正确读取和存储。</p>
+<p><code>在上面你给出的程序的基础上，帮我改正下格式，其中ave的输出格式为%7.3f，h[i].s的输出格式为%4.1f。</code></p>
+<p>当在 C++ 中使用 <code>std::cout</code> 进行输出时，可以通过设置流的格式控制符来实现所需的输出格式。对于 <code>ave</code> 的输出，可以使用 <code>std::fixed</code> 和 <code>std::setprecision</code> 来控制小数位数和总宽度。对于 <code>h[i].s</code> 的输出，可以使用 <code>std::fixed</code> 和 <code>std::setprecision</code> 控制小数位数，然后使用 <code>std::setw</code> 来设置输出的总宽度。</p>
+<p>下面是修改后的代码，实现了所需的输出格式：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+#define N 6
+
+struct STREC
+{
+    std::string num;
+    double s;
+};
+
+double fun(STREC *a, STREC *b, int *n)
+{
+    double sum = 0;
+    double ave = 0;
+    *n = 0;
+    for (int i = 0; i &lt; N; i++)
+    {
+        sum += a[i].s;
+    }
+    ave = sum / N;
+    for (int i = 0; i &lt; N; i++)
+    {
+        if (a[i].s &gt;= ave)
+        {
+            (*n)++;
+            b[*n - 1] = a[i];
+        }
+    }
+    return ave;
+}
+
+int main()
+{
+    STREC s[N];
+    STREC h[N];
+
+    int n;
+    double ave;
+
+    for (int i = 0; i &lt; N; i++)
+    {
+        std::cin &gt;&gt; s[i].num &gt;&gt; s[i].s;
+    }
+
+    ave = fun(s, h, &amp;n);
+
+    std::cout &lt;&lt; std::setprecision(3) &lt;&lt; std::fixed;
+    std::cout &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; std::setw(7) &lt;&lt; ave &lt;&lt; std::endl;
+
+    for (int i = 0; i &lt; n; i++)
+    {
+        std::cout &lt;&lt; h[i].num &lt;&lt; &quot; &quot; &lt;&lt; std::setw(4) &lt;&lt; std::fixed &lt;&lt; std::setprecision(1) &lt;&lt; h[i].s &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>在主函数中，我们使用了 <code>std::setprecision(3)</code> 和 <code>std::fixed</code> 来设置 <code>ave</code> 输出的小数位数为 3，并保持固定的小数位数格式。使用 <code>std::setw(7)</code> 来设置输出的总宽度为 7。</p>
+<p>在循环输出 <code>h[i].s</code> 时，我们使用了 <code>std::setw(4)</code> 来设置输出的总宽度为 4，并在输出之前使用 <code>std::fixed</code> 和 <code>std::setprecision(1)</code> 来设置小数位数为 1，并保持固定的小数位数格式。</p>
+<p>这样，修正后的代码应该能够按照所需的格式输出结果。请尝试运行修正后的代码，查看输出结果是否满足要求。</p>
+<h3 id="统计候选人的票数"><a class="header" href="#统计候选人的票数">统计候选人的票数</a></h3>
+<p>问题描述 :</p>
+<p>设有3个候选人zhang、li、wang（候选人姓名不区分大小写），10个选民，选民每次输入一个得票的候选人的名字，若选民输错候选人姓名，则按废票处理。选民投票结束后，程序自动显示各候选人的得票结果和废票信息。要求用结构体数组candidate表示3个候选人的姓名和得票结果。</p>
+<p>输入说明 :</p>
+<p>输入十行，每行表示一个选民的投票，每行包含一个候选人姓名。若选民输错候选人姓名，则按废票处理。</p>
+<p>输出说明 :</p>
+<p>选民投票结束后，程序自动显示各候选人的得票结果和废票信息。</p>
+<ol>
+<li>
+<p>每行输出“姓名: 票数”， 如zang:10。</p>
+</li>
+<li>
+<p>最后一行输出：&quot;Wrong election:票数&quot;。</p>
+</li>
+</ol>
+<p>输入范例 :</p>
+<pre><code>li
+li
+li
+li
+zhang
+zhang
+zhang
+ll
+wang
+wang
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>li:4
+zhang:3
+wang:2
+Wrong election:1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+struct Candidate
+{
+    char name[20];
+    int count;
+}leaders[3]={&quot;li&quot;,0,&quot;zhang&quot;,0,&quot;wang&quot;,0};
+
+int main()
+{
+    int wrong=0;
+    char leader_name[20];
+	for(int i=0;i&lt;10;i++)
+    {
+        cin&gt;&gt;leader_name;
+        if(strcmp(&quot;li&quot;,leader_name)==0)
+            leaders[0].count++;
+        else if(strcmp(&quot;zhang&quot;,leader_name)==0)
+            leaders[1].count++;
+        else if(strcmp(&quot;wang&quot;,leader_name)==0)
+            leaders[2].count++;
+        else
+            wrong++;
+    }
+    cout&lt;&lt;leaders[0].name&lt;&lt;&quot;:&quot;&lt;&lt;leaders[0].count&lt;&lt;endl;
+    cout&lt;&lt;leaders[1].name&lt;&lt;&quot;:&quot;&lt;&lt;leaders[1].count&lt;&lt;endl;
+    cout&lt;&lt;leaders[2].name&lt;&lt;&quot;:&quot;&lt;&lt;leaders[2].count&lt;&lt;endl;
+    cout&lt;&lt;&quot;Wrong election:&quot;&lt;&lt;wrong&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h3 id="密码分析求助gpt"><a class="header" href="#密码分析求助gpt">密码分析（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>密码分析学中常常需要统计字符出现的频度。给定若干行短文，要求按字符出现的频度由高到低输出，当两个字符出现的频度相同时，按字符大小的顺序输出。</p>
+<p>注意：只需要统计英文字母的频度，非英文字母一律忽略。</p>
+<p>输入说明 :</p>
+<p>输入由多组数据组成。每组数据由一行长度不超过100的字符串组成，不区分字母大小写，如A与a看作同一个字母。</p>
+<p>输出说明 :</p>
+<p>对每组输入数据都有若干行输出，每行有两个输出数据，第一个数据为某个大写字母，第二个数据为该字母出现的频度，两个数据之间有一个空格。输出顺序按字母出现的频度由高到低输出，当两个字母的频度相同时，按字母大小的顺序输出。两组输出之间有一行空行。</p>
+<p>输入范例 :</p>
+<pre><code>Do what you say, say what you do.
+This is a test.
+Count me 1 2 3 4 5.
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>A 4
+O 4
+Y 4
+D 2
+H 2
+S 2
+T 2
+U 2
+W 2
+
+S 3
+T 3
+I 2
+A 1
+E 1
+H 1
+
+C 1
+E 1
+M 1
+N 1
+O 1
+T 1
+U 1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+struct s
+{
+    char letter;
+    int count;
+};
+
+s letters[26]={'A',0,'B',0,'C',0,'D',0,'E',0,'F',0,'G',0,'H',0,'I',0,
+'J',0,'K',0,'L',0,'M',0,'N',0,'O',0,'P',0,'Q',0,'R',0,'S',0,'T',0,'U',0,'V',0,'W',0,'X',0,'Y',0,'Z',0};
+
+int main()
+{
+    char ch;
+    while(ch=getchar())
+    {
+        if(ch=='A'||ch=='a') letters[0].count++;
+        if(ch=='B'||ch=='b') letters[1].count++;
+        if(ch=='C'||ch=='c') letters[2].count++;
+        if(ch=='D'||ch=='d') letters[3].count++;
+        if(ch=='E'||ch=='e') letters[4].count++;
+        if(ch=='F'||ch=='f') letters[5].count++;
+        if(ch=='G'||ch=='g') letters[6].count++;
+        if(ch=='H'||ch=='h') letters[7].count++;
+        if(ch=='I'||ch=='i') letters[8].count++;
+        if(ch=='J'||ch=='j') letters[9].count++;
+        if(ch=='K'||ch=='k') letters[10].count++;
+        if(ch=='L'||ch=='l') letters[11].count++;
+        if(ch=='M'||ch=='m') letters[12].count++;
+        if(ch=='N'||ch=='n') letters[13].count++;
+        if(ch=='O'||ch=='o') letters[14].count++;
+        if(ch=='P'||ch=='p') letters[15].count++;
+        if(ch=='Q'||ch=='q') letters[16].count++;
+        if(ch=='R'||ch=='r') letters[17].count++;
+        if(ch=='S'||ch=='s') letters[18].count++;
+        if(ch=='T'||ch=='t') letters[19].count++;
+        if(ch=='U'||ch=='u') letters[20].count++;
+        if(ch=='V'||ch=='v') letters[21].count++;
+        if(ch=='W'||ch=='w') letters[22].count++;
+        if(ch=='X'||ch=='x') letters[23].count++;
+        if(ch=='Y'||ch=='y') letters[24].count++;
+        if(ch=='Z'||ch=='z') letters[25].count++;
+    }
+    struct s temp;
+    const int n=26;
+    int i,j,k;
+    for(i=0;i&lt;n-1;i++)
+    {
+        k=i;
+        for(j=i+1;j&lt;n;j++)
+            if(letters[j].count&gt;letters[k].count) k=j;
+        temp=s[k];
+        s[k]=s[i];
+        s[i]=temp;
+    }
+    for(i=0;i&lt;n-1;i++)
+    {
+        k=i;
+        for(j=i+1;j&lt;n;j++)
+            if(letters[j].count==letters[k].count&amp;&amp;letters[j].letter&gt;letters[k].letter) k=j;
+        temp=s[k];
+        s[k]=s[i];
+        s[i]=temp;
+    }
+    for(int i=0;i&lt;26;i++)
+    {
+        if(letters[i].count!=0)
+            cout&lt;&lt;letters[i].letter&lt;&lt;&quot; &quot;&lt;&lt;letters[i].count&lt;&lt;endl;
+    }
+
+	return 0;
+}
+</code></pre>
+<p>排序的部分报错<code>54error: expected primary-expression before '[' token</code></p>
+<p>在你的程序中，有几个问题需要修正：</p>
+<ol>
+<li>
+<p>在结构体 <code>s</code> 的定义中，<code>letter</code> 和 <code>count</code> 之间应该使用冒号 <code>:</code> 而不是逗号 <code>,</code>。</p>
+<p>更正为：<code>struct s { char letter; int count; };</code></p>
+</li>
+<li>
+<p>在排序部分，你使用了 <code>s[k]</code>、<code>s[i]</code> 等表达式来访问结构体数组 <code>letters</code> 的元素，但应该使用 <code>letters[k]</code>、<code>letters[i]</code>。</p>
+<p>更正为：<code>temp = letters[k]; letters[k] = letters[i]; letters[i] = temp;</code></p>
+</li>
+</ol>
+<p>报错原因应该是结构体数组初始化方式不对，但这个程序只能处理一句话，和题目要求还有差距。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+struct s {
+    char letter;
+    int count;
+};
+
+s letters[26] = {
+    {'A', 0}, {'B', 0}, {'C', 0}, {'D', 0}, {'E', 0}, {'F', 0}, {'G', 0}, {'H', 0}, {'I', 0},
+    {'J', 0}, {'K', 0}, {'L', 0}, {'M', 0}, {'N', 0}, {'O', 0}, {'P', 0}, {'Q', 0}, {'R', 0},
+    {'S', 0}, {'T', 0}, {'U', 0}, {'V', 0}, {'W', 0}, {'X', 0}, {'Y', 0}, {'Z', 0}
+};
+
+int main() {
+    char ch;
+    while (cin&gt;&gt;ch&amp;&amp;ch!='.') {
+        if(ch=='A'||ch=='a') letters[0].count++;
+        if(ch=='B'||ch=='b') letters[1].count++;
+        if(ch=='C'||ch=='c') letters[2].count++;
+        if(ch=='D'||ch=='d') letters[3].count++;
+        if(ch=='E'||ch=='e') letters[4].count++;
+        if(ch=='F'||ch=='f') letters[5].count++;
+        if(ch=='G'||ch=='g') letters[6].count++;
+        if(ch=='H'||ch=='h') letters[7].count++;
+        if(ch=='I'||ch=='i') letters[8].count++;
+        if(ch=='J'||ch=='j') letters[9].count++;
+        if(ch=='K'||ch=='k') letters[10].count++;
+        if(ch=='L'||ch=='l') letters[11].count++;
+        if(ch=='M'||ch=='m') letters[12].count++;
+        if(ch=='N'||ch=='n') letters[13].count++;
+        if(ch=='O'||ch=='o') letters[14].count++;
+        if(ch=='P'||ch=='p') letters[15].count++;
+        if(ch=='Q'||ch=='q') letters[16].count++;
+        if(ch=='R'||ch=='r') letters[17].count++;
+        if(ch=='S'||ch=='s') letters[18].count++;
+        if(ch=='T'||ch=='t') letters[19].count++;
+        if(ch=='U'||ch=='u') letters[20].count++;
+        if(ch=='V'||ch=='v') letters[21].count++;
+        if(ch=='W'||ch=='w') letters[22].count++;
+        if(ch=='X'||ch=='x') letters[23].count++;
+        if(ch=='Y'||ch=='y') letters[24].count++;
+        if(ch=='Z'||ch=='z') letters[25].count++;
+    }
+
+    struct s temp;
+    const int n = 26;
+    int i, j, k;
+
+    for (i = 0; i &lt; n - 1; i++) {
+        k = i;
+        for (j = i + 1; j &lt; n; j++)
+            if (letters[j].count &gt; letters[k].count) k = j;
+        temp = letters[k];
+        letters[k] = letters[i];
+        letters[i] = temp;
+    }
+
+    for (i = 0; i &lt; n - 1; i++) {
+        k = i;
+        for (j = i + 1; j &lt; n; j++)
+            if (letters[j].count == letters[k].count &amp;&amp; letters[j].letter &lt; letters[k].letter) k = j;
+        temp = letters[k];
+        letters[k] = letters[i];
+        letters[i] = temp;
+    }
+
+    for (int i = 0; i &lt; 26; i++) {
+        if (letters[i].count != 0)
+            cout &lt;&lt; letters[i].letter &lt;&lt; &quot; &quot; &lt;&lt; letters[i].count &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<pre><code>Do what you say, say what you do.
+A 4
+O 4
+Y 4
+D 2
+H 2
+S 2
+T 2
+U 2
+W 2
+</code></pre>
+<p>下面是完成该题目的C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+struct CharFreq {
+    char ch;
+    int freq;
+};
+
+bool compareCharFreq(const CharFreq&amp; a, const CharFreq&amp; b) {
+    if (a.freq == b.freq) {
+        return a.ch &lt; b.ch;
+    }
+    return a.freq &gt; b.freq;
+}
+
+void analyzePassword(const std::string&amp; password) {
+    std::vector&lt;CharFreq&gt; charFreqs(26, {0, 0});
+
+    for (char ch : password) {
+        if (isalpha(ch)) {
+            ch = toupper(ch);
+            charFreqs[ch - 'A'].ch = ch;
+            charFreqs[ch - 'A'].freq++;
+        }
+    }
+
+    std::sort(charFreqs.begin(), charFreqs.end(), compareCharFreq);
+
+    for (const CharFreq&amp; cf : charFreqs) {
+        if (cf.freq &gt; 0) {
+            std::cout &lt;&lt; cf.ch &lt;&lt; &quot; &quot; &lt;&lt; cf.freq &lt;&lt; std::endl;
+        }
+    }
+}
+
+int main() {
+    std::string input;
+    bool first = true;
+
+    while (std::getline(std::cin, input)) {
+        if (first) {
+            first = false;
+        } else {
+            std::cout &lt;&lt; std::endl;
+        }
+
+        analyzePassword(input);
+    }
+
+    return 0;
+}
+</code></pre>
+<p>在上述代码中，我们定义了一个 <code>CharFreq</code> 结构体来存储字符和对应的频度。<code>compareCharFreq</code> 函数用于比较两个 <code>CharFreq</code> 结构体的大小，根据频度从高到低排序，如果频度相同，则按照字母的大小顺序排序。</p>
+<p><code>analyzePassword</code> 函数用于分析密码字符串并输出结果。它首先创建一个大小为 26 的 <code>charFreqs</code> 向量，用于保存每个字母的频度。然后遍历密码字符串的每个字符，如果是英文字母，则将其转换为大写字母，并更新对应字母的频度。最后，使用 <code>std::sort</code> 函数对 <code>charFreqs</code> 向量进行排序，然后循环输出每个字母的频度。</p>
+<p>在 <code>main</code> 函数中，我们使用 <code>std::getline</code> 逐行读取输入字符串，并调用 <code>analyzePassword</code> 函数进行分析和输出。为了在每组输入数据之间输出空行，我们使用一个 <code>first</code> 标志来判断是否为第一组数据。</p>
+<p>请尝试运行上述代码，并输入相应的测试数据，检查输出是否与预期结果匹配。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="结构体理论.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="类与对象理论.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="结构体理论.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="类与对象理论.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
