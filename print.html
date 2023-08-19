@@ -17051,7 +17051,467 @@ int main()
 <pre><code>4 -3 5 -2 -1 2 6 -2
 11
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="递归算法编程题"><a class="header" href="#递归算法编程题">递归算法编程题</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="递归算法"><a class="header" href="#递归算法">递归算法</a></h1>
+<ul>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#91%E9%80%92%E5%BD%92-%E7%AE%80%E5%8D%95">9.1递归-&gt;简单</a>
+<ul>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E9%80%92%E5%BD%92%E6%B1%82%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0%E5%80%BC">递归求二项式系数值</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6">青蛙跳台阶</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0fac%E6%B1%82%E5%8A%A9gpt">递归函数FAC（求助GPT）</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98%E7%9A%84%E7%AC%ACm%E6%AD%A5">汉诺塔问题的第m步</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%89%E8%AF%BA%E5%A1%94%E6%B1%82%E5%8A%A9gpt">汉诺塔（求助GPT）</a></li>
+<li><a href="%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E6%B1%82%E5%8A%A9gptgpt%E8%A7%A3%E9%87%8A%E4%B8%8D%E4%BA%86%E7%9A%84%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98">斐波那契数列（求助GPT&amp;GPT解释不了的输出问题）</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="91递归-简单"><a class="header" href="#91递归-简单">9.1递归-&gt;简单</a></h2>
+<h3 id="递归求二项式系数值"><a class="header" href="#递归求二项式系数值">递归求二项式系数值</a></h3>
+<p>问题描述 :</p>
+<p>根据以下公式：</p>
+<p><img src="http://lx.lanqiao.cn/RequireFile.do?fid=5DyfBRyG" alt="" /></p>
+<p>输入说明 :</p>
+<p>输入两个整数k和n，输入的数据保证其结果在int表示时不会溢出。</p>
+<p>输出说明 :</p>
+<p>输出运算结果</p>
+<p>输入范例 :<code>3 10</code></p>
+<p>输出范例 :<code>120</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int Com(int k,int n)
+{
+    if(k==0||k==n)
+        return 1;
+    else
+        return Com(k,n-1)+Com(k-1,n-1);
+}
+
+int main()
+{
+    int k,n;
+    cin&gt;&gt;k&gt;&gt;n;
+    cout&lt;&lt;Com(k,n)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="青蛙跳台阶"><a class="header" href="#青蛙跳台阶">青蛙跳台阶</a></h3>
+<p>问题描述 :</p>
+<p>有n个台阶，青蛙一次只能往上跳1个或者2个，共有多少种跳法？</p>
+<p>请使用递归编程实现，递归思路如下：</p>
+<div class="table-wrapper"><table><thead><tr><th>n 的值</th><th>走法</th><th>算式</th></tr></thead><tbody>
+<tr><td>1</td><td>只能一次1步</td><td>f(1) = 1</td></tr>
+<tr><td>2</td><td>（1）一次走1步<br><br>（2）直接走2步</td><td>f(2) = 2</td></tr>
+<tr><td>3</td><td>（1）先到达f(1)的情况，再从f(1)直接跨2步<br><br>（2）先到达f(2)的情况，再从f(2)直接跨1步</td><td>f(3) = f(2) + f(1) = 3</td></tr>
+<tr><td>4</td><td>（1）先到达f(2)的情况，再从f(2)直接跨2步<br><br>（2）先到达f(3)的情况，再从f(3)直接跨1步</td><td>f(4) = f(3) + f(2) = 5</td></tr>
+<tr><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>n = x</td><td>（1）先到达f(x-2)的情况，再从f(x-2)直接跨2步<br><br>（2）先到达f(x-1)的情况，再从f(x-1)直接跨1步</td><td>f(x) = f(x - 2) + f( x- 1)</td></tr>
+</tbody></table>
+</div>
+<p>输入说明 :</p>
+<p>输入一个正整数n</p>
+<p>输出说明 :</p>
+<p>输出一个整数，表示跳法的种数。</p>
+<p>输入范例 :4</p>
+<p>输出范例 :5</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int f(int n)
+{
+    if(n==1)
+        return 1;
+    else if(n==2)
+        return 2;
+    else
+        return f(n-1)+f(n-2);
+}
+
+int main()
+{
+    int n;
+    cin&gt;&gt;n;
+    cout&lt;&lt;f(n)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<h3 id="递归函数fac求助gpt"><a class="header" href="#递归函数fac求助gpt">递归函数FAC（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>现定义了一个递归函数fac求n！ n！可以用以下递归方法表示： 1）当n＝0时，fac (n) = 1 2）当n≥1时，fac (n) = n*fac(n-1) 要求用此方法求出n！</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，输入数据为整型数n，0≤n≤20。两组数据之间没有多余的空行。在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一组对应的答案。每组输出数据由一行组成，每行一个整数，代表n的阶乘。所有数据前后没有多余的空格，两组数据之间也没有多余的空行。</p>
+<p>自己写的程序会有溢出问题：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+long f(int n)
+{
+    if(n==0)
+        return 1;
+    else
+        return f(n-1)*n;
+}
+
+int main()
+{
+    int n;
+    while(cin&gt;&gt;n)
+        cout&lt;&lt;f(n)&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>这个递归程序的问题在于，当输入的 <code>n</code> 较大时，阶乘的结果会超出 <code>long</code> 类型的表示范围，导致溢出。当溢出发生时，结果将变为负数。</p>
+<p>要解决这个问题，可以将返回类型改为 <code>unsigned long long</code> 或使用 <code>double</code> 类型来处理更大范围的阶乘结果。</p>
+<p>以下是修改后的程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+unsigned long long f(int n)
+{
+    if (n == 0)
+        return 1;
+    else
+        return f(n - 1) * static_cast&lt;unsigned long long&gt;(n);
+}
+
+int main()
+{
+    int n;
+    while (cin &gt;&gt; n)
+        cout &lt;&lt; f(n) &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<p>在上述修改后的程序中，我们将返回类型从 <code>long</code> 改为 <code>unsigned long long</code>，这样可以处理更大的阶乘结果。使用 <code>static_cast&lt;unsigned long long&gt;(n)</code> 将 <code>n</code> 转换为 <code>unsigned long long</code> 类型，以确保乘法操作不会溢出。</p>
+<p>现在，当输入 <code>20</code> 时，程序将输出正确的结果。请注意，当输入更大的数字时，仍然需要确保结果不会超出 <code>unsigned long long</code> 类型的表示范围。</p>
+<h3 id="汉诺塔问题的第m步"><a class="header" href="#汉诺塔问题的第m步">汉诺塔问题的第m步</a></h3>
+<p>问题描述 :</p>
+<p>给定三根杆A、B、C和大小不同的几个盘子。这些盘子按尺寸递减顺序套在A杆上，最小的在最上面。现在的任务是把这些盘子从A杆移到C杆且保持原来堆放顺序。在实现任务时，每次只能移动一个盘子，且任何时刻不允许大的盘子放在小的盘子上面，B杆可以作为辅助存放杆。求：总共有n个圆盘时，搬动过程中的第m步是从哪个杆到哪个杆。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，每行输入一个整数表示盘子数n，1≤n≤10，以及步数m，两个数据之间以一个空格分隔。行首和行尾没有多余的空格，两组数据之间也没有多余的空行。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一行对应的答案，该行中输出第m步移动的情况，如第m步是从A移到B，则输出“A--B”（不包括引号）。如果移动过程不存在第m步，则输出“none” （不包括引号）。</p>
+<p>两组数据之间无空行，第一组前及最后一组后也无空行。</p>
+<p>输入范例 :</p>
+<pre><code>2 3
+2 4
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>B--C
+none
+</code></pre>
+<p>自己写的程序只能满足输入范例。。。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int f(int n)
+{
+    if(n==1)
+        return 1;
+    else
+        return f(n-1)+2;
+}
+
+int main()
+{
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+        if(f(n)&lt;m)
+        {
+            cout&lt;&lt;&quot;none&quot;&lt;&lt;endl;
+        }
+        else if(f(n)==m)
+            cout&lt;&lt;&quot;B--C&quot;&lt;&lt;endl;
+        else
+        {
+            if(m==1)
+                cout&lt;&lt;&quot;A--B&quot;&lt;&lt;endl;
+            else if(m==2)
+                cout&lt;&lt;&quot;A--C&quot;&lt;&lt;endl;
+            else if(m==3)
+                cout&lt;&lt;&quot;B--A&quot;&lt;&lt;endl;
+            else if(m==4)
+                cout&lt;&lt;&quot;B--C&quot;&lt;&lt;endl;
+            else
+                cout&lt;&lt;&quot;A--C&quot;&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>非常抱歉再次给您带来困扰，我在逻辑判断上犯了错误。以下是修正后的程序，它会先判断是否为 &quot;none&quot;，再决定是否输出移动情况：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// 递归函数，用于解决汉诺塔问题
+void hanoi(int n, char source, char destination, char auxiliary, int&amp; step) {
+    if (step == 0) {
+        return;
+    }
+
+    if (n == 1) {
+        step--;
+        if (step == 0) {
+            cout &lt;&lt; source &lt;&lt; &quot;--&quot; &lt;&lt; destination &lt;&lt; endl;
+        }
+        return;
+    }
+
+    // 将 n-1 个盘子从 source 移动到 auxiliary 杆上
+    hanoi(n - 1, source, auxiliary, destination, step);
+
+    step--;
+
+    if (step == 0) {
+        cout &lt;&lt; source &lt;&lt; &quot;--&quot; &lt;&lt; destination &lt;&lt; endl;
+        return;
+    }
+
+    // 将第 n 个盘子从 source 移动到 destination 杆上
+    hanoi(n - 1, auxiliary, destination, source, step);
+}
+
+int main() {
+    int n, m;
+    while (cin &gt;&gt; n &gt;&gt; m) {
+        int step = m;
+        // 汉诺塔问题的解决过程是将 n 个盘子从 A 移动到 C 杆上
+        // 使用 B 杆作为辅助杆
+        hanoi(n, 'A', 'C', 'B', step);
+
+        // 如果没有找到第 m 步的移动情况，则输出 &quot;none&quot;
+        if (step &gt; 0||m&lt;0) {
+            cout &lt;&lt; &quot;none&quot; &lt;&lt; endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>通过修正后的程序，输入 2 3 时将正确输出 &quot;B--C&quot;，输入 2 4 时将正确输出 &quot;none&quot;。非常抱歉给您带来的困扰，并感谢您的耐心。如果还有其他问题，请随时向我提问。</p>
+<p>ChatGPT提供的程序并不能处理<code>2 -1</code>这种情况。在判断是否为none时添加一个条件<code>m&lt;0</code>即可。</p>
+<p>修改后的能AC的完整代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int count=0;
+int flag;
+
+void hanoi(int n,char source, char destination, char auxiliary,int m)
+{
+    if(n==0) return;
+    hanoi(n - 1, source, auxiliary, destination, m);
+    ++count;
+    if(count==m)
+    {
+        cout&lt;&lt;source&lt;&lt;&quot;--&quot;&lt;&lt;destination&lt;&lt;endl;
+        flag=1;
+        return;
+    }
+    hanoi(n - 1, auxiliary, destination, source, m);
+}
+
+int main()
+{
+    int m,n;
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+        flag=0;
+        count=0;
+        hanoi(n,'A','C','B',m);
+        if(flag==0)
+            cout&lt;&lt;&quot;none&quot;&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="汉诺塔求助gpt"><a class="header" href="#汉诺塔求助gpt">汉诺塔（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>汉诺塔问题。给定三根杆A、B、C和大小不同的几个盘子。这些盘子按尺寸递减顺序套在A杆上。任务是把这些盘子从A杆移到C杆且保持原来堆放顺序。在实现任务时，每次只能移动一个盘子，不允许大的盘子放在小的盘子上面，B杆可以作为辅助存放杆。求出每一步该如何移动。（此移动过程的总步骤必须是最少步骤）。</p>
+<p>输入说明 :</p>
+<p>你的程序需要从标准输入设备（通常为键盘）中读入多组测试数据。每组输入数据由一行组成，每行输入一整数盘子数n，1≤n≤10。所有数据前后没有多余的空格，两组数据之间也没有多余的空行。在行首和行尾没有多余的空格。</p>
+<p>输出说明 :</p>
+<p>对每组测试数据，你的程序需要向标准输出设备（通常为启动该程序的终端）依次输出一组对应的答案。每组输出数据由一行组成，该行中输出每一次移动的情况，一行一次移动，如从A移到B，A----B。两组数据之间有一个空行，最后一组输出数据后无空行。</p>
+<p>输入范例 :<code>2 1</code></p>
+<p>输出范例 :</p>
+<pre><code>A----B
+A----C
+B----C
+
+A----C
+</code></pre>
+<p>当我们面对汉诺塔问题时，可以使用递归算法来解决。递归是一种将问题分解为更小子问题的解决方法。</p>
+<p>在汉诺塔问题中，我们有三根杆：源杆（A）、目标杆（C）和辅助杆（B）。我们有一堆不同尺寸的盘子，它们按照尺寸递减的顺序从大到小堆叠在源杆上。</p>
+<p>递归解决汉诺塔问题的思路如下：</p>
+<ol>
+<li>
+<p>如果只有一个盘子（n=1），我们可以直接将它从源杆移动到目标杆上，移动过程为 <code>源杆 -&gt; 目标杆</code>。</p>
+</li>
+<li>
+<p>如果有多个盘子（n&gt;1），我们可以将整个问题分解为三个步骤：</p>
+<ul>
+<li>第一步，将除最底下的盘子外的其他盘子移动到辅助杆上，移动过程为 <code>源杆 -&gt; 辅助杆</code>。</li>
+<li>第二步，将最底下的盘子从源杆移动到目标杆上，移动过程为 <code>源杆 -&gt; 目标杆</code>。</li>
+<li>第三步，将辅助杆上的所有盘子移动到目标杆上，移动过程为 <code>辅助杆 -&gt; 目标杆</code>。</li>
+</ul>
+</li>
+</ol>
+<p>这样，我们可以使用递归来解决汉诺塔问题。递归的思想是将一个大问题分解为更小的子问题，直到达到基本情况（只有一个盘子）。</p>
+<p>在递归函数中，我们首先处理基本情况（n=1），直接将盘子从源杆移动到目标杆。然后，在辅助杆上递归调用同样的函数，将剩余的盘子从源杆移动到辅助杆。最后，再次递归调用同样的函数，将辅助杆上的盘子移动到目标杆。</p>
+<p>通过不断地将问题分解为更小的子问题，递归函数最终会处理到基本情况，然后逐步返回，完成整个移动过程。</p>
+<p>需要注意的是，递归函数必须有适当的终止条件，以避免无限递归。在汉诺塔问题中，终止条件是当只剩下一个盘子时，直接移动它到目标杆。</p>
+<p>总结起来，递归算法通过将一个大问题分解为更小的子问题来解决汉诺塔问题。这种分解和逐步解决的过程直到达到基本情况，然后逐步返回以完成整个问题的求解。</p>
+<p>希望这个解释对您有所帮助。如果您还有其他问题，请随时提问。</p>
+<p>根据题目描述，我们需要编写一个程序来解决汉诺塔问题。下面是针对题目要求的完整C++程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// 递归函数，用于解决汉诺塔问题
+void hanoi(int n, char source, char destination, char auxiliary) {
+    if (n == 1) {
+        cout &lt;&lt; source &lt;&lt; &quot;----&quot; &lt;&lt; destination &lt;&lt; endl;
+        return;
+    }
+
+    hanoi(n - 1, source, auxiliary, destination);
+    cout &lt;&lt; source &lt;&lt; &quot;----&quot; &lt;&lt; destination &lt;&lt; endl;
+    hanoi(n - 1, auxiliary, destination, source);
+}
+
+int main() {
+    int n;
+    while (cin &gt;&gt; n) {
+        // 汉诺塔问题的解决过程是将 n 个盘子从 A 移动到 C 杆上
+        // 使用 B 杆作为辅助杆
+        hanoi(n, 'A', 'C', 'B');
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>在上述程序中，我们定义了 <code>hanoi</code> 函数来解决汉诺塔问题。该函数采用递归的方式进行求解。</p>
+<p>在 <code>hanoi</code> 函数中，当 <code>n</code> 等于 1 时，表示只剩下一个盘子需要移动。此时，直接将该盘子从源杆 <code>source</code> 移动到目标杆 <code>destination</code>，并输出移动情况。</p>
+<p>否则，我们首先将 <code>n-1</code> 个盘子从源杆 <code>source</code> 移动到辅助杆 <code>auxiliary</code> 上，目标杆作为中转。然后，将剩下的一个盘子从源杆 <code>source</code> 移动到目标杆 <code>destination</code>，并输出移动情况。最后，将 <code>n-1</code> 个盘子从辅助杆 <code>auxiliary</code> 移动到目标杆 <code>destination</code> 上，源杆作为中转。</p>
+<p>在 <code>main</code> 函数中，我们根据题目要求循环读入多组测试数据，并调用 <code>hanoi</code> 函数解决每组数据的汉诺塔问题。每组数据输出完毕后，输出一个空行。</p>
+<p>根据题目的输入范例和输出范例，上述程序能够正确解决汉诺塔问题，并输出符合要求的移动情况。</p>
+<p>希望这个程序能满足您的需求。如果您有任何其他问题，请随时提问。</p>
+<h3 id="斐波那契数列求助gptgpt解释不了的输出问题"><a class="header" href="#斐波那契数列求助gptgpt解释不了的输出问题">斐波那契数列（求助GPT&amp;GPT解释不了的输出问题）</a></h3>
+<p>问题描述 :</p>
+<p>斐波那契数列的排列是：0，1，1，2，3，5，8，13，21，34，55，89，144……依次类推下去，你会发现，它后一个数等于前面两个数的和。在这个数列中的数字，就被称为斐波那契数。</p>
+<p>递归思想：一个数等于前两个数的和。(这并不是废话，这是执行思路)</p>
+<p>首先分析数列的递归表达式：</p>
+<p><img src="http://www.52ac.tech/oj/upload/image/20201206/1607226820913006916.png" alt="f公式.png" title="1607226820913006916.png" /></p>
+<p>如果调用f(2)，则可知，需要计算f(1)+f(0)=1+0</p>
+<p>因此，可以知道，f(2)=1，递归函数f(n)总共被调用3次，其中使用实参为2、为1、为0各调用一次</p>
+<p>如果计算f(4)，则可知f(4)=f(3)+f(2)， 而f(3)=f(2)+f(1)， 继续调用，可知f(2)=f(1)+f(0)</p>
+<p>从以上分析可知：</p>
+<p>计算f(3)，需要调用5次f(n)</p>
+<p>计算f(4)，需要调用9次f(n)</p>
+<p>请使用递归方式实现本程序。</p>
+<p>输入说明 :</p>
+<p>输入一个整数n</p>
+<p>输出说明 :</p>
+<p>输出f(n)的值，以及总共需要调用几次f函数，中间以空格分隔。</p>
+<p>输入范例 :4</p>
+<p>输出范例 :3 9</p>
+<p>自己写的代码，输出的count值始终为0</p>
+<p>下面这两个程序为何输出结果不一样？</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int  count;
+
+int fib(int n)
+{
+    count++;
+    if(n&lt;=1)
+    {
+
+        return n;
+    }
+    else
+    {
+
+        return fib(n-1)+fib(n-2);
+    }
+}
+
+int main() {
+    int n;
+    cin&gt;&gt;n;
+    count=0;
+    cout&lt;&lt;fib(n)&lt;&lt;&quot; &quot;&lt;&lt;count&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+
+int  count;
+
+int fib(int n)
+{
+    count++;
+    if(n&lt;=1)
+    {
+
+        return n;
+    }
+    else
+    {
+
+        return fib(n-1)+fib(n-2);
+    }
+}
+
+int main() {
+    int n;
+    cin&gt;&gt;n;
+    count=0;
+    int sn=fib(n);
+    cout&lt;&lt;sn&lt;&lt;&quot; &quot;&lt;&lt;count&lt;&lt;endl;
+    return 0;
+}
+
+</code></pre>
+<p>根据题目描述，我们需要使用递归方式实现斐波那契数列，并输出 f(n) 的值以及调用 f 函数的总次数。下面是相应的 C++ 程序：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int count = 0;  // 用于记录函数调用次数
+
+int fib(int n) {
+    count++;  // 每次调用递归函数时增加计数
+
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    count = 0;  // 重置计数
+
+    int result = fib(n);
+
+    cout &lt;&lt; result &lt;&lt; &quot; &quot; &lt;&lt; count &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<p>在上述代码中，我们定义了一个全局变量 <code>count</code> 来记录函数调用次数。<code>fib</code> 函数是递归实现的斐波那契数列函数。在每次调用 <code>fib</code> 函数时，我们增加计数器 <code>count</code> 的值。函数的基准情况是 <code>n=0</code> 和 <code>n=1</code>，在这些情况下直接返回相应的值。对于其他情况，我们使用递归调用 <code>fib(n - 1)</code> 和 <code>fib(n - 2)</code> 来计算斐波那契数列的值。</p>
+<p>在 <code>main</code> 函数中，我们接收输入的整数 <code>n</code>，将全局变量 <code>count</code> 重置为 0，然后调用 <code>fib</code> 函数计算斐波那契数列的值，并将结果和计数值输出。</p>
+<p>对于输入范例 <code>4</code>，程序将输出 <code>3 9</code>，其中 <code>3</code> 是斐波那契数列的第四个数的值，<code>9</code> 是调用 <code>fib</code> 函数的总次数。</p>
+<p>希望这个程序能够满足您的需求。如果还有其他问题，请随时提问。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="枚举和贪心算法编程题"><a class="header" href="#枚举和贪心算法编程题">枚举和贪心算法编程题</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="搜索算法编程题"><a class="header" href="#搜索算法编程题">搜索算法编程题</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="动态规划算法编程题"><a class="header" href="#动态规划算法编程题">动态规划算法编程题</a></h1>
