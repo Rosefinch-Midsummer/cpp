@@ -166,7 +166,2722 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="类与对象理论"><a class="header" href="#类与对象理论">类与对象理论</a></h1>
+                        <h1 id="创造新的类型类与对象"><a class="header" href="#创造新的类型类与对象">创造新的类型——类与对象</a></h1>
+<ul>
+<li><a href="#%E4%BB%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%88%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">从面向过程到面向对象</a></li>
+<li><a href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89">类的定义</a>
+<ul>
+<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
+<li><a href="#%E4%B8%BE%E4%BE%8B">举例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%BF%E7%94%A8">对象的使用</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE">对象的访问</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%8C%87%E9%92%88">对象指针</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8">对象引用</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84">对象数组</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1">动态对象</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="#%E5%9C%A8%E7%B1%BB%E5%A4%96%E5%AE%9A%E4%B9%89%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">在类外定义成员函数</a></li>
+<li><a href="#%E7%B1%BB%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%B9%89">类中对象的定义</a></li>
+<li><a href="#%E7%89%B9%E6%AE%8A%E7%9A%84%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E5%8F%8A%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F">特殊的调用方式及赋值方式</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">定义及注意事项</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">对象数组的初始化</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C-1">测验</a>
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%89%B9%E6%AE%8A%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F">构造函数特殊赋值方式</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F">对象数组定义方式</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%97%B6%E8%A2%AB%E8%B0%83%E7%94%A8%E6%AC%A1%E6%95%B0%E5%88%A4%E6%96%AD">构造函数重载时被调用次数判断</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%B8%B8%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">常量对象和常成员函数</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF">常见错误</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98">常量数据成员</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">静态数据成员与静态成员函数</a>
+<ul>
+<li><a href="#%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98">静态数据成员</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">静态成员函数</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C-2">测验</a>
+<ul>
+<li><a href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF">几种常见编译错误</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%AC%A1%E6%95%B0">构造函数调用次数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%8B%E5%85%83">友元</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9E%90%E6%9E%84%E4%B8%8E%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0">对象的析构与拷贝构造</a>
+<ul>
+<li><a href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">析构函数</a></li>
+<li><a href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">拷贝构造函数</a></li>
+<li><a href="#%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D">浅拷贝与深拷贝</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C-3">测验</a>
+<ul>
+<li><a href="#%E5%B8%B8%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E9%94%99%E8%AF%AF">常成员函数的三种错误</a></li>
+<li><a href="#%E5%B8%B8%E5%AF%B9%E8%B1%A1">常对象</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E6%AC%A1%E6%95%B0">输出调用构造函数的次数</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="从面向过程到面向对象"><a class="header" href="#从面向过程到面向对象">从面向过程到面向对象</a></h2>
+<p>计算机的工作是建立在抽象的基础上。</p>
+<ul>
+<li>机器语言和汇编语言是对机器硬件的抽象</li>
+<li>高级语言是对汇编语言和机器语言的抽象</li>
+</ul>
+<p>当程序员要解决一个问题时，必须要在机器模型和实际要解决的问题模型之间建立联系。</p>
+<p>面向对象的程序设计为程序员提供了创建工具的功能。工具就是所谓的对象。</p>
+<p>面向对象程序设计的特点：</p>
+<ul>
+<li>代码复用</li>
+<li>实现隐藏：类的创建者创造新的工具、类的使用者则收集已有的工具快速解决所需解决的问题、类的使用者不需要知道这些工具是如何实现的</li>
+<li>继承</li>
+<li>多态：各个对象在接收到同一个消息（指令）时，采取不同的行动。好处是程序代码可以不受新增类型的影响。</li>
+</ul>
+<h2 id="类的定义"><a class="header" href="#类的定义">类的定义</a></h2>
+<h3 id="概念"><a class="header" href="#概念">概念</a></h3>
+<p><strong>面向过程的时钟程序</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+struct Clock
+{
+    int H,M,S;
+};
+
+void SetTime(Clock &amp;MyClock, int H,int M,int S)
+{
+    MyClock.H=(H&gt;=0&amp;&amp;H&lt;24)?H:0;
+    MyClock.M=(M&gt;=0&amp;&amp;M&lt;60)?M:0;
+    MyClock.S=(S&gt;=0&amp;&amp;S&lt;60)?S:0;
+}
+
+void ShowTime(Clock MyClock)
+{
+    cout&lt;&lt;MyClock.H&lt;&lt;&quot;:&quot;;
+    cout&lt;&lt;MyClock.M&lt;&lt;&quot;:&quot;;
+    cout&lt;&lt;MyClock.S&lt;&lt;endl;
+}
+
+int main()
+{
+    Clock MyClock;
+    SetTime(MyClock,8,30,30);
+    ShowTime(MyClock);
+    return 0;
+}
+</code></pre>
+<p><strong>面向对象的时钟程序</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+
+int main()
+{
+    Clock MyClock;
+    MyClock.SetTime(8,30,30);
+    MyClock.ShowTime();
+    return 0;
+}
+</code></pre>
+<p>类是一个包含函数的结构体。因此，类的定义和结构类型的定义相似，其格式如下：</p>
+<pre><code class="language-cpp">class 类名
+{
+	public:
+		公有数据成员或公有函数成员的定义;
+	protected:
+		保护数据成员或保护函数成员的定义;
+	private:
+		私有数据成员或私有函数成员的定义;
+}
+</code></pre>
+<p>说明：</p>
+<ul>
+<li>public、private、protected为存取控制属性（访问权限），用来控制对类的成员的存取。如果前面没有标明访问权限，默认访问权限为private。</li>
+<li>类的成员有数据成员与函数成员两类，类的数据成员和函数成员统称为类的成员，类的数据成员一般用来描述该类对象的属性，成为属性；函数成员是描述类行为，称作方法。函数成员由函数构成，这些作为类成员的函数因此也叫函数成员。</li>
+</ul>
+<p>私有成员：只能由类的成员函数调用</p>
+<p>公有成员：类的用户可以调用的信息，是类对外的接口</p>
+<p>私有成员被封装在一个类中，类的用户是看不见的</p>
+<p>（1）数据成员</p>
+<p>类的定义中的数据成员描述了类对象所包含的数据类型，数据成员的类型可以是C++基本数据类型也可以是构造数据类型。</p>
+<pre><code class="language-cpp">class Team;//已定义的类
+
+class Grade
+{
+    Team a;//使用了已定义的类类型
+    Grade b;//error: field 'b' has incomplete type 'B'，使用了未定义完整的类Grade定义数据成员
+    Grade *c;//使用正在定义的类类型定义指针成员
+    Grade &amp;d;//使用正在定义的类类型定义引用成员
+};
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>因为类只是一种类型，类中的数据成员不占内存空间，因此在定义数据成员时不能给数据成员赋初值（<strong>C++11标准允许在类定义时初始化数据成员，实际上是在构造函数里进行了赋值。</strong>）</li>
+<li>类的数据成员除了可以使用前面讲述的C++类型外，还可以使用已定义完整的类类型</li>
+<li>在正在定义的类中，由于该类型没有定义完整，所以不能定义该类类型的变量，只能定义该类类型的指针成员和该类类型的引用成员</li>
+</ul>
+<p>（2）函数成员</p>
+<p>作为类成员的成员函数描述了对类中的数据实施的操作。成员函数的定义、声明格式与非成员函数（全局函数）的格式相同。成员函数可以放在类中定义也可以放在类外。放在类中定义的成员函数为内联（inline）函数。</p>
+<p>Clock类中的成员函数就是放在类内定义的。</p>
+<p><strong>C++可以在类外定义函数体，但必须在类内声明成员函数的原型。</strong> 这样做的好处是相当于在类中列了一个函数功能表，使我们对类的成员函数的功能一目了然，避免了在各个函数实现的大堆代码中查找函数的定义。在类中声明函数原型的方法与一般函数原型声明一样，在类外定义函数体的格式如下：</p>
+<pre><code class="language-cpp">返回值类型 类名::成员函数名（形参表）
+{
+	函数体；
+}
+</code></pre>
+<p>::是类的作用域分辨符，用在此处，放在类名后成员函数前，表明后面的成员函数属于前面的那个类。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+
+int main()
+{
+    Clock MyClock;
+    MyClock.SetTime(8,30,30);
+    MyClock.ShowTime();
+    return 0;
+}
+</code></pre>
+<p>在类外定义函数体，则形参的缺省值可以在函数原型中指定，也可以在类外定义函数体时指定，但不能在两个地方都指定（不能重复指定），即使所指定的缺省值完全相同也不行。以下两种都可以：</p>
+<pre><code class="language-cpp">//一般都用这种
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h=0,int m=0,int s=0);
+    void ShowTime();
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+</code></pre>
+<pre><code class="language-cpp">class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+};
+
+void Clock::SetTime(int h=0,int m=0,int s=0)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+</code></pre>
+<h3 id="举例"><a class="header" href="#举例">举例</a></h3>
+<p>类设计</p>
+<ul>
+<li>数据成员和成员函数
+<ul>
+<li>根据保存的信息设计数据成员</li>
+<li>根据行为设计成员函数</li>
+</ul>
+</li>
+<li>访问特性
+<ul>
+<li>数据成员一般是私有的</li>
+<li>成员函数一般是公有的</li>
+<li>成员函数实现时分解出的小函数是私有的</li>
+</ul>
+</li>
+</ul>
+<p>例：试着定义一个有理数类，该类能提供有理数的加和乘运算，要求保存的有理数是最简形式。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Rational
+{
+private:
+    int num;
+    int den;
+    void ReductFraction();//只能被类中的函数调用
+public:
+    void create(int n,int d)
+    {
+        num=n;
+        den=d;
+        ReductFraction();
+    }
+    void add(Rational r2);
+    void multi(Rational r2);
+    void display()
+    {
+        cout&lt;&lt;num&lt;&lt;&quot;/&quot;&lt;&lt;den&lt;&lt;endl;
+    }
+};
+
+void Rational::add(Rational r2)
+{
+    num=num*r2.den+r2.num*den;
+    den=den*r2.den;
+    ReductFraction();
+}
+
+void Rational::multi(Rational r2)
+{
+    num=num*r2.num;
+    den=den*r2.den;
+    ReductFraction();
+}
+
+void Rational::ReductFraction()
+{
+    int tmp=(num&gt;den)?den:num;
+    for(;tmp&gt;1;--tmp)
+        if(num%tmp==0&amp;&amp;den%tmp==0)
+        {
+            num/=tmp;
+            den/=tmp;
+            break;
+        }
+}
+
+
+
+int main()
+{
+    Rational r1,r2;
+    r1.create(1,2);
+    r2.create(4,6);
+    r1.add(r2);
+    r1.display();
+    r1.multi(r2);
+    r1.display();
+
+    return 0;
+}
+</code></pre>
+<pre><code>7/6
+7/9
+</code></pre>
+<h2 id="对象的使用"><a class="header" href="#对象的使用">对象的使用</a></h2>
+<h3 id="对象的访问"><a class="header" href="#对象的访问">对象的访问</a></h3>
+<p>类相当于一种包含函数的自定义数据类型，不占内存，是一个抽象的”虚体“，使用已定义的类建立对象就像用数据类型定义变量一样。</p>
+<p>对象建立后，对象占据内存，变成了一个”实体“。类与对象的关系就像数据类型和变量的关系一样。</p>
+<p>其实，一个变量就是一个简单的不含成员函数的数据对象。</p>
+<p>建立对象的格式如下：<code>类名 对象名；</code></p>
+<p>建立对象后就可以通过对象存取对象中的数据成员（不能直接存取私有权限数据成员），调用成员函数</p>
+<p>注意：</p>
+<p>为节省内存，编译器在创建对象时，只为各对象分配用于保存各对象数据成员初始化的值，并不为各对象成员函数分配单独的内存空间，而是共享类的成员函数定义，即类中成员函数的定义为该类的所有对象所共享，这是C++编译器创建对象的一种方法，在实际应用中，我们仍认为对象包括数据成员和函数成员两部分组成。</p>
+<p>设置成员的存取控制属性，使对类成员的存取得到控制，从而达到信息隐藏的目的。</p>
+<p>存取控制属性表</p>
+<div class="table-wrapper"><table><thead><tr><th>存取属性</th><th>意义</th><th>可存取对象</th></tr></thead><tbody>
+<tr><td>public</td><td>公开级</td><td>该类成员及所有对象</td></tr>
+<tr><td>protected</td><td>保护级</td><td>该类及子类成员</td></tr>
+<tr><td>private</td><td>私有级</td><td>该类的成员</td></tr>
+</tbody></table>
+</div>
+<p>private成员被隐藏起来，不能直接在类外被存取。为了取得这些被隐藏的数据，通常在类内定义一个public的成员函数，通过该成员函数存取private成员，而public的成员函数又能在类外被调用。这样通过调用public型的成员函数，间接存取private成员。这样的函数起到为private成员提供外界访问的接口作用。</p>
+<p>通过接口访问类的数据成员，一方面有效保护数据成员，另一方面又保证了数据的合理性。</p>
+<p><strong>例外情况：成员函数可以使用本类的其它对象的私有成员</strong></p>
+<pre><code class="language-cpp">class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+    Clock AddTime(Clock C2)
+    {
+        //形参为Clock类型的变量
+        Clock T;//函数体中定义了Clock类型的变量
+        T.H=C2.H+H;//可以通过C2、T访问其私有成员
+        T.M=C2.M+M;
+        T.S=C2.S+S;
+        return T;//返回类型为Clock
+    }
+};
+</code></pre>
+<p>可执行的完整代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+    Clock AddTime(Clock C2)
+    {
+        //形参为Clock类型的变量
+        Clock T;//函数体中定义了Clock类型的变量
+        T.H=C2.H+H;//可以通过C2、T访问其私有成员
+        T.M=C2.M+M;
+        T.S=C2.S+S;
+        return T;//返回类型为Clock
+    }
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+
+int main()
+{
+    Clock MyClock,C2;
+    MyClock.SetTime(8,30,30);
+    C2.SetTime(10,20,20);
+    MyClock.AddTime(C2).ShowTime();//18:50:50
+    MyClock.ShowTime();
+    return 0;
+}
+</code></pre>
+<h3 id="对象指针"><a class="header" href="#对象指针">对象指针</a></h3>
+<p>对象和结构体变量类似，我们可以使用一个指向对象的指针来访问对象，即对象指针，它指向存放该对象的地址。可用类来定义对象指针变量，通过对象指针来访问对象的成员。</p>
+<p>对象指针遵循一般变量指针的各种规则，其语法定义形式如下：<code>类名 *对象指针名</code></p>
+<p>使用对象指针也只能访问该类的公有数据成员和函数成员，但与前者使用<code>.</code>运算符不同，对象指针采用<code>-&gt;</code>运算符访问公有数据成员和成员函数。</p>
+<pre><code class="language-cpp">对象指针名-&gt;数据成员名；
+或
+对象指针名-&gt;成员函数名（参数表）
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+
+int main()
+{
+    Clock MyClock;
+    MyClock.SetTime(8,30,30);
+    Clock *Cp;
+    Cp=&amp;MyClock;
+    MyClock.ShowTime();
+    Cp-&gt;ShowTime();//8:30:30
+    return 0;
+}
+</code></pre>
+<p>在C++中，对象指针可以作为成员函数的形参，一般而言，使用对象指针作为函数的参数要比使用对象作为函数的参数更普遍一些，因为使用对象指针作为函数的参数有如下两点好处：</p>
+<p>（1）实现地址传递</p>
+<p>在函数调用时将实参对象的地址传给形参指针对象，使形参指针对象和实参对象指向同一内存地址，这样，对象指针所指向对象的改变也将同样影响着实参对象，从而实现信息的<code>双方传递</code>。</p>
+<p>（2）使用对象指针效率高</p>
+<p>使用对象指针传递的仅仅是对应<code>实参对象的地址</code>，并不需要实现对象之间的副本拷贝，这样就会减小时空开销，提高运行效率。</p>
+<p>时间加法有两种，一种是时钟加秒数，另一种是时钟加时、分、秒、采用重载函数实现这两种加法。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+    void TimeAdd(Clock *Cp);
+    void TimeAdd(int h,int m,int s);
+    void TimeAdd(int s);
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+void Clock::TimeAdd(Clock *Cp)
+{
+    H=(Cp-&gt;H+H+(Cp-&gt;M+M+(Cp-&gt;S+S)/60)/60)%24;
+    M=(Cp-&gt;M+M+(Cp-&gt;S+S)/60)%60;
+    S=(Cp-&gt;S+S)%60;
+}
+
+void Clock::TimeAdd(int h,int m,int s)
+{
+    H=(h+H+(m+M+(s+S)/60)/60)%24;
+    M=(m+M+(s+S)/60)%60;
+    S=(s+S)%60;
+}
+
+void Clock::TimeAdd(int s)
+{
+    H=(H+(M+(s+S)/60)/60)%24;
+    M=(M+(s+S)/60)%60;
+    S=(s+S)%60;
+}
+
+int main()
+{
+    Clock C1,C2;
+    C2.SetTime(8,20,20);
+    C1.TimeAdd(4000);
+    C1.ShowTime();
+    C2.TimeAdd(&amp;C1);
+    C2.ShowTime();
+    return 0;
+}
+</code></pre>
+<p><strong>This指针</strong></p>
+<p>C++采用隐含的this指针来实现一个类的成员函数来引用调用它的对象。</p>
+<p>this指针是一个系统预定义的特殊指针，指向当前对象，表示当前对象的地址。系统利用this指针明确指出成员函数当前操作的数据成员所属的对象。实际上，当一个对象调用其成员函数时，编译器先将该对象的地址赋给this指针，然后调用成员函数，这样成员函数对对象的数据成员进行操作时，就<code>隐含</code>使用了this指针。</p>
+<p>一般而言，通常<code>不直接使用</code>this指针来引用对象成员，但在某些少数情况下，可以使用this指针，如重载某些运算符以实现对象的连续赋值。</p>
+<pre><code class="language-cpp">void Clock::SetTime(int h,int m,int s)
+    {
+        H=h;M=m;S=s;
+        this-&gt;H=h;this-&gt;M=m;this-&gt;S=s;
+        (*this).H=h;(*this).M=m;(*this).S=s;
+    }
+</code></pre>
+<p>上面三种方式等价。</p>
+<p>为了与类的数据成员H、M、S区别，将SetTime的形参名设为h、m、s。如果使用this指针，就可以凭this指针区分本对象的数据成员与其他变量。</p>
+<p>注意：</p>
+<ul>
+<li>this指针不是被调用对象的名称，而是指向被调用对象的指针的名称</li>
+<li>this的值不能改变，总是指向当前调用对象</li>
+</ul>
+<pre><code class="language-cpp">void Clock::SetTime(int H,int M,int S)
+    {
+        this-&gt;H=H;this-&gt;M=M;this-&gt;S=S;
+        (*this).H=H;(*this).M=M;(*this).S=S;
+    }
+</code></pre>
+<h3 id="对象引用"><a class="header" href="#对象引用">对象引用</a></h3>
+<p>对象引用就是对某类对象定义一个引用，其实质是通过将被引用对象的地址赋给引用对象，使二者指向同一内存空间，这样引用对象就成了被引用对象的“别名”。</p>
+<p>定义一个对象引用，并同时指向一个对象的格式为<code>类名 &amp;对象引用名=被引用对象；</code></p>
+<p>注意：</p>
+<ul>
+<li>对象引用与被引用对象必须是同类型的</li>
+<li>除非是作为函数参数与函数返回值，对象引用在定义时必须要初始化。</li>
+<li>定义一个对象引用并没有定义一个对象，所以不分配任何内存空间，不调用构造函数</li>
+</ul>
+<p>对象引用的使用格式为<code>对象引用名.数据成员名</code>或<code>对象引用名.成员函数名（参数表）</code></p>
+<pre><code class="language-cpp">int main()
+{
+    Clock C1,C2;
+    Clock &amp;Cr=C1;//定义C1一个别名Cr
+    C1.SetTime(8,20,20);
+    Cr.ShowTime();
+    return 0;
+}
+</code></pre>
+<p><strong>对象引用的优点：</strong></p>
+<p>对象引用通常用作函数的参数，它不仅具有对象指针的优点，而且比对象指针更简洁、更方便，更直观。</p>
+<pre><code class="language-cpp">void Clock::TimeAdd(Clock &amp;Cp)
+{
+    H=(Cp.H+H+(Cp.M+M+(Cp.S+S)/60)/60)%24;
+    M=(Cp.M+M+(Cp.S+S)/60)%60;
+    S=(Cp.S+S)%60;
+}
+</code></pre>
+<p>调用方式为<code>C2.TimeAdd(C1);</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+    void TimeAdd(Clock &amp;Cp);
+    void TimeAdd(int h,int m,int s);
+    void TimeAdd(int s);
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=h;M=m;S=s;
+    //  this-&gt;H=h;this-&gt;M=m;this-&gt;S=s;
+    //  (*this).H=h;(*this).M=m;(*this).S=s;
+    }
+
+
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+void Clock::TimeAdd(Clock &amp; Cp)
+{
+    H=(Cp.H+H+(Cp.M+M+(Cp.S+S)/60)/60)%24;
+    M=(Cp.M+M+(Cp.S+S)/60)%60;
+    S=(Cp.S+S)%60;
+    Cp.H=10;//改变值
+}
+
+void Clock::TimeAdd(int h,int m,int s)
+{
+    H=(h+H+(m+M+(s+S)/60)/60)%24;
+    M=(m+M+(s+S)/60)%60;
+    S=(s+S)%60;
+}
+
+void Clock::TimeAdd(int s)
+{
+    H=(H+(M+(s+S)/60)/60)%24;
+    M=(M+(s+S)/60)%60;
+    S=(s+S)%60;
+}
+
+int main()
+{
+    Clock C1,C2;
+    Clock &amp;Cr=C1;//定义C1一个别名Cr
+    C1.SetTime(8,20,20);
+    C2.SetTime(0,0,40);
+    C1.TimeAdd(C2);
+    Cr.ShowTime();
+    C2.ShowTime();//10.0.40
+    return 0;
+}
+</code></pre>
+<p><strong>使用常引用能防止私有属性值被修改！</strong></p>
+<p><strong>使用常引用能防止私有属性值被修改！</strong></p>
+<p><strong>使用常引用能防止私有属性值被修改！</strong></p>
+<pre><code class="language-cpp">void Clock::TimeAdd(const Clock &amp; Cp)
+{
+    H=(Cp.H+H+(Cp.M+M+(Cp.S+S)/60)/60)%24;
+    M=(Cp.M+M+(Cp.S+S)/60)%60;
+    S=(Cp.S+S)%60;
+    //Cp.H=10;
+    //这里会报错
+}
+</code></pre>
+<h3 id="对象数组"><a class="header" href="#对象数组">对象数组</a></h3>
+<p>对象数组的定义、赋值、引用与普通数组一样，只是数组元素和普通数组的数组元素不同。</p>
+<p>对象数组定义格式如下：<code>类名 对象数组名[常量表达式n]...[常量表达式1];</code></p>
+<p>其中类名指出该数组元素所属的类，常量表达式给出某一维元素的个数</p>
+<p>对象数组元素的存取格式如下：<code>对象数组名[下标表达式1][下标表达式2]...[下标表达式m].数组成员名</code>或
+<code>对象数组名[下标表达式1][下标表达式2]...[下标表达式m].成员函数名（参数表）</code></p>
+<p>实例：用对象数组计算学生成绩</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Score
+{
+private:
+    int No;
+    int math;
+    int language;
+    int Total;
+public:
+    void SetScore(int no,int m,int l);
+    void Count();
+    void ShowScore();
+
+};
+
+void Score::SetScore(int no,int m,int l)
+{
+    No=no;
+    math=m;
+    language=l;
+}
+
+void Score::Count()
+{
+    Total=math+language;
+}
+
+void Score::ShowScore()
+{
+    cout&lt;&lt;No&lt;&lt;&quot; &quot;&lt;&lt;Total&lt;&lt;endl;
+}
+
+int main()
+{
+    Score ClassScore[3];
+    int num,ms,ls;
+    for(int i=0;i&lt;3;i++)
+    {
+        cin&gt;&gt;num&gt;&gt;ms&gt;&gt;ls;
+        ClassScore[i].SetScore(num,ms,ls);
+        ClassScore[i].Count();
+    }
+    cout&lt;&lt;&quot;The scores are:&quot;&lt;&lt;endl;
+    for(int i=0;i&lt;3;i++)
+        ClassScore[i].ShowScore();
+    return 0;
+}
+</code></pre>
+<pre><code>2016001 80 79
+2016002 90 85
+2016003 70 55
+The scores are:
+2016001 159
+2016002 175
+2016003 125
+</code></pre>
+<h3 id="动态对象"><a class="header" href="#动态对象">动态对象</a></h3>
+<p>动态对象是指编程者随时动态建立并可随时消失的对象。建立动态对象采用动态申请内存的语句new，删除动态对象使用delete语句。建立一个动态对象的格式为<code>对象指针=new 类名</code>，例如：</p>
+<pre><code class="language-cpp">Clock *Cp;//建立对象指针
+Cp=new Clock;//建立动态对象
+Cp-&gt;SetTime(8,30,30);
+Cp-&gt;ShowTime();
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>对象指针的类型应与类名一致</li>
+<li>动态对象存储在new语句从<code>堆</code>申请的空间中</li>
+</ul>
+<p>在堆里建立的动态对象不会自动消失，需要使用delete语句删除对象，格式为<code>delete 对象指针;</code></p>
+<p>在删除动态对象时，释放堆中的内存空间，在对象消失时，调用析构函数。例如：<code>delete Cp;</code>删除Cp指向的动态对象</p>
+<p>动态对象的一个重要应用是通过动态对象组成动态对象数组建立一个一维动态对象数组的格式为<code>对象指针=new 类名[数组大小];</code></p>
+<p>删除一个动态对象数组的格式为：<code>delete [] 对象指针;</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Score
+{
+private:
+    int No;
+    int math;
+    int language;
+    int Total;
+public:
+    void SetScore(int no,int m,int l);
+    void Count();
+    void ShowScore();
+
+};
+
+void Score::SetScore(int no,int m,int l)
+{
+    No=no;
+    math=m;
+    language=l;
+}
+
+void Score::Count()
+{
+    Total=math+language;
+}
+
+void Score::ShowScore()
+{
+    cout&lt;&lt;No&lt;&lt;&quot; &quot;&lt;&lt;Total&lt;&lt;endl;
+}
+
+int main()
+{
+    Score *ClassScore;
+    ClassScore=new Score[3];
+    int num,ms,ls;
+    for(int i=0;i&lt;3;i++)
+    {
+        cin&gt;&gt;num&gt;&gt;ms&gt;&gt;ls;
+        ClassScore[i].SetScore(num,ms,ls);
+        ClassScore[i].Count();
+    }
+    cout&lt;&lt;&quot;The scores are:&quot;&lt;&lt;endl;
+    for(int i=0;i&lt;3;i++)
+        ClassScore[i].ShowScore();
+    delete [] ClassScore;
+    return 0;
+}
+</code></pre>
+<pre><code>901 78 90
+902 77 91
+903 76 92
+The scores are:
+901 168
+902 168
+903 168
+</code></pre>
+<h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<h3 id="在类外定义成员函数"><a class="header" href="#在类外定义成员函数">在类外定义成员函数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class SAMPLE
+{
+    int n;
+public:
+    SAMPLE(int i=0):n(i){}
+    void setValue(int n0);
+};
+
+void SAMPLE::setValue(int n0){n=n0;}
+
+
+int main() {
+
+    cout&lt;&lt;1&lt;&lt;endl;//1
+    return 0;
+}
+</code></pre>
+<h3 id="类中对象的定义"><a class="header" href="#类中对象的定义">类中对象的定义</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+};
+
+class B
+{
+    A a;
+    B b;//error: field 'b' has incomplete type 'B'
+    B *c;
+    B &amp;d;
+};
+
+
+int main() {
+
+    cout&lt;&lt;1&lt;&lt;endl;//1
+    return 0;
+}
+</code></pre>
+<h3 id="特殊的调用方式及赋值方式"><a class="header" href="#特殊的调用方式及赋值方式">特殊的调用方式及赋值方式</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class MyBag
+{
+public:
+    MyBag(string br=&quot;ABC&quot;):brand(br)
+    {
+        cout&lt;&lt;brand&lt;&lt;&quot; &quot;;
+    }
+private:
+    string brand;
+};
+
+
+int main() {
+
+    MyBag arrays[2];//ABC ABC
+    return 0;
+}
+</code></pre>
+<h2 id="构造函数"><a class="header" href="#构造函数">构造函数</a></h2>
+<h3 id="定义及注意事项"><a class="header" href="#定义及注意事项">定义及注意事项</a></h3>
+<p>构造函数是与类名相同的、在建立对象时<code>自动调用</code>的函数，主要用来在创建对象时初始化对象即为对象的数据成员赋初值。一个类可以有多个构造函数即重载，可根据其参数个数的不同或参数类型的不同来区分它们。</p>
+<p>构造函数和其他成员函数的<code>区别</code>：</p>
+<p>（1）构造函数的<code>命名必须和类名完全相同</code>。一般成员函数不能和类名相同。</p>
+<p>（2）构造函数的功能主要用于在类的对象创建时定义初始化的状态，它<code>没有返回值，也不能用void修饰</code>。其他成员函数可以有返回值，如果没有返回值，则必须用void予以说明。</p>
+<p>（3）构造函数<code>不能被直接调用</code>，在创建对象时才会被编译器自动调用，一般成员函数在程序执行到它的时候被调用。</p>
+<p>（4）当定义一个类的时候，如果用户没有定义构造函数，编译器会提供一个默认的构造函数，而成员函数不存在这一特点。</p>
+<p>报错<code>error: no matching function for call to 'Clock::Clock()'</code>，这是因为不带初始化表的对象初始化靠调用不带参数的构造函数完成。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int h,int m,int s);
+    void ShowTime();
+    Clock(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+
+};
+
+void Clock::SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+void Clock::ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+int main()
+{
+    Clock MyClock(7,20,59);
+    MyClock.ShowTime();
+    MyClock.SetTime(8,30,30);
+    MyClock.ShowTime();
+    return 0;
+}
+</code></pre>
+<pre><code>7:20:59
+8:30:30
+</code></pre>
+<p>可以为Clock类添加带有默认值的构造函数：</p>
+<pre><code class="language-cpp">Clock(int h=0,int m=0,int s=0)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+</code></pre>
+<p>构造函数是类的一个成员函数，除了具有一般成员函数的特征外，还有如下特殊性质：</p>
+<ul>
+<li>构造函数的函数名必须与类名相同</li>
+<li>构造函数没有返回值，如果在构造函数前加void是错误的</li>
+<li>构造函数一般情况下被声明为公有函数</li>
+<li>构造函数在建立对象时被系统自动调用</li>
+</ul>
+<p>作为类的成员函数，构造函数可以直接访问类的所有数据成员，可以是内联函数，可以不带任何参数，可以带有参数表以及默认形参值，还可以重载，用户可以根据不同问题的具体需要，有针对性地设计合适的构造函数将对象初始化为特定的状态。</p>
+<h3 id="对象数组的初始化"><a class="header" href="#对象数组的初始化">对象数组的初始化</a></h3>
+<p>对象数组定义格式如下：<code>类名 对象数组名[常量表达式n]...[常量表达式1];</code></p>
+<p>对象数组初始化格式如下：</p>
+<pre><code class="language-cpp">类名 数组名[n]={类名（数据成员1初值，数据成员2初值，...），类名（数据成员1初值，数据成员2初值，...），...，类名（数据成员1初值，数据成员2初值，...）}
+</code></pre>
+<p>注意：不带初始化表的对象数组，其初始化靠调用不带参数的构造函数完成，调用的次数与数组的大小相同。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Score
+{
+private:
+    int No;
+    int math;
+    int language;
+    int Total;
+public:
+    Score(int no,int m,int l)
+    {
+        No=no;
+        math=m;
+        language=l;
+    }
+    void SetScore(int no,int m,int l);
+    void Count();
+    void ShowScore();
+
+};
+
+void Score::SetScore(int no,int m,int l)
+{
+    No=no;
+    math=m;
+    language=l;
+}
+
+void Score::Count()
+{
+    Total=math+language;
+}
+
+void Score::ShowScore()
+{
+    cout&lt;&lt;No&lt;&lt;&quot; &quot;&lt;&lt;Total&lt;&lt;endl;
+}
+
+int main()
+{
+    Score ClassScore[3]={{2016001,80,79},{2016002 ,90 ,85},{2016003,70, 55}};
+    //Score ClassScore[3]={Score(2016001,80,79),Score(2016002 ,90 ,85),Score(2016003,70, 55)};
+    //这两种写法等价
+    int num,ms,ls;
+    for(int i=0;i&lt;3;i++)
+    {
+        ClassScore[i].Count();
+    }
+    cout&lt;&lt;&quot;The scores are:&quot;&lt;&lt;endl;
+    for(int i=0;i&lt;3;i++)
+        ClassScore[i].ShowScore();
+    return 0;
+}
+</code></pre>
+<pre><code>The scores are:
+2016001 159
+2016002 175
+2016003 125
+</code></pre>
+<pre><code class="language-cpp">Score ClassScore[3];//调用三次无参构造函数
+Score ClassScore[3]={Score(2016001,80,79),Score(2016002 ,90 ,85),Score(2016003,70, 55)};
+</code></pre>
+<p>注意：报错<code>error: no matching function for call to 'Score::Score()'</code>，这是因为不带初始化表的对象初始化靠调用不带参数的构造函数完成。</p>
+<p><strong>如果为一个类定义了带参数的构造函数，最好再定义一个无参构造函数。</strong></p>
+<p><strong>如果为一个类定义了带参数的构造函数，最好再定义一个无参构造函数。</strong></p>
+<p><strong>如果为一个类定义了带参数的构造函数，最好再定义一个无参构造函数。</strong></p>
+<p>建立一个动态对象的格式是<code>对象指针=new 类名（初值表）;</code></p>
+<ul>
+<li>建立动态对象时要调用构造函数，当初值表缺省时调用默认的构造函数。</li>
+<li>使用new创建动态数组时，无法调用带参数的构造函数，因此，必须为相应的类声明无参数的构造函数，或者不声明任何构造函数也可以使用系统自己提供的无参构造函数。</li>
+<li>建立动态对象数组时，要调用构造函数，调用的次数与数组的大小相同</li>
+</ul>
+<pre><code class="language-cpp">Clock *Cp;//建立对象指针
+Cp=new Clock;//建立动态对象
+Cp-&gt;ShowTime();
+Cp=new Clock(8,0,0);//建立动态对象
+Cp-&gt;ShowTime();
+</code></pre>
+<h2 id="测验-1"><a class="header" href="#测验-1">测验</a></h2>
+<h3 id="构造函数特殊赋值方式"><a class="header" href="#构造函数特殊赋值方式">构造函数特殊赋值方式</a></h3>
+<p>C++构造函数后面跟“：”表示赋值，这是C++的特性。</p>
+<pre><code class="language-cpp">A(int aa,int bb):a(aa),b(bb){}
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-cpp">A(int aa,int bb)
+{
+a=aa;
+b=bb;
+}
+</code></pre>
+<h3 id="对象数组定义方式"><a class="header" href="#对象数组定义方式">对象数组定义方式</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class MyClass
+{
+    int n;
+public:
+    MyClass(int k):n(k){}
+    int getValue()const{return n;}
+};
+
+int main()
+{
+    //MyClass x1[2];
+    //error: no matching function for call to 'MyClass::MyClass()'
+    //MyClass x2[2]={new MyClass(1), new MyClass(2)};
+    //error: invalid conversion from 'MyClass*' to 'int' [-fpermissive]
+    MyClass *x3[2];
+    //MyClass *x4[2]{MyClass(1),MyClass(2)};
+    //error: cannot convert 'MyClass' to 'MyClass*' in initialization
+    return 0;
+}
+</code></pre>
+<p><code> MyClass(int k):n(k){}</code>这种函数赋值方式是 C++ 中构造函数的一种形式，被称为成员初始化列表（Member Initialization List）。</p>
+<p>在给定的例子中，<code>MyClass</code> 类的构造函数使用了成员初始化列表来初始化成员变量 <code>n</code>。具体来说，<code>MyClass(int k) : n(k) {}</code> 表示使用参数 <code>k</code> 来初始化成员变量 <code>n</code>。</p>
+<p>成员初始化列表的语法是在构造函数的定义后面使用冒号（:）来指定要初始化的成员变量，并以逗号分隔不同的初始化操作。在冒号后面的每个初始化操作中，首先是成员变量名，然后是括号括起来的初始化值。</p>
+<p>这种使用成员初始化列表的方式可以在对象创建时直接初始化成员变量，而不是在构造函数的函数体内使用赋值操作。这在效率和代码风格上都有一定的优势。</p>
+<p>在给定的例子中，构造函数的作用是将参数 <code>k</code> 赋值给成员变量 <code>n</code>。这意味着当创建 <code>MyClass</code> 类对象时，可以通过提供一个整数参数来初始化对象的成员变量 <code>n</code>。</p>
+<p>例如，可以这样使用构造函数来创建一个 <code>MyClass</code> 对象并初始化成员变量 <code>n</code>：</p>
+<pre><code class="language-cpp">MyClass obj(42);
+</code></pre>
+<p>上述代码将会调用带有整数参数的构造函数，并将参数值 42 传递给构造函数，然后构造函数使用成员初始化列表将参数值赋值给成员变量 <code>n</code>。</p>
+<p><code>int getValue()const{return n;}</code>这是一个成员函数的定义，<code>int getValue() const { return n; }</code>。</p>
+<p>在这个例子中，<code>getValue()</code> 是一个成员函数，返回类型为 <code>int</code>。<code>const</code> 关键字放在函数括号后面表示这个成员函数是一个常量成员函数，也称为常量方法。常量成员函数承诺不会修改类的成员变量。</p>
+<p><code>getValue()</code> 函数不接受任何参数，它的作用是返回成员变量 <code>n</code> 的值。由于这是一个常量成员函数，它不能修改成员变量的值。</p>
+<p>常量成员函数在以下情况下非常有用：</p>
+<ol>
+<li>当你希望访问对象的成员变量或执行一些计算，但不希望修改对象的状态时，可以将函数声明为常量成员函数。</li>
+<li>当你有一个常量对象时，只能调用常量成员函数，因为常量对象不允许修改。</li>
+</ol>
+<p>例如，假设有一个 <code>MyClass</code> 类如下：</p>
+<pre><code class="language-cpp">class MyClass {
+    int n;
+public:
+    MyClass(int k) : n(k) {}
+    int getValue() const { return n; }
+};
+</code></pre>
+<p>可以创建一个 <code>MyClass</code> 对象，并通过调用 <code>getValue()</code> 函数来获取成员变量 <code>n</code> 的值：</p>
+<pre><code class="language-cpp">MyClass obj(42);
+int value = obj.getValue();
+</code></pre>
+<p>在上述示例中，<code>getValue()</code> 函数被常量对象 <code>obj</code> 调用，并返回成员变量 <code>n</code> 的值。由于 <code>getValue()</code> 是一个常量成员函数，它可以被常量对象调用。</p>
+<h3 id="构造函数重载时被调用次数判断"><a class="header" href="#构造函数重载时被调用次数判断">构造函数重载时被调用次数判断</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+    int x_,y_;
+public:
+    Point():x_(0),y_(0){cout&lt;&lt;1&lt;&lt;endl;}
+    Point(int x,int y=0):x_(x),y_(y){cout&lt;&lt;1&lt;&lt;endl;}
+};
+
+int main()
+{
+    Point a(2),b[3],*c[4];
+    return 0;
+}
+</code></pre>
+<pre><code>1
+1
+1
+1
+</code></pre>
+<p>在给定的代码中，Point 类的构造函数会被调用的次数如下：</p>
+<ol>
+<li><code>Point a(2)</code>：这里调用了带有一个整数参数的构造函数，构造了一个名为 <code>a</code> 的 Point 对象。因此，构造函数被调用了一次。</li>
+<li><code>b[3]</code>：这里定义了一个 Point 类型的数组 <code>b</code>，它的大小为 3。由于没有提供显式的构造函数调用，编译器会自动调用默认的无参构造函数进行初始化。因此，构造函数被调用了 3 次。</li>
+<li><code>*c[4]</code>：这里定义了一个指针数组 <code>c</code>，它的大小为 4。由于没有提供显式的构造函数调用，指针数组的元素会被初始化为默认的空指针。并没有调用 Point 类的构造函数。</li>
+</ol>
+<p>因此，Point 类的构造函数总共被调用了 4 次。其中，有 1 次是通过带有参数的构造函数进行的，其余 3 次是通过默认的无参构造函数进行的。</p>
+<h2 id="常量对象和常成员函数"><a class="header" href="#常量对象和常成员函数">常量对象和常成员函数</a></h2>
+<h3 id="概述"><a class="header" href="#概述">概述</a></h3>
+<p>常代表不可更改，C++用const定义常对象。const还能限定类的数据称和成员函数，分别称为类的常数据成员和常函数成员。</p>
+<p>常对象和常成员概念的建立，明确规定了程序中各种对象的变与不变的界限，从而进一步增强了C++程序的安全性和可控性。</p>
+<p>C++编译器对常对象的使用是极为苛刻的，它<code>不允许常对象调用类的任何普通成员函数</code>，而且常对象一旦定义，在其生存期内不允许改变，否则将导致编译错误。</p>
+<p>常对象定义格式如下：<code>类名 const 对象名</code>或<code>const 类名 对象名</code></p>
+<pre><code class="language-cpp">int main()
+{
+	const Clock C1(9,9,9);
+	C1.ShowTime();//报错，C1是常对象，只能访问常成员函数
+}
+</code></pre>
+<p>常成员函数：任何不修改数据成员的函数都应该被声明为const类型，如果在编写const成员函数时，不慎修改了数据成员或者调用了其它非const成员函数，编译器绘制出错误。这提高了程序的健壮性。</p>
+<pre><code class="language-cpp">class MyClass {
+    int n;
+public:
+    MyClass(int k) : n(k) {}
+    int getValue() const { return n; }
+};
+</code></pre>
+<p>常成员函数是在定义时使用const修饰的用于访问类的常对象的函数，说明格式如下：<code>返回类型 成员函数名 （参数表）const;</code></p>
+<p>注意事项：</p>
+<ul>
+<li>const是函数类型的一部分，因此在函数实现部分也要带有const关键字。</li>
+<li>常成员函数不能更新对象的数据成员，也不能调用该类中没有用const修饰的成员函数</li>
+<li>常对象只能调用它的常成员函数，而不能调用其他成员函数，这是C++语法机制上对常对象的保护，也是常对象唯一的对外接口方式。</li>
+<li>const关键字可以用于参与重载函数的区分。</li>
+</ul>
+<h3 id="常见错误"><a class="header" href="#常见错误">常见错误</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Date
+{
+private:
+    int Y,M,D;
+public:
+    Date(int y=0,int m=0,int d=0)
+    {
+        Y=y;M=m;D=d;
+    }
+    int year() const;
+    int month() const;
+    int day() const {return D;};
+    int day() {return D++;};
+    int AddYear(int i) {return Y+i;};
+};
+int Date::year() const  //常成员函数实现不能缺少const
+{
+    //Y++;
+    //error: increment of member 'Date::Y' in read-only object
+    //即常成员函数不能修改类的数据成员
+    return Y;
+}
+
+int Date::month() const
+{
+    return M;
+}
+
+int main()
+{
+    Date const d1;
+    //int j=d1.AddYear(10);
+    //error: passing 'const Date' as 'this' argument discards qualifiers [-fpermissive]
+    //错误，常对象不能调用非常成员函数（普通成员函数）
+    int k=d1.year(); //正确
+    Date d2;
+    int i=d2.year();//正确，非常对象可以调用常成员函数
+    d2.day();//正确，非常对象可以调用非常成员函数
+    return 0;
+}
+</code></pre>
+<h2 id="常量数据成员"><a class="header" href="#常量数据成员">常量数据成员</a></h2>
+<p>使用const说明的数据成员被称为常数据成员。常数据成员的定义与一般常变量的定义方式相同，只是它的定义必须出现在类体中。</p>
+<p>常数据成员也必须进行初始化，并且不能被更新。但在老标准中，常数据成员的初始化只能通过构造函数的初始化列表进行，C++11允许直接初始化。</p>
+<p>常数据成员的定义格式为：<code>数据类型 const 数据成员名;</code>或<code>const 数据类型 数据成员名;</code></p>
+<p><strong>注意事项：不能在类声明中初始化const数据成员</strong></p>
+<pre><code class="language-cpp">class A
+{
+    //老标准中以下语句错误，C++11中，是通过构造函数的初始化表进行初始化的
+    const int SIZE=200;
+    int array[SIZE];//错误，未知的SIZE，即使在C++中，SIZE也是在程序运行时通过构造函数赋值，所以编译器SIZE并没有值
+};
+</code></pre>
+<p>**const数据成员的初始化只能在类构造函数的初始化表中进行，不能在构造函数中对它赋值。另外，构造函数初始化表也可以对普通数据成员赋值。</p>
+<p>例如：</p>
+<pre><code class="language-cpp">class A
+{
+    A(int size);//构造函数
+    const int SIZE;
+    
+};
+A::A(int size):SIZE(size)//构造函数的初始化表
+{
+    
+}
+
+A a(100);//对象a的SIZE的值为100
+A b(200);//对象b的SIZE的值为200
+</code></pre>
+<p>演示常数据成员的使用</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+private:
+    const int a;//这里修改
+    const int&amp; r;
+public:
+    A(int i):a(i),r(a)//这里修改
+    {
+        cout&lt;&lt;&quot;construtor!&quot;&lt;&lt;endl;
+    };
+    void display()
+    {
+        cout&lt;&lt;a&lt;&lt;&quot;,&quot;&lt;&lt;r&lt;&lt;endl;
+    }
+
+};
+
+int main()
+{
+    A a1(1);
+    a1.display();
+    A a2(2);
+    a2.display();
+    return 0;
+}
+</code></pre>
+<pre><code>construtor!
+1,1
+construtor!
+2,2
+</code></pre>
+<p>r、a两者输出值相同</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+private:
+    const int a=100;
+    const int&amp; r;
+public:
+    A(int i):r(a)
+    {
+        cout&lt;&lt;&quot;construtor!&quot;&lt;&lt;endl;
+    };
+    void display()
+    {
+        cout&lt;&lt;a&lt;&lt;&quot;,&quot;&lt;&lt;r&lt;&lt;endl;
+    }
+
+};
+
+int main()
+{
+    A a1(1);
+    a1.display();
+    A a2(2);
+    a2.display();
+    return 0;
+}
+</code></pre>
+<pre><code>construtor!
+100,100
+construtor!
+100,100
+</code></pre>
+<h2 id="静态数据成员与静态成员函数"><a class="header" href="#静态数据成员与静态成员函数">静态数据成员与静态成员函数</a></h2>
+<p>一个类对象的public成员可被本类的其他对象存取，即可供所有对象使用，但是此类的每个对象都各自拥有一份，不存在真正意义上的共享成员。所以，C++提供了静态成员，用以解决同一个类的不同对象之间数据成员与函数的共享问题。</p>
+<p>静态成员的特点是不管这个类创建了多少个对象，其静态成员在内存中只保留一份拷贝，这个拷贝为该类的所有对象所共享。</p>
+<p>类的静态成员有两种：静态数据成员和静态函数成员。</p>
+<h3 id="静态数据成员"><a class="header" href="#静态数据成员">静态数据成员</a></h3>
+<p>采用static关键字定义，属于类属性，每个类只有一个拷贝，由该类的所有对象共同维护和使用，从而实现了同类的不同对象之间的数据共享。</p>
+<p>面对对象方法中还有类属性（class attribute）的概念，类属性是描述类的所有对象共同特征的一个数据项，对于任何对象实例，它的属性值是相同的，C++通过静态数据成员来实现类属性。</p>
+<p>静态数据成员的定义分为两个必不可少的部分：<strong>类内声明、类外初始化</strong></p>
+<p>在类内，声明静态数据成员的格式为：<code>static 数据类型 静态数据成员名;</code></p>
+<p>在类外初始化形式为：<code>数据类型 类名::静态数据成员名=初始值;</code></p>
+<p>除了在初始化时可以在类外通过类对静态成员赋初值外，其他情况下对静态成员的存取规则与一般成员相同。即在类内可以任意存取；在类外，通过对象或类名只能访问存取属性为public的成员。</p>
+<p>假设类SavingAccount专门用于存放存款账户，它包括存户的姓名、地址、存款额、利率等成员变量：</p>
+<pre><code class="language-cpp">class SavingAccount
+{
+	char name[20];
+	char addr[60];
+	double total;
+	double rate;
+};
+</code></pre>
+<p>浮动利率rate应该独立于各对象之外，成为整个类所有对象共享的数据。</p>
+<pre><code class="language-cpp">class SavingAccount
+{
+	char name[20];
+	char addr[60];
+	double total;
+	static double rate;//整个类所有对象共享的数据
+};
+
+double SavingAccount::rate=0.05;
+</code></pre>
+<ul>
+<li>静态数据成员不属于对象的一部分，而是类的一部分</li>
+<li>静态数据成员的初始化不能放在类的构造函数中</li>
+<li>静态数据成员属于类，因此定义对象时并不为静态成员分配空间</li>
+<li>类外必须有定义，否则链接器报错</li>
+</ul>
+<p>使用时注意事项：</p>
+<ul>
+<li>静态数据成员的访问属性同普通数据成员一样，可以为public、private和protected。</li>
+<li>静态数据成员脱离具体对象而独立存在，其存储空间是独立分配的，不是任何对象存储空间的一部分，但逻辑上所有的对象都<code>共享</code>这一存储单元，所以对静态数据成员的任何操作都将影响共享这一存储单元的所有对象。</li>
+<li>静态数据成员是一种特殊的数据成员，它<code>表示类属性</code>，而不是某个对象单独的属性，它在程序开始产生，在程序结束时消失，静态数据成员<code>具有静态生存期</code>。</li>
+<li>由于在类的定义中仅仅是对静态数据成员进行了引用性声明，因此必须在文件作用于的某个地方对静态数据成员进行定义并初始化，即<code>应在类体外对静态数据成员进行初始化</code>（静态数据成员的初始化与它的访问控制权限无关。）</li>
+<li>静态数据成员初始化时<code>前面不加static关键字</code>，以免与一般静态变量或对象混淆。</li>
+<li>由于静态数据成员是类的成员，因此在初始化时必须<code>使用类作用域运算符::</code>限定其所属的类。</li>
+</ul>
+<p>引用方式：</p>
+<ul>
+<li>可以通过作用域操作符从类直接调用如<code>SavingAccount::rate</code></li>
+<li>从对象角度看，它又是对象的一部分，因此又可以从对象引用它。如果有个SavingAccount类的对象obj，则可以使用<code>obj.rate</code></li>
+<li>由于静态数据成员是整个类共享的，因此不管用哪种调用方式，得到的值都是相同的</li>
+</ul>
+<p>静态常量数据成员：整个类所有对象的共享常量，声明格式：<code>static const 类型 数据成员名=常量表达式;</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+private:
+    static const int b;//静态常数据成员
+    static const int c=2;//静态常数据成员可以在这里初始化
+public:
+    A(int i)
+    {
+        cout&lt;&lt;&quot;construtor!&quot;&lt;&lt;endl;
+    };
+    void display()
+    {
+        cout&lt;&lt;b&lt;&lt;&quot;,&quot;&lt;&lt;c&lt;&lt;endl;
+    }
+
+};
+const int A::b=3;//静态常数据成员在类外说明和初始化
+int main()
+{
+	A a1(1);
+	a1.display();
+	return 0;
+}
+</code></pre>
+<pre><code>construtor!
+3,2
+</code></pre>
+<h3 id="静态成员函数"><a class="header" href="#静态成员函数">静态成员函数</a></h3>
+<p>成员函数也可以是静态的。静态的成员函数是为类的全体对象服务，而不是某个类的特殊对象服务。</p>
+<p><strong>由于静态成员函数不需要借助任何对象就可以被调用，因此静态成员函数<code>无法</code>处理类中的非静态成员变量（普通对象），也不允许使用this指针（this指针指向当前对象）。</strong></p>
+<p>静态成员函数的声明只需要在类定义中的函数原型前加上保留字static。</p>
+<p>静态成员函数的用途：访问静态数据成员。</p>
+<pre><code class="language-cpp">static void SetRate(double newRate)
+{rate=newRate;}
+</code></pre>
+<p>调用方式：</p>
+<ul>
+<li>静态成员函数可定义为内嵌的，也可在类外定义，在类外定义时不用static</li>
+<li>静态数据成员访问：可以通过类作用域限定符或通过对象访问即<code>类名::静态成员函数名（）</code>或<code>对象名.静态成员函数名（）</code></li>
+</ul>
+<p>实例1：</p>
+<pre><code class="language-cpp">class goods
+{
+private:
+    int weight;
+    static int total_weight;
+public:
+    goods(int w);
+    ~goods();
+    int getweight();
+    static int totalweight();
+
+};
+int goods::total_weight=0;
+goods::goods(int w)
+{
+    weight=w;
+    total_weight+=w;
+}
+goods::~goods()//析构函数，释放对象时系统自动调用
+{
+    total_weight-=weight;
+}
+
+int goods::getweight();
+{
+    return weight;
+}
+
+int goods::totalweight()
+{
+    return total_weight;
+}
+</code></pre>
+<p>实例2：</p>
+<p>在程序执行的某个时刻，有时需要知道某个类已创建的对象个数，现在仍存活的对象个数。</p>
+<p>数据成员设计：为了实现这个功能，我们可以在类中定义两个静态的数据成员即obj_count和obj_living</p>
+<p>成员函数设计：要实现计数功能，我们可以在创建一个对象时，对这两个数各自加1，当撤销一个对象时，obj_living减1。当撤销一个对象时刻对象个数的信息，可以定义一个静态的成员函数返回这两个值。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class StaticSample
+{
+private:
+    static int obj_count;
+    static int obj_living;
+public:
+    StaticSample()
+    {
+        ++obj_count;
+        ++obj_living;
+    }
+    ~StaticSample()
+    {
+        --obj_living;
+    }
+    static void display()
+    {
+        cout&lt;&lt;&quot;总对象数：&quot;&lt;&lt;obj_count&lt;&lt;&quot;\t存活对象数：&quot;&lt;&lt;obj_living&lt;&lt;endl;
+    }
+};
+
+int StaticSample::obj_count=0;
+int StaticSample::obj_living=0;
+
+int main()
+{
+	StaticSample::display();
+	StaticSample s1,s2;
+	StaticSample::display();
+	StaticSample *p1=new StaticSample,*p2=new StaticSample;
+	//只声明指针不执行构造函数，执行new操作时才执行构造函数
+	s1.display();
+	delete p1;
+	p2-&gt;display();
+	delete p2;
+	StaticSample::display();
+	return 0;
+}
+</code></pre>
+<pre><code>总对象数：0     存活对象数：0
+总对象数：2     存活对象数：2
+总对象数：4     存活对象数：4
+总对象数：4     存活对象数：3
+总对象数：4     存活对象数：2
+</code></pre>
+<h2 id="测验-2"><a class="header" href="#测验-2">测验</a></h2>
+<h3 id="几种常见编译错误"><a class="header" href="#几种常见编译错误">几种常见编译错误</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Test
+{
+public:
+    //Test(){a=0;c=0;}
+    //error: uninitialized const member in 'const int' [-fpermissive]
+    //int f(int a) const {this-&gt;a=a};
+    //error: assignment of member 'Test::a' in read-only object
+    //static int g(){return a;}
+    //error: invalid use of member 'Test::a' in static member function
+    void h(int b){Test::b=b;};
+private:
+    int a;
+    static int b;
+    const int c;
+};
+
+int Test::b=0;
+
+
+int main()
+{
+	cout&lt;&lt;&quot;Success&quot;&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h3 id="构造函数调用次数"><a class="header" href="#构造函数调用次数">构造函数调用次数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Class
+{
+public:
+    static int var;
+    Class(){var++;}
+};
+
+int Class::var=0;
+
+
+int main()
+{
+	cout&lt;&lt;Class::var;
+	Class c1;
+	cout&lt;&lt;c1.var;
+	Class c2,c3;
+	cout&lt;&lt;c2.var;
+	//013
+	return 0;
+}
+</code></pre>
+<h2 id="友元"><a class="header" href="#友元">友元</a></h2>
+<p>类的私有成员只能通过它的成员函数来访问。数据隐藏给不同类和对象的成员函数之间、类的成员函数和类外的一般函数之间进行属性共享带来障碍，必须寻求一种方法使得类外的对象能够访问类中的私有成员，提高程序的效率。</p>
+<p>为了解决这个问题，C++提出了使用友元作为实现这一目的的辅助手段。友元不是类的成员，但它可以访问类的任何成员（包括私有成员）。声明为友元的外界对象既可以是另一个类的成员函数，也可以是不属于任何类的一般函数，这被称为友元函数。友元也可以是一整个类，这被称为友元类。</p>
+<p>友元函数是由关键字friend修饰的非成员函数。其格式如下：</p>
+<pre><code class="language-cpp">friend 返回类型 函数名（形参表）
+{
+	...//函数体
+}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>友元函数的定义和成员函数一样，只是在类中用关键字friend予以说明。但友元函数是一个普通函数，不是本类的成员函数，因此不能通过对象调用。</li>
+<li>友元函数对类成员的存取和成员函数一样，可以直接存取类的任何存取控制属性的成员，可通过对象存取形参、函数体中该类类型对象的所有成员。</li>
+<li>private、protected、public访问权限与友元函数的声明无关，因此原则上友元函数声明可以放在类体中任意部分，但为了程序清晰，友元函数声明一般放到类体的后面。</li>
+<li>友元函数可以在类中声明、类外定义。</li>
+</ul>
+<p>定义在类内</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class girl
+{
+    char name[10];
+    int age;
+public:
+    girl(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    friend void disp(girl &amp;x)
+    {
+        cout&lt;&lt;x.name&lt;&lt;&quot; &quot;&lt;&lt;x.age&lt;&lt;endl;
+    }
+};
+
+
+int main()
+{
+    girl e(&quot;abc&quot;,15);
+    disp(e);
+    //abc 15
+    return 0;
+}
+</code></pre>
+<p>定义在类外</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class girl
+{
+    char name[10];
+    int age;
+public:
+    girl(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    friend void disp(girl &amp;x);//一般要传入参数
+};
+
+void disp(girl &amp;x)
+{
+    cout&lt;&lt;x.name&lt;&lt;&quot; &quot;&lt;&lt;x.age&lt;&lt;endl;
+}
+int main()
+{
+    girl e(&quot;abc&quot;,15);
+    disp(e);
+    //abc 15
+    return 0;
+}
+</code></pre>
+<p>例：用友元函数计算某次火车的旅途时间（问题已被简化，旅途时间不超过24小时）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    void SetTime(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    Clock(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    friend Clock TripTime(Clock &amp;StartTime,Clock &amp;EndTime);
+};
+
+Clock TripTime(Clock &amp;StartTime,Clock &amp;EndTime)
+{
+    int tH,tM,tS;//临时存储时分秒
+    int carry;//借位
+    Clock tTime;//临时存储时间
+    (tS=EndTime.S-StartTime.S)&gt;0?carry=0:tS+=60,carry=1;
+    (tM=EndTime.M-StartTime.M-carry)&gt;0?carry=0:tM+=60,carry=1;
+    (tH=EndTime.H-StartTime.H-carry)&gt;0?carry=0:tH+=24;
+    tTime.SetTime(tH,tM,tS);
+    return tTime;
+}
+
+
+
+int main()
+{
+    Clock C1(8,10,10),C2(6,1,2);
+    Clock C3;
+    C3=TripTime(C1,C2);
+    C3.ShowTime();//输出21:50:52
+    return 0;
+}
+</code></pre>
+<p>说明：在本例中，在Clock类中设计了一个友元函数TripTime()，它不是类的成员函数，但是我们可以看到友元函数通过对象名StartTime和EndTime直接访问了类的私有数据成员。</p>
+<p>友元类的声明是在类名前加上关键字friend，声明A类为B类的友元类的格式如下：</p>
+<pre><code class="language-cpp">class B
+{
+	friend class A;
+}
+</code></pre>
+<p>若A类为B类的友元类，则A类的所有成员函数都是B类的友元函数，都可以访问B类的<strong>任何</strong> 数据成员。</p>
+<p>在定义友元类时会遇到两个类相互引用的情况，必然有一个类在定义之前就将被引用，这该怎么解决呢？</p>
+<p>对此，C++专门规定了前向引用声明用以解决这个问题，前向引用声明是在引用未定义的类之前对该类进行声明，它只是为程序引入一个代表该类的标识符，类的具体定义可以在程序的其他地方进行。</p>
+<pre><code class="language-cpp">class B;//前向引用声明
+class A //A类的定义
+{
+public:   //外部接口
+    void funA(B b);//以B类对象b为形参的成员函数
+};
+
+class B //B类的定义
+{
+public:   //外部接口
+    void funB(A a);//以A类对象a为形参的成员函数
+};
+</code></pre>
+<p>友元类实例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class boy;
+
+class girl
+{
+    char name[10];
+    int age;
+public:
+    girl(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    void dispBoyfriend(boy &amp;x);
+};
+
+void girl::dispBoyfriend(boy &amp;x)
+{
+    cout&lt;&lt;name&lt;&lt;&quot; &quot;&lt;&lt;age&lt;&lt;endl;
+    cout&lt;&lt;x.name&lt;&lt;&quot; &quot;&lt;&lt;x.age&lt;&lt;endl;
+}
+
+class boy
+{
+    char name[10];
+    int age;
+public:
+    boy(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    friend class girl;
+};
+
+int main()
+{
+    girl e(&quot;abc&quot;,15);
+    boy b(&quot;cde&quot;,20);
+    e.dispBoyfriend(b);
+
+    return 0;
+}
+</code></pre>
+<p>报错：<code>23|error: invalid use of incomplete type 'class boy'</code></p>
+<p>这个错误的原因是在<code>girl</code>类的成员函数<code>dispBoyfriend</code>中，你试图访问<code>boy</code>类的成员，但是在那个点上，<code>boy</code>类还没有被完全定义，只是被前向声明了。所以，编译器不知道<code>boy</code>类的成员布局，因此它不能访问<code>boy</code>类的成员。</p>
+<p>你可以通过将<code>dispBoyfriend</code>的定义放在<code>boy</code>类之后来解决这个问题。这样在你访问<code>boy</code>类的成员时，<code>boy</code>类已经被完全定义了。</p>
+<p>以下是修改后的代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class boy;  // 前向声明
+
+class girl
+{
+    char name[10];
+    int age;
+public:
+    girl(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    void dispBoyfriend(boy &amp;x);
+};
+
+class boy
+{
+    char name[10];
+    int age;
+public:
+    boy(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    friend class girl;  // 声明girl为友元类，可以访问boy的私有成员
+};
+
+void girl::dispBoyfriend(boy &amp;x)
+{
+    cout&lt;&lt;name&lt;&lt;&quot; &quot;&lt;&lt;age&lt;&lt;endl;
+    cout&lt;&lt;x.name&lt;&lt;&quot; &quot;&lt;&lt;x.age&lt;&lt;endl;  // 在这里，boy类已经完全定义了，可以访问其成员
+}
+
+int main()
+{
+    girl e(&quot;abc&quot;,15);
+    boy b(&quot;cde&quot;,20);
+    e.dispBoyfriend(b);
+
+    return 0;
+}
+</code></pre>
+<p>在这个修改后的版本中，<code>boy</code>类在<code>girl::dispBoyfriend</code>被定义之前就已经完全定义了，所以在<code>girl::dispBoyfriend</code>中可以顺利地访问<code>boy</code>的成员。</p>
+<p><strong>友元成员是其他某个类的成员函数，可以访问friend声明语句所在类的私有成员和公有成员的成员函数，定义格式：<code>friend 函数返回类型 类名标识符::函数名（参数列表）;</code></strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class boy;
+
+class girl
+{
+    char name[10];
+    int age;
+public:
+    girl(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    void dispBoyfriend(boy &amp;x);
+};
+
+class boy
+{
+    char name[10];
+    int age;
+public:
+    boy(char *n,int d)
+    {
+        strcpy(name,n);
+        age=d;
+    }
+    friend void girl::dispBoyfriend(boy &amp;);//这里用friend void girl::dispBoyfriend(boy &amp;x);也行
+};
+
+void girl::dispBoyfriend(boy &amp;x)
+{
+    cout&lt;&lt;name&lt;&lt;&quot; &quot;&lt;&lt;age&lt;&lt;endl;
+    cout&lt;&lt;x.name&lt;&lt;&quot; &quot;&lt;&lt;x.age&lt;&lt;endl;
+}
+
+int main()
+{
+    girl e(&quot;abc&quot;,15);
+    boy b(&quot;cde&quot;,20);
+    e.dispBoyfriend(b);
+
+    return 0;
+}
+</code></pre>
+<p>友元特点：</p>
+<ul>
+<li>友元关系是授予的而不是索取的，也就是说，如果函数f想成为类A的友元，类A必须显式声明函数f的它的友元，而不是函数f自称是类A的友元。</li>
+<li>友元关系不是对称关系，如果类A声明了类B是它的友元，并不意味着类A也是类B的友元。</li>
+<li>友元关系不是传递关系，如果类A是类B的友元，类B是类C的友元，并不意味着类A是类C的友元。</li>
+</ul>
+<p>友元声明：</p>
+<ul>
+<li>在类定义中用关键词friend声明友元函数</li>
+<li>声明位置：可声明在private、protected或public部分，private、protected或public访问权限与友元函数的声明无关。</li>
+</ul>
+<p><strong>友元的优缺点：提高了数据共享性，但也破坏了数据隐藏和数据封装，导致程序的可维护性变差，给程序的重用和扩充埋下了深深的隐患。</strong></p>
+<h2 id="对象的析构与拷贝构造"><a class="header" href="#对象的析构与拷贝构造">对象的析构与拷贝构造</a></h2>
+<h3 id="析构函数"><a class="header" href="#析构函数">析构函数</a></h3>
+<p>对象在定义时诞生，不同生存期的对象在不同的时期消失。在对象要消失时，通常有一些善后工作要做，例如：构造对象时，通过构造函数动态申请了一些内存单元，在对象消失之前就要释放这些内存单元。C++通过析构函数来保证这些善后清除工作的执行。</p>
+<p>析构函数（destructor）是在对象消失之前的瞬间调用的函数，其声明语法格式<code>~构造函数名();</code></p>
+<p>析构函数与构造函数的作用正好相反，析构函数也是类的一个特殊的公有成员函数。</p>
+<p>析构函数具有以下特点：</p>
+<ul>
+<li>析构函数没有任何参数，<code>不能被重载</code>，一个类只有一个析构函数</li>
+<li>析构函数<code>没有返回值</code></li>
+<li>析构函数名和类名相同，但在类名前加<code>~</code>以示和构造函数的区别。</li>
+<li>析构函数一般由用户自己定义，<code>在对象消失时由系统自动调用</code>，如果用户没有定义析构函数，系统将自动生成一个不做任何事的默认析构函数。</li>
+</ul>
+<p>注意：在对象消失时的清理工作并不是由析构函数完成，而是靠用户<code>在析构函数中添加清理语句完成</code>。</p>
+<ul>
+<li>在删除动态对象时，对象将消失，调用析构函数。</li>
+<li>删除对象数组时要调用析构函数，调用次数与数组的大小相同。</li>
+<li>如果对象是一个函数内的局部变量，则在退出函数时，需要调用析构函数清理该对象。</li>
+</ul>
+<p><strong>对象的生命周期</strong></p>
+<pre><code class="language-cpp">Time gTime;
+
+int main()
+{
+    Time lTime1;
+    Time lTime2;
+}
+</code></pre>
+<p><strong>对象创建顺序：先创建全局变量，然后是局部变量，先定义的先创建（调用构造函数）</strong></p>
+<p><strong>对象消失顺序：后创建的先消失（调用析构函数）</strong></p>
+<p>对象生命周期的验证——时钟实例</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+Clock C1(8,0,0);
+Clock C2(9,0,0);
+
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:8:0:0
+constructor:9:0:0
+constructor:10:0:0
+constructor:11:0:0
+destructor:11:0:0
+destructor:10:0:0
+destructor:9:0:0
+destructor:8:0:0
+</code></pre>
+<p>加上一个全局函数，并在main()函数中调用这个函数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+Clock C1(8,0,0);
+Clock C2(9,0,0);
+
+fun()
+{
+    Clock C5(5,5,5);
+}
+
+int main()
+{
+    fun();
+    Clock C3(10,0,0),C4(11,0,0);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:8:0:0
+constructor:9:0:0
+constructor:5:5:5
+destructor:5:5:5
+constructor:10:0:0
+constructor:11:0:0
+destructor:11:0:0
+destructor:10:0:0
+destructor:9:0:0
+destructor:8:0:0
+</code></pre>
+<p>自定义String类实例</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    char s[]=&quot;ABCDE&quot;;
+    String s1(s);
+    String s2(&quot;123456&quot;);
+    s1.ShowStr();
+    s2.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:ABCDE,length:5
+string:123456,length:6
+</code></pre>
+<h3 id="拷贝构造函数"><a class="header" href="#拷贝构造函数">拷贝构造函数</a></h3>
+<p>拷贝构造函数用于建立新对象时将已存在对象的数据成员拷贝给新对象，即<strong>用一个已存在的对象去初始化一个新建立的对象</strong>。拷贝构造函数是与类名相同，其形参是本类的对象的引用。</p>
+<p>用户可以根据自己的需要定义拷贝构造函数。如果用户没有定义拷贝构造函数，系统会定义一个默认的拷贝构造函数。该函数将已存在的对象的数据成员的值一模一样地复制给新对象。</p>
+<p>拷贝构造函数定义格式如下：</p>
+<pre><code class="language-cpp">类名(const 类名&amp; 对象名)
+{
+	...
+}
+</code></pre>
+<p>默认拷贝构造函数如下所示：</p>
+<pre><code class="language-cpp">class point
+{
+	int x,y;
+	public:
+		point(int a,int b){x=a;y=b;}
+		point(const point&amp;p){x=p.x;y=p.y;}
+};
+</code></pre>
+<p>以下三种情况相当于用一个已存在的对象去初始化一个新建立的对象，此时，调用拷贝构造函数：</p>
+<ul>
+<li>定义对象时：用类的一个对象去初始化一个新建立的对象。</li>
+<li>函数参数传递时：如果函数的形参是类的对象，调用函数时，将对象作为函数实参传递给函数的形参时。</li>
+<li>函数返回值时：如果函数的返回值是类的对象，函数执行完成，将返回值返回时。</li>
+</ul>
+<p>一、定义对象时</p>
+<p>（1）将对象放在圆括号中如<code>Clock myClock2(myClock1);</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C1(C3);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+destructor:10:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>C3是通过默认拷贝构造函数生成的，不调用自定义的构造函数。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C1(C3);//这里改成Clcok C1=C3;也行，输出结果不变
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+copy constructor,before call:-1:-1:4249845
+                 after call:10:0:0
+destructor:10:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>（2）用“=”符号，如<code>Clock myClock2=myClock1;</code></p>
+<p>这种情况是定义对象时调用myClock1初始化myClock2，不是将myClock1赋值给myClock2。以下情况<strong>不</strong>调用拷贝构造函数，而执行“等于号”操作：</p>
+<pre><code class="language-cpp">Clock myClock2;
+myClock2=myClock1;
+</code></pre>
+<p>情况不同！！！！！</p>
+<p>情况不同！！！！！</p>
+<p>情况不同！！！！！</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C1;
+    C1=C3;
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+destructor:10:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>二、函数参数传递时</p>
+<p>如有函数<code>void f(Clock myClock);</code></p>
+<p>函数调用<code>f(c);</code>将创建一个形式参数对象myClock，并调用拷贝构造函数用对象c初始化myClock</p>
+<p><strong>注意：如果函数定义成为<code>void f(Clock &amp;myClock);</code>则在函数调用时，形参是对实参的引用，不创建新对象，因此不调用拷贝构造函数。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+void f(Clock myClock)
+{
+
+}
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C2;
+    f(C2);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+copy constructor,before call:0:0:45
+                 after call:0:0:0
+destructor:0:0:0
+destructor:0:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+void f(Clock &amp;myClock)
+{
+
+}
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C2;
+    f(C2);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+destructor:0:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>三、作为函数返回值时</p>
+<p>下面程序会调用两次拷贝构造函数。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+Clock f(Clock myClock)
+{
+    return myClock;
+
+}
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C2;
+    f(C2);
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+copy constructor,before call:0:0:45
+                 after call:0:0:0
+copy constructor,before call:1:0:4249865
+                 after call:0:0:0
+destructor:0:0:0
+destructor:0:0:0
+destructor:0:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>下面内容是编译器优化的结果（不调用拷贝构造函数），这块不做深入讨论。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+Clock fun()
+{
+    Clock myClock;
+    return myClock;
+
+}
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C2;
+    fun();
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+constructor:0:0:0
+destructor:0:0:0
+destructor:0:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=h,M=m,S=s;
+        cout&lt;&lt;&quot;constructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    ~Clock()
+    {
+        cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    Clock(const Clock&amp; p)
+    {
+        cout&lt;&lt;&quot;copy constructor,before call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        H=p.H;
+        M=p.M;
+        S=p.S;
+        cout&lt;&lt;&quot;                 after call:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+};
+
+Clock fun()
+{
+   
+    return Clock(1,2,3);
+
+}
+int main()
+{
+    Clock C3(10,0,0),C4(11,0,0);
+    Clock C2;
+    fun();
+    return 0;
+}
+</code></pre>
+<pre><code>constructor:10:0:0
+constructor:11:0:0
+constructor:0:0:0
+constructor:1:2:3
+destructor:1:2:3
+destructor:0:0:0
+destructor:11:0:0
+destructor:10:0:0
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>拷贝构造函数只是在用一个已存在的对象去初始化一个新建立的对象时被调用；而对象进行赋值时，拷贝构造函数将不被调用。</li>
+<li>用一个常量初始化新建立的对象时（比如作为实参传给函数的形参），调用构造函数，不调用拷贝构造函数。</li>
+<li>建立对象时，构造函数与拷贝构造函数有且只有一个被调用。</li>
+<li>当对象作为函数的返回值时需要调用拷贝构造函数，此时C++将从堆中动态建立一个临时对象，将函数返回的对象拷贝给该临时对象，并把该临时对象的地址存储在寄存器里，从而由该临时对象完成函数返回值的传递。</li>
+<li>而如果函数返回的是一个常量，比如<code>return Clock(7,7,7)</code>，则调用构造函数，不调用拷贝构造函数。</li>
+</ul>
+<h3 id="浅拷贝与深拷贝"><a class="header" href="#浅拷贝与深拷贝">浅拷贝与深拷贝</a></h3>
+<p>在默认的拷贝构造函数中，拷贝的策略是直接将原对象的数据成员依次拷贝给新对象中对应的数据成员。</p>
+<p>有些情况下，使用默认的拷贝构造函数会存在意想不到的问题。</p>
+<p>比如上面定义的String类，执行下面程序会出错：</p>
+<pre><code class="language-cpp">int main()
+{
+    String s1(&quot;ABCDE&quot;);
+    String s3=s1;
+    return 0;
+}
+</code></pre>
+<p>Code::Blocks可能优化过这个问题，这里可能不报错。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void SetChar(int i,char ch)
+    {
+        Str[i]=ch;
+    }
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    String s1(&quot;123456&quot;);
+    String s3=s1;
+    s1.SetChar(0,'a');
+    s1.ShowStr();
+    s3.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:a23456,length:6
+string:a23456,length:6
+
+Process returned -1073740940 (0xC0000374)   execution time : 1.826 s
+Press any key to continue.
+</code></pre>
+<p><strong>默认的拷贝构造函数实现的只是浅拷贝，即直接将原对象的数据成员依次拷贝给新对象中对应的数据成员，并没有为新对象另外分配内存资源。这样，如果对象的数据成员是指针，两个指针对象实际上指向的是同一块内存空间。</strong></p>
+<p>上面这个程序的<code>delete [] Str;</code>操作执行了两次，故程序运行返回值不是0。</p>
+<p>当执行String s3=s1时，默认的浅拷贝构造函数进行的是下列操作：</p>
+<pre><code class="language-cpp">s3.len=s1.len;
+s3.Str=s1.Str;
+</code></pre>
+<p>实际上是将s1.Str的地址赋给了s3.Str，并没有为s3.Str分配内存，执行String s3=s1后，对象s3析构，释放内存，然后对象s1析构，由于s1.Str和s3.Str所占用的是同一块内存，而同一块内存不能被释放两次，所以当对象s1析构时，程序会出现异常，无法正常执行和结束。</p>
+<p>由此可见，在某些情况下，浅拷贝会带来数据安全方面的隐患。</p>
+<p><strong>当类的数据成员中有<code>指针</code>类型时，我们就必须定义一个特定的拷贝构造函数，该拷贝构造函数不仅可以实现原对象和新对象之间数据成员的拷贝，还可以为新的对象分配单独的内存资源，这就是深拷贝构造函数。</strong></p>
+<p>带深拷贝构造函数的字符串类实例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void SetChar(int i,char ch)
+    {
+        Str[i]=ch;
+    }
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)//构造函数
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    String(const String &amp;r)//拷贝构造函数
+    {
+        len=r.len;
+        Str=new char[len+1];
+        strcpy(Str,r.Str);
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    String s1(&quot;123456&quot;);//引用构造函数
+    String s3=s1;//引用深拷贝构造函数
+    s1.SetChar(0,'a');
+    s1.ShowStr();
+    s3.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:a23456,length:6
+string:123456,length:6
+</code></pre>
+<p>注意事项：</p>
+<ul>
+<li><strong>重新定义拷贝构造函数之后，默认拷贝构造函数和默认构造函数都不存在了。</strong> 如果此时调用默认构造函数就会报错。</li>
+<li>重新定义构造函数之后，默认构造函数就不存在了，但默认拷贝构造函数还存在。</li>
+<li>在对象进行赋值时，拷贝构造函数不被调用，此时进行的是结构式的拷贝，如<code>String s2;s2=s1;</code></li>
+</ul>
+<p>应用：对内存中的Student类对象计数</p>
+<p>分析：为了维护内存中Student类对象的个数，除了定义一个静态数据成员存储类对象个数外，还要再所有可能建立对象、删除对象的场合记载对对象个数的修改。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class Student
+{
+private:
+    char *Name;
+    int No;
+    static int countS;
+public:
+    static int GetCount()
+    {
+        return countS;
+    }
+    Student(char* =&quot;&quot;,int=0);
+    Student(const Student &amp;);
+    ~Student();
+};
+
+Student::Student(char* Name,int No)
+{
+    this-&gt;Name=new char[strlen(Name)+1];
+    strcpy(this-&gt;Name,Name);
+    this-&gt;No=No;
+    ++countS;
+    cout&lt;&lt;&quot;constructing:&quot;&lt;&lt;Name&lt;&lt;endl;
+}
+
+//使用动态分配内存时，要用深拷贝构造函数
+
+Student::Student(const Student&amp; r)
+{
+    Name=new char[strlen(r.Name)+1];
+    strcpy(Name,r.Name);
+    No=r.No;
+    ++countS;
+    cout&lt;&lt;&quot;copy constructing:&quot;&lt;&lt;r.Name&lt;&lt;endl;
+}
+
+int Student::countS=0;
+
+Student::~Student()
+{
+    cout&lt;&lt;&quot;destucting:&quot;&lt;&lt;endl;
+    delete [] Name;
+    --countS;
+}
+
+int main()
+{
+    cout&lt;&lt;Student::GetCount()&lt;&lt;endl;//使用类调用静态成员函数
+    Student s1(&quot;Antony&quot;);//建立一个新对象
+    cout&lt;&lt;s1.GetCount()&lt;&lt;endl;//通过对象调用静态成员函数
+    Student s2(s1);//利用已有对象建立一个新对象
+    cout&lt;&lt;Student::GetCount()&lt;&lt;endl;
+    Student *s4=new Student[3];//建立动态对象数组
+    cout&lt;&lt;Student::GetCount()&lt;&lt;endl;
+    delete [] s4;//删除动态对象数组
+    cout&lt;&lt;Student::GetCount()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>0
+constructing:Antony
+1
+copy constructing:Antony
+2
+constructing:
+constructing:
+constructing:
+5
+destucting:
+destucting:
+destucting:
+2
+destucting:
+destucting:
+</code></pre>
+<h2 id="测验-3"><a class="header" href="#测验-3">测验</a></h2>
+<h3 id="常成员函数的三种错误"><a class="header" href="#常成员函数的三种错误">常成员函数的三种错误</a></h3>
+<pre><code class="language-cpp">class AA
+{
+
+    int a;
+public:
+    //int getRef() const{return &amp;a;}
+    //error: invalid conversion from 'const int*' to 'int' [-fpermissive]
+    int getValue() const{return a;}
+    //void set(int n) const{a=n;}
+    //error: assignment of member 'AA::a' in read-only object
+    //friend void show(AA aa) const {cout&lt;&lt;a;}
+    //error: non-member function 'void show(AA)' cannot have cv-qualifier
+
+};
+</code></pre>
+<h3 id="常对象"><a class="header" href="#常对象">常对象</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Array
+{
+public:
+    Array(int i);
+    void print(){cout&lt;&lt;Num;}
+private:
+    const int Num;
+};
+
+Array::Array(int i):Num(i){}
+
+int main()
+{
+	Array a(2);
+	a.print();//2
+	return 0;
+}
+</code></pre>
+<h3 id="输出调用构造函数的次数"><a class="header" href="#输出调用构造函数的次数">输出调用构造函数的次数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Apple
+{
+public:
+    Apple(int s=1):num(s) {c++;}
+    void print(){cout&lt;&lt;c&lt;&lt;endl;}
+private:
+    int num;
+    static int c;
+};
+
+int Apple::c=0;
+
+int main()
+{
+	Apple x(2),y[2],*z[2];
+	x.print();//3
+	return 0;
+}
+</code></pre>
 
                     </main>
 
