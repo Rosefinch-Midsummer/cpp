@@ -441,15 +441,15 @@ int main() {
 using namespace std;
 
 int main() {
-    int reversed_num;
-    int a;
+    int reversed_num=0;
+    int a=0;
     int num[100];
     int i = 0;
     while(cin &gt;&gt; a ) {
         num[i] = a;
         i++;
     }
-    for(int j=0;j&lt;=i;j++){
+    for(int j=0;j&lt;i;j++){
         if(num[j]!=0){
             reversed_num = num[j]/100+num[j]%100/10*10+num[j]%10*100;
             cout&lt;&lt;right;
