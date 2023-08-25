@@ -21481,7 +21481,814 @@ int main()
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="类与对象编程题"><a class="header" href="#类与对象编程题">类与对象编程题</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="运算符重载理论"><a class="header" href="#运算符重载理论">运算符重载理论</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="运算符重载"><a class="header" href="#运算符重载">运算符重载</a></h1>
+<ul>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD">什么是运算符重载？</a>
+<ul>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E8%A7%84%E5%88%99">运算符重载规则</a></li>
+</ul>
+</li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E6%96%B9%E6%B3%95">运算符重载的方法</a>
+<ul>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E4%B8%A4%E7%A7%8D%E9%87%8D%E8%BD%BD%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83">两种重载形式的比较</a></li>
+</ul>
+</li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E5%87%A0%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD">几种特殊的运算符重载</a>
+<ul>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">赋值运算符</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E4%B8%8B%E6%A0%87%E8%BF%90%E7%AE%97%E7%AC%A6">下标运算符</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E5%92%8C--%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD">++和--运算符的重载</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD">输入输出运算符的重载</a></li>
+</ul>
+</li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E5%AE%9E%E4%BE%8B">运算符重载实例</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E8%A1%A8%E5%8F%82%E6%95%B0%E4%B8%AA%E6%95%B0">重载运算符函数参数表参数个数</a></li>
+<li><a href="%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%90%86%E8%AE%BA.html#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E5%92%8C%E6%95%B0%E7%BB%84">运算符重载和数组</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是运算符重载"><a class="header" href="#什么是运算符重载">什么是运算符重载？</a></h2>
+<h3 id="概述-1"><a class="header" href="#概述-1">概述</a></h3>
+<p>将C++已有的运算符作用于自定义类的行为，这种机制就是运算符重载。</p>
+<p>例如：类A的对象a1、a2、a3，希望有a3=a1+a2;</p>
+<p>作用：</p>
+<ul>
+<li>扩充了运算符的功能</li>
+<li>增强了C++语言的可扩充性</li>
+<li>使自定义类的对象能像内置类型的变量一样使用</li>
+</ul>
+<p>运算符重载就是写一个函数解释某个运算符在某个类中的含义，要使得系统能自动找到重载的这个函数，函数名必须体现出和某个被重载的运算符的联系。</p>
+<p>C++中规定，重载函数名为operator@，其中@为要重载的运算符</p>
+<p>C++编译器在对运算符进行编译处理时，将一个运算符编译成如下形式：</p>
+<ul>
+<li>一元（单目）运算符 @obj——&gt;operator@(obj)</li>
+<li>二元（双目）运算符 obj1@obj2——&gt;operator@(obj1,obj2)</li>
+</ul>
+<p>其中关键字operator加上运算符名的函数称为运算符函数。</p>
+<p>如要重载++运算符，该重载函数名为operator++，因此执行++a时，实际执行的是a.operator++()函数。</p>
+<p>要重载+运算符，函数名为operator+，因此，执行a+b时，实际执行的是a.operator+(b)。</p>
+<h3 id="运算符重载规则"><a class="header" href="#运算符重载规则">运算符重载规则</a></h3>
+<p>（1）可重载的运算符</p>
+<p>C++中的运算符除了以下五个运算符之外，其余都可以被重载。</p>
+<ul>
+<li>.  成员选择运算符</li>
+<li>.* 成员指针运算符</li>
+<li>::  作用域分辨符</li>
+<li>?: 三目选择运算符</li>
+<li>sizeof 计算数据大小运算符</li>
+</ul>
+<p>（2）运算符的重载规则</p>
+<ul>
+<li>重载后运算符的优先级与结合性不会改变</li>
+<li>不能改变原运算符操作数的个数</li>
+<li>不能重载C++中没有的运算符</li>
+<li>不能改变运算符的原有语义</li>
+</ul>
+<h2 id="运算符重载的方法"><a class="header" href="#运算符重载的方法">运算符重载的方法</a></h2>
+<p>（1）重载成全局函数</p>
+<ul>
+<li>最好把此函数设为<strong>友元</strong>函数，这样可以自由地访问该类的任何数据成员。</li>
+<li>运算符重载不能改变运算符的运算对象数，因此，<strong>重载函数的形式参数个数与运算符的运算对象数相同</strong>。</li>
+</ul>
+<p>重载为类的友元函数</p>
+<p>在类中定义友元函数的格式如下：</p>
+<pre><code class="language-cpp">friend 函数类型 operator运算符（形参表）
+{
+	函数体；
+}
+</code></pre>
+<ul>
+<li>operator与运算符构成运算符函数名</li>
+<li>重载为友元函数时，友元函数对某个对象的数据进行操作，就必须通过该对象的名称来进行，函数中用到的数据包括对象，都要通过参数表传递。</li>
+<li>对于双目运算符，如果它的一个操作数是类A的对象，就可以将其重载为类A的友元函数，该函数有两个形参，其中一个形参的类型是类A。</li>
+</ul>
+<p>实例：为Rational类增加<code>+</code>和<code>*</code>以及<code>==</code>比较的重载函数，用以替换现有的add和multi函数。</p>
+<p>方案一：重载为全局函数（类的友元函数）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Rational
+{
+    friend Rational operator+(const Rational &amp;r1,const Rational &amp;r2);
+    friend Rational operator+(int num,const Rational &amp;r2);
+    friend Rational operator*(const Rational &amp;r1, const Rational &amp;r2);
+private:
+    int num;
+    int den;
+    void ReductFraction();
+public:
+    Rational(int n=0,int d=1){num=n;den=d;}
+    void display()
+    {
+        cout&lt;&lt;num&lt;&lt;&quot;/&quot;&lt;&lt;den&lt;&lt;endl;
+    }
+};
+
+Rational operator+(const Rational &amp;r1,const Rational &amp;r2)
+{
+    Rational tmp;
+    tmp.num=r1.num*r2.den+r2.num*r1.den;
+    tmp.den=r1.den*r2.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+Rational operator*(const Rational &amp;r1,const Rational &amp;r2)
+{
+    Rational tmp;
+    tmp.num=r1.num*r2.num;
+    tmp.den=r1.den*r2.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+Rational operator+(int num,const Rational &amp;r2)
+{
+    Rational tmp;
+    tmp.num=num*r2.den+r2.num;
+    tmp.den=r2.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+void Rational::ReductFraction()
+{
+    int tmp=(num&gt;den)?den:num;
+    for(;tmp&gt;1;--tmp)
+        if(num%tmp==0&amp;&amp;den%tmp==0)
+        {
+            num/=tmp;
+            den/=tmp;
+            break;
+        }
+}
+int main()
+{
+    Rational r1(1,6),r2(1,6),r3;
+    r3=r1+r2;
+    r1.display();
+    cout&lt;&lt;&quot;+&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+    r3=3+r2;
+    cout&lt;&lt;&quot;3+&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+    r3=operator*(r1,r2);//这里也可以写成r3=r1*r2;
+    r1.display();
+    cout&lt;&lt;&quot;*&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<pre><code>1/6
++1/6
+=1/3
+
+3+1/6
+=19/6
+
+1/6
+*1/6
+=1/36
+</code></pre>
+<p>（2）重载成类的成员函数</p>
+<p>可以将运算符函数重载为类的成员函数，这样运算函数可以自由地访问本类的数据成员。</p>
+<p>语法格式为：</p>
+<pre><code class="language-cpp">返回类型 类名::operator 运算符（形参表）
+{
+	函数体;
+}
+</code></pre>
+<p>类名是要重载该运算符的类，如果在类中定义运算符函数，类名与作用域分辨符可以省略。</p>
+<p>当运算符重载为类的成员函数时，<strong>函数的参数个数将比原来的操作数个数少一个</strong>，原因是通过对象调用该运算符函数时，对象本身充当了运算符函数最左边的操作数，少了的操作数就是该对象本身。因此：双目运算符重载为类的成员函数时，函数只显式说明一个参数，该形参是运算符的右操作数。单目运算符重载为类的成员函数时，不需要显式说明参数，即参数没有形参。</p>
+<p>a+b等价于a.operator+(b)</p>
+<p>实例：为Rational类增加<code>+</code>和<code>*</code>以及<code>==</code>比较的重载函数，用以替换现有的add和multi函数。</p>
+<p>方案二：重载成成员函数</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Rational
+{
+
+private:
+    int num;
+    int den;
+    void ReductFraction();
+public:
+    Rational(int n=0,int d=1){num=n;den=d;}
+
+    Rational operator+(const Rational &amp;r1) const;
+
+    Rational operator*(const Rational &amp;r1) const;
+
+    void display()
+    {
+        cout&lt;&lt;num&lt;&lt;&quot;/&quot;&lt;&lt;den&lt;&lt;endl;
+    }
+};
+
+Rational Rational::operator+(const Rational &amp;r1) const
+{
+    Rational tmp;
+    tmp.num=num*r1.den+r1.num*den;
+    tmp.den=den*r1.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+Rational Rational::operator*(const Rational &amp;r1) const
+{
+    Rational tmp;
+    tmp.num=num*r1.num;
+    tmp.den=den*r1.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+
+void Rational::ReductFraction()
+{
+    int tmp=(num&gt;den)?den:num;
+    for(;tmp&gt;1;--tmp)
+        if(num%tmp==0&amp;&amp;den%tmp==0)
+        {
+            num/=tmp;
+            den/=tmp;
+            break;
+        }
+}
+
+
+
+int main()
+{
+    Rational r1(1,6),r2(1,6),r3;
+    r3=r1+r2;
+    r1.display();
+    cout&lt;&lt;&quot;+&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+
+    r3=r1.operator*(r2);//这里也可以写成r3=r1*r2;
+    r1.display();
+    cout&lt;&lt;&quot;*&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<pre><code>1/6
++1/6
+=1/3
+
+1/6
+*1/6
+=1/36
+</code></pre>
+<h3 id="两种重载形式的比较"><a class="header" href="#两种重载形式的比较">两种重载形式的比较</a></h3>
+<p>在多数情况下，即可将运算符重载为类的成员函数，也可以重载为类的友元函数。但成员函数运算符与友元函数运算符也具有各自的一些特点：</p>
+<p>（1）<strong>一些双目运算符不能重载为类的友元函数如<code>=()[]-&gt;</code></strong></p>
+<p>（2）若一个运算符的操作需要修改对象的状态，如复合的赋值运算符如+=以及++和--，选择重载为成员函数比较好</p>
+<p>（3）当需要重载运算符的运算具有<code>可交换性</code>时，选择重载为友元函数。如3+a和a+3</p>
+<p>（4）当运算符所需的第一个操作数希望有<code>隐式类型转换</code>，则只能选择友元函数。</p>
+<p>（5）当运算符函数是一个成员函数时，最左边的操作数（或者只有最左边的操作数）必须是运算符类的一个类对象（或者是对该类对象的引用）。如果左边的操作数必须是一个不同类的对象，或者是一个基本数据类型的对象，该运算符函数必须作为一个友元函数来实现。</p>
+<p>（6）<strong>一般情况下，单目运算符最好重载为类的成员函数；双目运算符则最好重载为类的友元函数。</strong></p>
+<h2 id="几种特殊的运算符重载"><a class="header" href="#几种特殊的运算符重载">几种特殊的运算符重载</a></h2>
+<h3 id="赋值运算符"><a class="header" href="#赋值运算符">赋值运算符</a></h3>
+<p>对任何一个类，如果用户没有自定义赋值运算符函数，那么系统为其生成一个默认的赋值运算符函数，在对应的数据成员间赋值。</p>
+<p>一般情况下，这个默认的赋值运算符重载函数能满足用户的需求，但是，当类含有类型为指针的数据成员时，可能会带来一些麻烦。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void SetChar(int i,char ch)
+    {
+        Str[i]=ch;
+    }
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    String s1(&quot;123456&quot;);
+    String s3=s1;
+    //分开写成String s3;s3=s1;
+    s1.SetChar(0,'a');
+    s1.ShowStr();
+    s3.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:a23456,length:6
+string:a23456,length:6
+
+Process returned -1073740940 (0xC0000374)   execution time : 1.826 s
+Press any key to continue.
+</code></pre>
+<p>分开写输出结果也是如此。</p>
+<pre><code>string:a23456,length:6
+string:a23456,length:6
+
+Process returned -1073740940 (0xC0000374)   execution time : 3.313 s
+Press any key to continue.
+</code></pre>
+<p>对String类对象执行s1=s2的问题：</p>
+<ul>
+<li>使这两个字符串的内容存放于同一块空间中</li>
+<li>当这两个元素析构时，先析构的对象释放存储数组元素的空间。当后一个对象析构时，无法释放存储数组元素的空间</li>
+</ul>
+<p>赋值运算符=的原型：</p>
+<ul>
+<li>赋值运算符只能重载成成员函数</li>
+<li>函数原型<code>X X::operator=(const X &amp;source){//赋值过程}</code>，一旦创建了对象x1,x2就可以用x1=x2赋值</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void SetChar(int i,char ch)
+    {
+        Str[i]=ch;
+    }
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    String(const String &amp; r)
+    {
+        len=r.len;
+        Str=new char[len+1];
+        strcpy(Str,r.Str);
+    }
+    String operator=(const String s)
+    {
+        len=s.len;
+        Str=new char[len+1];
+        strcpy(Str,s.Str);
+        return *this;
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    String s1(&quot;123456&quot;);
+    String s3;
+    s3=s1;
+    s1.SetChar(0,'a');
+    s1.ShowStr();
+    s3.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:a23456,length:6
+string:123456,length:6
+</code></pre>
+<pre><code class="language-cpp">int main()
+{
+    String s1(&quot;123456&quot;);
+    String s3,s2;
+    s3=s2=s1;
+    s1.SetChar(0,'a');
+    s1.ShowStr();
+    s2.ShowStr();
+    s3.ShowStr();
+    return 0;
+}
+</code></pre>
+<pre><code>string:a23456,length:6
+string:123456,length:6
+string:123456,length:6
+
+Process returned 0 (0x0)   execution time : 0.077 s
+Press any key to continue.
+</code></pre>
+<p>不重载=运算符的结果如下：</p>
+<pre><code>string:a23456,length:6
+string:a23456,length:6
+
+Process returned -1073740940 (0xC0000374)   execution time : 2.246 s
+Press any key to continue.
+</code></pre>
+<h3 id="下标运算符"><a class="header" href="#下标运算符">下标运算符</a></h3>
+<p>能否像普通数组那样通过下标运算操作String类的对象？这样可以使String更像一个功能内置的数组。可以通过重载下标运算符<code>[]</code>来实现。</p>
+<p>下标运算符是二元运算符，第一个运算数是数组名，第二个运算数是下标值。</p>
+<p>下标运算符必须重载为成员函数。</p>
+<p>String类的<code>[]</code>重载</p>
+<pre><code class="language-cpp">char&amp; String::operator[](int n)
+{
+	return *(Str+n);
+}
+//重载运算符[]，处理const String对象
+const char&amp; String::operator[](int n) const
+{
+	return *(Str+n);
+}
+</code></pre>
+<p>String类的使用</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+class String//自定义String和string不同
+{
+private:
+    char *Str;//指针，开辟动态数组
+    int len;
+public:
+    void SetChar(int i,char ch)
+    {
+        Str[i]=ch;
+    }
+    void ShowStr()
+    {
+        cout&lt;&lt;&quot;string:&quot;&lt;&lt;Str&lt;&lt;&quot;,length:&quot;&lt;&lt;len&lt;&lt;endl;
+    }
+    String()
+    {
+        len=0;
+        Str=NULL;
+    }
+    String(const char *p)
+    {
+        len=strlen(p);
+        Str=new char[len+1];
+        strcpy(Str,p);
+    }
+    String(const String &amp; r)
+    {
+        len=r.len;
+        Str=new char[len+1];
+        strcpy(Str,r.Str);
+    }
+    String operator=(const String s)
+    {
+        len=s.len;
+        Str=new char[len+1];
+        strcpy(Str,s.Str);
+        return *this;
+    }
+    char&amp; operator[](int n)
+    {
+        return *(Str+n);
+    }
+    //重载运算符[]，处理const String对象
+    const char&amp; operator[](int n) const
+    {
+        return *(Str+n);
+    }
+    ~String()
+    {
+        if(Str!=NULL)
+        {
+            delete [] Str;
+            Str=NULL;
+        }
+    }
+};
+
+int main()
+{
+    String s1=&quot;0123456789abcdef&quot;;
+    s1[10]='A';
+    const String s2=&quot;0123456789abcdef&quot;;
+    char ch=s2[10];
+    s1.ShowStr();
+    cout&lt;&lt;ch&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>string:0123456789Abcdef,length:16
+a
+</code></pre>
+<h3 id="和--运算符的重载"><a class="header" href="#和--运算符的重载">++和--运算符的重载</a></h3>
+<p>++和--是一元运算符，这两个操作符既可以是前缀也可以是后缀。并且前缀和后缀的含义是有区别的。所以，必须有两个重载函数。</p>
+<p>问题：两个重载函数有相同的原型</p>
+<p>区分方法：</p>
+<p>前缀：一元操作符</p>
+<p>后缀：二元操作符</p>
+<p>成员函数重载</p>
+<p>++ob重载：ob.operator++()</p>
+<p>ob--重载：ob.operator--(int)</p>
+<p>友元函数重载</p>
+<p>++ob重载：operator++(X &amp;ob)</p>
+<p>ob--重载：operator--(X &amp;ob, int)</p>
+<p>调用时，系统自动给参数int传递值0</p>
+<p>实例：设计一个会报警的计数器类，该计数器从0开始计数，当到达预先设定好的报警值时，计数器会发出报警消息，计数器的值不再增加。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Counter
+{
+    int value;//计数器的值
+    int alarm;//报警值
+public:
+    Counter(int a){value=0;alarm=a;}
+    Counter&amp; operator++();//前缀的++重载
+    Counter operator++(int);//后缀的++重载
+    void print(){cout&lt;&lt;value&lt;&lt;endl;}
+};
+
+Counter&amp; Counter::operator++()
+{
+    if(value&gt;alarm)
+        cout&lt;&lt;&quot;Alarm!!\n&quot;;
+    else
+        ++value;
+    return *this;
+}
+
+
+Counter Counter::operator++(int x)
+{
+	//在函数中没有用到x，x仅用于区分前置后置
+    Counter tmp=*this;
+    if(value&gt;alarm)
+        cout&lt;&lt;&quot;Alarm!!\n&quot;;
+    else
+        ++value;
+    return tmp;
+}
+
+
+int main()
+{
+    Counter cnt(3);//定义一个Counter类对象，报警值3
+    cnt.print();//显示对象的当前值，此时输出为0
+    Counter c2=++cnt;
+    cnt.print();//1
+    (++cnt).print();//2
+    (cnt++).print();//2
+    cnt.print();//输出3
+    return 0;
+}
+</code></pre>
+<pre><code>0
+1
+2
+2
+3
+</code></pre>
+<h3 id="输入输出运算符的重载"><a class="header" href="#输入输出运算符的重载">输入输出运算符的重载</a></h3>
+<p>借助于流插入运算符&gt;&gt;和流提取运算符&lt;&lt;输入输出用户自定义的对象。</p>
+<p><strong>输出输入运算符必须被重载为全局函数。</strong></p>
+<p><code>&gt;&gt;</code>是二元运算符，<code>cin&gt;&gt;x</code>的两个运算符是cin和x，返回的是第一个对象（即cin）的引用</p>
+<p><code>&lt;&lt;</code>是二元运算符，<code>cout&lt;&lt;x</code>的两个运算符是cout和x，返回的是第一个对象（即cout）的引用</p>
+<p>由于第一个参数是输入输出流对象，只能重载为友元函数。</p>
+<p>输出重载函数的原型：</p>
+<pre><code class="language-cpp">friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const ClassType &amp;obj)
+{
+	os&lt;&lt;要输出的内容;
+	return os;
+}
+</code></pre>
+<p>例如为Rational类重载输出</p>
+<pre><code class="language-cpp">friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const Rational &amp;obj)
+{
+	os&lt;&lt;obj.num&lt;&lt;'/'&lt;&lt;obj.den;
+	return os;
+}
+</code></pre>
+<p>定义Rational r(2,6);执行cout&lt;&lt;r;结果是1/3</p>
+<p>输入重载函数的原型：</p>
+<pre><code class="language-cpp">friend istream &amp; operator&lt;&lt;(istream &amp; is, const ClassType &amp;obj)
+{
+	is&gt;&gt;要输入的内容;
+	return is;
+}
+</code></pre>
+<p>例如为Rational类重载输入</p>
+<pre><code class="language-cpp">friend istream &amp; operator&lt;&lt;(istream &amp; is, const Rational &amp;obj)
+{
+	is&gt;&gt;obj.num;
+	is&gt;&gt;obj.den;
+	obj.ReductFraction();
+	return in;
+}
+</code></pre>
+<p>经过运算符重载的Rational类</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Rational
+{
+    //friend istream&amp; operator&gt;&gt;(istream &amp;in,Rational &amp;obj);
+    //friend ostream&amp; operator&lt;&lt;(ostream&amp;os, const Rational&amp;obj);
+    //friend Rational operator+(const Rational &amp;r1,const Rational &amp;r2);
+    //friend Rational operator*(const Rational &amp;r1,const Rational &amp;r2);
+
+private:
+    int num;
+    int den;
+    void ReductFraction();
+public:
+    Rational(int n=0,int d=1){num=n;den=d;}
+
+    //把下面这两个函数定义成友元函数也行
+    Rational operator+(const Rational &amp;r1) const;
+
+    Rational operator*(const Rational &amp;r1) const;
+
+    void display()
+    {
+        cout&lt;&lt;num&lt;&lt;&quot;/&quot;&lt;&lt;den&lt;&lt;endl;
+    }
+    friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const Rational &amp;obj)
+    {
+        os&lt;&lt;obj.num&lt;&lt;'/'&lt;&lt;obj.den;
+        //可以改成os&lt;&lt;obj.den&lt;&lt;&quot;分之&quot;&lt;&lt;obj.num;
+        return os;
+    }
+    friend istream &amp; operator&gt;&gt;(istream &amp; in,  Rational &amp;obj)
+    {
+        in&gt;&gt;obj.num;in&gt;&gt;obj.den;
+        //要读入1/3，可以在中间加个char ch;in&gt;&gt;ch;处理掉/
+        obj.ReductFraction();
+        return in;
+    }
+
+
+};
+
+Rational Rational::operator+(const Rational &amp;r1) const
+{
+    Rational tmp;
+    tmp.num=num*r1.den+r1.num*den;
+    tmp.den=den*r1.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+Rational Rational::operator*(const Rational &amp;r1) const
+{
+    Rational tmp;
+    tmp.num=num*r1.num;
+    tmp.den=den*r1.den;
+    tmp.ReductFraction();
+    return tmp;
+}
+
+
+void Rational::ReductFraction()
+{
+    int tmp=(num&gt;den)?den:num;
+    for(;tmp&gt;1;--tmp)
+        if(num%tmp==0&amp;&amp;den%tmp==0)
+        {
+            num/=tmp;
+            den/=tmp;
+            break;
+        }
+}
+
+
+
+int main()
+{
+    Rational r1(1,6),r2(1,6),r3;
+    cin&gt;&gt;r1;
+    r3=r1+r2;
+    r1.display();
+    cout&lt;&lt;&quot;+&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+
+    r3=r1.operator*(r2);//这里也可以写成r3=r1*r2;
+    r1.display();
+    cout&lt;&lt;&quot;*&quot;;
+    r2.display();
+    cout&lt;&lt;&quot;=&quot;;
+    r3.display();
+    cout&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre>
+<pre><code>1 3
+1/3
++1/6
+=1/2
+
+1/3
+*1/6
+=1/18
+</code></pre>
+<h2 id="运算符重载实例"><a class="header" href="#运算符重载实例">运算符重载实例</a></h2>
+<p>完善String类</p>
+<p><strong>一般来讲，如果在构造函数中进行动态内存分配，则需要为类定义：拷贝构造函数、重载赋值运算符、析构函数。</strong></p>
+<p>定义对象时给对象赋初值调用的是拷贝构造函数</p>
+<p>程序的语句部分中的赋值语句调用的是赋值运算符重载函数</p>
+<p>析构函数用于回收对象时释放动态分配的内存</p>
+<h2 id="测验-9"><a class="header" href="#测验-9">测验</a></h2>
+<h3 id="重载运算符函数参数表参数个数"><a class="header" href="#重载运算符函数参数表参数个数">重载运算符函数参数表参数个数</a></h3>
+<p>在重载一个运算符时，其参数表中有1个参数，该运算符可能是作为友元函数重载的1元运算符或作为成员函数重载的2元运算符</p>
+<h3 id="运算符重载和数组"><a class="header" href="#运算符重载和数组">运算符重载和数组</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class CArray
+{
+    int *m_pArray;
+    int m_iSize;
+public:
+    CArray(int iArray[],int iSize)
+    {
+        m_pArray=iArray;
+        m_iSize=iSize;
+    }
+    int GetSize()
+    {
+        return m_iSize;
+    }
+    int &amp;operator[](int i)
+    {
+        return m_pArray[i-1];
+    }
+};
+
+int main()
+{
+    int s[]={2,9,6,7,4};
+    CArray oArray(s,5);
+    oArray[2]+=2;
+    for(int i=1;i&lt;=5;i++)
+        cout&lt;&lt;oArray[i]&lt;&lt;' ';
+    return 0;
+}
+</code></pre>
+<pre><code>2 11 6 7 4
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="递归回溯与分治理论"><a class="header" href="#递归回溯与分治理论">递归、回溯与分治理论</a></h1>
 <ul>
 <li><a href="%E9%80%92%E5%BD%92%E3%80%81%E5%9B%9E%E6%BA%AF%E4%B8%8E%E5%88%86%E6%B2%BB%E7%90%86%E8%AE%BA.html#%E9%80%92%E5%BD%92">递归</a>
@@ -21708,7 +22515,7 @@ int main()
 <p>递归条件：</p>
 <p><strong>递归调用应该能在有限次数内终止递归</strong></p>
 <h3 id="理解递归执行流程"><a class="header" href="#理解递归执行流程">理解递归执行流程</a></h3>
-<h2 id="测验-9"><a class="header" href="#测验-9">测验</a></h2>
+<h2 id="测验-10"><a class="header" href="#测验-10">测验</a></h2>
 <h3 id="以指针为参数的递归函数"><a class="header" href="#以指针为参数的递归函数">以指针为参数的递归函数</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
