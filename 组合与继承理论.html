@@ -1,0 +1,2436 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>组合与继承理论 - C++程序设计</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="程序的基本组成.html"><strong aria-hidden="true">2.</strong> 程序的基本组成</a></li><li class="chapter-item expanded "><a href="顺序结构程序设计.html"><strong aria-hidden="true">3.</strong> 顺序结构程序设计</a></li><li class="chapter-item expanded "><a href="顺序结构编程题.html"><strong aria-hidden="true">4.</strong> 顺序结构编程题</a></li><li class="chapter-item expanded "><a href="分支结构理论.html"><strong aria-hidden="true">5.</strong> 分支结构理论</a></li><li class="chapter-item expanded "><a href="分支结构程序设计.html"><strong aria-hidden="true">6.</strong> 分支结构程序设计</a></li><li class="chapter-item expanded "><a href="分支结构编程题.html"><strong aria-hidden="true">7.</strong> 分支结构编程题</a></li><li class="chapter-item expanded "><a href="循环结构理论.html"><strong aria-hidden="true">8.</strong> 循环结构理论</a></li><li class="chapter-item expanded "><a href="循环结构程序设计.html"><strong aria-hidden="true">9.</strong> 循环结构程序设计</a></li><li class="chapter-item expanded "><a href="循环结构编程题.html"><strong aria-hidden="true">10.</strong> 循环结构编程题</a></li><li class="chapter-item expanded "><a href="一维数组理论.html"><strong aria-hidden="true">11.</strong> 一维数组理论</a></li><li class="chapter-item expanded "><a href="一维数组程序设计.html"><strong aria-hidden="true">12.</strong> 一维数组程序设计</a></li><li class="chapter-item expanded "><a href="一维数组编程题.html"><strong aria-hidden="true">13.</strong> 一维数组编程题</a></li><li class="chapter-item expanded "><a href="查找及排序算法理论.html"><strong aria-hidden="true">14.</strong> 查找及排序算法理论</a></li><li class="chapter-item expanded "><a href="二维数组理论.html"><strong aria-hidden="true">15.</strong> 二维数组理论</a></li><li class="chapter-item expanded "><a href="二维数组编程题.html"><strong aria-hidden="true">16.</strong> 二维数组编程题</a></li><li class="chapter-item expanded "><a href="字符串理论.html"><strong aria-hidden="true">17.</strong> 字符串理论</a></li><li class="chapter-item expanded "><a href="vector和string程序设计.html"><strong aria-hidden="true">18.</strong> vector和string程序设计</a></li><li class="chapter-item expanded "><a href="字符串编程题.html"><strong aria-hidden="true">19.</strong> 字符串编程题</a></li><li class="chapter-item expanded "><a href="函数理论.html"><strong aria-hidden="true">20.</strong> 函数理论</a></li><li class="chapter-item expanded "><a href="函数编程题.html"><strong aria-hidden="true">21.</strong> 函数编程题</a></li><li class="chapter-item expanded "><a href="指针理论.html"><strong aria-hidden="true">22.</strong> 指针理论</a></li><li class="chapter-item expanded "><a href="指针编程题.html"><strong aria-hidden="true">23.</strong> 指针编程题</a></li><li class="chapter-item expanded "><a href="结构体理论.html"><strong aria-hidden="true">24.</strong> 结构体理论</a></li><li class="chapter-item expanded "><a href="结构体编程题.html"><strong aria-hidden="true">25.</strong> 结构体编程题</a></li><li class="chapter-item expanded "><a href="类与对象理论.html"><strong aria-hidden="true">26.</strong> 类与对象理论</a></li><li class="chapter-item expanded "><a href="类与对象编程题.html"><strong aria-hidden="true">27.</strong> 类与对象编程题</a></li><li class="chapter-item expanded "><a href="运算符重载理论.html"><strong aria-hidden="true">28.</strong> 运算符重载理论</a></li><li class="chapter-item expanded "><a href="递归、回溯与分治理论.html"><strong aria-hidden="true">29.</strong> 递归、回溯与分治理论</a></li><li class="chapter-item expanded "><a href="递归算法编程题.html"><strong aria-hidden="true">30.</strong> 递归算法编程题</a></li><li class="chapter-item expanded "><a href="枚举和贪心算法编程题.html"><strong aria-hidden="true">31.</strong> 枚举和贪心算法编程题</a></li><li class="chapter-item expanded "><a href="搜索算法编程题.html"><strong aria-hidden="true">32.</strong> 搜索算法编程题</a></li><li class="chapter-item expanded "><a href="动态规划算法编程题.html"><strong aria-hidden="true">33.</strong> 动态规划算法编程题</a></li><li class="chapter-item expanded "><a href="组合与继承理论.html" class="active"><strong aria-hidden="true">34.</strong> 组合与继承理论</a></li><li class="chapter-item expanded "><a href="类模板理论.html"><strong aria-hidden="true">35.</strong> 类模板理论</a></li><li class="chapter-item expanded "><a href="IO理论.html"><strong aria-hidden="true">36.</strong> IO理论</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">C++程序设计</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="组合和继承"><a class="header" href="#组合和继承">组合和继承</a></h1>
+<ul>
+<li><a href="#%E7%BB%84%E5%90%88">组合</a>
+<ul>
+<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
+<li><a href="#%E7%BB%84%E5%90%88%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">组合对象的初始化</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F">构造函数调用顺序</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98">构造函数执行顺序问题</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%A7%E6%89%BF">继承</a>
+<ul>
+<li><a href="#%E6%A6%82%E5%BF%B5-1">概念</a></li>
+<li><a href="#%E5%8D%95%E7%BB%A7%E6%89%BF%E7%9A%84%E6%A0%BC%E5%BC%8F">单继承的格式</a></li>
+<li><a href="#%E4%B8%89%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F">三种继承方式</a></li>
+<li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">派生类的构造函数和析构函数</a></li>
+<li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E4%BD%9C%E4%B8%BA%E5%9F%BA%E7%B1%BB">派生类作为基类</a></li>
+<li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F">派生类的实现方式</a></li>
+<li><a href="#%E5%A4%9A%E7%BB%A7%E6%89%BF">多继承</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C-1">测验</a>
+<ul>
+<li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%A1%A8">派生类构造函数初始化表</a></li>
+<li><a href="#%E5%9F%BA%E7%B1%BB%E5%92%8C%E6%B4%BE%E7%94%9F%E7%B1%BB%E5%90%8C%E5%90%8D%E5%87%BD%E6%95%B0">基类和派生类同名函数</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E5%92%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">动态分配内存和构造函数、析构函数</a></li>
+<li><a href="#%E5%B5%8C%E5%A5%97%E8%B0%83%E7%94%A8">嵌套调用</a></li>
+</ul>
+</li>
+<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E6%80%81%E6%80%A7">虚函数与多态性</a>
+<ul>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9">类型兼容</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81%E6%80%A7%E6%A6%82%E5%BF%B5">多态性概念</a></li>
+<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8">虚函数的定义与使用</a></li>
+<li><a href="#%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">虚析构函数</a></li>
+<li><a href="#%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB">纯虚函数与抽象类</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C-2">测验</a>
+<ul>
+<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0%E5%AE%9E%E4%BE%8B">虚函数实例</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E8%81%94%E7%BC%96%E5%92%8C%E5%8A%A8%E6%80%81%E8%81%94%E7%BC%96%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98">静态联编和动态联编选择问题</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="组合"><a class="header" href="#组合">组合</a></h2>
+<h3 id="概念"><a class="header" href="#概念">概念</a></h3>
+<p><strong>组合：一个类内嵌其它类的对象作为成员的方式。一个含有其他类对象的类称为组合类，组合类的对象被称为组合对象。</strong></p>
+<p>组合类定义的步骤为先定义成员类，再定义组合类。</p>
+<p>组合就是把一个类的对象作为新类的数据成员。</p>
+<p>组合表示一种聚集关系，是一种部分和整体的关系。</p>
+<p>实例：计算火车旅途时间的组合类</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+    Clock(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    int GetH()
+    {
+        return H;
+    }
+    int GetM()
+    {
+        return M;
+    }
+    int GetS()
+    {
+        return S;
+    }
+};
+
+
+class TrainTrip
+{
+private:
+    char* TrainNo;
+    Clock StartTime;
+    Clock EndTime;
+public:
+    TrainTrip(char* TrainNo,Clock S,Clock E)
+    {
+        this-&gt;TrainNo=TrainNo;
+        StartTime=S;
+        EndTime=E;
+    }
+    Clock TripTime(Clock &amp;StartTime,Clock &amp;EndTime)
+    {
+        int tH,tM,tS;//临时存储时分秒
+        int carry=0;//借位
+        Clock tTime;//临时存储时间
+        (tS=EndTime.GetS()-StartTime.GetS())&gt;0?carry=0:tS+=60,carry=1;
+        (tM=EndTime.GetM()-StartTime.GetM()-carry)&gt;0?carry=0:tM+=60,carry=1;
+        (tH=EndTime.GetH()-StartTime.GetH()-carry)&gt;0?carry=0:tH+=24;
+        tTime.SetTime(tH,tM,tS);
+        return tTime;
+    }
+};
+
+int main()
+{
+   Clock C1(8,10,10),C2(6,1,2);
+   Clock C3;
+
+   TrainTrip T1(&quot;K16&quot;,C1,C2);
+   C3=T1.TripTime();
+   C3.ShowTime();
+
+   return 0;
+}
+</code></pre>
+<p>上面的代码报错<code>error: no matching function for call to 'TrainTrip::TripTime()'</code></p>
+<p>在 <code>main</code> 函数中调用 <code>TripTime</code> 函数时，您没有传递任何参数，但是 <code>TripTime</code> 函数需要两个 <code>Clock</code> 类型的参数。您需要修改以下代码：</p>
+<pre><code class="language-cpp">C3 = T1.TripTime(C1, C2);
+</code></pre>
+<p>在这里，将 <code>C1</code> 和 <code>C2</code> 作为 <code>TripTime</code> 函数的参数传递给它。</p>
+<p>修改后的代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int H=0, int M=0, int S=0)
+    {
+        this-&gt;H = H;
+        this-&gt;M = M;
+        this-&gt;S = S;
+    }
+
+    void ShowTime()
+    {
+        cout &lt;&lt; H &lt;&lt; &quot;:&quot; &lt;&lt; M &lt;&lt; &quot;:&quot; &lt;&lt; S &lt;&lt; endl;
+    }
+
+    Clock(int H=0, int M=0, int S=0)
+    {
+        this-&gt;H = H;
+        this-&gt;M = M;
+        this-&gt;S = S;
+    }
+
+    int GetH()
+    {
+        return H;
+    }
+
+    int GetM()
+    {
+        return M;
+    }
+
+    int GetS()
+    {
+        return S;
+    }
+};
+
+class TrainTrip
+{
+private:
+    char* TrainNo;
+    Clock StartTime;
+    Clock EndTime;
+
+public:
+    TrainTrip(char* TrainNo, Clock S, Clock E)
+    {
+        this-&gt;TrainNo = TrainNo;
+        StartTime = S;
+        EndTime = E;
+    }
+
+    Clock TripTime(Clock&amp; StartTime, Clock&amp; EndTime)//这里可以不传参
+    {
+        int tH, tM, tS; // 临时存储时分秒
+        int carry = 0; // 借位
+        Clock tTime; // 临时存储时间
+
+        (tS = EndTime.GetS() - StartTime.GetS()) &gt; 0 ? carry = 0 : tS += 60, carry = 1;
+        (tM = EndTime.GetM() - StartTime.GetM() - carry) &gt; 0 ? carry = 0 : tM += 60, carry = 1;
+        (tH = EndTime.GetH() - StartTime.GetH() - carry) &gt; 0 ? carry = 0 : tH += 24;
+
+        tTime.SetTime(tH, tM, tS);
+        return tTime;
+    }
+};
+
+int main()
+{
+    Clock C1(8, 10, 10), C2(6, 1, 2);
+    Clock C3;
+
+    TrainTrip T1(&quot;K16&quot;, C1, C2);
+    C3 = T1.TripTime(C1, C2);//这里可以不传参
+    C3.ShowTime();
+
+    return 0;
+}
+</code></pre>
+<p>现在，<code>TripTime</code> 函数将使用 <code>C1</code> 和 <code>C2</code> 作为参数进行调用，并且程序应该能够成功编译和运行。如果您还有其他问题，请随时提问。</p>
+<h3 id="组合对象的初始化"><a class="header" href="#组合对象的初始化">组合对象的初始化</a></h3>
+<p><strong>如果成员类没有无参构造函数，则在定义组合类的构造函数时，必须携带初始化表以便为成员对象的初始化提供参数。</strong></p>
+<p>其格式如下：</p>
+<pre><code class="language-cpp">组合类名（形参表）:成员对象1（子形参表1），成员对象2（子形参表2），...
+//:后面的就是成员对象初始化表
+</code></pre>
+<p>建立对象时，调用组合类的构造函数。在调用组合类的构造函数时，先调用各个成员对象的构造函数，成员对象的初值从初始化列表中取得。这样，实际上是通过成员类的构造函数对成员对象进行初始化，初始化值在初始化表中提供。</p>
+<pre><code class="language-cpp">Clock(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+</code></pre>
+<p>有默认形参，可以不创建默认无参构造函数。没有默认形参，必须得创建默认无参构造函数，否则执行<code>Clock C3;</code>语句时会报错error: no matching function for call to 'Clock::Clock()'。</p>
+<p><strong>不创建默认无参构造函数时</strong>，执行<code>Clock C3;</code>语句也会报错error: no matching function for call to 'Clock::Clock()'。</p>
+<p>改正方案一：可以使用成员对象初始化表。</p>
+<pre><code class="language-cpp">TrainTrip(char* TrainNo,Clock S,Clock E):StartTime(S),EndTime(E)
+    {
+        this-&gt;TrainNo=TrainNo;
+    }
+</code></pre>
+<p>成员对象初始化表初始化成员对象会调用拷贝构造函数。</p>
+<p>完整代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+    Clock(int H,int M,int S)
+    //有默认形参，可以不定义默认构造函数。没有默认形参，必须得定义默认构造函数，否则报错error: no matching function for call to 'Clock::Clock()'。
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    int GetH()
+    {
+        return H;
+    }
+    int GetM()
+    {
+        return M;
+    }
+    int GetS()
+    {
+        return S;
+    }
+};
+
+
+class TrainTrip
+{
+private:
+    char* TrainNo;
+    Clock StartTime;
+    Clock EndTime;
+public:
+    TrainTrip(char* TrainNo,Clock S,Clock E):StartTime(S),EndTime(E)
+    {
+        this-&gt;TrainNo=TrainNo;
+    }
+    Clock TripTime()
+    {
+        int tH,tM,tS;//临时存储时分秒
+        int carry=0;//借位
+        Clock tTime(0,0,0);//临时存储时间
+        (tS=EndTime.GetS()-StartTime.GetS())&gt;0?carry=0:tS+=60,carry=1;
+        (tM=EndTime.GetM()-StartTime.GetM()-carry)&gt;0?carry=0:tM+=60,carry=1;
+        (tH=EndTime.GetH()-StartTime.GetH()-carry)&gt;0?carry=0:tH+=24;
+        tTime.SetTime(tH,tM,tS);
+        return tTime;
+    }
+};
+
+int main()
+{
+    Clock C1(8, 10, 10), C2(6, 1, 2);
+    Clock C3(0,0,0);
+
+    TrainTrip T1(&quot;K16&quot;, C1, C2);
+    C3 = T1.TripTime();
+    C3.ShowTime();
+
+    //输出21:50:52
+
+    return 0;
+}
+</code></pre>
+<p>改正方案二——使用初始化表，构造函数修改如下：</p>
+<pre><code class="language-cpp">TrainTrip(char* TrainNo,int SH,int SM,int SS,int EH,int EM,int ES):StartTime(SH,SM,SS),EndTime(EH,EM,ES)
+    {
+        this-&gt;TrainNo=TrainNo;
+    }
+//下面调用使用TrainTrip T1(&quot;K16&quot;, 8,10,10,6,1,2);语句
+</code></pre>
+<p>完整代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+    Clock(int H,int M,int S)
+    //有默认形参，可以不定义默认构造函数。没有默认形参，必须得定义默认构造函数，否则报错error: no matching function for call to 'Clock::Clock()'。
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    int GetH()
+    {
+        return H;
+    }
+    int GetM()
+    {
+        return M;
+    }
+    int GetS()
+    {
+        return S;
+    }
+};
+
+
+class TrainTrip
+{
+private:
+    char* TrainNo;
+    Clock StartTime;
+    Clock EndTime;
+public:
+    TrainTrip(char* TrainNo,int SH,int SM,int SS,int EH,int EM,int ES):StartTime(SH,SM,SS),EndTime(EH,EM,ES)
+    {
+        this-&gt;TrainNo=TrainNo;
+    }
+    Clock TripTime()
+    {
+        int tH,tM,tS;//临时存储时分秒
+        int carry=0;//借位
+        Clock tTime(0,0,0);//临时存储时间
+        (tS=EndTime.GetS()-StartTime.GetS())&gt;0?carry=0:tS+=60,carry=1;
+        (tM=EndTime.GetM()-StartTime.GetM()-carry)&gt;0?carry=0:tM+=60,carry=1;
+        (tH=EndTime.GetH()-StartTime.GetH()-carry)&gt;0?carry=0:tH+=24;
+        tTime.SetTime(tH,tM,tS);
+        return tTime;
+    }
+};
+
+int main()
+{
+    Clock C1(8, 10, 10), C2(6, 1, 2);
+    Clock C3(0,0,0);
+
+    TrainTrip T1(&quot;K16&quot;, 8,10,10,6,1,2);
+    C3 = T1.TripTime();
+    C3.ShowTime();
+
+    //输出21:50:52
+
+    return 0;
+}
+</code></pre>
+<p><strong>注意：初始化列表不能决定调用构造函数的顺序，成员对象调用顺序由成员对象定义的顺序决定。初始化列表只是提供调用成员对象构造函数的参数。</strong></p>
+<h3 id="构造函数调用顺序"><a class="header" href="#构造函数调用顺序">构造函数调用顺序</a></h3>
+<p>在定义一个组合类的对象时，不仅它自身的构造函数将被调用，而且还将调用其成员对象的构造函数，调用<code>先后顺序</code>为：</p>
+<p>1.成员对象按照<strong>其在组合类的声明中出现的次序依次调用各自的构造函数，而<code>不是</code>按初始化列表中的顺序</strong>。如果建立组合类的成员对象时没有指定对象的初始值，则自动调用默认的构造函数。</p>
+<p>2.组合类对象调用组合类构造函数。</p>
+<p>3.调用析构函数，析构函数的调用顺序与构造函数<code>正好相反</code>。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+
+public:
+    void SetTime(int H=0,int M=0,int S=0)
+    {
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+    Clock(int H,int M,int S)
+    {
+        cout&lt;&lt;&quot;Construct clock&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+        this-&gt;H=H;
+        this-&gt;M=M;
+        this-&gt;S=S;
+    }
+    int GetH()
+    {
+        return H;
+    }
+    int GetM()
+    {
+        return M;
+    }
+    int GetS()
+    {
+        return S;
+    }
+};
+
+
+class TrainTrip
+{
+private:
+    char* TrainNo;
+    Clock StartTime;//这里调用构造函数
+    Clock EndTime;
+public:
+    TrainTrip(char* TrainNo,Clock S,Clock E):StartTime(S),EndTime(E)
+    {
+        this-&gt;TrainNo=TrainNo;
+    }
+    TrainTrip(char* TrainNo,int SH,int SM,int SS,int EH,int EM,int ES):EndTime(EH,EM,ES),StartTime(SH,SM,SS)//这里只是传参
+    {
+        this-&gt;TrainNo=TrainNo;
+        cout&lt;&lt;&quot;Construct TrainTrip&quot;&lt;&lt;endl;
+    }
+    Clock TripTime()
+    {
+        int tH,tM,tS;//临时存储时分秒
+        int carry=0;//借位
+        Clock tTime(0,0,0);//临时存储时间
+        (tS=EndTime.GetS()-StartTime.GetS())&gt;0?carry=0:tS+=60,carry=1;
+        (tM=EndTime.GetM()-StartTime.GetM()-carry)&gt;0?carry=0:tM+=60,carry=1;
+        (tH=EndTime.GetH()-StartTime.GetH()-carry)&gt;0?carry=0:tH+=24;
+        tTime.SetTime(tH,tM,tS);
+        return tTime;
+    }
+};
+
+int main()
+{
+    //Clock C1(8, 10, 10), C2(6, 1, 2);
+    //Clock C3(0,0,0);
+
+    TrainTrip T1(&quot;K16&quot;, 8,10,10,6,1,2);
+    Clock C3 = T1.TripTime();
+    C3.ShowTime();
+
+    //输出21:50:52
+
+    return 0;
+}
+</code></pre>
+<pre><code>Construct clock8:10:10
+Construct clock6:1:2
+Construct TrainTrip
+Construct clock0:0:0
+21:50:52
+</code></pre>
+<h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<h3 id="构造函数执行顺序问题"><a class="header" href="#构造函数执行顺序问题">构造函数执行顺序问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Wheel
+{
+public:
+    Wheel(string s=&quot;W&quot;):name(s)
+    {
+        cout&lt;&lt;name;
+    }
+private:
+    string name;
+};
+class Bicycle
+{
+public:
+    Bicycle(string br=&quot;G&quot;,string r=&quot;R&quot;):brand(br),rear(r)
+    {
+        cout&lt;&lt;brand;
+    }
+private:
+    Wheel front,rear;
+    string brand;
+};
+int main()
+{
+    Bicycle bike;
+    //输出WRG
+    return 0;
+}
+</code></pre>
+<h2 id="继承"><a class="header" href="#继承">继承</a></h2>
+<h3 id="概念-1"><a class="header" href="#概念-1">概念</a></h3>
+<p>在C++中可以利用已有的类来定义新的类，新类将拥有原有类的全部特性，原有类被称为基类（base class）或父类（super class），新产生的类被称为派生类（derived class）或子类（son class）。派生类拥有基类的特性称为继承，由基类产生派生类的过程称为派生。</p>
+<p>每一个派生类都有且只有一个基类，派生类可以看作是基类的特例，它增加了某些基类所没有的性质。这种继承方式被称为单继承或单向继承。如果一个派生类有两个或两个以上的基类，则成为多继承或多重继承。</p>
+<p>派生类可以作为基类继续派生新类，这样的派生方式被称为多层派生，从继承的角度看是多层继承。</p>
+<p>继承可以让程序员在已有类的基础上通过增加或修改少量代码的方法得到新的类，从而方便代码复用。</p>
+<h3 id="单继承的格式"><a class="header" href="#单继承的格式">单继承的格式</a></h3>
+<p>派生类定义格式：</p>
+<pre><code class="language-cpp">class 派生类名:继承方式1 基类名1,继承方式2 基类名2,...
+{
+	private:
+		派生类的私有数据和函数
+	public:
+		派生类的公有数据和函数
+	protected:
+		派生类的保护数据和函数
+}
+</code></pre>
+<p>如果基类名表中只有1个基类，表示定义的是单继承；如果基类名表中有多个基类，表示定义的是多继承。</p>
+<p>继承方式指定了派生类以及类外对象对于从基类继承来的成员的访问权限。</p>
+<p>继承方式有三种：public、private、protected</p>
+<pre><code class="language-cpp">class base
+{
+    int x;
+public:
+    void setx(int k);
+};
+class derived1:public base
+{
+    int y;
+public:
+    void sety(int k);
+};
+</code></pre>
+<p>deroved1中有两个数据成员x,y，有两个成员函数setx和sety。</p>
+<p><strong>派生类中定义的成员函数不能访问基类的私有数据成员，因此在derived1中定义的任何成员函数中都不能访问x。</strong></p>
+<h3 id="三种继承方式"><a class="header" href="#三种继承方式">三种继承方式</a></h3>
+<p>公有继承：在派生类中，基类的public和protected成员仍然保持为public和protected，而基类的private成员对派生类不可见。</p>
+<p><strong>注意：对基类成员的访问，一定要分清是通过派生类对象访问还是通过派生类成员函数访问。</strong></p>
+<p><strong>派生类中定义的成员函数不能访问基类的私有数据成员，因此在上面派生类derived1中定义的任何成员函数中都不能访问x。</strong></p>
+<pre><code class="language-cpp">
+class Person
+{
+private:
+    int age;
+protected:
+    char gender;
+public:
+    string name;
+};
+class Teacher:public Person
+{
+protected:
+    double salary;
+public:
+    string employeeNo;
+    void setvalue()
+    {
+        //age=30;
+        //报错error: 'int Person::age' is private
+        gender='M';//可以正常访问
+        name=&quot;li&quot;;//可以正常访问
+    }
+};
+
+int main()
+{
+    Teacher t;
+    //t.age=30;
+    //报错error: 'int Person::age' is private
+    //t.gender='M';
+    //error: 'char Person::gender' is protected
+    t.name=&quot;li&quot;;//可以正常访问
+    //t.salary=1000;
+    //error: 'double Teacher::salary' is protected
+    t.employeeNo=&quot;104320&quot;;//可以正常访问
+}
+</code></pre>
+<p><strong>类和对象不一样！！！！子类可以访问父类的protected属性，但子类对象不能访问父类或子类的protected属性！！！</strong></p>
+<p>私有继承：在派生类中，基类的public和protected成员变成了派生类的private成员，而基类的private成员对派生类不可见。</p>
+<pre><code class="language-cpp">class Person
+{
+private:
+    int age;
+protected:
+    char gender;
+public:
+    string name;
+};
+class Teacher:private Person
+{
+protected:
+    double salary;
+public:
+    string employeeNo;
+    void setvalue()
+    {
+        //age=30;
+        //报错error: 'int Person::age' is private
+        gender='M';//可以正常访问
+        name=&quot;li&quot;;//可以正常访问
+    }
+};
+
+int main()
+{
+    Teacher t;
+    //t.age=30;
+    //报错error: 'int Person::age' is private
+    //t.gender='M';
+    //error: 'char Person::gender' is protected
+    //t.name=&quot;li&quot;;
+    //error: 'std::__cxx11::string Person::name' is inaccessible
+    //t.salary=1000;
+    //error: 'double Teacher::salary' is protected
+    t.employeeNo=&quot;104320&quot;;//可以正常访问
+}
+</code></pre>
+<p>保护继承：在派生类中，基类的public和protected成员变成了派生类的protected成员，而基类的private成员对派生类不可见。</p>
+<pre><code class="language-cpp">class Person
+{
+private:
+    int age;
+protected:
+    char gender;
+public:
+    string name;
+};
+class Teacher:protected Person
+{
+protected:
+    double salary;
+public:
+    string employeeNo;
+    void setvalue()
+    {
+        //age=30;
+        //报错error: 'int Person::age' is private
+        gender='M';//可以正常访问
+        name=&quot;li&quot;;//可以正常访问
+    }
+};
+
+int main()
+{
+    Teacher t;
+    //t.age=30;
+    //报错error: 'int Person::age' is private
+    //t.gender='M';
+    //error: 'char Person::gender' is protected
+    //t.name=&quot;li&quot;;
+    //error: 'std::__cxx11::string Person::name' is inaccessible
+    //t.salary=1000;
+    //error: 'double Teacher::salary' is protected
+    t.employeeNo=&quot;104320&quot;;//可以正常访问
+}
+</code></pre>
+<p>派生类对基类成员的访问控制属性总结如下表：</p>
+<div class="table-wrapper"><table><thead><tr><th>继承方式\基类属性</th><th>public</th><th>protected</th><th>private</th></tr></thead><tbody>
+<tr><td>public</td><td>public</td><td>protected</td><td>不可访问</td></tr>
+<tr><td>protected</td><td>protected</td><td>protected</td><td>不可访问</td></tr>
+<tr><td>private</td><td>private</td><td>private</td><td>不可访问</td></tr>
+</tbody></table>
+</div>
+<p>保护继承和私有继承的区别在于对后代类的影响。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Person
+{
+public:
+    int age;
+    char gender;
+    string name;
+};
+class Teacher:protected Person//这里这里(*^_^*)
+{
+public:
+    double salary;
+    string employeeNo;
+
+};
+
+class Professor:public Teacher
+{
+public:
+    int graduateStudentCount;
+    void setName(string name)
+    {
+        this-&gt;name=name;
+    }
+    void displayName()
+    {
+        cout&lt;&lt;name&lt;&lt;endl;
+    }
+
+};
+
+
+int main()
+{
+    Professor p;
+    p.setName(&quot;baozi&quot;);
+    p.displayName();
+}
+</code></pre>
+<p>上面的代码用<code>class Teacher:protected Person</code>能成功运行程序，但用<code>class Teacher:private Person</code>就会报错<code>error: 'std::__cxx11::string Person::name' is inaccessible</code>。</p>
+<h3 id="派生类的构造函数和析构函数"><a class="header" href="#派生类的构造函数和析构函数">派生类的构造函数和析构函数</a></h3>
+<p>由于派生类继承了其基类的成员，所以在建立派生类的实例对象时，必须初始化基类继承的数据成员。派生类对象析构时也必须析构基类对象。</p>
+<p>派生类不<code>继承</code>基类的构造函数、析构函数和赋值运算符，但是派生类能<code>调用</code>基类的构造函数、析构函数和赋值运算符。</p>
+<p>基类成员的初始化由基类的构造函数完成。派生类的构造函数调用基类的构造函数完成基类成员的初始化。</p>
+<p>派生类构造函数可以隐式调用基类的默认构造函数，也可以在派生类的构造函数的初始化列表显式地为基类地构造函数提供参数。</p>
+<p><strong>派生类构造函数的定义</strong>格式：</p>
+<pre><code class="language-cpp">派生类名(参数总表):基类名1(参数表1),...,基类名m(参数表m),成员对象名1(成员对象参数表1),...,成员对象名n(成员对象参数表n)
+{
+	派生类新增成员的初始化;
+}
+</code></pre>
+<ul>
+<li>基类名1(参数表1),...,基类名m(参数表m)为基类成员的初始化表</li>
+<li>成员对象名1(成员对象参数表1),...,成员对象名n(成员对象参数表n)为成员对象的初始化表</li>
+<li>基类成员的初始化表和成员对象的初始化表构成派生类构造函数的初始化表</li>
+<li>在派生类构造函数的参数总表中，需要给出基类数据成员的初值、成员对象数据成员的初值和新增一般数据对象的初值。</li>
+<li>在参数总表之后，列出需要使用参数进行初始化的基类名、成员对象名及各自的参数表，各项之间使用逗号分隔。</li>
+<li>基类名、对象名之间的次序无关紧要，它们各自出现的顺序可以是<code>任意的</code>。在生成派生类对象时，程序首先会使用这里列出的参数，调用基类和成员对象的构造函数。</li>
+</ul>
+<p><strong>什么时候需要定义派生类的构造函数？</strong></p>
+<ul>
+<li>若基类有无参构造函数，则在派生类定义构造函数时可略去基类构造函数名（参数表）。此时，若派生类也不需要构造函数，则可不定义构造函数。</li>
+<li>如果省略了派生类的构造函数，那么就由派生类的默认构造函数调用基类的默认构造函数。</li>
+<li>如果基类只定义了带有形参表的构造函数时，派生类就必须定义构造函数，提供一个将参数传递给基类构造函数的途径，保证在基类进行初始化时能够获得必要的数据。</li>
+<li>当基类构造函数需要参数，而派生类本身并不需要构造函数时，派生类也必须定义构造函数。该函数只是起了一个参数传递作用。</li>
+</ul>
+<p><strong>单继承的构造和析构</strong></p>
+<p>单继承时，派生类构造函数调用的一般次序如下：</p>
+<p>（1）调用基类构造函数；（2）调用内嵌成员对象的构造函数，调用顺序按照它们在类中定义的顺序；（3）派生类自己的构造函数；（4）当派生类对象析构时，各析构函数的调用顺序正好相反。首先调用派生类析构函数清理派生类新增成员；然后调用派生类成员对象析构函数清理派生类新增的成员对象；最后调用基类析构函数清理从基类继承来的基类子对象。</p>
+<p>派生时的构造和析构实例</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X,int Y)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)constructing...&quot;&lt;&lt;endl;
+    }
+    ~Point()
+    {
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)destructing...&quot;&lt;&lt;endl;
+    }
+};
+
+class Circle:protected Point
+{
+protected:
+    double radius;
+public:
+    Circle(double R,int X,int Y):Point(X,Y)
+    {
+        radius=R;
+        cout&lt;&lt;&quot;circle constructing, radius:&quot;&lt;&lt;R&lt;&lt;endl;
+    }
+    ~Circle()
+    {
+        cout&lt;&lt;&quot;circle destructing, radius:&quot;&lt;&lt;radius&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    Circle cir(3,0,0);
+    return 0;
+}
+</code></pre>
+<pre><code>point(0,0)constructing...
+circle constructing, radius:3
+circle destructing, radius:3
+point(0,0)destructing...
+</code></pre>
+<p>如果基类只定义了带有形参表的构造函数时，派生类就必须定义构造函数，提供一个将参数传递给基类构造函数的途径，保证在基类进行初始化时能够获得必要的数据。</p>
+<p>但如果给形参定了默认值，则派生类不定义构造函数也不会报错。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)constructing...&quot;&lt;&lt;endl;
+    }
+    ~Point()
+    {
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)destructing...&quot;&lt;&lt;endl;
+    }
+};
+
+class Circle:protected Point
+{
+protected:
+    double radius;
+public:
+    /*Circle(double R,int X,int Y):Point(X,Y)
+    {
+        radius=R;
+        cout&lt;&lt;&quot;circle constructing, radius:&quot;&lt;&lt;R&lt;&lt;endl;
+    }*/
+    ~Circle()
+    {
+        cout&lt;&lt;&quot;circle destructing, radius:&quot;&lt;&lt;radius&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    //Circle cir(3,0,0);
+    Circle cir;
+    return 0;
+}
+</code></pre>
+<pre><code>point(0,0)constructing...
+circle destructing, radius:2.2233e-322
+point(0,0)destructing...
+</code></pre>
+<h3 id="派生类作为基类"><a class="header" href="#派生类作为基类">派生类作为基类</a></h3>
+<p>基类本身可以作为一个派生类如：</p>
+<pre><code class="language-cpp">class base{...}
+class d1:public base{...}
+class d2:public d1{...}
+</code></pre>
+<p>每个派生类继承它的直接基类的所有成员。如果派生类的基类是一个派生类，则每个派生类只负责它的直接基类的构造，依次上溯。当构造d2类的对象时，会先调用d1的构造函数，而d1的构造函数执行时又会调用base的构造函数。因此，构造d2类的对象时，最先初始化的是base的数据成员，再初始化d1新增的成员，最后初始化d2新增的成员。</p>
+<p>析构的过程正好相反。</p>
+<p>多层派生实例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class base
+{
+    int x;
+public:
+    base(int xx)
+    {
+        x=xx;
+        cout&lt;&lt;&quot;constructing base\n&quot;;
+    }
+    ~base()
+    {
+        cout&lt;&lt;&quot;destructing base\n&quot;;
+    }
+};
+
+class derive1:public base
+{
+    int y;
+public:
+    derive1(int xx,int yy):base(xx)
+    {
+        y=yy;
+        cout&lt;&lt;&quot;constructing derive1\n&quot;;
+    }
+    ~derive1()
+    {
+        cout&lt;&lt;&quot;destructing derive1\n&quot;;
+    }
+};
+
+class derive2:public derive1
+{
+    int z;
+public:
+    derive2(int xx,int yy,int zz):derive1(xx,yy)
+    {
+        z=zz;
+        cout&lt;&lt;&quot;constructing derive2\n&quot;;
+    }
+    ~derive2()
+    {
+        cout&lt;&lt;&quot;destructing derive2\n&quot;;
+    }
+};
+int main()
+{
+    derive2 op(1,2,3);
+    return 0;
+}
+</code></pre>
+<pre><code>constructing base
+constructing derive1
+constructing derive2
+destructing derive2
+destructing derive1
+destructing base
+</code></pre>
+<p><strong>包含成员对象的多层派生实例：</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X,int Y)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)constructing...&quot;&lt;&lt;endl;
+    }
+    ~Point()
+    {
+        cout&lt;&lt;&quot;point(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)destructing...&quot;&lt;&lt;endl;
+    }
+};
+
+class Circle:protected Point
+{
+protected:
+    double radius;
+public:
+    Circle(double R,int X,int Y):Point(X,Y)
+    {
+        radius=R;
+        cout&lt;&lt;&quot;circle constructing, radius:&quot;&lt;&lt;R&lt;&lt;endl;
+    }
+    ~Circle()
+    {
+        cout&lt;&lt;&quot;circle destructing, radius:&quot;&lt;&lt;radius&lt;&lt;endl;
+    }
+};
+class Color
+{
+public:
+    int R,G,B;
+    Color(int R,int G,int B)
+    {
+        this-&gt;R=R;
+        this-&gt;G=G;
+        this-&gt;B=B;
+        cout&lt;&lt;&quot;color constructing&quot;&lt;&lt;endl;
+    }
+};
+class tube:protected Circle
+{
+private:
+    double height;
+    Color color;//成员对象
+public:
+    tube(double H,double R1,int X,int Y,int R,int G,int B):color(R,G,B),Circle(R1,X,Y)
+    {
+        height=H;
+        cout&lt;&lt;&quot;tube constructing,height:&quot;&lt;&lt;H&lt;&lt;endl;
+    }
+    ~tube()
+    {
+        cout&lt;&lt;&quot;tube destructing,height:&quot;&lt;&lt;height&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    tube TU(100,20,0,0,192,192,192);
+    return 0;
+}
+</code></pre>
+<pre><code>point(0,0)constructing...
+circle constructing, radius:20
+color constructing
+tube constructing,height:100
+tube destructing,height:100
+circle destructing, radius:20
+point(0,0)destructing...
+</code></pre>
+<h3 id="派生类的实现方式"><a class="header" href="#派生类的实现方式">派生类的实现方式</a></h3>
+<p>（1）吸收基类成员</p>
+<p>派生类继承基类的全部成员作为派生类成员的一部分。</p>
+<p>（2）改造基类成员</p>
+<p>派生类根据实际情况对继承自基类的某些成员进行限制和改造。对基类成员的访问限制主要通过继承方式来实现；对基类成员的改造主要通过<code>同名覆盖</code>来实现，即在派生类中定义一个与基类成员同名的新成员（如果是成员函数，则函数参数表也必须相同，否则，C++会认为是函数重载）。当派生类对象调用该成员时，C++将自动调用派生类中重新定义的同名函数，而不会调用从基类中继承来的同名成员，这样派生类中的新成员就“覆盖”了基类的同名成员。由此可见，派生类中的成员函数具有比基类中同名函数更小的作用域。</p>
+<p>（3）添加新成员</p>
+<p>派生类在继承基类成员的基础之上，根据派生类的实际需要，增加一些新的数据成员和成员函数，以描述某些新的属性和行为。</p>
+<p><strong>派生类的实现方式实例1</strong></p>
+<p>在普通的时钟类Clock基础上派生出闹钟类AlarmClock</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Clock
+{
+private:
+    int H,M,S;
+public:
+    Clock(int h=0,int m=0,int s=0)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+    ~Clock()
+    {
+        //cout&lt;&lt;&quot;destructor:&quot;&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+    void SetTime(int h,int m,int s)
+    {
+        H=(h&gt;=0&amp;&amp;h&lt;24)?h:0;
+        M=(m&gt;=0&amp;&amp;m&lt;60)?m:0;
+        S=(s&gt;=0&amp;&amp;s&lt;60)?s:0;
+    }
+    void ShowTime()
+    {
+        cout&lt;&lt;H&lt;&lt;&quot;:&quot;&lt;&lt;M&lt;&lt;&quot;:&quot;&lt;&lt;S&lt;&lt;endl;
+    }
+
+};
+class AlarmClock:public Clock
+{
+private:
+    int AH,AM;
+    bool OpenAlarm;
+public:
+    void SetAlarm(int AH,int AM)
+    {
+        this-&gt;AH=AH;
+        this-&gt;AM=AM;
+    }
+    void SwitchAlarm(bool Open=true)//打开、关闭闹铃
+    {
+        OpenAlarm=Open;
+    }
+    void ShowTime()//显示当前时间和闹铃时间
+    {
+        cout&lt;&lt;&quot;Clock &quot;;
+        Clock::ShowTime();//访问基类中的成员函数
+        cout&lt;&lt;&quot;Alarm &quot;&lt;&lt;AH&lt;&lt;&quot;:&quot;&lt;&lt;AM&lt;&lt;endl;
+    }
+};
+
+int main()
+{
+    Clock c;
+    c.SetTime(8,30,30);
+    c.ShowTime();
+    AlarmClock ac;
+    ac.SetTime(9,20,0);
+    ac.SetAlarm(10,0);
+    ac.ShowTime();
+    return 0;
+}
+</code></pre>
+<pre><code>8:30:30
+Clock 9:20:0
+Alarm 10:0
+</code></pre>
+<p><strong>派生类的实现方式实例2</strong></p>
+<p>基类Point派生出类Circle，类Circle派生出类Cylinder类，程序实现如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    void move(int OffX,int OffY)
+    {
+        X+=OffX;
+        Y+=OffY;
+    }
+    void ShowXY()
+    {
+        cout&lt;&lt;&quot;(&quot;&lt;&lt;X&lt;&lt;&quot;,&quot;&lt;&lt;Y&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:protected Point
+{
+protected:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area()
+    {
+        return PI*radius*radius;
+    }
+    void ShowCircle()
+    {
+        cout&lt;&lt;&quot;Center of circle:&quot;;
+        ShowXY();
+        cout&lt;&lt;&quot;radius:&quot;&lt;&lt;radius&lt;&lt;endl;
+    }
+};
+
+class Cylinder:protected Circle
+{
+private:
+    double height;
+public:
+    Cylinder(int X,int Y,double R,double H):Circle(X,Y,R)
+    {
+        height=H;
+    }
+    double area()
+    {
+        return 2*Circle::area()+2*PI*radius*height;
+    }
+    double volume()
+    {
+        return Circle::area()*height;
+    }
+    void ShowCylinder()
+    {
+        ShowCircle();
+        cout&lt;&lt;&quot;height of cylinder:&quot;&lt;&lt;height&lt;&lt;endl;
+    }
+};
+
+
+int main()
+{
+    Cylinder CY(100,200,10,50);
+    CY.ShowCylinder();
+    cout&lt;&lt;&quot;total area:&quot;&lt;&lt;CY.area()&lt;&lt;endl;
+    cout&lt;&lt;&quot;volume:&quot;&lt;&lt;CY.volume();
+    return 0;
+}
+</code></pre>
+<pre><code>Center of circle:(100,200)
+radius:10
+height of cylinder:50
+total area:3769.91
+volume:15707.9
+</code></pre>
+<h3 id="多继承"><a class="header" href="#多继承">多继承</a></h3>
+<p>多继承(multiple inheritance, MI)是指派生类具有两个或两个以上的直接基类（direct class）。</p>
+<p>多继承时派生类构造函数执行的一般次序如下：</p>
+<p>1.调用各基类构造函数，各基类构造函数调用顺序按照基类被继承时声明的顺序，从左往右依次进行。</p>
+<p>2.调用内嵌成员对象的构造函数；对象成员的构造函数调用顺序按照它们在类中定义的顺序依次进行。</p>
+<p>3.调用派生类的构造函数。</p>
+<p>注意：在继承层次图中，处于同一层次的各基类构造函数的调用顺序取决于定义该派生类时所指定的各基类的先后顺序，与派生类构造函数定义时初始化表中所列的各基类构造函数的先后顺序无关。</p>
+<p>对同一个基类，不允许直接继承两次。</p>
+<p><strong>多继承的二义性问题</strong></p>
+<p>由于多继承中派生类拥有多个基类，如果多个基类中拥有同名的成员，那么派生类在继承各个基类的成员之后，当我们调用该派生类成员时，由于该成员标识符不唯一，出现二义性，编译器无法确定到底应该选择派生类中的哪一个成员，这种由于多继承而引起的对类的某个成员访问出现不唯一的情况就称为二义性问题。</p>
+<p>例如，我们可以定义一个小客车类car和一个小货车类Wagon，它们共同派生出一个客货两用车类StationWagon。StationWagon继承了小客车的特征，有座位seat，可以载客；又继承了小货车的特征，有装载车厢的load，可以载货。程序实现如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Car
+{
+private:
+    int power;
+    int seat;
+public:
+    Car(int power,int seat)
+    {
+        this-&gt;power=power;
+        this-&gt;seat=seat;
+    }
+    void show()
+    {
+        cout&lt;&lt;&quot;car power:&quot;&lt;&lt;power&lt;&lt;&quot; seat:&quot;&lt;&lt;seat&lt;&lt;endl;
+    }
+};
+
+class Wagon
+{
+private:
+    int power;
+    int load;
+public:
+    Wagon(int power,int load)
+    {
+        this-&gt;power=power;
+        this-&gt;load=load;
+    }
+    void show()
+    {
+        cout&lt;&lt;&quot;wagon power:&quot;&lt;&lt;power&lt;&lt;&quot; load:&quot;&lt;&lt;load&lt;&lt;endl;
+    }
+};
+
+
+class StationWagon:public Car,public Wagon//不写继承类型则默认为是私有继承类
+{
+public:
+    StationWagon(int power,int seat,int load):Wagon(power,load),Car(power,seat)
+    {
+
+    }
+    void ShowSW()
+    {
+        cout&lt;&lt;&quot;StationWagon:&quot;&lt;&lt;endl;
+        Car::show();
+        Wagon::show();
+    }
+};
+
+int main()
+{
+    StationWagon SW(105,3,8);
+    //SW.show();
+    //error: request for member 'show' is ambiguous即二义性
+    SW.ShowSW();
+    return 0;
+}
+</code></pre>
+<pre><code>StationWagon:
+car power:105 seat:3
+wagon power:105 load:8
+</code></pre>
+<p><strong>多继承的二义性问题</strong></p>
+<p>通常有两种办法可以解决：</p>
+<p>（1）成员名限定</p>
+<p>通过类的作用域辨识符明确限定出现歧义的成员是继承自哪一个基类。</p>
+<p>（2）成员名重定义</p>
+<p>在派生类中新增一个与基类中成员相同的成员，由于同名覆盖，程序将自动选择派生类新增的成员。</p>
+<p><strong>继承的性质</strong></p>
+<p>（1）继承关系是可以传递的</p>
+<p>（2）继承关系不允许循环</p>
+<p>例子：ios类</p>
+<p>ios类是所有i/o流类的基础类，描述了流的基本性质。</p>
+<p>iostream对istream和ostream进行了多重派生，因而它既继承了读取流操作又继承了写入流操作。</p>
+<p>ifstream和ofstream分别用于文件的输入与输出，派生于iostream的fstream用于控制文件流的输入输出。</p>
+<p>I/O类库中的常用流类</p>
+<div class="table-wrapper"><table><thead><tr><th>类名</th><th>作用</th><th>在哪个头文件中声明</th></tr></thead><tbody>
+<tr><td>ios</td><td>抽象基类</td><td>iostream</td></tr>
+<tr><td>istream、ostream、iostream</td><td>通用输入流和其他输入流的基类、输出、输入输出</td><td>iostream</td></tr>
+<tr><td>ifstream、ofstream、fstream</td><td>输入文件流类、输出文件流类、输入输出文件流类</td><td>fstream</td></tr>
+</tbody></table>
+</div>
+<h2 id="测验-1"><a class="header" href="#测验-1">测验</a></h2>
+<h3 id="派生类构造函数初始化表"><a class="header" href="#派生类构造函数初始化表">派生类构造函数初始化表</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class XA
+{
+    int x;
+public:
+    XA(int n){x=n;}
+};
+class XB:public XA
+{
+    int y;
+public:
+    XB(int a,int b);
+};
+
+XB::XB(int a,int b):XA(a),y(b)
+{
+
+}
+</code></pre>
+<h3 id="基类和派生类同名函数"><a class="header" href="#基类和派生类同名函数">基类和派生类同名函数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Base
+{
+public:
+    void fun(){cout&lt;&lt;&quot;Base::fun&quot;&lt;&lt;endl;}
+};
+class Derived:public Base
+{
+public:
+    void fun()
+    {
+        Base::fun();
+        cout&lt;&lt;&quot;Derived::fun&quot;&lt;&lt;endl;
+    }
+};
+int main()
+{
+    Derived d;
+    d.fun();
+    return 0;
+}
+</code></pre>
+<h3 id="动态分配内存和构造函数析构函数"><a class="header" href="#动态分配内存和构造函数析构函数">动态分配内存和构造函数、析构函数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+public:
+    A(){cout&lt;&lt;&quot;A&quot;;}
+    ~A(){cout&lt;&lt;&quot;-A&quot;;}
+};
+class B:public A
+{
+    A* p;
+public:
+    B(){cout&lt;&lt;&quot;B&quot;;p=new A();}
+    ~B(){cout&lt;&lt;&quot;-B&quot;;delete p;}
+};
+int main()
+{
+    B obj;
+    //输出ABA-B-A-A
+    return 0;
+}
+</code></pre>
+<h3 id="嵌套调用"><a class="header" href="#嵌套调用">嵌套调用</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Base
+{
+protected:
+    Base(){cout&lt;&lt;'A';}
+    Base(char c){cout&lt;&lt;c;}
+};
+class Derived:public Base
+{
+public:
+    Derived(char c){cout&lt;&lt;c;}
+};
+int main()
+{
+    Derived d1('B');
+    //输出AB
+    return 0;
+}
+</code></pre>
+<h2 id="虚函数与多态性"><a class="header" href="#虚函数与多态性">虚函数与多态性</a></h2>
+<h3 id="类型兼容"><a class="header" href="#类型兼容">类型兼容</a></h3>
+<p>派生类对象到基类对象转换（类型兼容规则）：</p>
+<ul>
+<li>将派生类对象赋给基类对象</li>
+<li>基类指针指向派生类对象</li>
+<li>基类的对象引用派生类的对象</li>
+</ul>
+<p>（1）将派生类对象赋给基类对象</p>
+<p>派生类中的基类部分（继承）赋给赋给此基类对象，派生类新增加的成员就被舍弃。赋值（复制一份）后，基类对象和派生类对象再无任何关系。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Base
+{
+    int x;
+public:
+    Base(int a=0)
+    {
+        x=a;
+    }
+    void display();
+};
+class Derived1:public Base
+{
+    int y;
+public:
+    Derived1(int a,int b)
+    {
+        y=a+b;
+    }
+    void display();
+};
+int main()
+{
+    Base b;
+    Derived1 d1(1,2);
+    b=d1;
+    return 0;
+}
+</code></pre>
+<p>（2）基类指针指向派生类对象</p>
+<p>尽管该指针指向的对象是一个派生类对象，但由于它本身是一个基类的指针，它只能解释基类的成员，而不能解释派生类新增的成员。因此，只能访问派生类中的基类部分。</p>
+<p>通过指针修改基类对象时，派生类对象也被修改。</p>
+<p><code>Base *bp=&amp;d1;</code></p>
+<p>（3）基类的对象引用派生类的对象</p>
+<p>给派生类中的基类部分取个别名。基类对象改变时，派生类对象也被修改。</p>
+<p><strong>将派生类对象赋给基类对象实例</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Person
+{
+public:
+    int age;
+    char gender;
+    string name;
+};
+class Teacher:public Person
+{
+public:
+    double salary;
+    string employeeNo;
+
+};
+
+class Professor:public Teacher
+{
+public:
+    int graduateStudentCount;
+
+};
+
+void displayNameByObj(Person p)
+{
+    cout&lt;&lt;p.name&lt;&lt;endl;
+}
+void displayNameByRef(Person &amp;p)
+{
+    cout&lt;&lt;p.name&lt;&lt;endl;
+}
+void displayNameByPointer(Person *p)
+{
+    cout&lt;&lt;p-&gt;name&lt;&lt;endl;
+}
+
+int main()
+{
+    Person per;
+    Teacher tea;
+    Professor pro;
+    Person *pPer;
+
+    pPer=&amp;per;
+    pPer-&gt;name=&quot;li&quot;;
+    pPer=&amp;tea;
+    pPer-&gt;name=&quot;liSir&quot;;
+    //pPer-&gt;employeeNo=&quot;104320&quot;;
+    //这里报错error: 'class Person' has no member named 'employeeNo'
+
+    pPer=&amp;pro;
+    pPer-&gt;name=&quot;liProfessor&quot;;
+
+    displayNameByObj(pro);
+    displayNameByRef(tea);
+    displayNameByPointer(pPer);
+}
+</code></pre>
+<pre><code>liProfessor
+liSir
+liProfessor
+</code></pre>
+<h3 id="多态性概念"><a class="header" href="#多态性概念">多态性概念</a></h3>
+<p>多态性：不同对象收到同样的消息时产生不同的动作。</p>
+<p>所谓消息是指对类的成员函数的调用，不同的行为是指不同的实现，也就是调用了不同的函数。</p>
+<p>多态性的实现方式：</p>
+<p>（1）静态联编：编译时已决定用哪一个函数实现某一动作。在编译、连接过程中，系统可以根据类型匹配等特征确定程序中操作调用与执行该操作的代码的关系，即确定某一个同名标识到底是要调用哪一段程序代码，函数的重载、函数模板的实例化均属于静态联编。</p>
+<p>（2）动态联编：直到运行时才觉得用哪一个函数来实现动作。</p>
+<p><strong>（1）静态联编及示例</strong></p>
+<p>调用重载函数时，编译器根据调用时参数的类型和个数在编译时实现静态联编，将调用体与函数绑定。静态联编支持的多态性也被称为编译时的多态性或静态多态性。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    double area()
+    {
+        return 0.0;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:public Point
+{
+private:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area()
+    {
+        return PI*radius*radius;
+    }
+};
+
+int main()
+{
+    Point P1(10,10);
+    cout&lt;&lt;&quot;P1.area()=&quot;&lt;&lt;P1.area()&lt;&lt;endl;
+    Circle C1(10,10,20);
+    cout&lt;&lt;&quot;C1.area()=&quot;&lt;&lt;C1.area()&lt;&lt;endl;
+    Point *Pp;
+    Pp=&amp;C1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    Point &amp;Rp=C1;
+    cout&lt;&lt;&quot;Rp.area()=&quot;&lt;&lt;Rp.area()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>P1.area()=0
+C1.area()=1256.64
+Pp-&gt;area()=0
+Rp.area()=0
+</code></pre>
+<p>看类型，编译时就知道调用哪个函数了。实际上静态联编盲目根据指针和引用的类型而不是根据实际指向的目标确定调用的函数，并没有实现多态性。</p>
+<p><strong>（2）动态联编及示例</strong></p>
+<p>动态联编是在程序运行的过程中，根据指针与引用实际指向的目标调用对应的函数也就是在程序运行时才决定如何动作。</p>
+<p>运行时多态性是指必须等到程序动态运行时才可确定的多态性，主要通过<code>继承</code>结合<code>动态绑定</code>获得。这与类的继承密切相关。因为存在类型的兼容，所以有些函数只有在运行时才能确定是调用父类的还是子类的函数。在C++中，这依靠<code>虚函数</code>（Virtual functions）来实现。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    virtual double area()
+    {
+        return 0.0;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:public Point
+{
+private:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area()
+    {
+        return PI*radius*radius;
+    }
+};
+
+int main()
+{
+    Point P1(10,10);
+    cout&lt;&lt;&quot;P1.area()=&quot;&lt;&lt;P1.area()&lt;&lt;endl;
+    Circle C1(10,10,20);
+    cout&lt;&lt;&quot;C1.area()=&quot;&lt;&lt;C1.area()&lt;&lt;endl;
+    Point *Pp;
+    Pp=&amp;C1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    Point &amp;Rp=C1;
+    cout&lt;&lt;&quot;Rp.area()=&quot;&lt;&lt;Rp.area()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>P1.area()=0
+C1.area()=1256.64
+Pp-&gt;area()=1256.64
+Rp.area()=1256.64
+</code></pre>
+<p>区别：</p>
+<pre><code class="language-cpp">class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    virtual double area()
+    {
+        return 0.0;
+    }
+};
+</code></pre>
+<p>虚函数提供动态重载方式，允许函数调用与函数体之间的联系在运行时才建立。</p>
+<p><strong>虚函数的定义：在基类中用关键词virtual说明，并在派生类中重新定义的函数称为虚函数。在派生类中重新定义时，其函数原型包括返回类型、函数名、参数个数与参数类型的顺序都必须与基类中的原型完全相同。</strong></p>
+<p>当把一个函数定义为虚函数时，等于告诉编译器这个成员函数在派生类中可能有不同的实现（函数体）。必须在执行时根据传递的参数来决定调用哪一个函数。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    virtual double area()
+    {
+        return 0.0;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:public Point
+{
+private:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area()
+    {
+        return PI*radius*radius;
+    }
+};
+
+class Rectangle:public Point
+{
+private:
+    double width,height;
+public:
+    Rectangle(int X,int Y,double w,double h):Point(X,Y)
+    {
+        width=w;
+        height=h;
+    }
+    double area()
+    {
+        return width*height;
+    }
+};
+
+
+int main()
+{
+    Point P1(10,10);
+    cout&lt;&lt;&quot;P1.area()=&quot;&lt;&lt;P1.area()&lt;&lt;endl;
+    Circle C1(10,10,20);
+    cout&lt;&lt;&quot;C1.area()=&quot;&lt;&lt;C1.area()&lt;&lt;endl;
+    Point *Pp;
+    Pp=&amp;C1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    Point &amp;Rp=C1;
+    cout&lt;&lt;&quot;Rp.area()=&quot;&lt;&lt;Rp.area()&lt;&lt;endl;
+    Rectangle R1(0,0,10,12);
+    Pp=&amp;R1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>P1.area()=0
+C1.area()=1256.64
+Pp-&gt;area()=1256.64
+Rp.area()=1256.64
+Pp-&gt;area()=120
+</code></pre>
+<h3 id="虚函数的定义与使用"><a class="header" href="#虚函数的定义与使用">虚函数的定义与使用</a></h3>
+<p>虚函数定义的一般格式如下：</p>
+<pre><code class="language-cpp">virtual 函数类型 函数表（形参表）
+{
+	函数体;
+}
+</code></pre>
+<p>在定义虚函数时要注意：</p>
+<p>（1）虚函数也不能是静态成员函数，也不能是友元函数。因为静态成员函数和友元函数不属于某个对象。</p>
+<p>（2）只有类的普通成员函数才能被定义为虚函数，虚函数的声明只能出现在类的定义中。因为虚函数仅适用于有继承关系的类对象。不属于类的普通函数不能被定义为虚函数。</p>
+<p>（3）构造函数不能是虚函数。</p>
+<p>（4）析构函数可以是虚函数，而且通常被声明为虚函数。</p>
+<p>在正常情况下，对虚函数的访问和对其他成员函数完全一样。只有通过指向基类的指针或引用来调用虚函数时才体现虚函数与一般函数的不同。</p>
+<p>使用虚函数是实现动态联编的基础。要实现动态联编，概括起来需要三个条件：</p>
+<p>（1）满足类型兼容规则。（2）在基类中定义虚函数，并且在派生类中要重新定义虚函数。（3）要由成员函数或者是通过指针、引用访问虚函数。</p>
+<p>将派生类对象赋给基类对象实例：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Shape
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Shape&quot;&lt;&lt;endl;}
+};
+
+class Point:public Shape
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Point&quot;&lt;&lt;endl;}
+};
+
+class Circle:public Point
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Circle&quot;&lt;&lt;endl;}
+};
+
+class Cylinder:public Circle
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Cylinder&quot;&lt;&lt;endl;}
+};
+
+int main()
+{
+    int i;
+    Point aPoint;
+    Circle aCircle;
+    Cylinder aCylinder;
+    Shape shapes[3];
+    shapes[0]=aPoint;
+    shapes[1]=aCircle;
+    shapes[3]=aCylinder;
+    for(i=0;i&lt;3;i++)
+        shapes[i].printShapeName();
+}
+</code></pre>
+<pre><code>Shape
+Shape
+Shape
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Shape
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Shape&quot;&lt;&lt;endl;}
+};
+
+class Point:public Shape
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Point&quot;&lt;&lt;endl;}
+};
+
+class Circle:public Point
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Circle&quot;&lt;&lt;endl;}
+};
+
+class Cylinder:public Circle
+{
+public:
+    virtual void printShapeName() {cout&lt;&lt;&quot;Cylinder&quot;&lt;&lt;endl;}
+};
+int main()
+{
+    int i;
+    Point aPoint;
+    Circle aCircle;
+    Cylinder aCylinder;
+    Shape *pShape[3]={&amp;aPoint,&amp;aCircle,&amp;aCylinder};
+    for(i=0;i&lt;3;i++)
+        pShape[i]-&gt;printShapeName();
+}
+</code></pre>
+<pre><code>Point
+Circle
+Cylinder
+</code></pre>
+<p>指针方式可以用数组，但引用方式不能用数组。</p>
+<pre><code class="language-cpp">int main()
+{
+    int i;
+    Point aPoint;
+    Circle aCircle;
+    Cylinder aCylinder;
+    Shape &amp;shape1=aCircle;
+    shape1.printShapeName();//Circle
+}
+</code></pre>
+<p><strong>虚函数特点</strong></p>
+<ul>
+<li>虚函数有函数体</li>
+<li>虚函数在静态联编时被当成一般成员函数使用</li>
+<li>虚函数可以派生，如果在派生类中没有定义虚函数，虚函数就充当了派生类的虚函数。</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>当在派生类中<strong>未重新定义虚函数</strong>，虽然虚函数被派生类继承，但通过基类、派生类类型指针、引用调用虚函数时，<strong>不实现动态联编，调用的是基类的虚函数</strong>。</li>
+<li>当在派生类中定义了虚函数的重载函数，但没有重新定义虚函数时，与虚函数同名的重载函数覆盖了派生类中的虚函数。此时试图通过派生类对象、指针、引用调用派生类的虚函数就会产生错误。</li>
+<li><strong>当基类中的虚函数在派生类中被重新定义时，无论是否使用virtual关键字进行声明，都自动成为虚函数。</strong></li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    virtual double area()
+    {
+        return 0.0;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:public Point
+{
+private:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area(int i)
+    {
+        return PI*radius*radius;
+    }
+};
+int main()
+{
+    Circle C1(10,10,20);
+    cout&lt;&lt;&quot;C1.area()=&quot;&lt;&lt;C1.area()&lt;&lt;endl;
+    Point *Pp=&amp;C1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>给派生类的area()函数中添加int i；程序会报错<code>41|error: no matching function for call to 'Circle::area()'</code></p>
+<p>加个重载函数仍能正确输出结果：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Point
+{
+private:
+    int X,Y;
+public:
+    Point(int X=0,int Y=0)
+    {
+        this-&gt;X=X;
+        this-&gt;Y=Y;
+    }
+    virtual double area()
+    {
+        return 0.0;
+    }
+};
+
+const double PI=3.14159;
+
+class Circle:public Point
+{
+private:
+    double radius;
+public:
+    Circle(int X,int Y,double R):Point(X,Y)
+    {
+        radius=R;
+    }
+    double area()
+    {
+        return PI*radius*radius;
+    }
+    double area(int i)
+    {
+        return PI*radius*radius;
+    }
+};
+
+
+int main()
+{
+    Circle C1(10,10,20);
+    cout&lt;&lt;&quot;C1.area()=&quot;&lt;&lt;C1.area()&lt;&lt;endl;
+    Point *Pp=&amp;C1;
+    cout&lt;&lt;&quot;Pp-&gt;area()=&quot;&lt;&lt;Pp-&gt;area()&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>C1.area()=1256.64
+Pp-&gt;area()=1256.64
+</code></pre>
+<p>删除派生类的area()函数，输出结果如下：</p>
+<pre><code>C1.area()=0
+Pp-&gt;area()=0
+</code></pre>
+<h3 id="虚析构函数"><a class="header" href="#虚析构函数">虚析构函数</a></h3>
+<p>在C++中，不能定义虚析构函数，因为当开始调用构造函数时，对象还未完成实例化，只有在构造完成后，对象才能成为一个类的名副其实的对象；但析构函数可以是虚函数，而且通常声明为虚函数即虚析构函数。</p>
+<p>虚析构函数定义形式如下：</p>
+<pre><code class="language-cpp">virtual ~类名();
+</code></pre>
+<p>析构函数声明为虚函数后，程序运行时采用动态联编，因此可以确保使用基类类型的指针就能够自动调用适当的析构函数对不同对象进行清理工作。</p>
+<p>使用delete运算符删除一个对象，隐含着对析构函数的一次调用，如果析构函数采用虚函数，则这个调用采用动态联编，保证析构函数被正确执行。</p>
+<p><strong>实例：用虚析构函数删除派生类动态对象</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+public:
+    virtual ~A()
+    {
+        cout&lt;&lt;&quot;A::~A() is called.&quot;&lt;&lt;endl;
+    }
+    A()
+    {
+        cout&lt;&lt;&quot;A::A() is called.&quot;&lt;&lt;endl;
+    }
+};
+
+class B:public A
+{
+private:
+    int *ip;
+public:
+    B(int size=0)
+    {
+        ip=new int[size];
+        cout&lt;&lt;&quot;B::B() is called.&quot;&lt;&lt;endl;
+    }
+    ~B()
+    {
+        cout&lt;&lt;&quot;B::~B() is called.&quot;&lt;&lt;endl;
+        delete [] ip;
+    }
+
+};
+
+int main()
+{
+    A *b=new B(10);//类型兼容
+    delete b;
+    return 0;
+}
+</code></pre>
+<pre><code>A::A() is called.
+B::B() is called.
+B::~B() is called.
+A::~A() is called.
+</code></pre>
+<p>输出结果解释：由于定义基类的析构函数是虚析构函数，<strong>所以当程序运行结束时，通过基类指针删除派生类对象时，先调用派生类析构函数，然后自动调用基类的析构函数。</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+public:
+    ~A()
+    {
+        cout&lt;&lt;&quot;A::~A() is called.&quot;&lt;&lt;endl;
+    }
+    A()
+    {
+        cout&lt;&lt;&quot;A::A() is called.&quot;&lt;&lt;endl;
+    }
+};
+
+class B:public A
+{
+private:
+    int *ip;
+public:
+    B(int size=0)
+    {
+        ip=new int[size];
+        cout&lt;&lt;&quot;B::B() is called.&quot;&lt;&lt;endl;
+    }
+    ~B()
+    {
+        cout&lt;&lt;&quot;B::~B() is called.&quot;&lt;&lt;endl;
+        delete [] ip;
+    }
+
+};
+
+int main()
+{
+    A *b=new B(10);//类型兼容
+    delete b;
+    return 0;
+}
+</code></pre>
+<p>如果基类的析构函数不是虚析构函数，则程序运行结果如下：</p>
+<pre><code>A::A() is called.
+B::B() is called.
+A::~A() is called.
+</code></pre>
+<p>b是<code>A*</code>类型的对象，调用类A的析构函数，这时可能会造成内存泄漏问题。</p>
+<h3 id="纯虚函数与抽象类"><a class="header" href="#纯虚函数与抽象类">纯虚函数与抽象类</a></h3>
+<p>纯虚函数是一个在基类中说明的虚函数，它在该基类中没有定义具体实现，<strong>要求各派生类根据实际需要定义函数实现</strong>。纯虚函数的作用是为派生类提供一个一致的接口。</p>
+<p>纯虚函数的一般形式：</p>
+<pre><code class="language-cpp">virtual 函数类型 函数名(参数表)=0;
+</code></pre>
+<p>实例：</p>
+<pre><code class="language-cpp">class shape
+{
+protected:
+    double x,y;
+public:
+   shape(double xx,double yy) {x=xx;y=yy;}
+   virtual double area()=0;
+   virtual void display()
+   {
+       cout&lt;&lt;&quot;This is a shape. The Position is (&quot;&lt;&lt;x&lt;&lt;&quot;,&quot;&lt;&lt;y&lt;&lt;&quot;)\n&quot;;
+   }
+};
+</code></pre>
+<p>抽象类：如果一个类中至少有一个纯虚函数，则该类被称为抽象类。</p>
+<p>抽象类使用说明：</p>
+<ul>
+<li><strong>抽象类只能作为其他类的基类，不能建立抽象类的对象。</strong></li>
+<li><strong>可以声明抽象类的指针或引用，此指针可以指向它的派生类，进而实现多态性</strong></li>
+<li>抽象类不能用作参数类型、函数返回类型或显式类型转换</li>
+<li>如果派生类中给出了基类所有纯虚函数的实现，则该派生类不再是抽象类否则仍为抽象类。</li>
+</ul>
+<p><strong>实例：计算各类形状的总面积</strong></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class shape
+{
+public:
+
+   virtual void area()=0;
+
+};
+
+class rectangle:public shape
+{
+    float w,h;
+public:
+    rectangle(float ww,float hh)
+    {
+        w=ww;h=hh;
+    }
+    void area()
+    {
+        cout&lt;&lt;&quot;\narea is:&quot;&lt;&lt;w*h;
+    }
+};
+
+class circle:public shape
+{
+    float r;
+public:
+    circle(float rr) {r=rr;}
+    void area() {cout&lt;&lt;&quot;\narea is:&quot;&lt;&lt;3.14*r*r;}
+};
+
+int main()
+{
+    shape *ptr;
+    rectangle ob1(5,10);
+    circle ob2(10);
+    ptr=&amp;ob1;ptr-&gt;area();
+    ptr=&amp;ob2;ptr-&gt;area();
+    return 0;
+}
+</code></pre>
+<pre><code>
+area is:50
+area is:314
+</code></pre>
+<h2 id="测验-2"><a class="header" href="#测验-2">测验</a></h2>
+<h3 id="虚函数实例"><a class="header" href="#虚函数实例">虚函数实例</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Animal
+{
+public:
+    virtual string GetType() const {return &quot;Animal&quot;;}
+    virtual string GetVoice() const {return &quot;Voice&quot;;}
+};
+class Dog:public Animal
+{
+public:
+    virtual string GetType() const {return &quot;Dog&quot;;}
+    virtual string GetVoice() const {return &quot;Wang&quot;;}
+};
+
+class Cat:public Animal
+{
+public:
+    virtual string GetType() const {return &quot;Cat&quot;;}
+    virtual string GetVoice() const {return &quot;Miaow&quot;;}
+};
+
+void Type(Animal &amp;a)
+{
+    cout&lt;&lt;a.GetType();
+}
+void Speak(Animal a)
+{
+    cout&lt;&lt;a.GetVoice();
+}
+
+int main()
+{
+    Dog d;
+    Type(d);
+    cout&lt;&lt;&quot;speak&quot;;
+    Speak(d);
+    cout&lt;&lt;&quot;-&quot;;
+    Cat c;
+    Type(c);
+    cout&lt;&lt;&quot;speak&quot;;
+    Speak(c);
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>DogspeakVoice-CatspeakVoice
+</code></pre>
+<h3 id="静态联编和动态联编选择问题"><a class="header" href="#静态联编和动态联编选择问题">静态联编和动态联编选择问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+class Base
+{
+public:
+    void fun1(){cout&lt;&lt;&quot;Base\n&quot;;}
+    virtual void fun2(){cout&lt;&lt;&quot;Base\n&quot;;}
+};
+
+class Derived:public Base
+{
+public:
+    void fun1(){cout&lt;&lt;&quot;Derived\n&quot;;}
+    void fun2(){cout&lt;&lt;&quot;Derived\n&quot;;}
+};
+
+void f(Base&amp; b)
+{
+    b.fun1();
+    b.fun2();
+}
+
+int main()
+{
+    Derived obj;
+    f(obj);
+    return 0;
+}
+</code></pre>
+<pre><code>Base
+Derived
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="动态规划算法编程题.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="类模板理论.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="动态规划算法编程题.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="类模板理论.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
