@@ -166,7 +166,287 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="类模板理论"><a class="header" href="#类模板理论">类模板理论</a></h1>
+                        <h1 id="泛型机制模板"><a class="header" href="#泛型机制模板">泛型机制——模板</a></h1>
+<ul>
+<li><a href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9A%E4%B9%89">类模板定义</a></li>
+<li><a href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%8F%8A%E7%A4%BA%E4%BE%8B">类模板实例化及示例</a></li>
+</ul>
+<h2 id="类模板定义"><a class="header" href="#类模板定义">类模板定义</a></h2>
+<p>模板是C++语言的显著特征，能够显著提高编程效率。利用C++的函数模板和类模板，能够快速建立类型安全的类库集合和函数集合，进行大规模软件开发，并提高软件的通用性和灵活性。C++的标准模板库编程完全依赖模板的实现。</p>
+<p>如果一组重载函数仅仅是参数类型不一样，程序逻辑完全一样，那么这一组重载函数可以写成一个函数模板。如函数</p>
+<pre><code class="language-cpp">void sort(int arr[],int n)
+void sort(double arr[],int n)
+</code></pre>
+<p>所谓的函数模板就是实现类型的参数化（泛型化），即把函数中某些形式参数的类型定义成参数，称为模板参数，如：</p>
+<pre><code class="language-cpp">template &lt;class T&gt;
+void sort(T arr[],int n)
+</code></pre>
+<p>在函数调用时，编译器根据实际参数的类型确定模板参数，生成不同的模板函数。如</p>
+<pre><code class="language-cpp">int a[10];
+sort&lt;int&gt;(a,10);
+//显式实例化
+double b[100];
+sort(b,100);
+//隐式实例化
+</code></pre>
+<p>说明：如果模板参数表中有普通类型的形参，还需要用常量表达式去初始化。例如有模板：</p>
+<pre><code class="language-cpp">templat &lt;class T,int size&gt;
+T sum();
+{int arr[size];...}
+</code></pre>
+<p>函数调用时可以使用sum&lt;int,100&gt;()将T sum()实例化成：</p>
+<pre><code class="language-cpp">int sum()
+{int arr[100];}
+</code></pre>
+<p>类模板是能根据不同参数建立不同类型成员的类。类模板中的数据成员、成员函数的参数、成员函数的返回值可以去不同的类型，在实例化成对象时，根据传入的参数类型，实例化成具体类型的对象。类模板也被称为模板类。</p>
+<p>类模板定义的语法格式如下：</p>
+<pre><code class="language-cpp">template&lt;模板参数表&gt;
+class 类名
+{
+	成员名;
+};
+</code></pre>
+<p>其中：template为模板关键字，模板参数表中的类型为参数化类型，也成为可变类型，类型名class或typename；模板参数表中的类型也可包含普通类型，普通类型的参数用来为类的成员提供初值。</p>
+<p>类模板中的成员函数可以是函数模板，也可以是普通函数。</p>
+<p>实例：下面定义了一个模板类Student，为了增强类的适用性，将学号设计成参数化类型，它可以实例化成字符串、整型等；将成绩设计成参数化类型，它可以实例化成整型、浮点型、字符型（用来表示等级分）等；</p>
+<pre><code class="language-cpp">template &lt;class TNO,class TScore,int num&gt;//TNO,TScore为参数化类型
+class Student
+{
+private:
+    TNO StudentID[num];//参数化类型数组，存储姓名
+    TScore score[num];//参数化类型数组，存储分数
+public:
+    TNO TopStudent()//函数模板
+    {
+        return StudentID[0];
+    }
+    int BelowNum(TScore ascore)
+    {
+        return 0;
+    }
+    void sort(){}//普通函数
+};
+</code></pre>
+<p>模板类的成员函数还可以在类外定义，其语法如下：</p>
+<pre><code class="language-cpp">template&lt;模板参数表&gt;
+类型 类名&lt;模板参数名表&gt;::函数名(参数表)
+{
+	函数体；
+}
+</code></pre>
+<p>其中：模板参数表和类模板的参数表相同。模板参数名表列出的是模板参数表中参数名，顺序和模板参数表中的顺序一致。</p>
+<p>例如模板类Student的成员函数在类外实现如下：</p>
+<pre><code class="language-cpp">template &lt;class TNO,class TScore,int num&gt;//TNO,TScore为参数化类型
+class Student
+{
+private:
+    TNO StudentID[num];//参数化类型数组，存储姓名
+    TScore score[num];//参数化类型数组，存储分数
+public:
+    TNO TopStudent();
+
+    int BelowNum(TScore ascore);
+
+    void sort();
+};
+template &lt;class TNO,class TScore,int num&gt;
+TNO Student&lt;TNO,TScore,num&gt;::TopStudent()//函数模板
+    {
+        return StudentID[0];
+    }
+template &lt;class TNO,class TScore,int num&gt;//不添加这句会报错error: 'TNO' was not declared in this scope
+int Student&lt;TNO,TScore,num&gt;::BelowNum(TScore ascore)
+    {
+        return 0;
+    }
+template &lt;class TNO,class TScore,int num&gt;
+void Student&lt;TNO,TScore,num&gt;::sort()
+{
+//普通函数在类外定义也需要加上面的内容
+}
+</code></pre>
+<h2 id="类模板实例化及示例"><a class="header" href="#类模板实例化及示例">类模板实例化及示例</a></h2>
+<p>一个类模板是具体类的抽象，编译器从模板生成一个特定的类的过程被称为模板的实例化。在使用类模板建立对象时，编译器根据给定的模板参数值实例化为具体的类，然后由类建立对象。<strong>与函数模板不同，类模板实例化只能采用显式方式。</strong></p>
+<p>类模板实例化、建立对象的语法如下：</p>
+<p><code>类模板名&lt;模板参数值表&gt;对象1，对象2,...,对象n;</code></p>
+<p>其中模板参数值表的值为类型名，类型名可以是基本数据类型名也可以是构造数据类型名，还可以是类类型名。</p>
+<p>模板参数值表的值还可以是常数表达式，以初始化模板参数表中普通参数。</p>
+<p>模板参数值表的值按一一对应的顺序实例化类模板的模板参数表。</p>
+<p>例如下面对模板类Student实例化：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+template &lt;class TNO,class TScore,int num&gt;//TNO,TScore为参数化类型
+class Student
+{
+private:
+    TNO StudentID[num];//参数化类型数组，存储姓名
+    TScore score[num];//参数化类型数组，存储分数
+public:
+    TNO TopStudent()//函数模板
+    {
+        return StudentID[0];
+    }
+    int BelowNum(TScore ascore)
+    {
+        return 0;
+    }
+    void sort(){}//普通函数
+};
+class String
+{
+public:
+    char Str[20];
+};
+
+int main()
+{
+    Student&lt;String,float,100&gt;S1;
+    S1.sort();
+    Student&lt;long,int,50&gt;S2;
+    S2.TopStudent();
+}
+</code></pre>
+<p>编译时将类Student实例化成如下形式：</p>
+<pre><code class="language-cpp">class Student
+{
+private:
+    String StudentID[100];
+    float score[100];
+public:
+    String TopStudent()
+    {
+        return StudentID[0];
+    }
+    int BelowNum(float ascore)
+    {
+        return 0;
+    }
+    void sort(){}
+};
+</code></pre>
+<p><strong>默认模板参数</strong></p>
+<p>类模板的实例化过程与函数调用的实参与形参结合的过程相似，函数的形参可以采用默认值，类模板的类型参数也可以采用默认值，这样避免每次实力化时显式给出实参。</p>
+<pre><code class="language-cpp">template &lt;class TNO,class TScore=int,int num=10&gt;//TNO,TScore为参数化类型
+class Student
+{
+private:
+    TNO StudentID[num];//参数化类型数组，存储姓名
+    TScore score[num];//参数化类型数组，存储分数
+public:
+    TNO TopStudent()//函数模板
+    {
+        return StudentID[0];
+    }
+    int BelowNum(TScore ascore)
+    {
+        return 0;
+    }
+    void sort(){}//普通函数
+};
+</code></pre>
+<p>TScore，num分别给出默认值int,10。用以下方式实例化：<code>Student&lt;char *&gt; S1;</code></p>
+<pre><code class="language-cpp">class Student
+{
+private:
+    char* StudentID[10];
+    int score[10];
+public:
+    char* TopStudent()
+    {
+        return StudentID[0];
+    }
+    int BelowNum(int ascore)
+    {
+        return 0;
+    }
+    void sort(){}
+};
+</code></pre>
+<p><strong>类模板应用实例：栈类模板</strong></p>
+<p>将栈设计成一个类模板，在栈中存放任意类型的数据。</p>
+<p>分析：栈空间可以使用静态数组，本例使用动态数组。使用指针top指向栈顶元素，使用成员函数插入push()、删除pop()、IsEmpty()、IsFull()分别进行压栈、出栈、判空、判满。</p>
+<p>说明：本程序不需要理解栈的概念，主要了解一下模板的使用方式。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+template&lt;class T&gt;
+class Stack
+{
+private:
+    int size;
+    int top;
+    T* space;
+public:
+    Stack(int=10);
+    ~Stack() {delete [] space;}
+    bool push(const T&amp;);
+    T pop();
+    bool IsEmpty();
+    bool IsFull();
+};
+template&lt;class T&gt;
+bool Stack&lt;T&gt;::IsEmpty()
+{
+    return top==size;
+}
+template&lt;class T&gt;
+bool Stack&lt;T&gt;::IsFull()
+{
+    return top==0;
+}
+
+template&lt;class T&gt;
+Stack&lt;T&gt;::Stack(int size)
+{
+    this-&gt;size=size;
+    space=new T[size];
+    top=size;
+}
+template&lt;class T&gt;
+bool Stack&lt;T&gt;::push(const T&amp; element)
+{
+    if(!IsFull())
+    {
+        space[--top]=element;
+        return true;
+    }
+    return false;
+}
+
+template&lt;class T&gt;
+T Stack&lt;T&gt;::pop()
+{
+    return space[top++];
+}
+
+int main()
+{
+    Stack&lt;char&gt;S1(8);
+    Stack&lt;int&gt;S2;
+    char ch;
+    while(cin&gt;&gt;ch)
+    {
+        if(ch&gt;='0'&amp;&amp;ch&lt;='9')
+            S2.push(ch-'0');
+        else
+            S1.push(ch);
+    }
+    while(!S1.IsEmpty())
+        cout&lt;&lt;S1.pop()&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    while(!S2.IsEmpty())
+        cout&lt;&lt;S2.pop()&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<pre><code>chibaozi98432
+^Z
+i z o a b i h c
+2 3 4 8 9
+</code></pre>
 
                     </main>
 
