@@ -23046,6 +23046,9 @@ int main()
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#28-%E5%8F%91%E5%B7%A5%E8%B5%84">28 发工资</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#29-%E4%BC%81%E4%B8%9A%E7%BB%8F%E8%90%A5%E7%A8%8E">29 企业经营税</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#30-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E7%BB%83%E4%B9%A0%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%E6%B5%AE%E7%82%B9%E6%95%B0%E5%92%8C%E5%AD%97%E7%AC%A6%E7%9A%84%E6%AF%94%E8%BE%83">30 模板类练习：实现两个整数、浮点数和字符的比较</a></li>
+<li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#31%E9%87%8D%E8%BD%BD%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6%E8%AE%A1%E7%AE%97%E7%82%B9%E7%9A%84%E8%B7%9D%E7%A6%BB">31重载输入输出运算符、计算点的距离</a></li>
+<li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#32%E5%9F%BA%E7%B1%BBbuilding%E5%92%8C%E6%B4%BE%E7%94%9F%E7%B1%BBhousingoffice">32基类Building和派生类Housing、Office</a></li>
+<li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#33%E5%9F%BA%E7%B1%BBperson%E5%92%8C%E6%B4%BE%E7%94%9F%E7%B1%BBstudent%E9%87%8D%E8%BD%BD%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6">33基类Person和派生类Student、重载输出运算符</a></li>
 </ul>
 <h2 id="1字符串填充默认形参"><a class="header" href="#1字符串填充默认形参">1字符串填充（默认形参）</a></h2>
 <p>问题描述 :</p>
@@ -28027,6 +28030,303 @@ int main()
     }
 }
 
+</code></pre>
+<h2 id="31重载输入输出运算符计算点的距离"><a class="header" href="#31重载输入输出运算符计算点的距离">31重载输入输出运算符、计算点的距离</a></h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+class Point
+{
+    double x,y;
+public:
+    Point(int a=0,int b=0)
+    {
+        x=a;
+        y=b;
+    }
+    void setPoint(double ox,double oy)
+    {
+        x=ox;
+        y=oy;
+    }
+    double distance(const Point&amp; p) const
+    {
+        return sqrt((x-p.x)*(x-p.x)+(y-p.y)*(y-p.y));
+    }
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os,Point &amp;p)
+    {
+        os&lt;&lt;&quot;(&quot;&lt;&lt;p.x&lt;&lt;&quot;,&quot;&lt;&lt;p.y&lt;&lt;&quot;)&quot;;
+        return os;
+    }
+    friend istream&amp; operator&gt;&gt;(istream&amp; is,Point &amp;p)
+    {
+        is&gt;&gt;p.x&gt;&gt;p.y;
+        return is;
+    }
+};
+
+int main()
+{
+    Point a,b(9,9);
+    cin&gt;&gt;a;
+    cout&lt;&lt;a&lt;&lt;endl;
+    cout&lt;&lt;b&lt;&lt;endl;
+    a.setPoint(7,7);
+    cout&lt;&lt;&quot;the distance of &quot;&lt;&lt;a&lt;&lt;&quot; and &quot;&lt;&lt;b&lt;&lt;&quot; is &quot;&lt;&lt;a.distance(b)&lt;&lt;endl;
+    return 0;
+}
+
+</code></pre>
+<p>当我输入(5,6)时，输出a的坐标为何是(0,0)而不是(5,6)呢？</p>
+<pre><code>(5,6)
+(0,0)
+(9,9)
+the distance of (7,7) and (9,9) is 2.82843
+</code></pre>
+<p>应该输入5 6而不是(5,6)。</p>
+<h2 id="32基类building和派生类housingoffice"><a class="header" href="#32基类building和派生类housingoffice">32基类Building和派生类Housing、Office</a></h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+class Building
+{
+protected:
+    int level,room,area;
+public:
+    Building(int l,int r,int a)
+    {
+        level=l;room=r;area=a;
+    }
+    virtual void show()=0;
+};
+
+class Housing:public Building
+{
+private:
+    int livingroom,bathroom;
+public:
+    Housing(int l,int r,int a,int living,int bath):Building(level,room,area)
+    {
+        livingroom=living;
+        bathroom=bath;
+    }
+    void show()
+    {
+        cout&lt;&lt;level&lt;&lt;&quot; &quot;&lt;&lt;room&lt;&lt;&quot; &quot;&lt;&lt;area&lt;&lt;&quot; &quot;&lt;&lt;livingroom&lt;&lt;&quot; &quot;&lt;&lt;bathroom&lt;&lt;endl;
+    }
+};
+class Office:public Building
+{
+private:
+    int telephone,extinguisher;
+public:
+    Office(int l,int r,int a,int tel,int ext):Building(level,room,area)
+    {
+        telephone=tel;
+        extinguisher=ext;
+    }
+    void show()
+    {
+        cout&lt;&lt;level&lt;&lt;&quot; &quot;&lt;&lt;room&lt;&lt;&quot; &quot;&lt;&lt;area&lt;&lt;&quot; &quot;&lt;&lt;telephone&lt;&lt;&quot; &quot;&lt;&lt;extinguisher&lt;&lt;endl;
+    }
+};
+int main()
+{
+    Building *f;
+    Housing hos(5,4,140,2,2);
+    Office ofc(2,12,500,12,2);
+    f=&amp;hos;
+    f-&gt;show();
+    f=&amp;ofc;
+    f-&gt;show();
+    return 0;
+}
+</code></pre>
+<p>我的输出结果为何是异常值？</p>
+<pre><code>4249689 0 0 2 2
+1 0 -1 12 2
+</code></pre>
+<p>在你的代码中，出现异常值的原因是在派生类的构造函数中，你错误地使用了基类的成员变量 <code>level</code>、<code>room</code> 和 <code>area</code>。在构造函数的初始化列表中，你应该使用派生类自身的成员变量来初始化基类的成员变量。</p>
+<p>修复这个问题的方法是，将派生类的构造函数中的初始化列表修改为使用派生类的成员变量进行初始化。以下是修改后的代码：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+class Building
+{
+protected:
+    int level, room, area;
+public:
+    Building(int l, int r, int a)
+    {
+        level = l;
+        room = r;
+        area = a;
+    }
+    virtual void show() = 0;
+};
+
+class Housing : public Building
+{
+private:
+    int livingroom, bathroom;
+public:
+    Housing(int l, int r, int a, int living, int bath) : Building(l, r, a) // 使用派生类的成员变量来初始化基类的成员变量
+    {
+        livingroom = living;
+        bathroom = bath;
+    }
+    void show()
+    {
+        cout &lt;&lt; level &lt;&lt; &quot; &quot; &lt;&lt; room &lt;&lt; &quot; &quot; &lt;&lt; area &lt;&lt; &quot; &quot; &lt;&lt; livingroom &lt;&lt; &quot; &quot; &lt;&lt; bathroom &lt;&lt; endl;
+    }
+};
+
+class Office : public Building
+{
+private:
+    int telephone, extinguisher;
+public:
+    Office(int l, int r, int a, int tel, int ext) : Building(l, r, a) // 使用派生类的成员变量来初始化基类的成员变量
+    {
+        telephone = tel;
+        extinguisher = ext;
+    }
+    void show()
+    {
+        cout &lt;&lt; level &lt;&lt; &quot; &quot; &lt;&lt; room &lt;&lt; &quot; &quot; &lt;&lt; area &lt;&lt; &quot; &quot; &lt;&lt; telephone &lt;&lt; &quot; &quot; &lt;&lt; extinguisher &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Building* f;
+    Housing hos(5, 4, 140, 2, 2);
+    Office ofc(2, 12, 500, 12, 2);
+    f = &amp;hos;
+    f-&gt;show();
+    f = &amp;ofc;
+    f-&gt;show();
+    return 0;
+}
+</code></pre>
+<p>这样修改后，输出结果应该是正确的：</p>
+<pre><code>5 4 140 2 2
+2 12 500 12 2
+</code></pre>
+<h2 id="33基类person和派生类student重载输出运算符"><a class="header" href="#33基类person和派生类student重载输出运算符">33基类Person和派生类Student、重载输出运算符</a></h2>
+<p>自己写的错误代码：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Person
+{
+private:
+    string code,name;
+    char sex;
+public:
+    void input()
+    {
+        cout&lt;&lt;&quot;Input code name sex: &quot;;
+        cin&gt;&gt;code&gt;&gt;name&gt;&gt;sex;
+    }
+    void output()
+    {
+        cout&lt;&lt;code&lt;&lt;&quot; &quot;&lt;&lt;name&lt;&lt;&quot; &quot;&lt;&lt;sex;
+    }
+};
+class Student:public Person
+{
+private:
+    int score;
+public:
+    void input()
+    {
+        input();
+        cout&lt;&lt;&quot;input the score: &quot;;
+        cin&gt;&gt;score;
+    }
+    void output()
+    {
+        output();
+        cout&lt;&lt;score&lt;&lt;endl;
+    }
+
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os,Student s)
+    {
+        os&lt;&lt;s.code&lt;&lt;&quot; &quot;&lt;&lt;s.name&lt;&lt;&quot; &quot;&lt;&lt;s.sex&lt;&lt;&quot; &quot;&lt;&lt;s.score;
+        return os;
+    }
+};
+
+int main()
+{
+    Student s1,s2;
+    s1.input();
+    s2.input();
+    cout&lt;&lt;s1&lt;&lt;s2;
+    return 0;
+}
+</code></pre>
+<p>根据答案修正的代码如下：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Person
+{
+private:
+    string code,name;
+    char sex;
+public:
+    void input()
+    {
+        cout&lt;&lt;&quot;Input code name sex: &quot;;
+        cin&gt;&gt;code&gt;&gt;name&gt;&gt;sex;
+    }
+    void output()
+    {
+        cout&lt;&lt;code&lt;&lt;&quot; &quot;&lt;&lt;name&lt;&lt;&quot; &quot;&lt;&lt;sex;
+    }
+};
+class Student:public Person
+{
+private:
+    int score;
+public:
+    void input()
+    {
+        Person::input();
+        cout&lt;&lt;&quot;input the score: &quot;;
+        cin&gt;&gt;score;
+    }
+
+    friend ostream&amp; operator&lt;&lt;(ostream&amp; os,Student s)
+    {
+        s.output();
+        os&lt;&lt;&quot; &quot;&lt;&lt;s.score&lt;&lt;endl;
+        return os;
+    }
+};
+
+int main()
+{
+    Student s1,s2;
+    s1.input();
+    s2.input();
+    cout&lt;&lt;s1&lt;&lt;s2;
+    return 0;
+}
+</code></pre>
+<pre><code>Input code name sex: 101 zhang f
+input the score: 90
+Input code name sex: 103 yuan m
+input the score: 89
+101 zhang f 90
+103 yuan m 89
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="运算符重载"><a class="header" href="#运算符重载">运算符重载</a></h1>
 <ul>
