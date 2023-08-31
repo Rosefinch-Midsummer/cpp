@@ -178,6 +178,16 @@
 <li><a href="#%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90%E6%B1%82%E5%8A%A9gpt">密码分析（求助GPT）</a></li>
 </ul>
 </li>
+<li><a href="#82%E7%BB%93%E6%9E%84%E4%BD%93-%E4%B8%AD%E7%AD%89">8.2结构体-&gt;中等</a>
+<ul>
+<li><a href="#%E8%80%83%E8%AF%95%E6%8E%92%E5%90%8D%E6%B1%82%E5%8A%A9gpt">考试排名（求助GPT）</a></li>
+<li><a href="#%E9%80%89%E5%A4%AB%E5%A9%BF">选夫婿</a></li>
+<li><a href="#%E6%91%A9%E6%89%98%E8%BD%A6">摩托车</a></li>
+<li><a href="#%E9%95%BF%E6%96%B9%E5%BD%A2%E6%8E%92%E5%BA%8F">长方形排序</a></li>
+<li><a href="#%E6%8C%89%E5%87%BA%E7%94%9F%E6%97%A5%E6%9C%9F%E6%8E%92%E5%BA%8F">按出生日期排序</a></li>
+<li><a href="#%E5%A4%9A%E7%BA%A7%E6%8E%92%E5%BA%8F">多级排序</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="81结构体-简单"><a class="header" href="#81结构体-简单">8.1结构体-&gt;简单</a></h2>
 <h3 id="选票统计求助gpt"><a class="header" href="#选票统计求助gpt">选票统计（求助GPT）</a></h3>
@@ -996,6 +1006,661 @@ int main() {
 <p><code>analyzePassword</code> 函数用于分析密码字符串并输出结果。它首先创建一个大小为 26 的 <code>charFreqs</code> 向量，用于保存每个字母的频度。然后遍历密码字符串的每个字符，如果是英文字母，则将其转换为大写字母，并更新对应字母的频度。最后，使用 <code>std::sort</code> 函数对 <code>charFreqs</code> 向量进行排序，然后循环输出每个字母的频度。</p>
 <p>在 <code>main</code> 函数中，我们使用 <code>std::getline</code> 逐行读取输入字符串，并调用 <code>analyzePassword</code> 函数进行分析和输出。为了在每组输入数据之间输出空行，我们使用一个 <code>first</code> 标志来判断是否为第一组数据。</p>
 <p>请尝试运行上述代码，并输入相应的测试数据，检查输出是否与预期结果匹配。</p>
+<h2 id="82结构体-中等"><a class="header" href="#82结构体-中等">8.2结构体-&gt;中等</a></h2>
+<h3 id="考试排名求助gpt"><a class="header" href="#考试排名求助gpt">考试排名（求助GPT）</a></h3>
+<p>问题描述 :</p>
+<p>C++编程考试使用的实时提交系统，具有即时获得成绩排名的特点。它的功能是怎么实现的呢？</p>
+<p>我们做好了题目的解答，提交之后，要么“AC”，要么错误，不管怎样错法，总是给你记上一笔，表明你曾经有过一次错误提交，因而当你一旦提交该题“AC”后，就要与你算一算帐了，总共该题错误提交了几回。虽然你在题数上，大步地跃上了一个台阶，但是在耗时上要摊上你共花去的时间。特别是，曾经有过的错误提交，每次都要摊上一定的单位时间分。这样一来，你在做出的题数上，可能领先别人很多，但是，在做出同样题数的人群中，你可能会在耗时上处于排名的劣势。</p>
+<p>例如：某次考试一共8题（A，B，C，D，E，F，G，H），每个人做的题都在对应的题号下有个数量标记，负数表示该学生在该题上有过的错误提交次数，但到现在还没有AC；正数表示AC所耗的时间，如果正数a跟上一对括号，里面有个整数b，那就表示该学生提交该题AC了，耗去了时间a，同时，曾经错误提交了b次（如果b为0则没有括号及b），因此对于下述输入数据：</p>
+<p><img src="http://acm.hdu.edu.cn/data/images/C45-1005-1.bmp" alt="" /></p>
+<p>若每次错误提交的罚分为20分，即每错误提交一次，在总耗时时增加20分钟，则其排名从高到低应该是这样的：</p>
+<pre><code>Josephus 5 376  
+John 4 284  
+Alice 4 352  
+Smith 3 167  
+Bob 2 325  
+Bush 0 0
+</code></pre>
+<p>输入说明 :</p>
+<p>输入数据的第一行是考试题数n（1≤n≤12）以及单位罚分数m（10≤m≤20），每行数据描述一个学生的用户名（不多于10个字符的字串）以及对所有n道题的答题现状，其描述采用问题描述中的数量标记的格式，见上面的表格，提交次数总是小于100，AC所耗时间总是小于1000。</p>
+<p>学生数小于100。</p>
+<p>输出说明 :</p>
+<p>将这些学生的考试现状，输出一个实时排名。实时排名显然先按AC题数的多少排，多的在前，再按时间分的多少排，少的在前，如果凑巧前两者都相等，则按名字的字典序排，小的在前。每个学生占一行，输出名字（10个字符宽，左对齐），做出的题数（2个字符宽，右对齐）和时间分（4个字符宽，右对齐）。除上面所描述的为了对齐输出的空格外，名字、题数和时间分相互之间有一个空格。</p>
+<p>输入范例 :</p>
+<pre><code>8 20 
+Smith -1 -16 8 0 0 120 39 0 
+John 116 -2 11 0 0 82 55(1) 0 
+Josephus 72(3) 126 10 -3 0 47 21(2) -2 
+Bush 0 -1 -8 0 0 0 0 0 
+Alice -2 67(2) 13 -1 0 133 79(1) -1 
+Bob 0 0 57(5) 0 0 168 -7 0
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>Josephus    5  376
+John        4  284
+Alice       4  352
+Smith       3  167
+Bob         2  325
+Bush        0    0
+</code></pre>
+<p>你可以使用C++的STL库中的<code>vector</code>和<code>sort</code>函数来解决这个问题。首先，定义一个结构体<code>Student</code>，用来保存每个学生的名字、解答的问题数量和他们消耗的时间，然后根据这些信息对学生进行排序。</p>
+<p>以下是一个可能的解决方案：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// 定义一个结构体，用来保存学生的信息
+struct Student {
+    string name;
+    int solved;
+    int time;
+
+    // 重载小于运算符，用于排序
+    bool operator &lt; (const Student&amp; s) const {
+        if (solved != s.solved) {
+            return solved &gt; s.solved;
+        } else if (time != s.time) {
+            return time &lt; s.time;
+        } else {
+            return name &lt; s.name;
+        }
+    }
+};
+
+int main() {
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;Student&gt; students;
+
+    // 读取学生的信息
+    string line;
+    getline(cin, line); // 跳过第一行
+    while (getline(cin, line)) {
+        Student student;
+        student.time = 0;
+        student.solved = 0;
+        int pos = line.find(' ');
+        student.name = line.substr(0, pos);
+        line = line.substr(pos + 1);
+        for (int i = 0; i &lt; n; i++) {
+            pos = line.find(' ');
+            string problem = pos == string::npos ? line : line.substr(0, pos);
+            line = line.substr(pos + 1);
+            if (problem[0] == '0') continue;
+            if (problem[0] != '-') {
+                int wrong = 0;
+                pos = problem.find('(');
+                if (pos != string::npos) {
+                    wrong = stoi(problem.substr(pos + 1, problem.find(')') - pos - 1));
+                    problem = problem.substr(0, pos);
+                }
+                student.time += stoi(problem) + wrong * m;
+                student.solved++;
+            }
+        }
+        students.push_back(student);
+    }
+
+    // 对学生的信息进行排序
+    sort(students.begin(), students.end());
+
+    // 输出学生的排名
+    for (const Student&amp; student : students)
+    {
+        cout &lt;&lt; left &lt;&lt; setw(10) &lt;&lt; student.name&lt;&lt;&quot; &quot;&lt;&lt; right &lt;&lt; setw(2) &lt;&lt; student.solved&lt;&lt;&quot; &quot; &lt;&lt; setw(4) &lt;&lt; student.time &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<p>这个程序首先读取题目数量<code>n</code>和罚分<code>m</code>。然后，它读取每个学生的信息，包括他们的名字、他们解答的问题信息，并计算他们解答了多少问题以及总共消耗了多少时间。然后，它将这些信息保存在一个<code>Student</code>结构体的向量中。</p>
+<p>之后，这个程序对这个向量进行排序。排序首先按照解答的问题数量进行，如果解答的问题数量一样，那么就按照消耗的时间进行，如果消耗的时间也一样，那么就按照名字的字典序进行。</p>
+<p>最后，这个程序输出学生的排名，包括他们的名字、解答的问题数量和消耗的时间。</p>
+<h3 id="选夫婿"><a class="header" href="#选夫婿">选夫婿</a></h3>
+<p>问题描述 :</p>
+<p>倾国倾城的大家闺秀潘小姐要选夫婿啦！武林中各门各派，武林外各大户人家，闻讯纷纷前来，强势围观。前来参与竞选的男生藏龙卧虎，高手云集，才子遍布，帅哥纷纭，更不乏富二代，官二代，可谓声势空前。</p>
+<p>每个人参与竞选的帅哥除了进行一段激情洋溢的求婚演讲以外，还要报上自己姓名、身高和体重，以及个人简历。最后再进行文武选拔，最后夺魁者方能得到潘小姐的芳心。</p>
+<p>潘小姐不爱名利，只看人，第一关就是身高和体重要合格，即必须在其要求的范围内，否则直接排除在外，不允许参加下一轮的选拔。</p>
+<p>潘小姐把首轮根据身高体重进行选拔的任务交给了你，请输出晋级第二轮的选手信息。</p>
+<p>输入说明 :</p>
+<p>潘小姐给你了所有报名男生的信息。</p>
+<p>输入数据的第一行是一个正整数N(0 &lt; N &lt; 1000)。</p>
+<p>然后N行数据，每行包含三部分，用空格隔开。</p>
+<p>第一部分是报名者的姓名name(长度小于20的字符串)，然后是整数身高h（0 &lt; h &lt; 300），第三部分是整数体重w (0 &lt; w &lt; 200)。</p>
+<p>最后一行是四个整数a,b,c,d.表示身高的合格范围是<code>[a,b]</code>,体重的合格范围是<code>[c,d]</code>（0 &lt; a &lt; b &lt; 300, 0 &lt; c &lt; d &lt; 200）。</p>
+<p>输出说明 :</p>
+<p>你需要把<strong>合格的</strong>男生信息按照身高从矮到高输出，格式跟输入一样，也是每行三个信息，中间用一个空格隔开，如果身高相同则按体重从轻到重输出，若没有合格人选则输出“No”（不包括引号）。</p>
+<p>输入范例 :</p>
+<pre><code>8
+wudalang 70 40
+ximenqing 180 70
+likui 160 150
+yanqing 175 69
+luzhishen 180 100
+wusong 180 75
+xiaoquan 30 20
+sunerniang 169 60
+175 190 60 90
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>yanqing 175 69
+ximenqing 180 70
+wusong 180 75
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct man
+{
+    string name;
+    int h;
+    int w;
+};
+bool cmp(const man&amp; m1,const man&amp; m2)
+{
+    if(m1.h!=m2.h) return m1.h&lt;m2.h;
+    if(m1.w!=m2.w) return m1.w&lt;m2.w;
+}
+int main()
+{
+    int N;
+    cin&gt;&gt;N;
+    man candidates[N];
+    for(int i=0;i&lt;N;i++)
+    {
+        cin&gt;&gt;candidates[i].name&gt;&gt;candidates[i].h&gt;&gt;candidates[i].w;
+    }
+    int hsmall,htall,wheavy,wlight;
+    cin&gt;&gt;hsmall&gt;&gt;htall&gt;&gt;wlight&gt;&gt;wheavy;
+    vector&lt;man&gt; selected;
+    for(int i=0;i&lt;N;i++)
+    {
+        if(candidates[i].h&gt;=hsmall&amp;&amp;candidates[i].h&lt;=htall&amp;&amp;candidates[i].w&lt;=wheavy&amp;&amp;candidates[i].w&gt;=wlight)
+            selected.push_back(candidates[i]);
+    }
+    sort(selected.begin(),selected.end(),cmp);
+    if(selected.size()==0)
+        cout&lt;&lt;&quot;No&quot;&lt;&lt;endl;
+    else
+    {
+        for(int i=0;i&lt;selected.size();i++)
+        {
+            cout&lt;&lt;selected[i].name&lt;&lt;&quot; &quot;&lt;&lt;selected[i].h&lt;&lt;&quot; &quot;&lt;&lt;selected[i].w&lt;&lt;endl;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="摩托车"><a class="header" href="#摩托车">摩托车</a></h3>
+<p>问题描述 :</p>
+<p>明明是一家摩托车厂的老板，他的厂为了迎合市场中不同消费者的需求，会生产不同型号的摩托车，这为明明的厂带来了不小的收益。有一次，一位大客户来到明明的厂洽谈生意，他需要采购一批型号各不相同的摩托车，然后他把需要的摩托车的型号告诉了明明，接着明明就需要在他所生产的摩托车中寻找到型号匹配的，如果有则卖给那个客户，如果没有则只能对客户说抱歉了。明明忙了一个上午，终于把那个客户需要的摩托车全部配齐了，然后成功的谈成了这笔生意。 事后，明明发现了一个问题，如果每个客户来，都需要这样忙一个上午，才能够知道自己生产的摩托车能否满足客户的需要，这样的工作效率实在太低了，更有可能损失很多客户，这样对工厂未来的发展也是很不利的。</p>
+<p>于是明明找到了你，你是一名程序设计专家，明明希望你能够帮他写一个程序，程序中记录了他工厂生产的所有摩托车的数据，然后当有客户拿着摩托车的订单来洽谈生意时，只要在这个程序中输入摩托车的型号数据，程序就能够查询出工厂是否生产这类的摩托车，这样就能提高明明工厂的工作效率，有助于工厂进一步发展。</p>
+<p>摩托车需要记录的数据有以下一些：</p>
+<p>摩托车的型号，摩托车的颜色和摩托车马达的类型。</p>
+<p>例如，客户需要的摩托车型号如下：</p>
+<p>摩托车型号</p>
+<p>a1</p>
+<p>a2</p>
+<p>明明拥有的摩托车类型如下：</p>
+<p>摩托车型号 摩托车颜色 摩托车马达型号</p>
+<p>a1                   yellow              r1</p>
+<p>a3                     red                 r3</p>
+<p>a4                    blue                 r4</p>
+<p>从中可以看出，明明的工厂只有a1这个型号的摩托车。</p>
+<p>明明的问题可以归结为：写一个程序，程序中输入客户需要的摩托车型号和明明工厂拥有的摩托车的型号。在记录明明工厂的摩托车时，还要记录摩托车的颜色和摩托车马达的类型。程序要判断明明工厂拥有的摩托车是否能满足客户的需要。</p>
+<p>输入说明 :</p>
+<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据有多行，测试数据的第一行有两个整数n（0&lt;n&lt;21）、m（0&lt;m&lt;100），分别表示客户需要的摩托车的型号的数量和明明工厂拥有的摩托车的型号的数量。接下来的n行，表示客户所需要的摩托车型号，再接下来的m行，表示明明工厂拥有的摩托车型号，另外还包括摩托车的颜色和马达类型。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
+<p>输出说明 :</p>
+<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果为一行或多行数据，这些数据表示明明工厂可以满足客户需要的摩托车的型号、颜色和马达型号，这三个数据之间用一个空格隔开。如果有多行，则输出时按照摩托车型号升序排列输出。</p>
+<p>如果明明工厂没有一种型号的摩托车可以满足客户的需要，则输出“Not found!”，不包括双引号。详细格式请参考输出样例。每组运算结果与其后一组运算结果之间没有任何空行，第一组运算结果前面以及最后一组运算结果后面也都没有任何空行。 注：通常，显示屏为标准输出设备。</p>
+<p>输入范例 :</p>
+<pre><code>3 5
+a1
+a2
+a3
+b1 blue r1
+c1 red r2
+d1 blue r3
+a1 green r2
+a2 yellow r1
+1 1
+a1
+b1 blue r1
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>a1 green r2
+a2 yellow r1
+Not found!
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct motorcycle
+{
+    string type;
+    string color;
+    string motor;
+};
+bool cmp(const motorcycle&amp; m1,const motorcycle&amp; m2)
+{
+    if(m1.type!=m2.type) return m1.type&lt;m2.type;
+}
+int main()
+{
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+        string array[n];
+        motorcycle Mill[m];
+        for(int i=0;i&lt;n;i++)
+        {
+            cin&gt;&gt;array[i];
+        }
+        for(int i=0;i&lt;m;i++)
+        {
+            cin&gt;&gt;Mill[i].type&gt;&gt;Mill[i].color&gt;&gt;Mill[i].motor;
+        }
+        vector&lt;motorcycle&gt; selected;
+        for(int i=0;i&lt;n;i++)
+        {
+            for(int j=0;j&lt;m;j++)
+            {
+                if(array[i]==Mill[j].type)
+                    selected.push_back(Mill[j]);
+            }
+        }
+        sort(selected.begin(),selected.end(),cmp);
+        if(selected.size()==0)
+            cout&lt;&lt;&quot;Not found!&quot;&lt;&lt;endl;
+        else
+        {
+            for(int i=0;i&lt;selected.size();i++)
+            {
+                cout&lt;&lt;selected[i].type&lt;&lt;&quot; &quot;&lt;&lt;selected[i].color&lt;&lt;&quot; &quot;&lt;&lt;selected[i].motor&lt;&lt;endl;
+            }
+        }
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="长方形排序"><a class="header" href="#长方形排序">长方形排序</a></h3>
+<p>问题描述 :</p>
+<p>现在有很多长方形，每个长方形有自己的编号，这个编号可以重复。每个长方形的长、宽、编号都是正整数。现在要求按照以下方式排序（<strong>所有****排序规则是从小到大</strong>）：</p>
+<p>1.     按照编号从小到大排序；</p>
+<p>2.     对于编号相等的长方形，按照长方形的长从小到大排序；</p>
+<p>3.     对于编号和长都相同的长方形，按照长方形的宽从小到大排序；</p>
+<p>4.     如果编号、长和宽都相同，就只保留一个长方形用于排序，删除多余的长方形。最后将排好序的长方形按照指定格式输出。</p>
+<p>输入说明 :</p>
+<p>1.     第一行有一个整数n，0 &lt; n &lt; 10000，表示接下来有n组测试数据；</p>
+<p>2.     每一组第一行有一个整数m，0 &lt; m &lt; 1000，表示有m个长方形；</p>
+<p>3.     接下来的m行，每一行有三个数，每个数用空格分隔，第一个数表示长方形的编号，第二个和第三个数值大的表示长方形的长、数值小的表示长方形的宽，相等说明这是一个正方形。</p>
+<p>4.     长、宽和编号都小于10000。</p>
+<p>输出说明 :</p>
+<p>对每组输入数据输出按要求排好序的长方形的编号、长、宽。编号、长、宽用空格分隔，每个长方形的编号、长、宽占一行。n组测试数据的输出结果之间空一行。</p>
+<p>输入范例 :</p>
+<pre><code>2
+8
+1 1 1
+1 1 1
+1 1 2
+1 2 1
+1 2 2
+2 1 1
+2 1 2
+2 2 1
+3
+9 1 5
+9 5 1
+1 5 1
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>1 1 1
+1 2 1
+1 2 2
+2 1 1
+2 2 1
+
+1 5 1
+9 5 1
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct rectangle {
+    int id;
+    int length;
+    int width;
+};
+
+bool cmp(const rectangle&amp; r1, const rectangle&amp; r2) {
+    if (r1.id != r2.id)
+        return r1.id &lt; r2.id;
+    if (r1.length != r2.length)
+        return r1.length &lt; r2.length;
+    if (r1.width != r2.width)
+        return r1.width &lt; r2.width;
+    return false; // 返回 false 表示相等
+}
+
+
+
+int main()
+{
+    int n,m;
+    cin&gt;&gt;n;
+    while(n--)
+    {
+        cin&gt;&gt;m;
+        vector&lt;rectangle&gt; recs(m);
+        for(int i=0;i&lt;m;i++)
+        {
+            cin&gt;&gt;recs[i].id&gt;&gt;recs[i].length&gt;&gt;recs[i].width;
+        }
+
+        sort(recs.begin(),recs.end(),cmp);
+        recs.erase(unique(recs.begin(),recs.end()),recs.end());
+        if(recs.size()==0)
+            cout&lt;&lt;&quot;Not found!&quot;&lt;&lt;endl;
+        else
+        {
+            for(int i=0;i&lt;recs.size();i++)
+            {
+                cout&lt;&lt;recs[i].id&lt;&lt;&quot; &quot;&lt;&lt;recs[i].length&lt;&lt;&quot; &quot;&lt;&lt;recs[i].width&lt;&lt;endl;
+            }
+        }
+    }
+
+    return 0;
+}
+
+</code></pre>
+<p>上面的程序报错<code>C:\TDM-GCC-64\lib\gcc\x86_64-w64-mingw32\5.1.0\include\c++\bits\predefined_ops.h|87|error: no match for 'operator==' (operand types are 'rectangle' and 'rectangle')</code></p>
+<p>这个错误是由于在使用 <code>unique</code> 函数时，它默认使用了 <code>operator==</code> 来判断元素是否相等，但是你的 <code>rectangle</code> 结构体没有定义相应的相等比较运算符。</p>
+<p>为了解决这个问题，你需要在 <code>rectangle</code> 结构体中定义一个相等比较运算符，以告诉程序如何比较两个矩形对象是否相等。</p>
+<p>以下是修改后的代码，添加了 <code>operator==</code> 的定义：</p>
+<pre><code class="language-cpp">struct rectangle {
+    int id;
+    int length;
+    int width;
+
+    bool operator==(const rectangle&amp; other) const {
+        return id == other.id &amp;&amp; length == other.length &amp;&amp; width == other.width;
+    }
+};
+</code></pre>
+<p>在这个修改后的代码中，我们通过重载 <code>operator==</code> 来定义了矩形对象之间的相等比较运算。在这个比较运算符中，我们比较了矩形的 <code>id</code>、<code>length</code> 和 <code>width</code> 是否都相等，如果都相等则返回 <code>true</code>，表示两个矩形对象相等。</p>
+<p>通过添加这个相等比较运算符后，你的程序应该不再报错，并能够正确运行。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct rectangle {
+    int id;
+    int length;
+    int width;
+
+    bool operator==(const rectangle&amp; other) const {
+        return id == other.id &amp;&amp; length == other.length &amp;&amp; width == other.width;
+    }
+};
+
+bool cmp(const rectangle&amp; r1, const rectangle&amp; r2) {
+    if (r1.id != r2.id)
+        return r1.id &lt; r2.id;
+    if (r1.length != r2.length)
+        return r1.length &lt; r2.length;
+    if (r1.width != r2.width)
+        return r1.width &lt; r2.width;
+    return false; // 返回 false 表示相等
+}
+
+
+
+int main()
+{
+    bool isFirst=false;
+    int n,m;
+    cin&gt;&gt;n;
+    while(n--)
+    {
+        cin&gt;&gt;m;
+        if(isFirst)
+            cout&lt;&lt;endl;
+        else
+            isFirst=true;
+        vector&lt;rectangle&gt; recs(m);
+        for(int i=0;i&lt;m;i++)
+        {
+            int l=0,w=0;
+
+            cin&gt;&gt;recs[i].id&gt;&gt;l&gt;&gt;w;
+
+            if(l&gt;w)
+            {
+                recs[i].length=l;
+                recs[i].width=w;
+            }
+            else
+            {
+                recs[i].length=w;
+                recs[i].width=l;
+            }
+
+        }
+
+        sort(recs.begin(),recs.end(),cmp);
+        recs.erase(unique(recs.begin(),recs.end()),recs.end());
+        if(recs.size()==0)
+            cout&lt;&lt;&quot;Not found!&quot;&lt;&lt;endl;
+        else
+        {
+            for(int i=0;i&lt;recs.size();i++)
+            {
+                cout&lt;&lt;recs[i].id&lt;&lt;&quot; &quot;&lt;&lt;recs[i].length&lt;&lt;&quot; &quot;&lt;&lt;recs[i].width&lt;&lt;endl;
+            }
+        }
+
+    }
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="按出生日期排序"><a class="header" href="#按出生日期排序">按出生日期排序</a></h3>
+<p>问题描述 :</p>
+<p>小明希望将自己的通讯录按好友的生日顺序排序，这样查看起来方便多了，也避免错过好友的生日。</p>
+<p>为了小明的美好愿望，你帮帮他吧。小明的好友信息包含姓名、出生日期。其中出生日期又包含年、月、日三部分信息。</p>
+<p>输入n个好友的信息，按生日的月份和日期升序输出所有好友信息。</p>
+<p>输入说明 :</p>
+<p>首先输入一个整数n(1&lt;=n&lt;=10)，表示好友人数，</p>
+<p>然后输入n行，每行包含一个好友的信息：姓名（不超过10位），以及三个整数，分别表示出生日期的年月日。</p>
+<p>各数据之间以空格分隔，姓名中不包含空格。</p>
+<p>输出说明 :</p>
+<p>按过生日的先后（月份和日期）输出所有好友的姓名和出生日期（没有两个好友同一天过生日），用空格隔开，出生日期的输出格式见输出样例。</p>
+<p>输入范例 :</p>
+<pre><code>4
+Zhangling 1985 2 4
+Wangliang 1985 12 11
+Fangfang 1983  6 1
+lingling 2000 3 4
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>Zhangling 1985-02-04
+lingling 2000-03-04
+Fangfang 1983-06-01
+Wangliang 1985-12-11
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct birthday
+{
+
+    string name;
+    int year,month,day;
+
+};
+
+bool cmp(const birthday&amp; b1, const birthday&amp; b2)
+{
+
+    if (b1.month != b2.month)
+        return b1.month &lt; b2.month;
+    if (b1.day != b2.day)
+        return b1.day &lt; b2.day;
+    return false; // 返回 false 表示相等
+}
+
+
+
+int main()
+{
+    int n;
+    cin&gt;&gt;n;
+
+    vector&lt;birthday&gt; births(n);
+        for(int i=0;i&lt;n;i++)
+        {
+            cin&gt;&gt;births[i].name&gt;&gt;births[i].year&gt;&gt;births[i].month&gt;&gt;births[i].day;
+        }
+
+        sort(births.begin(),births.end(),cmp);
+
+        if(births.size()==0)
+            cout&lt;&lt;&quot;Not found!&quot;&lt;&lt;endl;
+        else
+        {
+            for(int i=0;i&lt;births.size();i++)
+            {
+                cout&lt;&lt;births[i].name&lt;&lt;&quot; &quot;&lt;&lt;births[i].year&lt;&lt;&quot;-&quot;&lt;&lt;setw(2)&lt;&lt;setfill('0')&lt;&lt;births[i].month&lt;&lt;&quot;-&quot;&lt;&lt;setw(2)&lt;&lt;setfill('0')&lt;&lt;births[i].day&lt;&lt;endl;
+            }
+        }
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="多级排序"><a class="header" href="#多级排序">多级排序</a></h3>
+<p>问题描述 :</p>
+<p>本学期大家学习了C语言程序设计，现在需要你实现一个成绩排名系统。</p>
+<p>假设他们每个人都有三门课程，C语言程序设计、计算机导论和英语，要求把成绩好的同学放到前面。</p>
+<p>具体要求是先按个人的总成绩进行排名，如果某两个人的总分相同，则按他们的C语言程序设计成绩进行排名，如果总成绩和C语言程序设计成绩都相同时，则再按照他们的计算机导论成绩进行排名（输入的数据保证这两个人的计算机导论成绩不会再相同）。try to do it ^_^！</p>
+<p>输入说明 :</p>
+<p>输入多组数据。</p>
+<p>每组数据的第一行为学生的数目N（N&lt;=100），接下来的N行，每行输入一个学生的信息，包括：学生姓名（长度小于20）、C语言程序设计成绩（0到100的整数）、计算机导论成绩（0到100的整数）和英语成绩（0到100的整数）。</p>
+<p>每两个数据之间有一个空格，学生姓名中不包含空格。</p>
+<p>输出说明 :</p>
+<p>对于每组输入，输出按照成绩从高到低排序的姓名、总分、C语言程序设计、计算机导论和英语成绩序列，每个学生占一行。</p>
+<p>我们保证不会存在两个人总成绩和各门的成绩都分别相同的情况。</p>
+<p>两组输出数据之间有一个空行，第一组数据前面及最后一组数据后面无空行。</p>
+<p>输入范例 :</p>
+<pre><code>3
+Henry 98 95 90
+Marry 90 88 89
+Jhon 92 90 95
+3
+zhangsan 90 90 90 
+lisi 85 95 90
+wangwu 85 90 95
+</code></pre>
+<p>输出范例 :</p>
+<pre><code>Henry 283 98 95 90
+Jhon 277 92 90 95
+Marry 267 90 88 89
+
+zhangsan 270 90 90 90
+lisi 270 85 95 90
+wangwu 270 85 90 95
+</code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct student
+{
+
+    string name;
+    int c,intro,english;
+    int total;
+
+};
+
+bool cmp(const student&amp; s1, const student&amp; s2)
+{
+
+    if (s1.total != s2.total)
+        return s1.total &gt; s2.total;
+    if (s1.c != s2.c)
+        return s1.c &gt; s2.c;
+    if (s1.intro != s2.intro)
+        return s1.intro &gt; s2.intro;
+    return false; // 返回 false 表示相等
+}
+int main()
+{
+    bool isFirst=false;
+    int m;
+    while(cin&gt;&gt;m)
+    {
+        if(isFirst)
+            cout&lt;&lt;endl;
+        else
+            isFirst=true;
+        vector&lt;student&gt; stus(m);
+        for(int i=0;i&lt;m;i++)
+        {
+            cin&gt;&gt;stus[i].name;
+            stus[i].total=0;
+            cin&gt;&gt;stus[i].c;
+            stus[i].total+=stus[i].c;
+            cin&gt;&gt;stus[i].intro;
+            stus[i].total+=stus[i].intro;
+            cin&gt;&gt;stus[i].english;
+            stus[i].total+=stus[i].english;
+        }
+
+        sort(stus.begin(),stus.end(),cmp);
+
+        if(stus.size()==0)
+            cout&lt;&lt;&quot;Not found!&quot;&lt;&lt;endl;
+        else
+        {
+            for(int i=0;i&lt;stus.size();i++)
+            {
+                cout&lt;&lt;stus[i].name&lt;&lt;&quot; &quot;&lt;&lt;stus[i].total&lt;&lt;&quot; &quot;&lt;&lt;stus[i].c&lt;&lt;&quot; &quot;&lt;&lt;stus[i].intro&lt;&lt;&quot; &quot;&lt;&lt;stus[i].english&lt;&lt;endl;
+            }
+        }
+
+    }
+
+    return 0;
+}
+</code></pre>
 
                     </main>
 
