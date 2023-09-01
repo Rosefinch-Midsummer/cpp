@@ -2118,6 +2118,53 @@ int main()
 20
 </code></pre>
 <p>因此，这段程序的执行结果就是输出 <code>0</code> 和 <code>20</code>。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+   char ch='$';int i=1,j;
+   if(j=!ch&amp;&amp;i++) cout&lt;&lt;i;
+   else  cout&lt;&lt;i;
+
+   return 0;
+}
+</code></pre>
+<p>解释一下为什么输出1？</p>
+<p>在这个程序中，变量 <code>ch</code> 被赋值为 <code>$</code>，变量 <code>i</code> 被赋值为 1。然后，程序进入一个条件语句 <code>if</code>。</p>
+<p>在 <code>if</code> 语句的条件判断部分，有一个逻辑与运算符 <code>&amp;&amp;</code>。在逻辑与运算中，如果第一个操作数为假（即为 0），则不会对第二个操作数进行求值。</p>
+<p>在这个程序中，逻辑与运算的第一个操作数是 <code>!ch</code>。<code>!ch</code> 的结果是逻辑非运算符 <code>!</code> 对 <code>ch</code> 的取反，由于 <code>ch</code> 的值不为零（'$' 的 ASCII 值不为零），所以 <code>!ch</code> 的结果为 0。</p>
+<p>根据逻辑与运算的规则，如果第一个操作数为假，整个逻辑与表达式的结果已经确定为假，所以不会对第二个操作数进行求值。</p>
+<p>因此，在这个条件语句中，<code>j</code> 的值不会被赋值，而 <code>i++</code> 也不会执行。因此，<code>i</code> 的值仍然是初始值 1。</p>
+<p>接下来，程序执行 <code>else</code> 语句块中的代码，即输出 <code>i</code> 的值。由于 <code>i</code> 的值仍然是 1，所以程序输出结果为 <code>1</code>。</p>
+<p>因此，这段程序的输出结果是 <code>1</code>。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char ch='$';int i=1,j;
+   if(j!=ch&amp;&amp;i++) {cout&lt;&lt;i&lt;&lt;&quot;dashab&quot;;}
+   else  cout&lt;&lt;i;
+
+   return 0;
+}
+</code></pre>
+<p>将j=!ch改为j!=ch，这个程序输出2dashab</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   char ch='$';int i=0,j;
+   if(j!=ch&amp;&amp;i++) {cout&lt;&lt;i&lt;&lt;&quot;dashab&quot;;}
+   else  cout&lt;&lt;i;
+
+   return 0;
+}
+</code></pre>
+<p>把int i=1改为int i=0，程序输出结果为1。</p>
 <h2 id="if语句"><a class="header" href="#if语句">if语句</a></h2>
 <h3 id="if语句格式及对应流程图"><a class="header" href="#if语句格式及对应流程图">if语句格式及对应流程图</a></h3>
 <h3 id="选择结构的嵌套"><a class="header" href="#选择结构的嵌套">选择结构的嵌套</a></h3>
