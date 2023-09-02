@@ -174,7 +174,14 @@
 <li><a href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E5%AD%97%E7%AC%A6%E8%AE%A1%E6%95%B0">一维数组应用——字符计数</a></li>
 <li><a href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E5%B9%B3%E5%B9%B4%E6%9C%88%E4%BB%BD%E5%A4%A9%E6%95%B0fibonacci%E6%95%B0%E5%88%97">一维数组应用：平年月份天数、Fibonacci数列</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E8%B6%8A%E7%95%8C%E9%97%AE%E9%A2%98">数组下标越界问题</a></li>
-<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a></li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E8%B6%8A%E7%95%8C%E9%97%AE%E9%A2%98-1">数组下标越界问题</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E5%A5%87%E5%81%B6">字符“奇偶”</a></li>
+<li><a href="#sabi%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98"><code>s+=a[b[i++]]</code>执行顺序问题</a></li>
+<li><a href="#%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F%E8%B5%8B%E5%80%BC">聚合方式赋值</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="一维数组的定义和存储"><a class="header" href="#一维数组的定义和存储">一维数组的定义和存储</a></h2>
 <p>数组是保存一组同类元素的数据类型，它有两个特征：</p>
@@ -440,6 +447,34 @@ int main()
 <li>运行程序或单步执行观察变量变化情况可以看到，变量c和a的值因数组越界而被改变了</li>
 </ul>
 <h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<h3 id="数组下标越界问题-1"><a class="header" href="#数组下标越界问题-1">数组下标越界问题</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    int a[2]={0},i,j,k=2;
+    for(i=0;i&lt;k;i++)
+    for(j=0;j&lt;k;j++)
+        a[j]=a[i]+1;
+    cout&lt;&lt;a[i];
+    return 0;
+}
+</code></pre>
+<p>这段代码输出值为何是随机值？</p>
+<p>这段代码输出的值是随机值，原因是数组索引越界导致未定义行为。</p>
+<p>让我们逐步分析程序的执行过程：</p>
+<ol>
+<li>定义了一个整型数组 <code>a</code>，大小为 2，并初始化所有元素为 0。</li>
+<li>进入嵌套的 <code>for</code> 循环。外层循环控制变量 <code>i</code> 的范围是 0 到 <code>k-1</code>，其中 <code>k</code> 的值是 2。</li>
+<li>内层循环控制变量 <code>j</code> 的范围也是 0 到 <code>k-1</code>。</li>
+<li>在每次循环中，执行语句 <code>a[j] = a[i] + 1</code>，将 <code>a[i] + 1</code> 的值赋给 <code>a[j]</code>。</li>
+<li>由于外层循环的范围是 0 到 1，内层循环也是 0 到 1，总共会执行 4 次赋值语句。</li>
+<li>最后，程序执行 <code>cout&lt;&lt;a[i];</code> 输出 <code>a[i]</code> 的值。此时，<code>i</code> 的值已经超出了数组 <code>a</code> 的有效范围，导致访问了未定义的内存位置。</li>
+<li>访问未定义的内存位置会导致未定义行为，结果是不确定的，可能输出随机值。</li>
+<li>程序执行完毕，返回 0，结束程序。</li>
+</ol>
+<p>因此，由于数组索引越界访问了未定义的内存位置，这段代码输出的值是随机值。为了避免这种问题，应确保在访问数组元素时不超出有效范围。</p>
+<h3 id="字符奇偶"><a class="header" href="#字符奇偶">字符“奇偶”</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -467,6 +502,7 @@ int main()
 
 </code></pre>
 <p>输入abcde\n（回车）输出13</p>
+<h3 id="sabi执行顺序问题"><a class="header" href="#sabi执行顺序问题"><code>s+=a[b[i++]]</code>执行顺序问题</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -498,6 +534,20 @@ int main()
 16
 </code></pre>
 <p>输出结果表明<code>s+=a[b[i++]]</code>等价于<code>s+=a[b[i]];i++</code></p>
+<h3 id="聚合方式赋值"><a class="header" href="#聚合方式赋值">聚合方式赋值</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    int i,a[10]={1,2,3,4,0,3,2,1,2,3},c[5]={1};
+    for(i=0;i&lt;10;i++)
+        c[a[i]]++;
+    for(i=0;i&lt;5;i++) cout&lt;&lt;c[i]&lt;&lt;' ';
+    return 0;
+}
+</code></pre>
+<p>如果初始化表的长度短于要被初始化的数组元素数目，那么剩余元素被初始化为0如<code>int a[3] = {1}</code>数组中元素分别为<code>1,0,0</code></p>
+<p><code>c[5]={1,0,0,0,0};</code></p>
 
                     </main>
 
