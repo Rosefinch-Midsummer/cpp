@@ -173,9 +173,21 @@
 <li><a href="#do-while%E5%BE%AA%E7%8E%AF">do-while循环</a></li>
 <li><a href="#for%E5%BE%AA%E7%8E%AF">for循环</a></li>
 <li><a href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%B8%AD%E9%80%94%E9%80%80%E5%87%BA">循环的中途退出</a></li>
-<li><a href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%B5%8C%E5%A5%97">循环的嵌套</a></li>
-<li><a href="#%E5%BE%AA%E7%8E%AF%E5%AE%9E%E4%BE%8B">循环实例</a></li>
-<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%B5%8C%E5%A5%97%E6%89%93%E5%8D%B0%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8">循环的嵌套——打印九九乘法表</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E5%AE%9E%E4%BE%8B">循环实例</a>
+<ul>
+<li><a href="#%E8%AE%A1%E7%AE%97%E9%98%B6%E4%B9%98">计算阶乘</a></li>
+<li><a href="#%E6%B1%82%E7%BA%A7%E6%95%B0%E5%92%8C">求级数和</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="#%E6%8C%81%E7%BB%AD%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E7%9B%B4%E5%88%B0%E8%BE%93%E5%85%A5%E6%8D%A2%E8%A1%8C%E7%AC%A6">持续输入字符直到输入换行符</a></li>
+<li><a href="#%E7%89%B9%E6%AE%8A%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8Fint-a2%E5%92%8Cwhileabc%E5%BE%AA%E7%8E%AF">特殊赋值方式int a(2)和while(a&lt;b&lt;c)循环</a></li>
+<li><a href="#while%E5%BE%AA%E7%8E%AF%E5%8A%A0%E6%9E%84%E6%88%90%E6%AD%BB%E5%BE%AA%E7%8E%AF">while循环加;构成死循环</a></li>
+<li><a href="#continue%E8%AF%AD%E5%8F%A5break%E8%AF%AD%E5%8F%A5%E5%92%8Cfor%E5%BE%AA%E7%8E%AF">continue语句、break语句和for循环</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="引言"><a class="header" href="#引言">引言</a></h2>
 <h2 id="while循环"><a class="header" href="#while循环">while循环</a></h2>
@@ -224,6 +236,35 @@ int main()
 }while(条件);
 </code></pre>
 <p>do-while循环至少执行一次</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   int i=0,s=0;
+   do
+   {
+       if(i%2)
+       {
+           i++;
+           continue;
+       }
+       i++;
+       s+=i;
+       cout&lt;&lt;&quot;i=&quot;&lt;&lt;i&lt;&lt;&quot;,s=&quot;&lt;&lt;s&lt;&lt;endl;
+   }while(i&lt;7);
+   cout&lt;&lt;s&lt;&lt;endl;
+   return 0;
+}
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code>i=1,s=1
+i=3,s=4
+i=5,s=9
+i=7,s=16
+16
+</code></pre>
 <h2 id="for循环"><a class="header" href="#for循环">for循环</a></h2>
 <pre><code class="language-cpp">for(表达式1;表达式2;表达式3){
 	语句;
@@ -332,8 +373,7 @@ int main()
    return 0;
 }
 </code></pre>
-<h2 id="循环的嵌套"><a class="header" href="#循环的嵌套">循环的嵌套</a></h2>
-<p>打印九九乘法表</p>
+<h2 id="循环的嵌套打印九九乘法表"><a class="header" href="#循环的嵌套打印九九乘法表">循环的嵌套——打印九九乘法表</a></h2>
 <p>下三角</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -426,7 +466,8 @@ int main()
                                                                 9*9=81
 </code></pre>
 <h2 id="循环实例"><a class="header" href="#循环实例">循环实例</a></h2>
-<p>阶乘：计算并输出1!,2!,...,n!</p>
+<h3 id="计算阶乘"><a class="header" href="#计算阶乘">计算阶乘</a></h3>
+<p>计算并输出1!,2!,...,n!</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -445,7 +486,7 @@ int main()
    return 0;
 }
 </code></pre>
-<p>阶乘：计算并输出1!+2!+...+n!</p>
+<p>计算并输出1!+2!+...+n!</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -492,7 +533,7 @@ int main()
 }
 </code></pre>
 <p>用时3s</p>
-<p>求级数和</p>
+<h3 id="求级数和"><a class="header" href="#求级数和">求级数和</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -523,6 +564,7 @@ int main()
 <li>加哪些项？</li>
 </ul>
 <h2 id="测验"><a class="header" href="#测验">测验</a></h2>
+<h3 id="持续输入字符直到输入换行符"><a class="header" href="#持续输入字符直到输入换行符">持续输入字符直到输入换行符</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -551,6 +593,7 @@ int main()
 }
 </code></pre>
 <p>输入2473输出668977</p>
+<h3 id="特殊赋值方式int-a2和whileabc循环"><a class="header" href="#特殊赋值方式int-a2和whileabc循环">特殊赋值方式int a(2)和while(a&lt;b&lt;c)循环</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -573,6 +616,7 @@ int main()
 }
 </code></pre>
 <p>记录特殊赋值方式</p>
+<h3 id="while循环加构成死循环"><a class="header" href="#while循环加构成死循环">while循环加;构成死循环</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -581,12 +625,43 @@ int main()
 {
   int n=10;
   while(n);
-  {n--;cout&lt;&lt;n&lt;&lt;endl;
+  {
+     n--;cout&lt;&lt;n&lt;&lt;endl;
   }
    return 0;
 }
 </code></pre>
-<p>啥也不输出，循环次数应该为0。</p>
+<p>n=10，<code>while(n);</code>一直执行，无限循环，直到内存不足程序崩溃。</p>
+<h3 id="continue语句break语句和for循环"><a class="header" href="#continue语句break语句和for循环">continue语句、break语句和for循环</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+   for(int x(10);x&gt;0;x--)
+   {
+       if(x%4)
+       {
+           cout&lt;&lt;x--&lt;&lt;' ';
+           continue;
+       }
+       cout&lt;&lt;--x&lt;&lt;' ';
+   }
+   return 0;
+}
+</code></pre>
+<p>输出结果：10 7 6 3 2</p>
+<p>for循环的机制是这样的：我们发现，for括号里的内容被分号分为了3个部分，分别是A;B;C</p>
+<p>循环是这样按步骤进行下去的：</p>
+<p>for(A;B;C){循环体}</p>
+<p>1.在初次进入循环的时候，先执行代码A</p>
+<p>2.如果不是第一次进入循环，那么执行代码C计算并判断B条件是否满足。</p>
+<p>3.满足则执行循环体，不满足则立即跳出，去步骤6。</p>
+<p>4.执行循环体。如果有break语句，则直接跳出整个循环；如果有continue语句，则跳过循环体中剩余的代码，立即转向步骤2。</p>
+<p>5.循环体执行结束，返回步骤2。</p>
+<p>6.已经跳出循环体。</p>
+<p>for语句中的C部分代码，不能完全视为在循环体所有代码的最后，尤其是在有continue语句存在的情况下。</p>
 
                     </main>
 
