@@ -470,7 +470,7 @@ int main() {
 <p>下列码表含有全部 128 个 ASCII 十进制 <strong>(dec)</strong> 、八进制 <strong>(oct)</strong> 、十六进制 <strong>(hex)</strong> 及字符 <strong>(ch)</strong> 编码。</p>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody>
 <tr><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td></tr>
-<tr><td><code>0</code></td><td><code>0</code></td><td><code>00</code></td><td><code>**NUL**</code> (空)</td><td><code>32</code></td><td><code>40</code></td><td><code>20</code></td><td>(空格)</td><td><code>64</code></td><td><code>100</code></td><td><code>40</code></td><td><code>**@**</code></td><td><code>96</code></td><td><code>140</code></td><td><code>60</code></td><td><code>**`**</code></td><td></td><td></td><td></td></tr>
+<tr><td><code>0</code></td><td><code>0</code></td><td><code>00</code></td><td><code>**NUL**</code> (空)</td><td><code>32</code></td><td><code>40</code></td><td><code>20</code></td><td>(空格)</td><td><code>64</code></td><td><code>100</code></td><td><code>40</code></td><td><code>**@**</code></td><td><code>96</code></td><td><code>140</code></td><td><code>60</code></td><td><code>**</code>**`</td><td></td><td></td><td></td></tr>
 <tr><td><code>1</code></td><td><code>1</code></td><td><code>01</code></td><td><code>**SOH**</code> (标题开始)</td><td><code>33</code></td><td><code>41</code></td><td><code>21</code></td><td><code>**!**</code></td><td><code>65</code></td><td><code>101</code></td><td><code>41</code></td><td><code>**A**</code></td><td><code>97</code></td><td><code>141</code></td><td><code>61</code></td><td><code>**a**</code></td><td></td><td></td><td></td></tr>
 <tr><td><code>2</code></td><td><code>2</code></td><td><code>02</code></td><td><code>**STX**</code> (正文开始)</td><td><code>34</code></td><td><code>42</code></td><td><code>22</code></td><td><code>**&quot;**</code></td><td><code>66</code></td><td><code>102</code></td><td><code>42</code></td><td><code>**B**</code></td><td><code>98</code></td><td><code>142</code></td><td><code>62</code></td><td><code>**b**</code></td><td></td><td></td><td></td></tr>
 <tr><td><code>3</code></td><td><code>3</code></td><td><code>03</code></td><td><code>**ETX**</code> (正文结束)</td><td><code>35</code></td><td><code>43</code></td><td><code>23</code></td><td><code>**#**</code></td><td><code>67</code></td><td><code>103</code></td><td><code>43</code></td><td><code>**C**</code></td><td><code>99</code></td><td><code>143</code></td><td><code>63</code></td><td><code>**c**</code></td><td></td><td></td><td></td></tr>
@@ -539,9 +539,12 @@ int main() {
 <li>字符常量：用单引号包含的一个字符是字符型常量，只能包含一个字符</li>
 <li>字符串常量：&quot;A&quot;='A'+'\0'</li>
 <li>整型常量：
-1. 十进制
-2. 八进制：0作为八进制的前缀
-3. 十六进制：0x或0X作为十六进制的前缀</li>
+<ol>
+<li>十进制</li>
+<li>八进制：0作为八进制的前缀</li>
+<li>十六进制：0x或0X作为十六进制的前缀</li>
+</ol>
+</li>
 </ul>
 <p>**const常变量的值必须在声明时就进行初始化，且之后不可以再更改。**如<code>const double PI = 3.14;</code></p>
 <h2 id="算术表达式"><a class="header" href="#算术表达式">算术表达式</a></h2>
