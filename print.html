@@ -472,7 +472,7 @@ int main() {
 <p>下列码表含有全部 128 个 ASCII 十进制 <strong>(dec)</strong> 、八进制 <strong>(oct)</strong> 、十六进制 <strong>(hex)</strong> 及字符 <strong>(ch)</strong> 编码。</p>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody>
 <tr><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td><td></td><td><code>dec</code></td><td><code>oct</code></td><td><code>hex</code></td><td><code>ch</code></td></tr>
-<tr><td><code>0</code></td><td><code>0</code></td><td><code>00</code></td><td><code>**NUL**</code> (空)</td><td><code>32</code></td><td><code>40</code></td><td><code>20</code></td><td>(空格)</td><td><code>64</code></td><td><code>100</code></td><td><code>40</code></td><td><code>**@**</code></td><td><code>96</code></td><td><code>140</code></td><td><code>60</code></td><td><code>**</code>**`</td><td></td><td></td><td></td></tr>
+<tr><td><code>0</code></td><td><code>0</code></td><td><code>00</code></td><td><code>**NUL**</code> (空)</td><td><code>32</code></td><td><code>40</code></td><td><code>20</code></td><td>(空格)</td><td><code>64</code></td><td><code>100</code></td><td><code>40</code></td><td><code>**@**</code></td><td><code>96</code></td><td><code>140</code></td><td><code>60</code></td><td><code>**`**</code></td><td></td><td></td><td></td></tr>
 <tr><td><code>1</code></td><td><code>1</code></td><td><code>01</code></td><td><code>**SOH**</code> (标题开始)</td><td><code>33</code></td><td><code>41</code></td><td><code>21</code></td><td><code>**!**</code></td><td><code>65</code></td><td><code>101</code></td><td><code>41</code></td><td><code>**A**</code></td><td><code>97</code></td><td><code>141</code></td><td><code>61</code></td><td><code>**a**</code></td><td></td><td></td><td></td></tr>
 <tr><td><code>2</code></td><td><code>2</code></td><td><code>02</code></td><td><code>**STX**</code> (正文开始)</td><td><code>34</code></td><td><code>42</code></td><td><code>22</code></td><td><code>**&quot;**</code></td><td><code>66</code></td><td><code>102</code></td><td><code>42</code></td><td><code>**B**</code></td><td><code>98</code></td><td><code>142</code></td><td><code>62</code></td><td><code>**b**</code></td><td></td><td></td><td></td></tr>
 <tr><td><code>3</code></td><td><code>3</code></td><td><code>03</code></td><td><code>**ETX**</code> (正文结束)</td><td><code>35</code></td><td><code>43</code></td><td><code>23</code></td><td><code>**#**</code></td><td><code>67</code></td><td><code>103</code></td><td><code>43</code></td><td><code>**C**</code></td><td><code>99</code></td><td><code>143</code></td><td><code>63</code></td><td><code>**c**</code></td><td></td><td></td><td></td></tr>
@@ -541,12 +541,9 @@ int main() {
 <li>字符常量：用单引号包含的一个字符是字符型常量，只能包含一个字符</li>
 <li>字符串常量：&quot;A&quot;='A'+'\0'</li>
 <li>整型常量：
-<ol>
-<li>十进制</li>
-<li>八进制：0作为八进制的前缀</li>
-<li>十六进制：0x或0X作为十六进制的前缀</li>
-</ol>
-</li>
+1. 十进制
+2. 八进制：0作为八进制的前缀
+3. 十六进制：0x或0X作为十六进制的前缀</li>
 </ul>
 <p>**const常变量的值必须在声明时就进行初始化，且之后不可以再更改。**如<code>const double PI = 3.14;</code></p>
 <h2 id="算术表达式"><a class="header" href="#算术表达式">算术表达式</a></h2>
@@ -11207,7 +11204,14 @@ int main() {
 <li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA">字符串的输入输出</a></li>
 <li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BA%94%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E6%95%B0">字符串应用——统计单词数</a></li>
 <li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">字符串处理函数</a></li>
-<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E6%B5%8B%E9%AA%8C">测验</a></li>
+<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%BF%85%E9%A1%BB%E5%9C%A8%E5%A3%B0%E6%98%8E%E6%97%B6%E8%B5%8B%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96">字符数组必须在声明时赋值（初始化）</a></li>
+<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC%E9%97%AE%E9%A2%98">字符数组赋值问题</a></li>
+<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E4%B8%8D%E7%9B%B8%E5%90%8C">字符串长度和字符数组大小不相同</a></li>
+<li><a href="%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%90%86%E8%AE%BA.html#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2">判断是否是空字符串</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="字符串的存储和初始化"><a class="header" href="#字符串的存储和初始化">字符串的存储和初始化</a></h2>
 <h3 id="例1-输出一个已知的字符串"><a class="header" href="#例1-输出一个已知的字符串">例1 输出一个已知的字符串</a></h3>
@@ -11534,7 +11538,7 @@ England
 Japan
 </code></pre>
 <h2 id="测验-3"><a class="header" href="#测验-3">测验</a></h2>
-<p>字符数组必须在声明时赋值（初始化）</p>
+<h3 id="字符数组必须在声明时赋值初始化"><a class="header" href="#字符数组必须在声明时赋值初始化">字符数组必须在声明时赋值（初始化）</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 using namespace std;
@@ -11546,60 +11550,21 @@ int main() {
 }
 
 </code></pre>
-<p>赋值问题</p>
+<h3 id="字符数组赋值问题"><a class="header" href="#字符数组赋值问题">字符数组赋值问题</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 using namespace std;
 
 int main() {
 
-    //char a[3]=&quot;xyz&quot;;//E:\cpp\ClassDesign\main1.cpp|7|error: initializer-string for array of chars is too long [-fpermissive]|
-    //char a[5];a=&quot;uxyz&quot;;//E:\cpp\ClassDesign\main1.cpp|8|error: invalid array assignment|
-    //char a[][2]={{'x','y'},{'z','u'}};
-    char a[4]=&quot;xy&quot;,b[4];
-    b=a;//E:\cpp\ClassDesign\main1.cpp|11|error: invalid array assignment|
-    return 0;
-}
-</code></pre>
-<p><strong>字符串长度和字符数组大小不相同</strong></p>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-int main() {
-
-
-    char st[20]=&quot;hello\t\0\\&quot;;
-    cout&lt;&lt;strlen(st)&lt;&lt;&quot; &quot;&lt;&lt;sizeof(st);//6 20
-    return 0;
-}
-</code></pre>
-<p><strong>判断是否是空字符串</strong></p>
-<ul>
-<li>if(s=='\0')错误用法</li>
-<li>if(s[0]==0)</li>
-<li>if(strcmp(s, &quot;&quot;)==0)</li>
-<li>if(strlen(s)==0)</li>
-</ul>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-int main() {
-
-    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
-    int i;
-    for(i=0;i&lt;15;i++)
-        cout&lt;&lt;c[i];//I am a student.
-    cout&lt;&lt;&quot;\n&quot;;
-    cout&lt;&lt;c&lt;&lt;endl;
-    cout&lt;&lt; strcmp(c, &quot;&quot;)&lt;&lt;endl;//73
-    cout&lt;&lt; (strcmp(c, &quot;&quot;)==0)&lt;&lt;endl;//输出0不相等
-    cout&lt;&lt;(c[0]==0)&lt;&lt;endl;//输出0不相等
-    char s[]=&quot;&quot;;
-    cout&lt;&lt;(s=='\0')&lt;&lt;endl;//输出0不相等
-
-    cout&lt;&lt;(strlen(s)==0)&lt;&lt;endl;//输出1相等
+    //char a[3]=&quot;xyz&quot;;
+    //error: initializer-string for array of chars is too long [-fpermissive]
+    //char a[5];a=&quot;uxyz&quot;;
+    //error: invalid array assignment
+    char a[][2]={{'x','y'},{'z','u'}};
+    //正确
+    //char a[4]=&quot;xy&quot;,b[4];b=a;
+    //error: invalid array assignment
     return 0;
 }
 </code></pre>
@@ -11627,6 +11592,48 @@ int main() {
 <pre><code>student
 student 
 student u
+</code></pre>
+<h3 id="字符串长度和字符数组大小不相同"><a class="header" href="#字符串长度和字符数组大小不相同"><strong>字符串长度和字符数组大小不相同</strong></a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+
+    char st[20]=&quot;hello\t\0\\&quot;;
+    cout&lt;&lt;strlen(st)&lt;&lt;&quot; &quot;&lt;&lt;sizeof(st);//6 20
+    return 0;
+}
+</code></pre>
+<h3 id="判断是否是空字符串"><a class="header" href="#判断是否是空字符串"><strong>判断是否是空字符串</strong></a></h3>
+<ul>
+<li>if(s=='\0')错误用法</li>
+<li>if(s[0]==0)</li>
+<li>if(strcmp(s, &quot;&quot;)==0)</li>
+<li>if(strlen(s)==0)</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
+    int i;
+    for(i=0;i&lt;15;i++)
+        cout&lt;&lt;c[i];//I am a student.
+    cout&lt;&lt;&quot;\n&quot;;
+    cout&lt;&lt;c&lt;&lt;endl;
+    cout&lt;&lt; strcmp(c, &quot;&quot;)&lt;&lt;endl;//73
+    cout&lt;&lt; (strcmp(c, &quot;&quot;)==0)&lt;&lt;endl;//输出0不相等
+    cout&lt;&lt;(c[0]==0)&lt;&lt;endl;//输出0不相等
+    char s[]=&quot;&quot;;
+    cout&lt;&lt;(s=='\0')&lt;&lt;endl;//输出0不相等
+
+    cout&lt;&lt;(strlen(s)==0)&lt;&lt;endl;//输出1相等
+    return 0;
+}
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vector和string程序设计"><a class="header" href="#vector和string程序设计">vector和string程序设计</a></h1>
 <ul>

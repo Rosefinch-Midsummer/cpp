@@ -180,7 +180,14 @@
 <li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA">字符串的输入输出</a></li>
 <li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BA%94%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E6%95%B0">字符串应用——统计单词数</a></li>
 <li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">字符串处理函数</a></li>
-<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a></li>
+<li><a href="#%E6%B5%8B%E9%AA%8C">测验</a>
+<ul>
+<li><a href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%BF%85%E9%A1%BB%E5%9C%A8%E5%A3%B0%E6%98%8E%E6%97%B6%E8%B5%8B%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96">字符数组必须在声明时赋值（初始化）</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC%E9%97%AE%E9%A2%98">字符数组赋值问题</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E4%B8%8D%E7%9B%B8%E5%90%8C">字符串长度和字符数组大小不相同</a></li>
+<li><a href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2">判断是否是空字符串</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="字符串的存储和初始化"><a class="header" href="#字符串的存储和初始化">字符串的存储和初始化</a></h2>
 <h3 id="例1-输出一个已知的字符串"><a class="header" href="#例1-输出一个已知的字符串">例1 输出一个已知的字符串</a></h3>
@@ -507,7 +514,7 @@ England
 Japan
 </code></pre>
 <h2 id="测验"><a class="header" href="#测验">测验</a></h2>
-<p>字符数组必须在声明时赋值（初始化）</p>
+<h3 id="字符数组必须在声明时赋值初始化"><a class="header" href="#字符数组必须在声明时赋值初始化">字符数组必须在声明时赋值（初始化）</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 using namespace std;
@@ -519,60 +526,21 @@ int main() {
 }
 
 </code></pre>
-<p>赋值问题</p>
+<h3 id="字符数组赋值问题"><a class="header" href="#字符数组赋值问题">字符数组赋值问题</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
 using namespace std;
 
 int main() {
 
-    //char a[3]=&quot;xyz&quot;;//E:\cpp\ClassDesign\main1.cpp|7|error: initializer-string for array of chars is too long [-fpermissive]|
-    //char a[5];a=&quot;uxyz&quot;;//E:\cpp\ClassDesign\main1.cpp|8|error: invalid array assignment|
-    //char a[][2]={{'x','y'},{'z','u'}};
-    char a[4]=&quot;xy&quot;,b[4];
-    b=a;//E:\cpp\ClassDesign\main1.cpp|11|error: invalid array assignment|
-    return 0;
-}
-</code></pre>
-<p><strong>字符串长度和字符数组大小不相同</strong></p>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-int main() {
-
-
-    char st[20]=&quot;hello\t\0\\&quot;;
-    cout&lt;&lt;strlen(st)&lt;&lt;&quot; &quot;&lt;&lt;sizeof(st);//6 20
-    return 0;
-}
-</code></pre>
-<p><strong>判断是否是空字符串</strong></p>
-<ul>
-<li>if(s=='\0')错误用法</li>
-<li>if(s[0]==0)</li>
-<li>if(strcmp(s, &quot;&quot;)==0)</li>
-<li>if(strlen(s)==0)</li>
-</ul>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-using namespace std;
-
-int main() {
-
-    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
-    int i;
-    for(i=0;i&lt;15;i++)
-        cout&lt;&lt;c[i];//I am a student.
-    cout&lt;&lt;&quot;\n&quot;;
-    cout&lt;&lt;c&lt;&lt;endl;
-    cout&lt;&lt; strcmp(c, &quot;&quot;)&lt;&lt;endl;//73
-    cout&lt;&lt; (strcmp(c, &quot;&quot;)==0)&lt;&lt;endl;//输出0不相等
-    cout&lt;&lt;(c[0]==0)&lt;&lt;endl;//输出0不相等
-    char s[]=&quot;&quot;;
-    cout&lt;&lt;(s=='\0')&lt;&lt;endl;//输出0不相等
-
-    cout&lt;&lt;(strlen(s)==0)&lt;&lt;endl;//输出1相等
+    //char a[3]=&quot;xyz&quot;;
+    //error: initializer-string for array of chars is too long [-fpermissive]
+    //char a[5];a=&quot;uxyz&quot;;
+    //error: invalid array assignment
+    char a[][2]={{'x','y'},{'z','u'}};
+    //正确
+    //char a[4]=&quot;xy&quot;,b[4];b=a;
+    //error: invalid array assignment
     return 0;
 }
 </code></pre>
@@ -600,6 +568,48 @@ int main() {
 <pre><code>student
 student 
 student u
+</code></pre>
+<h3 id="字符串长度和字符数组大小不相同"><a class="header" href="#字符串长度和字符数组大小不相同"><strong>字符串长度和字符数组大小不相同</strong></a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+
+    char st[20]=&quot;hello\t\0\\&quot;;
+    cout&lt;&lt;strlen(st)&lt;&lt;&quot; &quot;&lt;&lt;sizeof(st);//6 20
+    return 0;
+}
+</code></pre>
+<h3 id="判断是否是空字符串"><a class="header" href="#判断是否是空字符串"><strong>判断是否是空字符串</strong></a></h3>
+<ul>
+<li>if(s=='\0')错误用法</li>
+<li>if(s[0]==0)</li>
+<li>if(strcmp(s, &quot;&quot;)==0)</li>
+<li>if(strlen(s)==0)</li>
+</ul>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main() {
+
+    char c[15]={'I',' ','a','m',' ','a',' ','s','t','u','d','e','n','t','.'};
+    int i;
+    for(i=0;i&lt;15;i++)
+        cout&lt;&lt;c[i];//I am a student.
+    cout&lt;&lt;&quot;\n&quot;;
+    cout&lt;&lt;c&lt;&lt;endl;
+    cout&lt;&lt; strcmp(c, &quot;&quot;)&lt;&lt;endl;//73
+    cout&lt;&lt; (strcmp(c, &quot;&quot;)==0)&lt;&lt;endl;//输出0不相等
+    cout&lt;&lt;(c[0]==0)&lt;&lt;endl;//输出0不相等
+    char s[]=&quot;&quot;;
+    cout&lt;&lt;(s=='\0')&lt;&lt;endl;//输出0不相等
+
+    cout&lt;&lt;(strlen(s)==0)&lt;&lt;endl;//输出1相等
+    return 0;
+}
 </code></pre>
 
                     </main>
