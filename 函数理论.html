@@ -188,7 +188,7 @@
 </li>
 <li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0">课后练习</a>
 <ul>
-<li><a href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B">函数返回值类型</a></li>
+<li><a href="#%E5%BD%A2%E5%8F%82%E7%9A%84%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">形参的自动类型转换</a></li>
 <li><a href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%8F%8A%E8%BE%93%E5%87%BA%E9%97%AE%E9%A2%98">函数调用及输出问题</a></li>
 </ul>
 </li>
@@ -550,7 +550,7 @@ int max(int a,int b)
 <li>是一条语句，以分号结束，只起一个声明作用</li>
 </ul>
 <h2 id="课后练习"><a class="header" href="#课后练习">课后练习</a></h2>
-<h3 id="函数返回值类型"><a class="header" href="#函数返回值类型">函数返回值类型</a></h3>
+<h3 id="形参的自动类型转换"><a class="header" href="#形参的自动类型转换">形参的自动类型转换</a></h3>
 <p><strong>决定C++语言中函数的返回值类型的是在定义该函数时所指定的数据类型</strong></p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -608,23 +608,32 @@ int main() {
 <ul>
 <li>在一个函数内部定义的变量（形参和{}内的定义）只在本函数范围内有效</li>
 <li>在复合语句{}内定义的变量只在本复合语句范围内有效</li>
-<li>在函数内部或复合语句内部定义的变量成为局部变量</li>
+<li>在函数内部或复合语句内部定义的变量称为局部变量</li>
 </ul>
 <p>特点：</p>
 <ul>
-<li>生存期是该语句块，进入语句块时获得内存，仅能由语句块内语句访问，退出语句块时释放内存，不再有效</li>
+<li>生存期：进入语句块时获得内存，仅能由语句块内语句访问，退出语句块时释放内存，不再有效</li>
 <li><strong>定义时不会自动初始化，除非程序员指定初值</strong></li>
-<li>并列语句块各自定义的同名变量互不干扰
-<ul>
+<li>并列语句块各自定义的同名变量互不干扰</li>
 <li>形参和实参可以相同</li>
 </ul>
-</li>
-</ul>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
-
 using namespace std;
 
+int main() {
 
+    for(int i=0;i&lt;6;i++)
+    {
+        cout&lt;&lt;&quot;baozi&quot;;
+    }
+    cout&lt;&lt;i&lt;&lt;endl;
+    //error: 'i' was not declared in this scope
+    return 0;
+}
+</code></pre>
+<p>局部变量i只在for语句内存在</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
 int p(int n)
 {
     cout&lt;&lt;n&lt;&lt;endl;
@@ -735,7 +744,7 @@ int main() {
 <li>静态变量：static</li>
 </ul>
 <h3 id="自动变量auto"><a class="header" href="#自动变量auto">自动变量：auto</a></h3>
-<p>在函数内或块内定义的变量缺省存储类型是atuo如<code>auto int i;</code>等价于<code>int i;</code></p>
+<p>在函数内或块内定义的变量默认存储类型是atuo如<code>auto int i;</code>等价于<code>int i;</code></p>
 <ul>
 <li>当进入块（函数体或复合语句）时，系统为自动变量分配空间。当退出块时，系统释放分配给自动变量的值。因此，自动变量的值就消失了。</li>
 <li>当再次进入该块时，系统重新分配空间。</li>
@@ -1352,7 +1361,7 @@ int main() {
     return 0;
 }
 </code></pre>
-<p><strong>函数若先声明再使用则默认形参放在声明部分。</strong></p>
+<p><strong>函数若先声明再定义则默认形参放在声明部分。</strong></p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -1373,7 +1382,7 @@ int max(int x,int y)
 }
 
 </code></pre>
-<p>缺一个或两个参数都会报错<code>error: no matching function for call to 'max(int)'</code></p>
+<p>比如下面这样缺一个或两个参数都会报错<code>error: no matching function for call to 'max(int)'</code></p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -1415,21 +1424,46 @@ int max(int x=6,int y=13)
 
 </code></pre>
 <h3 id="常见注意事项"><a class="header" href="#常见注意事项">常见注意事项</a></h3>
-<p>（1）若函数具有多个形参，则缺省形参值必须<code>从右向左</code>连续地定义，并且在一个缺省形参值的右边不能有未指定缺省值的参数。这是C++语言在函数调用时参数是自右向左入栈这一约定所决定的。</p>
+<p>（1）若函数具有多个形参，则默认形参值必须<code>从右向左</code>连续地定义，并且在一个默认形参值的右边不能有未指定默认值的参数。这是C++语言在函数调用时参数是自右向左入栈这一约定所决定的。</p>
 <p>例如：</p>
 <pre><code class="language-cpp">int f(int a, float b=5.0, char c='.',int d=10)//正确
 int f(int a=1, float b=5.0, char c='.',int d)//错误，d未给值
 int f(int a=1, float b, char c='.',int d=10)//错误，b未给值
 </code></pre>
-<p>（2）在调用一个函数时，如果<code>省去</code>了某个实参，则<code>直到最右端的实参都要省去</code>（当然，与它们对应的形参都要有缺省值）。</p>
+<p>（2）在调用一个函数时，如果<code>省去</code>了某个实参，则<code>直到最右端的实参都要省去</code>（当然，与它们对应的形参都要有默认值）。</p>
 <p>例如：</p>
 <pre><code class="language-cpp">//假如有如下声明
 int f(int a, float b=5.0, char c='.',int d=10);
 //采用下面的调用形式是错误的
 f(8,,,4)//语法错误
 </code></pre>
-<p>（3）缺省参数值的说明必须出现在函数调用<code>之前</code>，这就是说，如果存在函数原型，则形参的缺省值应在函数原型中指定；否则应该在函数定义中指定。另外，若函数原型中已给出了形参的缺省值，则在函数定义中<code>不得重复指定</code>，即使所指定的缺省值完全相同也不行。</p>
-<p>（4）在同一个作用域，一旦定义了缺省形参值，就不能再定义它了，即使相同也不行。</p>
+<p>下面这种形式算对的：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+char f(int a,int b=80,char c='0')
+{
+    cout&lt;&lt;&quot;success&quot;&lt;&lt;endl;
+    b++;
+    cout&lt;&lt;b&lt;&lt;endl;
+    return c;
+}
+int main() {
+
+    f(10,'*');
+    cout&lt;&lt;f(10,'*');
+    return 0;
+}
+</code></pre>
+<p>这个程序输出结果如下：</p>
+<pre><code>success
+43
+success
+43
+0
+</code></pre>
+<p>输出结果说明：传进去的两个值分别付给a,b，c是默认值</p>
+<p>（3）默认参数值的说明必须出现在函数调用<code>之前</code>，这就是说，如果存在函数原型，则形参的默认值应在函数原型中指定；否则应该在函数定义中指定。另外，若函数原型中已给出了形参的默认值，则在函数定义中<code>不得重复指定</code>，即使所指定的默认值完全相同也不行。</p>
+<p>（4）在同一个作用域，一旦定义了默认形参值，就不能再定义它了，即使相同也不行。</p>
 <p>例如：</p>
 <pre><code class="language-cpp">int f(int a, float b=5.0, char c='.',int d=10);
 ...
@@ -1441,16 +1475,16 @@ int f(int a, float b=5.0, char c='.',int d=10);
 void main(void)
 {
 	int f(int a=3, float b=2.0, char c='n',int d=20);
-	cout&lt;&lt;f()&lt;&lt;endl;//f函数使用局部缺省参数值
+	cout&lt;&lt;f()&lt;&lt;endl;//f函数使用局部默认参数值
 }
 </code></pre>
-<p>（6）对形参缺省值的指定可以是<code>初始化表达式</code>，甚至可以包含函数调用。</p>
+<p>（6）对形参默认值的指定可以是<code>初始化表达式</code>，甚至可以包含函数调用。</p>
 <p>例如：</p>
-<pre><code class="language-cpp">//d参数的缺省值是函数调用
+<pre><code class="language-cpp">//d参数的默认值是函数调用
 int f(int a, float b =5.0, char c='.', int d=sub(20,15));
 </code></pre>
-<p>（7）在函数原型给出了形参的缺省值时，<code>形参名可以省略</code>。</p>
-<pre><code class="language-cpp">//d参数的缺省值是函数调用
+<p>（7）在函数原型给出形参的默认值时，<code>形参名可以省略</code>。</p>
+<pre><code class="language-cpp">//d参数的默认值是函数调用
 int f(int , float =5.0, char ='.', int =sub(20,15));
 </code></pre>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
@@ -1522,7 +1556,7 @@ int main() {
 <p>注意：</p>
 <ul>
 <li>如果仅仅在声明函数原型时加上关键字inline，并不能达到内联效果</li>
-<li>内联函数的<code>定义必须出现在对该函数地调用之前</code>，因为编译器在对函数调用语句进行替换时，必须事先知道替换该语句的代码是什么。这也是仅在声明函数原型时加上关键字inline，并不一定能到达到内联效果的原因。</li>
+<li>内联函数的<code>定义必须出现在对该函数的调用之前</code>，因为编译器在对函数调用语句进行替换时，必须事先知道替换该语句的代码是什么。这也是仅在声明函数原型时加上关键字inline，并不一定能到达到内联效果的原因。</li>
 <li>不符合以上要求时，编译程序不会出错，只是编译系统会将该函数当作普通函数。</li>
 <li>如果函数体内的代码比较长或函数体内出现循环，不宜用内联。</li>
 </ul>
