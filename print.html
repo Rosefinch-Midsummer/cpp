@@ -19850,7 +19850,7 @@ int main() {
 <ul>
 <li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#81%E7%BB%93%E6%9E%84%E4%BD%93-%E7%AE%80%E5%8D%95">8.1结构体-&gt;简单</a>
 <ul>
-<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E9%80%89%E7%A5%A8%E7%BB%9F%E8%AE%A1%E6%B1%82%E5%8A%A9gpt">选票统计（求助GPT）</a></li>
+<li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E9%80%89%E7%A5%A8%E7%BB%9F%E8%AE%A1%E6%B1%82%E5%8A%A9gpt%E5%B7%B2%E9%87%8D%E5%86%99">选票统计（求助GPT&amp;已重写）</a></li>
 <li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%B9%B3%E5%9D%87%E5%88%86%E6%B1%82%E5%8A%A9gpt">平均分（求助GPT）</a></li>
 <li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF">学生信息</a></li>
 <li><a href="%E7%BB%93%E6%9E%84%E4%BD%93%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%82%E9%AB%98%E4%BA%8E%E7%AD%89%E4%BA%8E%E5%B9%B3%E5%9D%87%E7%BC%96%E5%86%99%E5%87%BD%E6%95%B0%E6%B1%82%E5%8A%A9gpt">求高于（等于）平均(编写函数)（求助GPT）</a></li>
@@ -19870,7 +19870,7 @@ int main() {
 </li>
 </ul>
 <h2 id="81结构体-简单"><a class="header" href="#81结构体-简单">8.1结构体-&gt;简单</a></h2>
-<h3 id="选票统计求助gpt"><a class="header" href="#选票统计求助gpt">选票统计（求助GPT）</a></h3>
+<h3 id="选票统计求助gpt已重写"><a class="header" href="#选票统计求助gpt已重写">选票统计（求助GPT&amp;已重写）</a></h3>
 <p>问题描述 :</p>
 <p>学生会主席投票选举工作正在举行。本次投票将采用电脑统计选票的方式，当投票选举正式开始后，同学们将排队一 一走到电脑前，投上自己神圣的一票：在电脑前输入一个姓名，然后输入回车表示确认。 </p>
 <p>投票结束后显示得票最高的同学姓名，该同学将当选为新一届学生会主席。 </p>
@@ -19946,6 +19946,56 @@ int main() {
 <p>这段代码使用了<code>map</code>容器来统计每个学生的得票数，其中自定义了一个比较函数<code>caseInsensitiveCompare</code>，用于忽略字符串的大小写进行比较。通过循环读取输入的学生姓名，并使用<code>map</code>容器进行计数。最后，遍历<code>map</code>容器找到得票最高的学生，输出其姓名和得票数。</p>
 <p>在最后输出获胜者的姓名之前，我们使用<code>transform</code>函数将姓名转换为小写字母格式。这样就满足了输出要求。</p>
 <p>请注意，该代码假设输入是通过标准输入流逐行输入的，并以空行结束输入。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Vote
+{
+    string name;
+    int count;
+};
+bool cmp(const Vote&amp;v1,const Vote&amp;v2)
+{
+    if(v1.count!=v2.count)
+        return v1.count&gt;v2.count;
+}
+int main()
+{
+    string s;
+    vector&lt;Vote&gt; votes;
+    while(cin&gt;&gt;s)
+    {
+        for(int i=0;i&lt;s.length();i++)
+        {
+            if(s[i]&lt;='Z'&amp;&amp;s[i]&gt;='A')
+                s[i]+=32;
+        }
+        /*transform(s.begin(),s.end(),s.begin(),::tolower);*/
+        bool IsExist=false;
+        for(int i=0;i&lt;votes.size();i++)
+        {
+            if(s==votes[i].name)
+            {
+                votes[i].count++;
+                IsExist=true;
+            }
+        }
+        if(!IsExist)
+        {
+            Vote v;
+            v.count=1;
+            v.name=s;
+            votes.push_back(v);
+        }
+    }
+    sort(votes.begin(),votes.end(),cmp);
+    cout&lt;&lt;votes[0].name&lt;&lt;&quot; &quot;&lt;&lt;votes[0].count&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
 <h3 id="平均分求助gpt"><a class="header" href="#平均分求助gpt">平均分（求助GPT）</a></h3>
 <p>问题描述 :</p>
 <p>从键盘依次输入每个学生的学号、姓名、出生年月、3门课的成绩，计算并打印出每个学生的平均成绩。</p>
