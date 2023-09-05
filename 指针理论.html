@@ -204,9 +204,10 @@
 <li><a href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0-1">课后练习</a>
 <ul>
 <li><a href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E6%9B%B4%E6%94%B9%E6%95%B0%E7%BB%84%E7%89%B9%E5%AE%9A%E5%85%83%E7%B4%A0%E5%80%BC">通过指针更改数组特定元素值</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84a%E7%9A%84a1%E5%92%8Ca%E5%8F%8A%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E8%BE%93%E5%87%BA%E5%86%85%E5%AE%B9%E5%88%A4%E6%96%AD">数组a[]的a+1和a++及字符数组输出内容判断</a></li>
 <li><a href="#%E8%BE%93%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9F%90%E5%87%A0%E4%B8%AA%E5%AD%97%E7%AC%A6">输出二维字符串中某个字符串的某几个字符</a></li>
 <li><a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%80%BC%E7%9A%84%E6%94%B9%E5%8F%98%E9%80%A0%E6%88%90%E6%B7%B7%E4%B9%B1%E6%B1%82%E5%8A%A9gpt">全局变量值的改变造成混乱（求助GPT）</a></li>
-<li><a href="#%E4%BA%A4%E6%8D%A2%E6%8C%87%E9%92%88%E5%92%8C%E4%BA%A4%E6%8D%A2%E5%9C%B0%E5%9D%80">交换指针和交换地址</a></li>
+<li><a href="#5%E7%A7%8D%E4%BA%A4%E6%8D%A2%E5%87%BD%E6%95%B0%E5%BA%94%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB%E9%87%8D%E9%9A%BE%E7%82%B9">5种交换函数应用的区别（重难点）</a></li>
 </ul>
 </li>
 <li><a href="#%E5%BC%95%E7%94%A8%E4%B8%8E%E5%87%BD%E6%95%B0">引用与函数</a>
@@ -230,6 +231,7 @@
 <li><a href="#%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88">函数指针</a></li>
 <li><a href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%80%BC%E4%BA%92%E6%8D%A2">指针和值互换</a></li>
 <li><a href="#%E5%BC%95%E7%94%A8%E4%BA%A4%E6%8D%A2">引用交换</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9Eint%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0">返回int&amp;类型的函数</a></li>
 </ul>
 </li>
 </ul>
@@ -1010,6 +1012,77 @@ int main()
 }
 
 </code></pre>
+<h3 id="数组a的a1和a及字符数组输出内容判断"><a class="header" href="#数组a的a1和a及字符数组输出内容判断">数组a[]的a+1和a++及字符数组输出内容判断</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+void amove(char a[])
+{
+    a+=1;//用a++;也行
+    *a='m';
+    cout&lt;&lt;a&lt;&lt;' ';
+}
+
+int main()
+{
+    char arr[]=&quot;Hello&quot;;
+    amove(arr);
+    cout&lt;&lt;arr;
+    return 0;
+
+}
+</code></pre>
+<p>程序输出结果为<code>mllo Hmllo</code></p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main()
+{
+    char *p;
+    p=new char[20];
+    strcpy(p,&quot;welcome&quot;);
+    cout&lt;&lt;*(p+5)&lt;&lt;endl;
+    p+=5;
+    cout&lt;&lt;p&lt;&lt;endl;
+    delete [] p;
+    return 0;
+
+}
+</code></pre>
+<p>这个程序为什么不正常地终止了？</p>
+<pre><code>m
+me
+
+Process returned -1073740940 (0xC0000374)   execution time : 2.613 s
+Press any key to continue.
+</code></pre>
+<p>这个程序在终止之前发生了运行时错误，导致不正常的终止。让我解释一下为什么会出现这个问题。</p>
+<p>在程序的开始部分，你使用 <code>new</code> 运算符为指针 <code>p</code> 动态分配了一个长度为 20 的字符数组。然后，你使用 <code>strcpy</code> 函数将字符串 <code>&quot;welcome&quot;</code> 复制到了这个动态分配的内存中。</p>
+<p>接着，你输出了 <code>*(p+5)</code>，它对应于指针 <code>p</code> 偏移 5 个位置的字符。在这种情况下，它输出了字符 <code>'m'</code>。</p>
+<p>然后，你执行了 <code>p += 5</code>，将指针 <code>p</code> 偏移了 5 个位置，指向了字符串中的第 6 个字符 <code>'e'</code>。</p>
+<p>接下来，你尝试输出 <code>p</code>，这是一个指向字符串的指针。然而，这里存在一个问题。在对指针 <code>p</code> 进行偏移之后，它指向了字符串中的非法内存位置，因为指针 <code>p</code> 最初是通过 <code>new</code> 运算符动态分配的内存的起始位置。当你输出 <code>p</code> 时，它会尝试打印从指针位置开始的字符序列，直到遇到空字符 <code>'\0'</code>。但由于 <code>p</code> 指向了非法内存位置，程序就会产生未定义行为。</p>
+<p>这种未定义行为可能导致程序崩溃、输出垃圾值、引发段错误等不可预测的结果。在你的情况下，程序可能因为访问非法内存位置而导致不正常的终止。</p>
+<p>为了修复这个问题，你需要在删除指针 <code>p</code> 之前，将其重新指向最初分配的内存位置。以下是修改后的代码：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main()
+{
+    char* p;
+    p = new char[20];
+    strcpy(p, &quot;welcome&quot;);
+    cout &lt;&lt; *(p + 5) &lt;&lt; endl;
+    p += 5;
+    cout &lt;&lt; p &lt;&lt; endl;
+    p -= 5; // 将指针 p 恢复到最初分配的内存位置
+    delete[] p;
+    return 0;
+}
+</code></pre>
+<p>通过添加 <code>p -= 5;</code> 语句，将指针 <code>p</code> 恢复到最初分配的内存位置，然后再进行删除操作。这样可以确保你在删除指针 <code>p</code> 时操作的是正确的内存位置。</p>
+<p>希望这次的解答能够帮助到你，如果还有其他问题，请随时提问。</p>
 <h3 id="输出二维字符串中某个字符串的某几个字符"><a class="header" href="#输出二维字符串中某个字符串的某几个字符">输出二维字符串中某个字符串的某几个字符</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstring&gt;
@@ -1074,7 +1147,7 @@ int main()
 </ol>
 <p>因此，最终输出结果为 10 和 28。我之前的回答有误，对此给您带来的困惑深感抱歉。</p>
 <p>这个代码的主要目的是展示了如何在函数中修改全局变量，并且展示了如何使用指针和数组。但是需要注意的是，这个代码的风格并不是很好，因为全局变量的使用增加了代码的复杂性，而且在主函数中也没有初始化所有的数组元素，这可能会引发未定义的行为。</p>
-<h3 id="交换指针和交换地址"><a class="header" href="#交换指针和交换地址">交换指针和交换地址</a></h3>
+<h3 id="5种交换函数应用的区别重难点"><a class="header" href="#5种交换函数应用的区别重难点">5种交换函数应用的区别（重难点）</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
@@ -1098,11 +1171,37 @@ int main()
 
 }
 </code></pre>
+<p>这个程序中swap2函数的参数为指针还是地址有什么区别？为什么结果显示没交换？</p>
+<p>在这个程序中，<code>swap2</code> 函数的参数是指针，而不是地址。尽管在函数调用时传递的是地址，但在函数内部，这些地址被存储在指针变量中。指针是用来存储内存地址的变量，它们允许我们对存储在该地址中的数据进行间接访问。</p>
+<p>在 <code>swap2</code> 函数中，使用指针进行交换操作。然而，函数内部的指针交换并不会影响到主函数中的指针 <code>p</code> 和 <code>q</code>，因为指针在函数中是按值传递的。这意味着函数内部对指针的改变不会反映到主函数中，因为函数中的指针是副本，而不是原始指针本身。</p>
+<p>因此，当你在 <code>main</code> 函数中输出 <code>*p</code> 和 <code>*q</code> 的值时，它们仍然是原始指针 <code>p</code> 和 <code>q</code> 所指向的变量 <code>x</code> 和 <code>y</code> 的值，而没有发生交换。</p>
+<p>如果你想在函数中实现指针交换，并且在主函数中看到交换的效果，你可以将 <code>swap2</code> 函数修改为接受指向指针的指针，这样可以通过间接修改指针的值来实现交换。以下是修改后的代码：</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 using namespace std;
 
+void swap2(int **c0, int **c1)
+{
+    int *t;
+    t = *c0;
+    *c0 = *c1;
+    *c1 = t;
+}
 
+int main()
+{
+    int x = 3, y = 5, *p = &amp;x, *q = &amp;y;
+    swap2(&amp;p, &amp;q);
+    cout &lt;&lt; *p &lt;&lt; *q &lt;&lt; endl; // 5, 3
+    swap2(&amp;p, &amp;q);
+    cout &lt;&lt; *p &lt;&lt; *q &lt;&lt; endl; // 3, 5
+    return 0;
+}
+</code></pre>
+<p>在修改后的代码中，<code>swap2</code> 函数的参数类型变为 <code>int**</code>，即指向指针的指针。通过传递指针的地址，并在函数内部使用间接操作符 <code>*</code> 访问和修改指针的值，实现了指针的交换。这样，在主函数中输出 <code>*p</code> 和 <code>*q</code> 的值时，你会看到它们已经发生了交换。</p>
+<p>希望这次的解答能够帮助到你。如果还有其他问题，请随时提问。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
 void swap1(int *c0, int *c1)
 {
     int t;
@@ -1110,7 +1209,6 @@ void swap1(int *c0, int *c1)
     *c0=*c1;
     *c1=t;
 }
-
 void swap2(int *c0, int *c1)
 {
     int *t;
@@ -1118,15 +1216,41 @@ void swap2(int *c0, int *c1)
     c0=c1;
     c1=t;
 }
-
+void swap3(int x,int y)
+{
+    int t=x;
+    x=y;
+    y=t;
+}
+void swap4(int &amp;x,int &amp;y)
+{
+    int t=x;
+    x=y;
+    y=t;
+}
 int main()
 {
     int a[]={1,3,5},b[]={2,4,6};
-    swap1(a,a+1);
+    swap1(a,a+1);//等价于swap1(&amp;a[0],&amp;a[1]);
     swap2(&amp;b[0],&amp;b[1]);
     cout&lt;&lt;a[0]&lt;&lt;a[1]&lt;&lt;b[0]&lt;&lt;b[1];//3124
+    swap3(b[0],b[1]);
+    cout&lt;&lt;b[0]&lt;&lt;b[1]&lt;&lt;endl;//24
+    swap4(b[0],b[1]);
+    cout&lt;&lt;b[0]&lt;&lt;b[1]&lt;&lt;endl;//42
     return 0;
 
+}
+</code></pre>
+<p>C++自带的swap()函数，通过引用实现</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int a=1,b=2;
+    swap(a,b);
+    cout&lt;&lt;a&lt;&lt;&quot; &quot;&lt;&lt;b&lt;&lt;endl;//2 1
 }
 </code></pre>
 <h2 id="引用与函数"><a class="header" href="#引用与函数">引用与函数</a></h2>
@@ -2126,6 +2250,46 @@ int main()
 然后，将变量<code>m</code>的值赋给变量<code>n</code>，将变量<code>n</code>的值赋给变量<code>m</code>，以完成两个变量值的交换。
 最后，函数执行完毕，交换操作对原始变量产生了影响。</p>
 <p>通过调用这个函数并传递两个整数变量的引用作为参数，可以实现对这两个变量值进行交换的操作，而无需借助额外的中间变量。</p>
+<h3 id="返回int类型的函数"><a class="header" href="#返回int类型的函数">返回int&amp;类型的函数</a></h3>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+int &amp;min(int a[],int n)
+{
+    int t=0;
+    for(int i=1;i&lt;n;i++)
+    {
+        if(a[i]&lt;a[t])
+            t=i;
+    }
+    return a[t];
+}
+int main()
+{
+    int arr[]={11,13,9,7},c=0,i;
+    for(i=0;i&lt;3;i++)
+    {
+        switch(min(arr+i,4-i)++%2)
+        {
+            default:cout&lt;&lt;&quot;default&quot;&lt;&lt;c&lt;&lt;endl;c+=i;
+            case 0:c+=2;cout&lt;&lt;&quot;here0&quot;&lt;&lt;c&lt;&lt;endl;break;
+            case 1:c++;cout&lt;&lt;&quot;here1&quot;&lt;&lt;c&lt;&lt;endl;break;
+        }
+    }
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+    for(i=0;i&lt;4;i++)
+    {
+        cout&lt;&lt;arr[i];
+        if(i&lt;3) cout&lt;&lt;' ';
+    }
+    return 0;
+}
+</code></pre>
+<pre><code>here11
+here03
+here14
+4 11 13 10 9
+</code></pre>
 
                     </main>
 
