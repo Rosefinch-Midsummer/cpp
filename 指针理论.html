@@ -1746,6 +1746,32 @@ p=isdigit;
 a=p(n,k)
 //这两种引用方式效果等同
 </code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int isdigit(int n,int k)
+{
+    return 0;
+}
+int main()
+{
+
+    int (*p)(int,int);
+    p=isdigit;
+    cout&lt;&lt;(*p)(1,1)&lt;&lt;endl;//0
+    cout&lt;&lt;p(1,1)&lt;&lt;endl;//0
+    return 0;
+}
+</code></pre>
+<p>上面这个程序中使用(*p)(1,1)和p(1,1)有没有区别？</p>
+<p>在上面的程序中，使用 <code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 是等效的，两者没有区别。</p>
+<p>在这个程序中，<code>p</code> 是一个函数指针，指向一个具有两个整数参数并返回整数的函数 <code>isdigit</code>。你将 <code>isdigit</code> 函数的地址赋值给了函数指针 <code>p</code>。</p>
+<p>然后，你通过 <code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 来调用函数。这两种调用方式是等价的。</p>
+<p><code>(*p)(1,1)</code> 的写法是传统的通过函数指针来调用函数的方式，将 <code>p</code> 视为指针，使用 <code>*</code> 运算符解引用函数指针，并传递参数 <code>1</code> 和 <code>1</code> 给被解引用的函数。</p>
+<p>而 <code>p(1,1)</code> 的写法是 C++ 中对函数指针的简化写法，直接使用函数指针名称 <code>p</code>，并传递参数 <code>1</code> 和 <code>1</code> 给该函数指针。</p>
+<p>无论使用哪种方式，都将调用函数 <code>isdigit(1, 1)</code>，并输出结果 <code>0</code>。</p>
+<p>因此，在这个特定的程序中，<code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 是等效的，没有区别。</p>
+<p>希望这个解答对你有帮助。如果还有其他问题，请随时提问。</p>
 <p><strong>函数指针及其应用——编写通用性更强的函数</strong></p>
 <p>典例1：计算函数的定积分</p>
 <p>典例2：既能按照升序排序，又能按照降序排序</p>
@@ -1890,7 +1916,7 @@ void SelectionSort(int a[],int n,int (*compare)(int a,int b))
         k=i;
         for(j=i+1;j&lt;n;j++)
         {
-            if((compare)(a[j],a[k]))//调用函数指针compare指向的函数
+            if((compare)(a[j],a[k]))//调用函数指针compare指向的函数，这里加不加星号都行
                 k=j;
         }
         if(k!=i)

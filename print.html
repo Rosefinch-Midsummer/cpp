@@ -18740,6 +18740,32 @@ p=isdigit;
 a=p(n,k)
 //这两种引用方式效果等同
 </code></pre>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int isdigit(int n,int k)
+{
+    return 0;
+}
+int main()
+{
+
+    int (*p)(int,int);
+    p=isdigit;
+    cout&lt;&lt;(*p)(1,1)&lt;&lt;endl;//0
+    cout&lt;&lt;p(1,1)&lt;&lt;endl;//0
+    return 0;
+}
+</code></pre>
+<p>上面这个程序中使用(*p)(1,1)和p(1,1)有没有区别？</p>
+<p>在上面的程序中，使用 <code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 是等效的，两者没有区别。</p>
+<p>在这个程序中，<code>p</code> 是一个函数指针，指向一个具有两个整数参数并返回整数的函数 <code>isdigit</code>。你将 <code>isdigit</code> 函数的地址赋值给了函数指针 <code>p</code>。</p>
+<p>然后，你通过 <code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 来调用函数。这两种调用方式是等价的。</p>
+<p><code>(*p)(1,1)</code> 的写法是传统的通过函数指针来调用函数的方式，将 <code>p</code> 视为指针，使用 <code>*</code> 运算符解引用函数指针，并传递参数 <code>1</code> 和 <code>1</code> 给被解引用的函数。</p>
+<p>而 <code>p(1,1)</code> 的写法是 C++ 中对函数指针的简化写法，直接使用函数指针名称 <code>p</code>，并传递参数 <code>1</code> 和 <code>1</code> 给该函数指针。</p>
+<p>无论使用哪种方式，都将调用函数 <code>isdigit(1, 1)</code>，并输出结果 <code>0</code>。</p>
+<p>因此，在这个特定的程序中，<code>(*p)(1,1)</code> 和 <code>p(1,1)</code> 是等效的，没有区别。</p>
+<p>希望这个解答对你有帮助。如果还有其他问题，请随时提问。</p>
 <p><strong>函数指针及其应用——编写通用性更强的函数</strong></p>
 <p>典例1：计算函数的定积分</p>
 <p>典例2：既能按照升序排序，又能按照降序排序</p>
@@ -18884,7 +18910,7 @@ void SelectionSort(int a[],int n,int (*compare)(int a,int b))
         k=i;
         for(j=i+1;j&lt;n;j++)
         {
-            if((compare)(a[j],a[k]))//调用函数指针compare指向的函数
+            if((compare)(a[j],a[k]))//调用函数指针compare指向的函数，这里加不加星号都行
                 k=j;
         }
         if(k!=i)
@@ -24276,7 +24302,7 @@ int main()
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#1%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A1%AB%E5%85%85%E9%BB%98%E8%AE%A4%E5%BD%A2%E5%8F%82">1字符串填充（默认形参）</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#2-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD">2 删除字符(函数重载)</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#3-%E5%A4%8D%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B1%82%E5%8A%A9gpt">3 复制字符串（求助GPT）</a></li>
-<li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#4-%E6%AD%A3%E6%95%B4%E6%95%B0%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA">4 正整数格式输出</a></li>
+<li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#4-%E6%AD%A3%E6%95%B4%E6%95%B0%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E6%B1%82%E5%8A%A9gpt">4 正整数格式输出（求助GPT）</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#5-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E6%9E%90">5 字符串分析</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B4%E5%9E%8B%E6%95%B0%E5%80%BC">6 字符串转换为整型数值</a></li>
 <li><a href="%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E9%A2%98.html#7-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E4%B8%A4%E7%82%B9%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB">7 函数模板：两点间的距离</a></li>
@@ -24311,13 +24337,9 @@ int main()
 <p>问题描述 :</p>
 <p>实验目的：学习函数的默认形参的使用。</p>
 <p>内容：对于字符串，实现以下填充函数，并编写main函数测试这些函数：</p>
-<ol>
-<li>padLeft函数：</li>
-</ol>
+<p>1.padLeft函数：</p>
 <p>功能：将一字符串左填充（在左边填充指定字符）至n个字符的长度，可指定填充字符，比如填充“*”，如果不指定填充字符，则填充空格。</p>
-<ol start="2">
-<li>padRight函数：</li>
-</ol>
+<p>2.padRight函数：</p>
 <p>功能：将一字符串右填充至n个字符的长度，可指定填充字符，比如填充“*”，如果不指定填充字符，则填充空格。</p>
 <p>输入说明 :</p>
 <p>测试程序输入时，每组测试数据包含两行，第一行输入一个整数，指定需要完成的操作，第二行为该操作需要的数据。</p>
@@ -24658,7 +24680,7 @@ int main()
  return 0;
 }
 </code></pre>
-<h2 id="4-正整数格式输出"><a class="header" href="#4-正整数格式输出">4 正整数格式输出</a></h2>
+<h2 id="4-正整数格式输出求助gpt"><a class="header" href="#4-正整数格式输出求助gpt">4 正整数格式输出（求助GPT）</a></h2>
 <p>问题描述 :</p>
 <p>内容：对于任意一个输入的位数不确定的正整数，实现以下格式输出函数：将该整数按照标准的三位分解格式输出。例如，当用户输入82668234时，程序应该输出82,668,234。并编写main函数测试该功能函数。</p>
 <p>注意：<strong>要求使用函数参数的地址传递方式实现。</strong></p>
@@ -25366,6 +25388,71 @@ int main()
     return 0;
 }
 </code></pre>
+<p>使用C++的sort函数排序的程序如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+class student
+{
+    string name;
+    int math;
+    int english;
+    int total;
+public:
+    student(string n, int m, int e): name(n), math(m), english(e), total(m+e) {}
+    student(){}
+    void calcTotal() {
+        total = math + english;
+    }
+    string getName() {
+        return name;
+    }
+    int getMath() {
+        return math;
+    }
+    int getEnglish() {
+        return english;
+    }
+    int getTotal() {
+        return total;
+    }
+};
+bool cmp(student&amp; s1,student&amp; s2)
+{
+    if(s1.getTotal()!=s2.getTotal())
+        return s1.getTotal()&gt;s2.getTotal();
+}
+void sortStudent(student s[], int n)
+{
+    sort(s,s+n,cmp);
+}
+
+int main()
+{
+    student s[3];
+    string sName;
+    int sMath, sEnglish;
+    int i;
+
+    for(i=0; i&lt;3; i++)
+    {
+        cin&gt;&gt;sName&gt;&gt;sMath&gt;&gt;sEnglish;
+        s[i]=student(sName, sMath, sEnglish);
+        s[i].calcTotal();
+    }
+
+    sortStudent(s, 3);
+
+    for(i=0;i&lt;3;i++)
+    {
+        cout&lt;&lt;s[i].getName()&lt;&lt;&quot; &quot;&lt;&lt;s[i].getMath()&lt;&lt;&quot; &quot;&lt;&lt;s[i].getEnglish()&lt;&lt;&quot; &quot;&lt;&lt;s[i].getTotal()&lt;&lt;endl;
+    }
+
+    return 0;
+}
+</code></pre>
 <h2 id="10-寻找最好成绩"><a class="header" href="#10-寻找最好成绩">10 寻找最好成绩</a></h2>
 <p>问题描述 :</p>
 <p>建立一个对象数组，内放若干个学生的学习数据（学号，成绩）。</p>
@@ -25463,6 +25550,83 @@ int main( )
 }
 </code></pre>
 <p>注意：通过构造函数传值时，要写<code>this-&gt;num=num;</code>不要写<code>num=num;</code>否则出现的都是随机值</p>
+<p>优化版本：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Student
+{
+
+private:
+
+          int num;  //学号
+
+          float score; //分数
+
+public:
+
+           Student(int num=0)
+           {
+               this-&gt;num=num;
+           }
+
+           void SetScore(float score)
+           {
+               this-&gt;score=score;
+           }
+
+           friend void max( Student arr[] ,int n);
+
+};
+
+void max( Student arr[] ,int n)
+{
+    float max=arr[0].score;
+    for(int i=0;i&lt;n;i++)
+    {
+        if(max&lt;arr[i].score)
+        {
+            max=arr[i].score;
+        }
+    }
+    for(int i=0;i&lt;n;i++)
+    {
+        if(max==arr[i].score)
+            cout&lt;&lt;arr[i].num&lt;&lt;&quot; &quot;&lt;&lt;arr[i].score&lt;&lt;endl;
+    }
+}
+
+int main( )
+
+{
+
+   int i, n, num;
+
+   float score;
+
+   cin&gt;&gt;n;
+
+   Student stu[n];
+
+   for( i = 0; i &lt; n; i++)
+
+   {
+
+        cin&gt;&gt;num&gt;&gt;score;
+
+        stu[i] = Student(num);
+
+        stu[i].SetScore(score);
+
+    }
+
+    max(stu, n );
+
+    return 0;
+
+}
+</code></pre>
 <h2 id="11-查找学生"><a class="header" href="#11-查找学生">11 查找学生</a></h2>
 <p>问题描述 :</p>
 <p>实验目的：学习string类型的使用；学习对象数组的使用。</p>
