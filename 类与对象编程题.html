@@ -4606,12 +4606,11 @@ public:
 };
 int main()
 {
-
-       int topLeftX, topLeftY, width, height;
-       int px, py, dx, dy;
-       cin&gt;&gt;topLeftX&gt;&gt;topLeftY&gt;&gt;width&gt;&gt;height;
-       cin&gt;&gt;px&gt;&gt;py;
-       cin&gt;&gt;dx&gt;&gt;dy;
+    int topLeftX, topLeftY, width, height;
+    int px, py, dx, dy;
+    cin&gt;&gt;topLeftX&gt;&gt;topLeftY&gt;&gt;width&gt;&gt;height;
+    cin&gt;&gt;px&gt;&gt;py;
+    cin&gt;&gt;dx&gt;&gt;dy;
 
     Point p(px, py);
     Rectangle r(topLeftX, topLeftY, width, height);
@@ -4708,7 +4707,7 @@ int main()
 <p>两个私有数据成员：int x, int y，它们分别表示一个点的x和y座标。</p>
 <p>构造函数：</p>
 <p>Point(int x, int y)，即传两个参数，构造一个点对象。</p>
-<p>注意，本题要求Point类不得定义缺省构造函数，也就是只定义以上所说的构造函数。</p>
+<p>注意，本题要求Point类不得定义默认构造函数，也就是只定义以上所说的构造函数。</p>
 <p>虚成员函数：</p>
 <p>double getArea ()    //获取该图形的面积</p>
 <p>bool isIn(Point p)   //判断传入的点是否在该图形之内（不包括边界），如果在内部返回true，否则返回false</p>
