@@ -4202,7 +4202,7 @@ int main()
 <li><a href="%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E7%B9%81%E5%BF%99%E7%9A%84%E9%80%9A%E8%AE%AF%E5%85%B5">繁忙的通讯兵</a></li>
 <li><a href="%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E7%B4%A0%E6%95%B0%E5%92%8C%E6%B1%82%E5%8A%A9gpt">素数和（求助GPT）</a></li>
 <li><a href="%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E6%B1%82%E7%AC%AC%E5%87%A0%E5%A4%A9">求第几天</a></li>
-<li><a href="%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E4%B8%89%E8%A7%92%E5%BD%A2%E6%B1%82%E5%8A%A9gpt">三角形（求助GPT)</a></li>
+<li><a href="%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E7%BC%96%E7%A8%8B%E9%A2%98.html#%E4%B8%89%E8%A7%92%E5%BD%A2%E6%B1%82%E5%8A%A9gpt%E5%B7%B2%E9%87%8D%E5%86%99">三角形（求助GPT&amp;&amp;已重写)</a></li>
 </ul>
 </li>
 </ul>
@@ -4791,7 +4791,7 @@ int main()
     }
 }
 </code></pre>
-<h3 id="三角形求助gpt"><a class="header" href="#三角形求助gpt">三角形（求助GPT)</a></h3>
+<h3 id="三角形求助gpt已重写"><a class="header" href="#三角形求助gpt已重写">三角形（求助GPT&amp;&amp;已重写)</a></h3>
 <p>问题描述 :</p>
 <p>“明明，你会用1到9这九个数字组成一个三角形吗？”明明的爸爸问明明。明明被问的很莫名其妙，不明白他爸爸在说什么，于是就问道：“用1到9组成三角形？？？”“是的，我的要求很简单，给你2个数，一个数作为这个三角形的开始，另一个数决定这个三角形的大小。例如我给你5和6这两个数，你就要组成如下的一个三角形：</p>
 <p>5<br />
@@ -4943,6 +4943,43 @@ int main() {
 2 3 4 5 6 7
 </code></pre>
 <p>这些输出是根据题目给定的输入数据构建的三角形。</p>
+<p>重写后的能通过题目已给出的数据的测试：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+int main()
+{
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+        int count=n;
+        int arr[m][m];
+        for(int i=0;i&lt;=m;i++)
+        {
+            for(int j=0;j&lt;i;j++)
+            {
+                arr[i][j]=count;
+                count++;
+                if(count&gt;9)
+                    count=1;
+            }
+        }
+        for(int i=0;i&lt;=m;i++)
+        {
+            for(int j=0;j&lt;i;j++)
+            {
+                if(j&gt;0)
+                    cout&lt;&lt;&quot; &quot;;
+                cout&lt;&lt;arr[i][j];
+            }
+            cout&lt;&lt;endl;
+        }
+        cout &lt;&lt; endl;
+
+        }
+    
+    return 0;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="一维数组理论"><a class="header" href="#一维数组理论">一维数组理论</a></h1>
 <ul>
 <li><a href="%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA.html#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AD%98%E5%82%A8">一维数组的定义和存储</a></li>
