@@ -201,7 +201,6 @@
 <li><a href="#%E7%BD%91%E7%BB%9C%E8%AD%A6%E5%AF%9F">网络警察</a></li>
 <li><a href="#%E5%88%86%E5%89%B2%E6%95%B0%E5%AD%97%E5%B9%B6%E6%8E%92%E5%BA%8F">分割数字并排序</a></li>
 <li><a href="#16%E8%BF%9B%E5%88%B6%E5%8A%A0%E6%B3%95%E6%B1%82%E5%8A%A9gpt">16进制加法（求助GPT）</a></li>
-<li><a href="#%E7%89%A7%E5%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F">牧场安全系统</a></li>
 <li><a href="#%E7%89%A7%E5%9C%BA%E5%AE%89%E5%85%A8%E7%B3%BB%E7%BB%9F%E6%B1%82%E5%8A%A9gpt">牧场安全系统（求助GPT）</a></li>
 <li><a href="#%E7%AC%A8%E5%B0%8F%E7%8C%B4">笨小猴</a></li>
 <li><a href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC">表达式求值</a></li>
@@ -1898,30 +1897,69 @@ int main()
 <pre><code>9394
 9b7d
 </code></pre>
-<h3 id="牧场安全系统"><a class="header" href="#牧场安全系统">牧场安全系统</a></h3>
-<p>问题描述 :</p>
-<p>明明是一家养牛场的老板，随着养牛场的规模扩大，牛的数量变得越来越多。因此，管理也就越来越难，还时常发生一些事故，比如：一些牛会走失，一些牛会因为疏忽照顾而生长不佳等等，这些都给明明造成了损失。于是，明明决定给养牛场安装一套现代化的生产管理系统，用科学的方法来管理养牛场，在这套安全系统中，需要为每头牛编一个号码，这个号码是唯一的，用来标识每一头牛。这样明明在管理时，就不会疏忽任意一头牛，也不会使牛再次走失。但是在给每头牛编号的时候，明明遇到了困难，由于系统的原因，系统对每头牛的编号有一定的限制，这个编号必须有L个小写字母组成，这些小写字母必须在固定的几个字母中选择，并且在这个编号中至少要有一个元音('a', 'e', 'i', 'o', 或者 'u')，至少有两个辅音(除去元音以外的音节), 并且字母按字母表顺序排列(例如，'abc'是有效的，而'bac'不是有效的)。 例如：假设编号由5个小写字母组成，且这些小写字母只能为a、b、c、d、e、f，这样构成的可能的编号就有以下6种： bcdef acdef abdef abcef abcdf abcde 明明觉得这样编号的方法非常麻烦，仅仅靠手工排列是很难完成的，出错的可能性很大，这时，明明想起了你，你是一位程序设计专家，你能否帮明明写一个程序，帮助他按照编号的规则，由程序生成所有的有效编号，供明明使用。 明明的问题可以归结为：给你一个有效编号的长度L，和C个可用的小写字母，按照编码规则生成所有的有效编号。</p>
-<p>输入说明 :</p>
-<p>你写的程序要求从标准输入设备中读入测试数据作为你所写程序的输入数据。标准输入设备中有多组测试数据，每组测试数据有二行，第一行为两个整数L(3≤L≤15)和C(3≤C≤26)，L表示编号的长度，C表示可以选择的小写字母的数量，L和C用一个空格隔开。第二行有C个两两不相同的小写字母，相互以一个空格隔开。每组测试数据与其后一组测试数据之间没有任何空行，第一组测试数据前面以及最后一组测试数据后面也都没有任何空行。</p>
-<p>输出说明 :</p>
-<p>对于每一组测试数据，你写的程序要求计算出一组相应的运算结果，并将这一组运算结果作为你所写程序的输出数据依次写入到标准输出设备中。每组运算结果分为两个部分，第一部分为所有生成的有效编号，每行一个，按字母表逆序顺序输出，第二部分为一个整数，表示总共有多少个有效编码。 每组运算结果的行首和行尾都没有任何空格，每组运算结果与其后一组运算结果之间有一个空行，最后一组运算结果后面没有空行。 注：通常，显示屏为标准输出设备。</p>
-<p>输入范例 :</p>
-<pre><code>3 3
-a b c
-5 6
-a b c d e f
-</code></pre>
-<p>输出范例 :</p>
-<pre><code>abc
-1
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
 
-bcdef
-acdef
-abdef
-abcef
-abcdf
-abcde
-6
+using namespace std;
+
+int hexToDecimal(char c) {
+    if (c &gt;= '0' &amp;&amp; c &lt;= '9') {
+        return c - '0';
+    } else {
+        return c - 'a' + 10;
+    }
+}
+
+char decimalToHex(int num) {
+    if (num &gt;= 0 &amp;&amp; num &lt;= 9) {
+        return num + '0';
+    } else {
+        return num - 10 + 'a';
+    }
+}
+
+string addHex(string a, string b) {
+    int carry = 0;
+    string result = &quot;&quot;;
+
+    while (!a.empty() || !b.empty() || carry != 0) {
+        int digitA = 0, digitB = 0;
+
+        if (!a.empty()) {
+            digitA = hexToDecimal(a.back());
+            a.pop_back();
+        }
+
+        if (!b.empty()) {
+            digitB = hexToDecimal(b.back());
+            b.pop_back();
+        }
+
+        int sum = digitA + digitB + carry;
+        carry = sum / 16;
+        int digitSum = sum % 16;
+
+        result = decimalToHex(digitSum) + result;
+    }
+
+    return result;
+}
+
+int main() {
+    int T;
+    cin &gt;&gt; T;
+
+    for (int i = 0; i &lt; T; i++) {
+        string a, b;
+        cin &gt;&gt; a &gt;&gt; b;
+
+        string sum = addHex(a, b);
+        cout &lt;&lt; sum &lt;&lt; endl;
+    }
+
+    return 0;
+}
 </code></pre>
 <h3 id="牧场安全系统求助gpt"><a class="header" href="#牧场安全系统求助gpt">牧场安全系统（求助GPT）</a></h3>
 <p>问题描述 :</p>
