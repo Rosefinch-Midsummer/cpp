@@ -1,0 +1,889 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>任务自动化——预处理理论 - C++语言程序设计</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="前言.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="程序的基本组成.html"><strong aria-hidden="true">2.</strong> 程序的基本组成</a></li><li class="chapter-item expanded "><a href="顺序结构程序设计.html"><strong aria-hidden="true">3.</strong> 顺序结构程序设计</a></li><li class="chapter-item expanded "><a href="顺序结构编程题.html"><strong aria-hidden="true">4.</strong> 顺序结构编程题</a></li><li class="chapter-item expanded "><a href="分支结构理论.html"><strong aria-hidden="true">5.</strong> 分支结构理论</a></li><li class="chapter-item expanded "><a href="分支结构程序设计.html"><strong aria-hidden="true">6.</strong> 分支结构程序设计</a></li><li class="chapter-item expanded "><a href="分支结构编程题.html"><strong aria-hidden="true">7.</strong> 分支结构编程题</a></li><li class="chapter-item expanded "><a href="循环结构理论.html"><strong aria-hidden="true">8.</strong> 循环结构理论</a></li><li class="chapter-item expanded "><a href="循环结构程序设计.html"><strong aria-hidden="true">9.</strong> 循环结构程序设计</a></li><li class="chapter-item expanded "><a href="循环结构编程题.html"><strong aria-hidden="true">10.</strong> 循环结构编程题</a></li><li class="chapter-item expanded "><a href="一维数组理论.html"><strong aria-hidden="true">11.</strong> 一维数组理论</a></li><li class="chapter-item expanded "><a href="一维数组程序设计.html"><strong aria-hidden="true">12.</strong> 一维数组程序设计</a></li><li class="chapter-item expanded "><a href="一维数组编程题.html"><strong aria-hidden="true">13.</strong> 一维数组编程题</a></li><li class="chapter-item expanded "><a href="查找及排序算法理论.html"><strong aria-hidden="true">14.</strong> 查找及排序算法理论</a></li><li class="chapter-item expanded "><a href="二维数组理论.html"><strong aria-hidden="true">15.</strong> 二维数组理论</a></li><li class="chapter-item expanded "><a href="二维数组编程题.html"><strong aria-hidden="true">16.</strong> 二维数组编程题</a></li><li class="chapter-item expanded "><a href="字符串理论.html"><strong aria-hidden="true">17.</strong> 字符串理论</a></li><li class="chapter-item expanded "><a href="字符串编程题.html"><strong aria-hidden="true">18.</strong> 字符串编程题</a></li><li class="chapter-item expanded "><a href="函数理论.html"><strong aria-hidden="true">19.</strong> 函数理论</a></li><li class="chapter-item expanded "><a href="函数编程题.html"><strong aria-hidden="true">20.</strong> 函数编程题</a></li><li class="chapter-item expanded "><a href="指针理论.html"><strong aria-hidden="true">21.</strong> 指针理论</a></li><li class="chapter-item expanded "><a href="结构体理论.html"><strong aria-hidden="true">22.</strong> 结构体理论</a></li><li class="chapter-item expanded "><a href="结构体编程题.html"><strong aria-hidden="true">23.</strong> 结构体编程题</a></li><li class="chapter-item expanded "><a href="组合体和枚举类型理论.html"><strong aria-hidden="true">24.</strong> 组合体和枚举类型理论</a></li><li class="chapter-item expanded "><a href="任务自动化——预处理.html" class="active"><strong aria-hidden="true">25.</strong> 任务自动化——预处理理论</a></li><li class="chapter-item expanded "><a href="类与对象理论.html"><strong aria-hidden="true">26.</strong> 类与对象理论</a></li><li class="chapter-item expanded "><a href="类与对象编程题.html"><strong aria-hidden="true">27.</strong> 类与对象编程题</a></li><li class="chapter-item expanded "><a href="运算符重载理论.html"><strong aria-hidden="true">28.</strong> 运算符重载理论</a></li><li class="chapter-item expanded "><a href="递归、回溯与分治理论.html"><strong aria-hidden="true">29.</strong> 递归、回溯与分治理论</a></li><li class="chapter-item expanded "><a href="递归算法编程题.html"><strong aria-hidden="true">30.</strong> 递归算法编程题</a></li><li class="chapter-item expanded "><a href="枚举和贪心算法编程题.html"><strong aria-hidden="true">31.</strong> 枚举和贪心算法编程题</a></li><li class="chapter-item expanded "><a href="搜索算法编程题.html"><strong aria-hidden="true">32.</strong> 搜索算法编程题</a></li><li class="chapter-item expanded "><a href="动态规划算法编程题.html"><strong aria-hidden="true">33.</strong> 动态规划算法编程题</a></li><li class="chapter-item expanded "><a href="组合与继承理论.html"><strong aria-hidden="true">34.</strong> 组合与继承理论</a></li><li class="chapter-item expanded "><a href="类模板理论.html"><strong aria-hidden="true">35.</strong> 类模板理论</a></li><li class="chapter-item expanded "><a href="IO理论.html"><strong aria-hidden="true">36.</strong> IO理论</a></li><li class="chapter-item expanded "><a href="STL理论.html"><strong aria-hidden="true">37.</strong> STL理论</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vector类程序设计.html"><strong aria-hidden="true">37.1.</strong> vector类程序设计</a></li><li class="chapter-item expanded "><a href="string类程序设计.html"><strong aria-hidden="true">37.2.</strong> string类程序设计</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">C++语言程序设计</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="任务自动化预处理"><a class="header" href="#任务自动化预处理">任务自动化——预处理</a></h1>
+<ul>
+<li><a href="#%E5%AE%8F%E5%AE%9A%E4%B9%89">宏定义</a>
+<ul>
+<li><a href="#%E4%B8%8D%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8F%E5%AE%9A%E4%B9%89">不带参数的宏定义</a></li>
+<li><a href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8F%E5%AE%9A%E4%B9%89">带参数的宏定义</a></li>
+<li><a href="#%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86%E8%BF%90%E7%AE%97"><code>#</code>和<code>##</code>预处理运算</a></li>
+<li><a href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AE%8F">预定义宏</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB">文件包含</a>
+<ul>
+<li><a href="#%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98">路径问题</a></li>
+<li><a href="#%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB">重复包含</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91">条件编译</a>
+<ul>
+<li><a href="#define%E5%AE%9A%E4%B9%89%E6%9D%A1%E4%BB%B6"><code>#define</code>定义条件</a></li>
+<li><a href="#ifdefifndef"><code>#ifdef</code>、<code>#ifndef</code></a></li>
+<li><a href="#if-elif"><code>#if</code>-<code>#elif</code></a></li>
+</ul>
+</li>
+<li><a href="#%E9%99%84%E5%BD%95%E4%BB%8Elinux%E5%86%85%E6%A0%B8%E4%B8%AD%E5%AD%A6%E4%B9%A0%E9%AB%98%E7%BA%A7c%E8%AF%AD%E8%A8%80%E5%AE%8F%E6%8A%80%E5%B7%A7">附录《从Linux内核中学习高级C语言宏技巧》</a>
+<ul>
+<li><a href="#1%E7%94%A8dowhile0%E6%8A%8A%E5%AE%8F%E5%8C%85%E8%B5%B7%E6%9D%A5">1.用do{}while(0)把宏包起来</a></li>
+<li><a href="#2%E8%8E%B7%E5%8F%96%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0">2.获取数组元素个数</a></li>
+<li><a href="#3%E6%B1%82%E4%B8%A4%E4%B8%AA%E6%95%B0%E4%B8%AD%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E5%AE%8Fmax">3.求两个数中最大值的宏MAX</a></li>
+<li><a href="#4%E9%80%9A%E8%BF%87%E6%88%90%E5%91%98%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%84%E4%BD%93%E5%9C%B0%E5%9D%80%E7%9A%84%E5%AE%8Fcontainer_of">4.通过成员获取结构体地址的宏container_of</a></li>
+<li><a href="#5%E4%B8%8E%E5%8F%98%E5%8F%82%E5%AE%8F">5.#与变参宏</a></li>
+</ul>
+</li>
+</ul>
+<p>C++程序编译的处理过程一般分为预处理、编译（及汇编）和连接。预处理是在程序编译之前，由预处理器对源程序中各种预处理命令进行先行处理，处理完毕自动进入对源程序的编译。编译时先分析、后综合，分析是指编译器对源程序进行词法分析和语法分析；综合是指代码优化、存储分配和代码生成。为了完成这些分析综合任务，编译器采用对源程序进行多次扫描的办法，每次扫描集中完成一项或几项任务，也有一项任务分散到几次扫描中完成的。大多数的编译器直接产生机器语言的目标代码，但有的编译器则先产生汇编语法的符号代码，然后调用汇编器（assembler）进行翻译加工处理，产生目标代码。连接器将在不同文件中的目标代码和库函数代码经过重定位处理连接成可执行文件。</p>
+<p><strong>预处理命令不是C++本身的组成部分，更不是C++语句。</strong> 它是C++标准规定的可以出现在C++源程序文件中的命令。这些命令必须以'#'开头，结尾不加分号，可以放置在源程序中的任何位置，其有效范围是从出现位置开始到源程序文件末尾。</p>
+<p><strong>预处理命令的操作对象是编译器和连接器，</strong> 用来设置程序编译和连接时的各种参数，当编译工作完成后，预处理命令的作用即告完成，因为它不会出现在目标代码和可执行文件中。预处理命令是C++的一个重要特点，合理地使用预处理功能，可以优化程序设计环境，提高程序的通用性、可读性和可移植性。</p>
+<p>C++标准库提供恶多种预处理命令，如宏定义、文件包含和条件编译等。</p>
+<h2 id="宏定义"><a class="header" href="#宏定义">宏定义</a></h2>
+<p>在C++源程序中允许使用一个标识符来代表一个字符文本，称为宏，标识符为宏名。宏是由宏定义事先定义的。预处理时，对程序中所有后续的宏名实例（称为宏引用），预处理器都用字符文本去替换，称为宏替换或宏展开。</p>
+<p>宏定义通常用于定义程序中的符号常量、类型别名、运算式代换和语句代换等，其命令为<code>#define</code>，分为不带参数的宏定义和带参数的宏定义。</p>
+<h3 id="不带参数的宏定义"><a class="header" href="#不带参数的宏定义">不带参数的宏定义</a></h3>
+<p>不带参数的宏定义的命令形式为<code>#define 宏名 字符文本</code></p>
+<p>注意事项：</p>
+<p>（1）宏定义用宏名来代表一个字符文本，在宏替换时又以该字符文本取代宏名，这只是一种简单的替换。字符文本中可以包含任何字符，预处理器对它不作任何语法检查，即使有错误，也只有在编译已经宏替换后的源程序时才会发现。因此不要在字符文本中放置任何多余的字符，如在行末加分号，否则它们也将作为字符文本的组成部分。特别地，C++标准允许在宏定义的字符文本后面出现C++注释，预处理时会忽略所有这样的注释。</p>
+<p>（2）宏替换时使用完整的字符文本替换宏名，既不会少，也不会增加额外的字符。因此在一些运算式代换中，字符文本中有无括号对宏替换的结果是有影响的。</p>
+<pre><code class="language-cpp">#define M1 a+b
+#define M2 (a+b)
+L=M1*M1     //宏展开为L=a+b*a+b
+L=M2*M2     //宏展开为L=(a+b)*(a+b)
+</code></pre>
+<p>（3）源程序中的字符串常量、注释或标识符的一部分若有与宏名相同的字符，不会进行宏替换。假定已定义PI宏，则<code>cout&lt;&lt;&quot;PI=&quot;&lt;&lt;xPI*y&lt;&lt;endl;//xPI为变量名</code>不进行任何宏替换，因为代码中出现的PI均不是宏名。</p>
+<p>（4）一个宏名不要重复定义两次以上，否则引用的宏总是最后一次的宏定义；若要进行新的宏定义，应该先使用<code>#undef</code>命令取消已有的宏定义。</p>
+<p><code>#undef</code>命令取消已有的宏定义的一般形式为<code>#undef 宏名</code></p>
+<p>（5）一个宏的作用范围是从定义位置开始到<code>#undef</code>命令结束，如果没有对应的<code>#undef</code>命令，则宏的作用范围到源文件末尾结束。通常将宏定义写在源程序文件的开头或头文件中。</p>
+<p>（6）宏定义允许嵌套，即在宏定义的字符文本中可以引用已经定义的宏名，在宏替换时由预处理器层层替换。例如：</p>
+<pre><code class="language-cpp">#define WIDTH 80
+#define LENGTH (WIDTH+10)
+L=WIDTH*a;   //宏展开为L=80*a;
+S=LENGTH*b*WIDTH;  //宏展开为S=(80+10)*b*80;
+</code></pre>
+<h3 id="带参数的宏定义"><a class="header" href="#带参数的宏定义">带参数的宏定义</a></h3>
+<p>带参数的宏定义的命令格式为<code>#define 宏名（参数表） 字符文本</code></p>
+<p>带参数的宏的引用形式为宏名（引用参数表）</p>
+<p>预处理时，预处理器先将宏引用的引用参数文本对应地替换宏定义字符文本中的参数，接下来进行宏替换，然后再进行编译。</p>
+<p>例如有以下宏定义<code>#define max(a,b) (((a)&gt;(b))?(a):(b))</code>形式参数按顺序为a和b，而程序代码<code>L=max(x-y,x+y)</code>引用参数文本按顺序为x-y和x+y。预处理时宏替换为<code>L=(((x-y)&gt;(x+y))?(x-y):(x+y))</code></p>
+<p>使用带参数的宏定义需要注意以下四点：</p>
+<p>（1）宏名与”（参数表）“之间不能有空白符，否则命令形式会被理解为不带参数的宏定义，而”（参数表）“是字符文本的一部分。例如<code>#define AREA (r)PI*r*r</code>中AREA被理解为不带参数的宏。</p>
+<p>（2）字符文本中的参数必须是由各种符号、空白符分隔出来的独立字符文本。例如：</p>
+<pre><code class="language-cpp">#define MSET1(arg) x=Aarg+2;
+#define MSET2(arg) x=A+arg;
+MSET1(1)    //宏替换为x=Aarg+2;arg没有被替换
+MSET2(1)    //宏替换为x=A+1;arg已被替换
+</code></pre>
+<p>Aarg字符文本不会进行arg参数替换，因为Aarg是一个不可分割的整体。</p>
+<p>（3）引用参数文本替换字符文本中的参数时，只是简单地做文本替换，某些表达式地宏定义中，这些简单处理可能会得到不符合愿意的替换结果。比如<code>#define POWER(a) a*a</code></p>
+<p>如果宏引用为<code>S=POWER(x);</code>这是正确的；但如果宏引用为<code>S=POWER(x+y);</code>得到的宏扩展<code>x+y*x+y</code>显然与<code>(x+y)*(x+y)</code>原意不符。</p>
+<p>解决这个问题有两种办法。</p>
+<p>一是给引用参数文本加上括号。例如<code>S=POWER((x+y));</code></p>
+<p>二是在宏定义时给字符文本中的参数加上括号。例如：</p>
+<pre><code class="language-cpp">#define POWER(a) (a)*(a)
+S=POWER(x+y);
+</code></pre>
+<p>在实际编程中，第二种方法更稳妥。</p>
+<p>（4）无论是带参数的宏定义还是不带参数的宏定义，均可以使用行连接符<code>\</code>得到多行宏定义，进而得到具有复杂功能的宏。例如：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+#define PRINTSTAR(n) {\
+    int i,j;\
+    for(i=1;i&lt;=n;i++){\
+        for(j=1;j&lt;=i;j++)\
+            cout&lt;&lt;&quot;*&quot;;\
+        cout&lt;&lt;endl;\
+    }\
+}\
+
+int main()
+{
+    PRINTSTAR(5);
+    return 0;
+
+}
+</code></pre>
+<pre><code>*
+**
+***
+****
+*****
+</code></pre>
+<p>注意宏定义的最后要连接一个空格，这样宏替换时才会有相应的换行。</p>
+<p>带参数的宏定义的引用与函数调用在语法上比较相似，例如，在调用函数时，在函数名后的括号内写实参，要求实参参与形参的顺序对应和数目相等。但它们基本含义不同，主要区别如下。</p>
+<p>1.函数调用时会先计算实参表达式的值，然后参数值传递给形参，程序指令会转到函数内部开始执行。而带参数的宏定义只是参数文本替换，不存在计算实参、参数传递、跳转执行等。</p>
+<p>2.函数调用是在程序运行时执行的，它会为形式参数分配临时的内存单元。而宏在预处理阶段替换，不会为形式参数分配内存单元，而且也没有返回和返回值的概念。</p>
+<p>3.函数调用对实参和形参都要定义类型，且要求二者的类型一致，如果不一致，会进行类型转换。而宏定义不存在类型问题，它的形式参数和引用参数都只是一个文本记号，宏替换时进行文本置换。</p>
+<p>4.无参数函数调用必须包括括号，无参数宏定义引用时不需要括号。例如：</p>
+<pre><code class="language-cpp">#define PI 3.1415926
+int fun();
+x=fun();
+x=PI;//宏引用
+</code></pre>
+<p>5.每一次宏引用，宏替换后都会使源程序增长，相当于将宏定义的字符文本”粘贴“到源程序中一次，而函数调用代码是复用的。宏替换会占用编译时间，函数调用则会占用运行时间。</p>
+<p>6.宏定义和内联函数也显著不同。内联函数要做参数类型检查，而宏不需要。</p>
+<p>宏引用和函数调用的区别如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int M1(int y)
+{
+    return ((y)*(y));
+}
+#define M2(y) ((y)*(y))
+
+int main()
+{
+    int i,j;
+    for(i=1,j=1;i&lt;=5;i++) cout&lt;&lt;M1(j++)&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    for(i=1,j=1;i&lt;=5;i++) cout&lt;&lt;M2(j++)&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+    return 0;
+
+}
+</code></pre>
+<pre><code>1 4 9 16 25
+2 12 30 56 90
+</code></pre>
+<p>原因：宏展开为<code>((j++)*(j+1))</code>，使得j每次增加2</p>
+<p>函数调用和宏引用在形式上相似，但在本质上是完全不同的。</p>
+<h3 id="和预处理运算"><a class="header" href="#和预处理运算"><code>#</code>和<code>##</code>预处理运算</a></h3>
+<p><code>#</code>运算符的作用是文本参数”字符串化“，即出现在宏定义字符文本中的<code>#</code>把跟在后面的参数转换成一个C++字符串常量。例如：</p>
+<pre><code class="language-cpp">#define PRINT_MSG1(x) cout&lt;&lt;#x;
+#define PRINT_MSG2(x) cout&lt;&lt;x;
+
+PRINT_MSG1(Hello World);   //正确，宏替换为cout&lt;&lt;&quot;Hello World&quot;;
+PRINT_MSG1(&quot;Hello World&quot;);   //正确，宏替换为cout&lt;&lt;&quot;\&quot;Hello World&quot;\&quot;;
+PRINT_MSG2(Hello World);   //错误，宏替换为cout&lt;&lt;Hello World;
+PRINT_MSG2(&quot;Hello World&quot;);   //正确，宏替换为cout&lt;&lt;&quot;Hello World&quot;;
+</code></pre>
+<p>简单来说，<code>#</code>参数的作用就是对这个参数替换后，再加双引号括起来变为”参数“。</p>
+<p><code>##</code>运算符的作用是将两个字符文本连接成一个字符文本，如果其中一个字符文本是宏定义的参数，连接会在参数替换后发生。例如：</p>
+<pre><code class="language-cpp">#define SET1(arg) A##arg=arg;
+#define SET2(arg) Aarg=arg;
+SET1(1);//宏替换为A1=1;
+SET2(1);//宏替换为Aarg=1;
+</code></pre>
+<p>A字符与<code>##</code>arg参数连接在一起形成了A1，而对于Aarg字符文本，不会进行arg替换。</p>
+<h3 id="预定义宏"><a class="header" href="#预定义宏">预定义宏</a></h3>
+<p>C++标准中预先定义了一些有用的符号常量，主要是编译信息，如下表所示：</p>
+<div class="table-wrapper"><table><thead><tr><th>符号常量</th><th>类型</th><th>说明</th></tr></thead><tbody>
+<tr><td><code>__DATE__</code></td><td>字符串常量</td><td>编译程序日期（形式为&quot;MM DD YYYY&quot;,例如&quot;May 4 2006&quot;</td></tr>
+<tr><td><code>__TIME__</code></td><td>字符串常量</td><td>编译程序日期（形式为&quot;hh:mm:ss&quot;,例如&quot;10 20 02&quot;</td></tr>
+<tr><td><code>__FILE__</code></td><td>字符串常量</td><td>编译程序文件名</td></tr>
+<tr><td><code>__LINE__</code></td><td>int型常量</td><td>当前源程序的行号</td></tr>
+<tr><td><code>__STDC__</code></td><td>int型常量</td><td>若为1说明此程序兼容ANSI C标准</td></tr>
+<tr><td><code>__cplusplus</code></td><td>int型常量</td><td>若编译的是C++程序，值定义为1977LL</td></tr>
+</tbody></table>
+</div>
+<p>其中，<code>__</code> 为两个下划线，<code>__DATE__</code>和<code>__TIME__</code>用于指明程序编译的时间，<code>__FILE__</code>和<code>__LINE__</code>用于调试，<code>__cplusplus</code>检测编译文件是否支持C++。</p>
+<h2 id="文件包含"><a class="header" href="#文件包含">文件包含</a></h2>
+<p>文件包含命令有两种形式：<code>#include&lt;头文件名&gt;</code>或<code>#include &quot;头文件名&quot;</code></p>
+<p>说明：</p>
+<p>（1）一个<code>#include</code>命令只能包含一个头文件，包含多个头文件要用多个<code>#include</code>命令，且每个命令包含命令占一行。通常，头文件的扩展名为.h或.hpp。</p>
+<p>（2）第一种形式与第二种形式的区别是编译器查找头文件的搜索路径不同。第一种形式仅在编译器INCLUDE系统路径中查找头文件；第二种形式先在源文件所处的文件夹（用户路径）中查找头文件，如果找不到，再在系统路径中查找。</p>
+<p>一般来说，如果调用标准库函数或者专业库函数包含头文件时，使用第一种形式；包含程序员自己编写的头文件时，将头文件放在源文件所处的文件夹中且使用第二种形式。</p>
+<p>（3）头文件的内容通常是函数声明、全局性常量、数据类型声明和宏定义等信息，一般不包括定义，如函数定义和变量定义等。所起的作用就是为其他程序模块提供声明信息，而定义、函数实现代码等应放在源文件中。</p>
+<p>在实际编程中，如果程序是由多个源文件组成的，一般采用工程方式来集合，而不是使用文件包含命令。</p>
+<h3 id="路径问题"><a class="header" href="#路径问题">路径问题</a></h3>
+<p>绝对路径，如：</p>
+<pre><code class="language-cpp">#include &quot;C:\DEV\GSL\include\gsl_linalg.h&quot;
+#include &lt;C:\DEV\SDL\include\SDL.h&gt;
+</code></pre>
+<p>文件包含命令不属于C++语法，带双引号的内容不能被视作字符串，其中的<code>\</code>不要写成<code>\\</code>。</p>
+<p>相对路径，如：</p>
+<pre><code class="language-cpp">#include &lt;zlib\zlib.h&gt;
+#include &quot;user.h&quot;
+#include &quot;share\a.h&quot;
+</code></pre>
+<p>这时的文件包含命令是相对系统INCLUDE路径或用户路径来查找头文件的。</p>
+<p>假设编译器系统INCLUDE路径为<code>“C:\DEV\MinGW\include”</code>，则</p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;  //cmath在C:\DEV\MinGW\include
+#include &lt;zlib\zlib.h&gt; //zlib.h在C:\DEV\MinGW\include\zlib
+</code></pre>
+<p>假设用户路径为<code>“C:\Devshop”</code>，则</p>
+<pre><code class="language-cpp">#include &quot;user.h&quot;  //user.h在D:\Devshop或C:\DEV\MinGW\include
+#include &quot;share\a.h&quot; //a.h在D:\Devshop\share或C:\DEV\MinGW\include\share
+</code></pre>
+<p>如果在上述路径中找不到头文件，会出现编译错误。</p>
+<h3 id="重复包含"><a class="header" href="#重复包含">重复包含</a></h3>
+<p>头文件有时需要避免重复包含（即多次包含），例如一些特定声明不能多次声明，而且重复包含增加了编译时间。这时可以采用以下两个办法之一。</p>
+<p>（1）增加条件编译。例如：</p>
+<pre><code class="language-cpp">#if !defined(_FILE1_H_C6793AB5__INCLUDE_)
+#define _FILE1_H_C6793AB5__INCLUDE_
+...     //头文件内容
+#endif
+</code></pre>
+<p>即将头文件内容放在一个条件编译块中，第1次编译时编译条件成立，故继续往下编译，第2行使编译条件为假，这样再次编译头文件时，头文件内容就不会编译了。条件中的宏定义<code>“_FILE1_H_C6793AB5__INCLUDE_”</code>，是为了与其他编译条件相区别，故意写得很长很怪。</p>
+<p>（2）使用特殊预处理命令<code>#progma</code>。例如：</p>
+<pre><code class="language-cpp">#progma once
+... //头文件内容
+</code></pre>
+<p>即在头文件第一行增加这个预处理命令，它的意思是：在编译一个源文件时，只对该文件包含（打开）一次。</p>
+<h2 id="条件编译"><a class="header" href="#条件编译">条件编译</a></h2>
+<p>通常，源程序中的所有代码行都参与编译，如果希望部分代码只在一定条件下才参与编译，可以使用条件编译命令。</p>
+<p>使用条件编译，可以针对不同硬件平台和软件开发环境来控制不同的代码段被编译，从而方便了程序的可维护性和可移植性，同时提高了程序的通用性。典型的条件编译是将程序编译分成调试版本“Debug”和&quot;Release&quot;，一些供程序员调试的代码在Release中没有参与编译，即在最终的程序可执行文件中不包含这些调试代码。</p>
+<h3 id="define定义条件"><a class="header" href="#define定义条件"><code>#define</code>定义条件</a></h3>
+<p>条件编译使用宏定义条件，命令形式如下：</p>
+<pre><code class="language-cpp">#define 条件字段
+#define 条件字段 常量表达式
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-cpp">#define DEBUG
+#define WINVER 0x0501
+</code></pre>
+<p>第1行表示DEBUG已被定义，第2行表示WINVER已经定义且值为0x0501。</p>
+<p>主流的编译器系统也支持通过编译参数设置条件，GCC命令行使用参数为</p>
+<pre><code class="language-bash">gcc-D 条件字段      //等价于#define 条件字段
+gcc-D 条件字段=常量表达式      //等价于#define 条件字段 常量表达式
+</code></pre>
+<h3 id="ifdefifndef"><a class="header" href="#ifdefifndef"><code>#ifdef</code>、<code>#ifndef</code></a></h3>
+<p><code>#ifdef</code>条件编译命令测试条件字段是否定义，以此选择参与编译的程序代码段，它有两种命令。</p>
+<p>第一种形式：</p>
+<pre><code class="language-cpp">#ifdef 条件字段
+...   //程序代码段1
+#endif
+</code></pre>
+<p>第二种形式：</p>
+<pre><code class="language-cpp">#ifdef 条件字段
+...   //程序代码段1
+#else
+...   //程序代码段2
+#endif
+</code></pre>
+<p>表示如果条件字段已经被<code>#define</code>定义过，无论是否有值，编译器只编译程序代码段1，否则只编译程序代码段2，程序代码段可以是任意行数的程序的程序或预处理命令。例如：</p>
+<pre><code class="language-cpp">#ifdef DEBUG
+cout&lt;&lt;&quot;x=&quot;&lt;&lt;x&lt;&lt;&quot;y=&quot;&lt;&lt;y&lt;&lt;&quot;,z=&quot;&lt;&lt;z&lt;&lt;endl;
+#endif
+</code></pre>
+<p>表示如果DEBUG已经定义则编译输出语句，否则不编译；当输出语句未参与编译时，程序可执行代码中不会有这句。</p>
+<p>比较与此类似的if语句的含义。例如：</p>
+<pre><code class="language-cpp">if(DEBUG)
+	cout&lt;&lt;&quot;x=&quot;&lt;&lt;x&lt;&lt;&quot;y=&quot;&lt;&lt;y&lt;&lt;&quot;,z=&quot;&lt;&lt;z&lt;&lt;endl;
+</code></pre>
+<p>无论if语句条件满足与否，程序可执行代码中肯定有输出语句指令的，if语句条件用来决定是否执行它。</p>
+<p><code>#ifndef</code>条件编译命令测试条件字段是否没有被定义过，以此选择参与编译的程序代码；它也有两种命令形式，形式如同<code>#ifdef</code>但作用与<code>#ifdef</code>相反。</p>
+<h3 id="if-elif"><a class="header" href="#if-elif"><code>#if</code>-<code>#elif</code></a></h3>
+<p><code>#if</code>条件编译命令根据表达式的值选择参与编译的程序代码，其命令形式为</p>
+<pre><code class="language-cpp">#if 常量表达式
+...  //程序代码段1
+#else 
+... //程序代码段2
+#endif
+</code></pre>
+<p>当预处理器遇到<code>#if</code>命令时，先计算常量表达式（像if语句那样），如果表达式的值非0（即为真），则编译程序代码段1，否则编译程序代码段2。<strong>注意，常量表达式只能使用由<code>#define</code>定义的常量，不能像if语句那样使用程序中的变量</strong>。对于没有定义过的表达式，<code>#if</code>将其值当作0。</p>
+<p>条件编译命令中<code>#ifdef条件字段</code>与<code>#if defined 条件字段</code>是等价的，<code>#ifndef条件字段</code>与<code>#if !defined 条件字段</code>是等价的，<code>#ifdef条件字段</code>与<code>#if define(条件字段)</code>是等价的。</p>
+<p>可以使用嵌套的<code>#if</code>条件编译命令<code>#if-#elif</code>，命令形式为：</p>
+<pre><code class="language-cpp">#if 常量表达式1
+...  //程序代码段1
+#elif 常量表达式2
+...  //程序代码段3
+#else 
+... //程序代码段3
+#endif
+</code></pre>
+<p>其中，<code>#elif</code>分支可以有多项。</p>
+<p>下面的代码测试是否使用GCC编译器且版本大于3.0，如果是则编译程序代码段：</p>
+<pre><code class="language-cpp">#ifdef __GNU__   //如果是GCC编译器，其内部已定义
+#if (__GNU__&gt;=3)   //编译器是GCC3.0以上
+...   //程序代码段
+#endif
+#endif
+</code></pre>
+<p>下面的代码根据Windows操作系统的版本选择相应的程序代码段进行编译：</p>
+<pre><code class="language-cpp">#if(WINVER&gt;=0x0501) //在WindowsXP及以上系统
+...  //程序代码段1
+#elif(WINVER==0x0500) //在Windows2000系统
+...  //程序代码段2
+#else //在Windows98系统
+...  //程序代码段3
+#endif
+</code></pre>
+<p>其中，WINVER已经在编译器内部事先定义过。</p>
+<h2 id="附录从linux内核中学习高级c语言宏技巧"><a class="header" href="#附录从linux内核中学习高级c语言宏技巧">附录《从Linux内核中学习高级C语言宏技巧》</a></h2>
+<h3 id="1用dowhile0把宏包起来"><a class="header" href="#1用dowhile0把宏包起来"><strong>1.用do{}while(0)把宏包起来</strong></a></h3>
+<pre><code class="language-c">#define init_hashtable_nodes(p, b)  do {      \
+  int _i;              \
+  hash_init((p)-&gt;htable##b);        \
+  ...略去          \
+} while (0)
+</code></pre>
+<p>Linux中常见如上定义宏的形式，我们都知道do{}while(0)只执行一次，<strong>那么这个有什么意义呢？</strong> 我们写一个更简单的宏，来看看</p>
+<pre><code class="language-c">#define fun(x) fun1(x);fun2(x);
+</code></pre>
+<p>则在这样的语句中：</p>
+<pre><code class="language-c">if(a)
+  fun(a);
+</code></pre>
+<p>被展开为</p>
+<pre><code class="language-c">if(a)
+  fun1(x);fun2(x);;
+</code></pre>
+<p>fun2(x)将不会执行！有同学会想，加个花括号</p>
+<pre><code class="language-c">#define fun(x) {fun1(x);fun2(x);}
+</code></pre>
+<p>则在这样的语句中</p>
+<pre><code class="language-c">if (a)
+  fun(a);
+else
+  fun3(a);
+</code></pre>
+<p>被展开为</p>
+<pre><code class="language-c">if (a)
+  {fun1(x);fun2(x);};
+else
+  fun3(a);
+</code></pre>
+<p>注意}后还有个;这将会<strong>出现语法错误</strong>。</p>
+<p>但是假如我们写成</p>
+<pre><code class="language-c">#define fun(x) do{fun1(x);fun2(x);}while(0)
+</code></pre>
+<p>则完美避免上述问题！</p>
+<h3 id="2获取数组元素个数"><a class="header" href="#2获取数组元素个数"><strong>2.获取数组元素个数</strong></a></h3>
+<p>写一个获取数组中元素个数的宏怎么写？显然用sizeof</p>
+<pre><code class="language-c">#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(*arr))
+</code></pre>
+<p><strong>可以用，但这样是存在问题的</strong>，先看个例子</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int a[3] = {1,3,5};
+int fun(int c[])
+{
+  printf(&quot;fun1 a= %d\n&quot;,sizeof(c));
+}
+int main(void)
+{
+  printf(&quot;a= %d\n&quot;,sizeof(a));
+  fun(a);
+  return 0;
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-text">a = 12；
+b = 8；//32位电脑为4
+</code></pre>
+<p>为什么？<strong>因为数组名和指针不是完全一样的，函数参数中的数组名在函数内部会降为指针！</strong></p>
+<p><strong>sizeof(a),在函数中实际上变成了sizeof(int *)。</strong> 上面的宏存在的问题也就清楚了，这是一个非常重大，且容易忽略的bug！**让我们看看，内核中怎么写：</p>
+<pre><code class="language-c">#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]) + __must_be_array(arr))
+</code></pre>
+<p><code>sizeof(arr) / sizeof((arr)[0]</code>很好理解数组大小除去元素类型大小即是元素个数，真正的精髓在于后面<code>__must_be_array(arr)</code>宏</p>
+<pre><code class="language-c">#define __must_be_array(a)  BUILD_BUG_ON_ZERO(__same_type((a), &amp;(a)[0]))
+</code></pre>
+<p>先看内部的__same_type，它也是个宏</p>
+<pre><code class="language-c"># define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
+</code></pre>
+<p><code>__builtin_types_compatible_p</code> 是gcc内联函数，在内核源码中找不到定义也无需包含头文件，在代码中也可以直接使用这个函数。（只要是用gcc编译器来编译即可使用， <strong>不用管这个，</strong> 只需知道：</p>
+<p>当 a 和 b 是同一种数据类型时，此函数返回 1。</p>
+<p>当 a 和 b 是不同的数据类型时，此函数返回 0。</p>
+<p>再看外部的（<strong>精髓来了</strong>）</p>
+<pre><code class="language-c">#define BUILD_BUG_ON_ZERO(e) (sizeof(struct { int:-!!(e); }))
+</code></pre>
+<p><strong>上来就是个小技巧：</strong>!!(e)是将e转换为0或1，加个-号即将e转换为0或-1。</p>
+<p>再用到了位域：有些信息在存储时，并不需要占用一个完整的字节， 而只需占几个或一个二进制位。例如在存放一个开关量时，只有0和1 两种状态，用一位二进位即可。这时候可以用位域</p>
+<pre><code class="language-c">struct struct_a{
+  char a:3;
+  char b:3;
+  char c;
+};
+</code></pre>
+<p>a占用3位，b占用3位，如上结构体只占用2字节，位域可以为无位域名，这时它只用来作填充或调整位置，不能使用，如：</p>
+<pre><code class="language-c">struct struct_a{
+  char a:3;
+  char  :3;
+  char c;
+};
+</code></pre>
+<p>当位数为负数时编译无法通过！</p>
+<p>当a为数组时，<code>__same_type((a)</code>,<code> &amp;(a)[0])</code>，<code>&amp;(a)[0]</code>是个指针，两者类型不同，返回0，即e为0，-!!(e)为0，<code>sizeof(struct { int:0; })</code>为0，编译通过且不影响最终值。</p>
+<p>当a为指针时，<code>__same_type((a), &amp;(a)[0])</code>，两者类型相同，返回1，即e为1，-!!(e)为-1，无法编译。</p>
+<h3 id="3求两个数中最大值的宏max"><a class="header" href="#3求两个数中最大值的宏max"><strong>3.求两个数中最大值的宏MAX</strong></a></h3>
+<p>思考这个问题，你会怎么写</p>
+<p><strong>一般的同学：</strong></p>
+<pre><code class="language-c">#define MAX(a,b) a &gt; b ? a : b
+</code></pre>
+<p>存在问题，例子如下：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#define MAX(x,y) x &gt; y ? x: y
+int main(void)
+{
+  int i = 14;
+  int j = 3;
+  printf (&quot;i&amp;0b101 = %d\n&quot;,i&amp;0b101);
+  printf (&quot;j&amp;0b101 = %d\n&quot;,j&amp;0b101);
+  printf(&quot;max=%d\n&quot;,MAX(i&amp;0b101,j&amp;0b101));
+  return 0;
+}
+</code></pre>
+<p>输出：</p>
+<pre><code>i&amp;0b101 = 4
+j&amp;0b101 = 1
+max=1
+</code></pre>
+<p>明显不对，因为&gt;运算符优先级大于&amp;，所以会先进行比较再进行按位与。</p>
+<p><strong>3.2稍好的同学：</strong></p>
+<pre><code class="language-c">#define MAX(a,b) (a) &gt; (b) ? (a) : (b)
+</code></pre>
+<p>存在问题，例子如下：</p>
+<pre><code class="language-c">#define MAX(x,y) (x) &gt; (y) ? (x) : (y)
+int main(void)
+{
+  printf(&quot;max=%d&quot;,3 + MAX(1,2));
+  return 0;
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-text">max = 1
+</code></pre>
+<p>同样是优先级问题+优先级大于&gt;。</p>
+<p><strong>3.3良好的同学</strong></p>
+<pre><code class="language-c">#define MAX(a,b) ((a) &gt; (b) ? (a) : (b))
+</code></pre>
+<p>避免了前两个出现的问题，但同样还有问题存在：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+
+#define MAX(x,y) ((x) &gt; (y) ? (x): (y))
+int main(void)
+{
+  int i = 2;
+  int j = 3;
+  printf(&quot;max=%d\n&quot;,MAX(i++,j++));
+  printf(&quot;i=%d\n&quot;,i);
+  printf(&quot;j=%d\n&quot;,j);
+  return 0;
+}
+</code></pre>
+<p>期望结果：</p>
+<pre><code class="language-text">max=3，i=3，j=4
+</code></pre>
+<p>实际结果</p>
+<pre><code class="language-text">max=4，i=3，j=5
+</code></pre>
+<p>尽管用括号避免了优先级问题，但这个例子中的j++实际上运行了两次。</p>
+<p><strong>3.4Linux内核中的写法</strong></p>
+<pre><code class="language-c">#define MAX(x, y) ({        \
+  typeof(x) _max1 = (x);      \
+  typeof(y) _max2 = (y);      \
+  (void) (&amp;_max1 == &amp;_max2);    \
+  _max1 &gt; _max2 ? _max1 : _max2; })
+</code></pre>
+<p>下面进行详解。</p>
+<p><strong>3.4.1.GNU C中的语句表达式</strong></p>
+<p><strong>表达式</strong>就是由一系列操作符和操作数构成的式子。 例如下面三个表达式</p>
+<pre><code class="language-c">a+b
+i=a*2
+a++
+</code></pre>
+<p>表达式加上一个分号就构成了<strong>语句</strong>，例如，下面三条语句：</p>
+<pre><code class="language-c">a+b;
+i=a*2;
+a++;
+</code></pre>
+<p>A compound statement enclosed in parentheses may appear as an expression in GNU C.</p>
+<p>——《Using the GNU Compiler Collection》6.1 Statements and Declarations in ExpressionsGNU C允许在表达式中有复合语句,称为<strong>语句表达式：</strong></p>
+<pre><code class="language-c">({表达式1;表达式2;表达式3;...})
+</code></pre>
+<p>语句表达式内部可以有局部变量，语句表达式的值为内部最后一个表达式的值。</p>
+<p>例子：</p>
+<pre><code class="language-c">int main()
+{
+  int y;
+  y = ({ int a =3; int b = 4;a+b;});
+  printf(&quot;y = %d\n&quot;,y);
+  return 0;
+}
+</code></pre>
+<p>输出：y = 7。这个扩展使得宏构造更加安全可靠，我们可以写出这样的程序：</p>
+<pre><code class="language-c">int main()
+{
+  int y;
+  y = ({ int a =3; int b = 4;a+b;});
+  printf(&quot;y = %d\n&quot;,y);
+  return 0;
+}
+</code></pre>
+<p>但这个宏还有个缺点，只能比较int型变量，改进一下：</p>
+<pre><code class="language-c">#define max(type，x, y) ({        \
+  type _max1 = (x);      \
+  type _max2 = (y);      \
+  _max1 &gt; _max2 ? _max1 : _max2; })
+</code></pre>
+<p>但这需要传入type，还不够好。</p>
+<p><strong>3.4.2 typeof关键字</strong></p>
+<p>GNU C 扩展了一个关键字 typeof，用来获取一个变量或表达式的类型。</p>
+<p>例子：</p>
+<pre><code class="language-c">int a;
+typeof(a) b = 1;
+typeof(int *) a;
+int f();
+typeof(f()) i;
+</code></pre>
+<p>于是就有了</p>
+<pre><code class="language-c">#define max(x, y) ({        \
+  typeof(x) _max1 = (x);      \
+  typeof(y) _max2 = (y);      \
+  _max1 &gt; _max2 ? _max1 : _max2; })
+</code></pre>
+<p><strong>3.4.3真正的精髓</strong></p>
+<p>对比一下，内核的写法：</p>
+<pre><code class="language-c">#define max(x, y) ({        \
+  typeof(x) _max1 = (x);      \
+  typeof(y) _max2 = (y);      \
+  (void) (&amp;_max1 == &amp;_max2);    \
+  _max1 &gt; _max2 ? _max1 : _max2; })
+</code></pre>
+<p>发现比我们的还多了一句</p>
+<pre><code class="language-c">(void) (&amp;_max1 == &amp;_max2);
+</code></pre>
+<p>这才是真正的精髓，对于不同类型的指针比较，编译器会给一个警告：</p>
+<pre><code class="language-c">warning：comparison of distinct pointer types lacks a cast
+</code></pre>
+<p>提示两种数据类型不同。至于加void是因为当两个值比较，比较的结果没有用到，有些编译器可能会给出一个警告，加(void)后，就可以消除这个警告。</p>
+<h3 id="4通过成员获取结构体地址的宏container_of"><a class="header" href="#4通过成员获取结构体地址的宏container_of"><strong>4.通过成员获取结构体地址的宏container_of</strong></a></h3>
+<pre><code class="language-c">#define offsetof(TYPE, MEMBER) ((size_t) &amp;((TYPE *)0)-&gt;MEMBER)
+#define container_of(ptr, type, member) ({      \
+  const typeof(((type *)0)-&gt;member) *__mptr = (ptr);  \
+  (type *)((char *)__mptr - offsetof(type, member));  \
+})
+</code></pre>
+<p><strong>4.1作用</strong></p>
+<p>我们传给某个函数的参数是某个结构体的成员，但是在函数中要用到此结构体的其它成员变量，这时就需要使用这个宏：container_of(ptr, type, member)ptr为已知结构体成员的指针，type为结构体名字，member为已知成员名字，例子：</p>
+<pre><code class="language-c">struct struct_a{
+  int a;
+  int b;
+};
+
+int fun1 (int *pa)
+{
+  struct struct_a *ps_a;
+  ps_a = container_of(pa,struct struct_a,a);
+  ps_a-&gt;b = 8;
+}
+
+int main(void)
+{
+  float f = 10;
+  struct struct_a s_a ={2,3};
+  fun1(&amp;s_a.a);
+  printf(&quot;s_a.b = %d\n&quot;,s_a.b);
+  return 0;
+}
+</code></pre>
+<p>输出：s_a.b=8。本例子中通过struct_a结构体中的a成员地址获取到了结构体地址，进而对结构体中的另一成员b进行了赋值。</p>
+<p><strong>4.2详解</strong></p>
+<p>首先来看：</p>
+<pre><code class="language-c">#define offsetof(TYPE, MEMBER) ((size_t) &amp;((TYPE *)0)-&gt;MEMBER)
+</code></pre>
+<p>这个是获取在结构体TYPE中，MEMBER成员的偏移位置。</p>
+<p>定义一个结构体变量时，编译器会按照结构体中各个成员的顺序，在内存中分配一片连续的空间来存储。例子：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+struct struct_a{
+  int a;
+  int b;
+  int c;
+};
+int main(void)
+{
+  struct struct_a s_a ={2,3,6};
+  printf(&quot;s_a   addr = %p\n&quot;,&amp;s_a);
+  printf(&quot;s_a.a addr = %p\n&quot;,&amp;s_a.a);
+  printf(&quot;s_a.b addr = %p\n&quot;,&amp;s_a.b);
+  printf(&quot;s_a.c addr = %p\n&quot;,&amp;s_a.c);
+  return 0;
+}
+</code></pre>
+<p>输出</p>
+<pre><code class="language-text">s_a   addr = 0x7fff2357896c
+s_a.a addr = 0x7fff2357896c
+s_a.b addr = 0x7fff23578970
+s_a.c addr = 0x7fff23578974
+</code></pre>
+<p>结构体的地址也就是第一个成员的地址，每一个成员的地址可以看作是对首地址的<strong>偏移</strong>，上面例子中，a就是首地址偏移0，b就是首地址偏移4字节，c就是首地址偏移8字节。</p>
+<p>我们知道C语言中指针的内容其实就是地址，我们也可以把某个地址强制转换为某种类型的指针，<code>(TYPE *)0)</code>即将地址0，通过强制类型转换，转换为一个指向结构体类型为TYPE的常量指针。</p>
+<p><code>&amp;((TYPE *)0)-&gt;MEMBER</code>自然就是MEMBER成员对首地址的偏移量了。而(size_t)是内核定义的数据类型，在32位机上就是unsigned int，64位就是unsiged long int，就是强制转换为无符号整型数。再来看：</p>
+<pre><code class="language-c">#define container_of(ptr, type, member) ({      \
+  const typeof(((type *)0)-&gt;member) *__mptr = (ptr);  \
+  (type *)((char *)__mptr - offsetof(type, member));  \
+})
+</code></pre>
+<p>第一句（其实这句才是精华）</p>
+<pre><code class="language-c">const typeof(((type *)0)-&gt;member) *__mptr = (ptr);  \
+</code></pre>
+<p>typeof在前面讲过了，获取类型，这句作用是利用赋值来确保你传入的ptr指针和member成员是同一类型，不然就会出现警告。</p>
+<p>第二句</p>
+<pre><code class="language-c"> (type *)((char *)__mptr - offsetof(type, member));  \
+</code></pre>
+<p>有了前面的讲解，应该就很容易理解了，成员的地址减去偏移不就是首地址吗，为什么要加个(char *)强制类型转换？</p>
+<p>因为offsetof(type, member)的结果是偏移的字节数，而指针运算，（char *）-1是减去一个字节，（int *）-1就是减去四个字节了。最外面的 (type *)，即把这个值强制转换为结构体指针。</p>
+<h3 id="5与变参宏"><a class="header" href="#5与变参宏"><strong>5.#与变参宏</strong></a></h3>
+<p><strong>5.1#和##</strong></p>
+<p><strong>#运算符</strong>，可以把宏参数转换为字符串，例子</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#define PSQR(x) printf(&quot;The square of &quot; #x &quot; is %d.\n&quot;,((x)*(x)))
+int main(void)
+{
+    int y = 5; 
+    PSQR(y);
+    PSQR(2 + 4); 
+    return 0;
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-text">The square of y is 25.
+The square of 2 + 4 is 36.
+</code></pre>
+<p><strong>##运算符</strong>,可以把两个参数组合成一个。例子：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#define PRINT_XN(n) printf(&quot;x&quot; #n &quot; = %d\n&quot;, x ## n);
+int main(void)
+{
+    int x1 = 2;
+    int x2 = 3;
+    PRINT_XN(1);        // becomes printf(&quot;x1 = %d\n&quot;, x1);
+    PRINT_XN(2);        // becomes printf(&quot;x2 = %d\n&quot;, x2);
+    return 0;
+}
+</code></pre>
+<p>该程序的输出如下：</p>
+<pre><code class="language-text">x1 = 2
+x2 = 3
+</code></pre>
+<p><strong>5.2变参宏</strong></p>
+<p>我们都知道printf接受可变参数，C99后宏定义也可以使用可变参数。C99 标准新增加的一个 <strong>VA_ARGS</strong> 预定义标识符来表示变参列表，例子：</p>
+<pre><code class="language-c">#define DEBUG(...) printf(__VA_ARGS__)
+int main(void)
+{
+  DEBUG(&quot;Hello %s\n&quot;,&quot;World！&quot;);
+  return 0;
+}
+</code></pre>
+<p>但是这个在使用时，可能还有点问题比如这种写法：</p>
+<pre><code class="language-c">#define DEBUG(fmt,...) printf(fmt,__VA_ARGS__)
+int main(void)
+{
+  DEBUG(&quot;Hello World！&quot;);
+  return 0;
+}
+</code></pre>
+<p>展开后</p>
+<pre><code class="language-text">printf(&quot;Hello World！&quot;,);
+</code></pre>
+<p>多了个逗号，编译无法通过，这时，只要在标识符__VA_ARGS__前面加上宏连接符##，当变参列表非空时，##的作用是连接fmt，和变参列表宏正常使用；当变参列表为空时，##会将固定参数fmt后面的逗号删除掉，这样宏也就可以正常使用了，即改成这样：</p>
+<pre><code class="language-c">#define DEBUG(fmt,...) printf(fmt,##__VA_ARGS__)
+</code></pre>
+<p>除了这些，其实Linux内核中还有很多宏和函数写得非常精妙。Linux内核越看越有味道，看内核源码，很多时候都会不明所以，但看明白后又醍醐灌顶，又感慨人外有人！</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="组合体和枚举类型理论.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="类与对象理论.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="组合体和枚举类型理论.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="类与对象理论.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
