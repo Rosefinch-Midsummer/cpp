@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,24 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -116,9 +121,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -189,6 +194,7 @@
 <li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E4%BD%9C%E4%B8%BA%E5%9F%BA%E7%B1%BB">派生类作为基类</a></li>
 <li><a href="#%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F">派生类的实现方式</a></li>
 <li><a href="#%E5%A4%9A%E7%BB%A7%E6%89%BF">多继承</a></li>
+<li><a href="#%E8%99%9A%E5%9F%BA%E7%B1%BB">虚基类</a></li>
 </ul>
 </li>
 <li><a href="#%E6%B5%8B%E9%AA%8C-1">测验</a>
@@ -1464,6 +1470,27 @@ wagon power:105 load:8
 <tr><td>ifstream、ofstream、fstream</td><td>输入文件流类、输出文件流类、输入输出文件流类</td><td>fstream</td></tr>
 </tbody></table>
 </div>
+<h3 id="虚基类"><a class="header" href="#虚基类">虚基类</a></h3>
+<p>如果一个派生类有多个直接基类，而这些直接基类又有一个共同的基类，则在最终的派生类中会保留该共同基类数据成员的多份同名成员。</p>
+<p>在一个类中保留间接共同基类的多份同名成员，虽然有时是由必要的，可以在不同的数据成员中分别存放不同的数据，也可以通过构造函数分别对它们进行初始化。但在大多数情况下，这种现象是人们不希望出现的。因为保留多份数据成员的副本，不仅占用较多的存储空间，还增加了访问这些成员时的困难。实际上，我们并不需要有多份副本。</p>
+<p>C++提供虚基类（Virtual base class）的机制，使得在继承简介共同基类时只保留一份成员。</p>
+<p>1.虚基类的定义</p>
+<p>虚基类是在派生类定义时指定继承方式时声明的。因为一个基类可以在生成一个派生类时作为虚基类，而在生成另一个派生类时不作为虚基类。声明虚基类的一般形式如下：</p>
+<pre><code class="language-cpp">class 派生类名：virtual 访问标号 虚基类名,...
+{
+	类体
+}
+</code></pre>
+<p>即在定义派生类时，将关键字virtual加到继承方式的前面。经过这样的声明后，当基类通过多条派生路径被一个派生类继承时，该派生类只继承该基类一次，也就是说，基类成员只保留一次。</p>
+<p>需要注意，为了保证虚基类在派生类中只继承一次，应当在该基类的所有直接派生类中声明为虚基类。否则仍然会出现对基类的多次继承。</p>
+<p>2.虚基类的初始化</p>
+<p>如果在虚基类中定义了带参数的构造函数，而且没有定义默认构造函数，则在其所有派生类（包括直接派生或间接派生的派生类）中，通过构造函数的初始化表对虚基类进行初始化。例如：</p>
+<pre><code class="language-cpp">class A{public:A(int){}};     //定义基类
+class B:virtual class A{public:B(int a):A(a){}};     //对基类A初始化
+class C:virtual class A{public:C(int a):A(a){}};     //对基类A初始化
+class D:public B,public C{public:D(int a):A(a),B(a),C(a){}};   
+</code></pre>
+<p>在定义类D的构造函数时，与以往使用的方法有所不同。以前，在派生类的构造函数中只需负责对其直接基类初始化，再由其直接基类负责对间接基类初始化。现在，由于虚基类在派生类中只有一份数据成员，所以这份数据成员的初始化必须由派生类直接给出。如果不由最后的派生类直接对虚基类初始化，而是由虚基类的直接派生类（如类B和类C）对虚基类初始化，就有可能由于在类B和类C的构造函数中对虚基类给出不同的初始化参数而产生矛盾。所以规定：<strong>在最后的派生类中不仅要负责对其直接基类进行初始化，还要负责对虚基类初始化。</strong></p>
 <h2 id="测验-1"><a class="header" href="#测验-1">测验</a></h2>
 <h3 id="派生类构造函数初始化表"><a class="header" href="#派生类构造函数初始化表">派生类构造函数初始化表</a></h3>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
@@ -2391,7 +2418,7 @@ Derived
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="类模板理论.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="类模板理论.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -2405,7 +2432,7 @@ Derived
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="类模板理论.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="类模板理论.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
